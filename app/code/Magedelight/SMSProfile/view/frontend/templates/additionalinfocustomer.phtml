@@ -1,0 +1,57 @@
+ <?php
+ /**
+  * Magedelight
+  * Copyright (C) 2019 Magedelight <info@magedelight.com>
+  *
+  * @category  Magedelight
+  * @package   Magedelight_SMSProfile
+  * @copyright Copyright (c) 2019 Mage Delight (http://www.magedelight.com/)
+  * @license   http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+  * @author    Magedelight <info@magedelight.com>
+  */
+ 
+ $smsProfileHelper = $this->helper('Magedelight\SMSProfile\Helper\Data');
+ $validateClass = '';
+ $required = 0;
+ $enableModule = $smsProfileHelper->getModuleStatus();
+ if ($enableModule && $block->getMagentoEdition() =='Community') {
+     $validateClass = $smsProfileHelper->getSmsProfilePhoneValidationClass();
+     $sendOtpUrl = $this->getUrl('smsprofile/otp/send');
+     $verifyOtpUrl = $this->getUrl('smsprofile/otp/verify');
+        ?>
+<fieldset class="fieldset create account" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
+<legend class="legend">
+    <span><?php /* @escapeNotVerified */ echo __('Additional Information') ?></span>
+</legend>
+
+<div class="field customer_mobile required">
+    <label for="customer_mobile" class="label">
+        <span><?php /* @escapeNotVerified */ echo __('Customer Mobile') ?></span>
+    </label>
+    <div class="control">
+        <input type="text" name="customer_mobile" id="customer_mobile_attr" title="<?php /* @escapeNotVerified */ echo __('Customer Mobile') ?>" class="input-text <?php echo $validateClass ?>" data-validate="{required:true}" autocomplete="off" value='<?php echo $block->getMobile(); ?>' data-mage-init='{"validation":{}}' />
+        <div class="profile-notice-phone">
+            <span><?php echo $smsProfileHelper->getPhoneNote(); ?></span>
+        </div> 
+    </div>
+    <div class="field">    
+        <button class="send_otp_edit action primary" style="margin-top: 15px;" type="button">
+            <?php echo __("Generate OTP"); ?>
+        </button>
+        <span class="otp_generatenote">&nbsp;</span>
+    </div>
+</div>
+</fieldset>
+        <?php
+        echo "<input type='hidden' class='sendUrl_edit' value='".$sendOtpUrl."'/>";
+        echo "<input type='hidden' class='verifyUrl_edit' value='".$verifyOtpUrl."'/>";
+ }
+
+ if ($enableModule && $block->getMagentoEdition() !='Community') {
+     $sendOtpUrl = $this->getUrl('smsprofile/otp/send');
+     $verifyOtpUrl = $this->getUrl('smsprofile/otp/verify');
+     echo "<input type='hidden' class='sendUrl_edit' value='".$sendOtpUrl."'/>";
+     echo "<input type='hidden' class='verifyUrl_edit' value='".$verifyOtpUrl."'/>";
+     echo "<input type='hidden' class='note' value='".$smsProfileHelper->getPhoneNote()."'/>";
+ }
+    ?>
