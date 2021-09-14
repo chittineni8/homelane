@@ -1,0 +1,4 @@
+ $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/myeventlogfile.log');
+        $logger = new \Zend\Log\Logger();
+        $logger->addWriter($writer);
+        $logger->info("$txt");
