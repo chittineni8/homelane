@@ -10,10 +10,11 @@
 
 namespace Codilar\Catalog\Plugin\Catalog\Model;
 
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Http\Context;
-use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Store\Model\ScopeInterface;
 
 class Product
 {
@@ -32,7 +33,7 @@ class Product
      */
     protected $context;
 
-    const DISABLE_ADD_TO_CART = 'catalog/frontend/catalog_frontend_disable_add_to_cart';
+    const DISABLE_ADD_TO_CART = 'catalog/frontend/catalog_frontend_change_simple_product_url_to_config';
 
     /**
      * @var Configurable
@@ -73,14 +74,19 @@ class Product
      */
     public function afterGetProductUrl(\Magento\Catalog\Model\Product $subject, $result)
     {
-        $productId = $subject->getId();
-        $parentProduct = $this->configurable->getParentIdsByChild($productId);
-        if (isset($parentProduct[0])) {
-            $parentId = $parentProduct[0];
-            $productUrl = $this->productRepository->getById($parentId)
-                ->getProductUrl();
-            return $productUrl;
+        $scope = ScopeInterface::SCOPE_STORE;
+
+        if ($this->scopeConfig->getValue(self::DISABLE_ADD_TO_CART, $scope)) {
+            $productId = $subject->getId();
+            $parentProduct = $this->configurable->getParentIdsByChild($productId);
+            if (isset($parentProduct[0])) {
+                $parentId = $parentProduct[0];
+                $productUrl = $this->productRepository->getById($parentId)
+                    ->getProductUrl();
+                return $productUrl;
+            }
         }
+
         return $result;
     }
 }
