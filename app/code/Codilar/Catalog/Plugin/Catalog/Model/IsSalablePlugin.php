@@ -2,7 +2,7 @@
 /**
  * IsSalable plugin
  *
- * @package   Codilar\DisableAddToCart
+ * @package   Codilar\Catalog
  * @author    Shahed Jamal <shahed@codilar.com>
  * @copyright © 2021 Codilar
  * @license   See LICENSE file for license details.
@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace Codilar\DisableAddToCart\Plugin\Catalog\Model;
+namespace Codilar\Catalog\Plugin\Catalog\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Http\Context;

@@ -1,6 +1,6 @@
 {
-    "name": "codilar/module-disableaddtocart",
-    "description": "DisableAddToCart",
+    "name": "codilar/module-catalog",
+    "description": "Catalog",
     "type": "magento2-module",
     "license": "GPL-3.0",
     "authors": [
@@ -16,7 +16,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "Codilar\\DisableAddToCart\\": ""
+            "Codilar\\Catalog\\": ""
         }
     }
 }

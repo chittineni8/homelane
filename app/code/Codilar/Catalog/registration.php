@@ -5,5 +5,5 @@
  */
 use Magento\Framework\Component\ComponentRegistrar;
 
-ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Codilar_DisableAddToCart', __DIR__);
+ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Codilar_Catalog', __DIR__);
 
