@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Codilar_Query::query" title="Query" translate="title" module="Codilar_Query" sortOrder="75" resource="Codilar_Query::query"/>
+        <add id="Codilar_Query::query_listing" title="Customer Queries" translate="title" module="Codilar_Query" sortOrder="10" parent="Codilar_Query::query" action="query/info/index" resource="Codilar_Query::query"/>
+    </menu>
+</config>

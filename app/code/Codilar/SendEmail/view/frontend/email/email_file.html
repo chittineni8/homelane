@@ -1,0 +1,23 @@
+<!--@subject {{trans " Query
+                received form %store_name." store_name=$store.frontend_name}} @-->
+<!--@vars {
+"var store.frontend_name":"Store Frontend Name",
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<table>
+    <tr class="email-intro">
+        <td>
+            <h1>
+                {{trans "Hello Admin}}
+                </h1>
+            <p>
+                {{trans " Query
+                received form %store_name." store_name=$store.frontend_name}}
+            </p>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}
