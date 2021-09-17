@@ -209,9 +209,9 @@ class Callapi
 
         if ($status == 200) {
             $token = $responseDecodee['token'];
-            $this->loggerResponse->addInfo("========================TOKEN SUCCESS========================");
-            $this->loggerResponse->addInfo("Token:" . ' ' . $token);
-            $this->loggerResponse->addInfo("============================================================");
+            // $this->loggerResponse->addInfo("========================TOKEN SUCCESS========================");
+            // $this->loggerResponse->addInfo("Token:" . ' ' . $token);
+            // $this->loggerResponse->addInfo("============================================================");
             return $token;
         } else {
 

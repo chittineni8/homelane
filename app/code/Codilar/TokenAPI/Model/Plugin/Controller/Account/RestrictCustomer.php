@@ -150,32 +150,59 @@ class RestrictCustomer
         $city = $subject->getRequest()->getParam('city');
         $signup_source = $this->_storeManager->getStore()->getBaseUrl();
         $postcode = $subject->getRequest()->getParam('postcode');
-        $apiRequestEndpoint = $this->getSignupApiEndpoint();
-        $requestMethod = Request::METHOD_POST;
+        // $apiRequestEndpoint = $this->getSignupApiEndpoint();
+        // $requestMethod = Request::METHOD_POST;
         $parambody = [
             'full_name' => $firstname . ' ' . $lastname, 'email' => $email, 'phone_number' => $phone_number,
-            'city' => $city, 'signup_source' => $signup_source, 'postcode' => $postcode
+            'city' => $city, 'signup_source' => $signup_source, 'pincode' => $postcode
         ];
      
         list($apiRequestEndpoint, $requestMethod, $params) = $this->prepareParams($parambody);
         $response = $this->doRequest($apiRequestEndpoint,$requestMethod,$params);
-        echo "<pre>";
-         print_r($response);
-        die;
-        // if (in_array($domain, ['163.com', 'mail.ru'], true)) {
+        $status = $response->getStatusCode();
+        $responseBody = $response->getBody();
+        $responseContent = $responseBody->getContents();
+        $responseDecodee = json_decode($responseContent, true);
 
-        //     $this->messageManager->addErrorMessage(
-        //         'Registration is disabled for you domain'
-        //     );
-        //     $defaultUrl = $this->urlModel->getUrl('*/*/create', ['_secure' => true]);
-        //     /** @var Redirect $resultRedirect */
-        //     $resultRedirect = $this->resultRedirectFactory->create();
+        // echo "<pre>";
+        // print_r($status);
+        //  print_r($responseContent);
+        //  print_r($responseDecodee);
+        // die;
+        if ($status == 400) {
 
-        //     return $resultRedirect->setUrl($defaultUrl);
+            $this->messageManager->addErrorMessage(
+                'User Already Exists'
+            );
+            $defaultUrl = $this->urlModel->getUrl('*/*/create', ['_secure' => true]);
+            /** @var Redirect $resultRedirect */
+            $resultRedirect = $this->resultRedirectFactory->create();
+            $this->loggerResponse->addInfo("Error" . ' ' . $status . ' ' . "Missing mandatory params or Lead already
+            exists");
+            return $resultRedirect->setUrl($defaultUrl);
 
-        // }
-        return $proceed();
+        }elseif($status == 401){
+            $this->messageManager->addErrorMessage(
+                'Authorization Failed'
+            );
+            $defaultUrl = $this->urlModel->getUrl('*/*/create', ['_secure' => true]);
+            /** @var Redirect $resultRedirect */
+            $resultRedirect = $this->resultRedirectFactory->create();
+            $this->loggerResponse->addInfo("Error" . ' ' . $status . ' ' . "Authorization failed or Token
+            not passed. Please refresh
+            the access token");
+            return $resultRedirect->setUrl($defaultUrl);
+
+
+        }
+
+        else{
+            $this->loggerResponse->addInfo("User Created");
+           
+return $proceed();
+
     }
+}
 
 
     /**
@@ -209,15 +236,17 @@ class RestrictCustomer
         $params = $finalBrandData;
 
 //         // collect param data
-//         $bodyJson = $this->json->serialize($finalBrandData);
-// //        $params['form_params'] = json_decode($bodyJson, true);
-//         $params['body'] = $bodyJson;
+        $bodyJson = $this->json->serialize($finalBrandData);
+       $params['form_params'] = json_decode($bodyJson, true);
+    //    print_r(json_decode($bodyJson, true));
+        // $params['body'] = $bodyJson;
 //         // $params['debug'] = true;
 // //        $params['http_errors'] = false;
 // //        $params['handler'] = $tapMiddleware($stack);
-//         $params['headers'] = [
-//             'Content-Type' => 'application/json'
-//         ];
+        $params['headers'] = [
+            'Content-Type' => 'application/x-www-form-urlencoded',
+            'Authorization'  => 'Bearer'.' '.$this->callapi->getToken()
+        ];
         return array($apiRequestEndpoint, $requestMethod, $params);
     }
 
