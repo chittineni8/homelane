@@ -7,14 +7,22 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
+        <!-- <referenceContainer name="header.panel">
+            <block class="Magento\Framework\View\Element\Template" name="headertopcontent" template="Magento_Theme::html/header-top-content.phtml"/>
+        </referenceContainer> -->
         <referenceContainer name="footer">
                 <block before="-" class="Magento\Cms\Block\Block" name="homelane-footer-block">
                     <arguments>
                         <argument name="block_id" xsi:type="string">homelane-footer-block</argument>
                     </arguments>
                 </block>
+                <!-- <block class="Magento\Customer\Block\Form\Login" name="custom_customer_form_login" template="Magento_Customer::form/login.phtml" after="-"/> -->
         </referenceContainer>
 
+        <move element="top.links" destination="header-wrapper" after="-" />
+        <move element="minicart" destination="header-wrapper" before="top.links" />
+        <move element="navigation.sections" destination="header-wrapper" after="logo" />
+        
         <!-- remove footer content -->
         <referenceBlock name="footer_links" remove="true" />
         <referenceBlock name="report.bugs" remove="true" />
