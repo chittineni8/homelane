@@ -3,7 +3,7 @@
 namespace Codilar\Query\Model\Api;
 
 use Exception;
-use Codilar\Query\Api\queryRepositoryInterface;
+use Codilar\Query\Api\QueryRepositoryInterface;
 use Codilar\Query\Model\Query as Model;
 use Codilar\Query\Model\QueryFactory as ModelFactory;
 use Codilar\Query\Model\ResourceModel\Query as ResourceModel;
