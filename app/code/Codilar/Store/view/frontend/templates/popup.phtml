@@ -1,0 +1,37 @@
+<?php
+use Magento\Cms\Block\BlockByIdentifier;
+use Codilar\Store\ViewModel\Overlay;
+
+/** @var BlockByIdentifier $block */
+/** @var $viewModel Overlay */
+$viewModel = $block->getData("viewModel");
+$websiteDetails = $viewModel->getWebsiteDetail();
+$mediaUrl = $viewModel->getMediaUrl();
+?>
+<div class="call-popup" data-mage-init='{"callPopup":{}}'>
+    <div class="block-title">
+        <h3 class="title">
+            <span><?php echo __('Please select your city') ?></span>
+        </h3>
+    </div>
+<?php
+foreach ($websiteDetails as $key => $value) {
+    $imageUrl = $mediaUrl. 'website/icons/' . $value['imageUrl'];
+    $storeName = $value['storeName'];
+?>
+    <div class="box-store-content">
+        <?php if ($imageUrl): ?>
+            <div class="store-image">
+                <img src="<?php echo $imageUrl ?>" alt="<?php echo $storeName ?>" title="<?php echo $storeName ?>" class="img-responsive"  width="200" height="200"/>
+            </div>
+        <?php endif ?>
+        <?php if($storeName): ?>
+            <div class="store-name">
+                <a target="_blank" href="<?php echo $storeName ?>">
+                    <?php echo $storeName ?>
+                </a>
+            </div>
+        <?php endif ?>
+    </div>
+<?php } ?>
+</div>

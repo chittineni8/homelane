@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!--  form_submit_event  is a custom event Dispatched  Query From  submit   -->
+    <event name="form_submit_event">
+        <observer name="CodilarQueryData" instance="Codilar\SendEmail\Observer\Customer\Data" />
+    </event>
+</config>
