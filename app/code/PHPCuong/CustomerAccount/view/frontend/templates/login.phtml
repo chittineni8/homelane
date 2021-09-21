@@ -62,6 +62,7 @@ $baseSecureUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_WE
                             <div class="control">
                                 <input name="username" value="" placeholder="Email" <?php if ($block->isAutocompleteDisabled()) :?> autocomplete="off"<?php endif; ?> id="email-login" type="email" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" data-validate="{required:true, 'validate-email':true}">
                             </div>
+                            <div id="email-error"></div>
                         </div>
                         <div class="field password required">
                             <!-- <label for="pass" class="label"><span><?php /* @escapeNotVerified */ echo __('Password') ?></span></label> -->
@@ -69,6 +70,10 @@ $baseSecureUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_WE
                                 <input name="password" type="password" placeholder="Password" <?php if ($block->isAutocompleteDisabled()) :?> autocomplete="off"<?php endif; ?> class="input-text" id="pass-login" title="<?php /* @escapeNotVerified */ echo __('Password') ?>" data-validate="{required:true}" >
                             </div>
                         </div>
+                        <div class="forgot-password">
+                           <a id="forgotPassword" href="javascript:void(0)" class="login-forgot-password" style="display: block;">Forgot Password?</a>
+                        </div>
+                        <div class = "forgot-password-error"></div>
                         <div class="actions-toolbar">
                             <div class="primary"><button type="submit" class="action login primary" name="send" id="send2-login"><span><?php /* @escapeNotVerified */ echo __('Sign In') ?></span></button></div>
                             <?php if ($block->getRegistration()->isAllowed()): ?>
@@ -107,4 +112,37 @@ $baseSecureUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_WE
             }
         </script>
     </div>
+    <script type="text/javascript">
+require(['jquery'], function($){
+$(document).ready(function()
+{ 
+$("#forgotPassword").click(function(){
+    var emailVal = $("#email-login").val();
+  if ( emailVal.length <= 0 ) {
+
+     $("#email-error").html(""); 
+     $("#email-error").append('Please enter your email'); 
+
+}else{
+
+ var emailVal = $("#email-login").val();
+
+   jQuery.ajax({
+                url: 'http://homelane.local/index.php/user/forgetpassword/index',
+                // url: "getAjaxUrl()",
+                data: {email:emailVal},
+                type: "POST",
+                dataType: "json",
+                complete: function(result) {
+                  $(".forgot-password-error").html(""); 
+                    $(".forgot-password-error").append(result.responseJSON);  
+                  
+                }
+              
+            });
+}
+  });
+});
+});
+</script>
 <?php endif; ?>
