@@ -101,8 +101,18 @@ $baseSecureUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_WE
                         <div id="emailresponse"></div>
                     </div>
                 </div>
+                 <div class="field required">
+                <!-- <label for="city" class="label"><span><?php /* @escapeNotVerified */ echo __('City') ?></span></label> -->
+                <div class="control">
+                    <input type="text" name="city" placeholder="City"
+                           value="<?= $block->escapeHtmlAttr($block->getFormData()->getCity()) ?>"
+                           title="<?php /* @escapeNotVerified */ echo __('City') ?>"
+                           class="input-text <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('city')) ?>"
+                           id="city">
+                </div>
+            </div>
                      <div class="field required">
-                <!-- <label for="popup-email_address" class="label"><span><?php /* @escapeNotVerified */ echo __('Postcode') ?></span></label> -->
+                <!-- <label for="postcode" class="label"><span><?php /* @escapeNotVerified */ echo __('Postcode') ?></span></label> -->
                 <div class="control">
                     <input type="text" name="postcode" placeholder="Postcode"
                            value="<?= $block->escapeHtmlAttr($block->getFormData()->getPostcode()) ?>"
