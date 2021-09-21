@@ -50,9 +50,11 @@ $cookieData = $viewModel->getWebsiteCookie();
             $storeName = $value['storeName'];
             $webUrl = $value['webUrl'];
             $parsedWebCode = $viewModel->getParsedWebCode($webUrl);
+            ?>
+            <li>
+            <?php
             foreach ($parsedWebCode as $webCode) {
                 $code = $webCode['path']; ?>
-            <li>
                 <?php if ($imageUrl): ?>
                     <div class="store-image">
                         <img src="<?php echo $imageUrl ?>" alt="<?php echo $storeName ?>" title="<?php echo $storeName ?>" class="img-responsive" width="200" height="200"/>
@@ -66,12 +68,12 @@ $cookieData = $viewModel->getWebsiteCookie();
                         </a>
                     </div>
                 <?php endif ?>
-            </li>
             <?php
             } ?>
-        </ul>
+            </li>
         <?php
         } ?>
+        </ul>
     </div>
 </div>
 <!--        --><?php
