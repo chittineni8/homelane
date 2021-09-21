@@ -9,13 +9,14 @@ require(
     ) {
         const popup = {
             type: 'popup',
-            modalClass: 'modal-popup city-popup',
+            modalClass: 'modal-popup',
             responsive: true,
             innerScroll: true,
             clickableOverlay: true,
             buttons: []
         };
-        const callPopup = modal(popup, $('.call-popup'));
-        $('.call-popup').modal('openModal');
+        // const callPopup = modal(popup, $('.call-popup'));
+        $('.call-popup').modal(popup).modal('openModal');
+        // $('.modal-footer').hide();
     }
 );

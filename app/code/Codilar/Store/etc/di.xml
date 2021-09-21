@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Homelane
+ * @description Store Module which contains store switching functionality
+ * @author      Manav Padhariya <manav.p@codilar.com>
+ * @copyright   2021 Codilar Technologies Pvt. Ltd. . All rights reserved.
+ * @license     Open Source
+ * @see         https://www.codilar.com/
+ *
+ * Store Module which contains store switching functionality
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Codilar\Store\Model\Session">
+        <arguments>
+            <argument name="storage" xsi:type="object">Codilar\Store\Model\Session\Storage</argument>
+        </arguments>
+    </type>
+</config>
