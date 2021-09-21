@@ -185,7 +185,7 @@ class Overlay implements ArgumentInterface
      */
     public function getStoreDetail(): array
     {
-        $stores = $this->storeManager->getStores();
+        $stores = $this->storeManager->getWebsites();
 
         foreach ($stores as $store) {
             $storeDetails[] = [
