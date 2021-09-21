@@ -1,0 +1,200 @@
+<?php
+/**
+ * GiaPhuGroup Co., Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the GiaPhuGroup.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.giaphugroup.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    PHPCuong
+ * @package     PHPCuong_CustomerAccount
+ * @copyright   Copyright (c) 2018-2019 GiaPhuGroup Co., Ltd. All rights reserved. (http://www.giaphugroup.com/)
+ * @license     https://www.giaphugroup.com/LICENSE.txt
+ */
+ /** @var \PHPCuong\CustomerAccount\Block\Form\Register $block */
+
+$objectManager =  \Magento\Framework\App\ObjectManager::getInstance(); 
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$store = $storeManager->getStore();
+$baseUrl = $store->getBaseUrl();
+$baseSecureUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_WEB, true);
+?>
+
+<?php if (!$block->customerIsAlreadyLoggedIn() && $block->getRegistration()->isAllowed()): ?>
+    <style>
+        .customer-popup-register {
+            display: none;
+        }
+    </style>
+    <div id="customer-popup-register" class="customer-popup-register">
+        <form class="form-create-account" action="<?php /* @escapeNotVerified */ echo $block->getPostActionUrl() ?>" method="post" id="customer-popup-form-register" enctype="multipart/form-data" autocomplete="off" data-mage-init='{"validation":{}}'>
+            <h2 class="account-heading"><?php echo __('Sign up'); ?></h2>
+            <?php echo $block->getBlockHtml('formkey'); ?>
+            <input type="hidden" name="redirect_url" value="<?php echo $this->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]); ?>" />
+            <div class="messages"></div>
+            <!-- <p><?php /* @escapeNotVerified */ echo __('Creating an account has many benefits: check out faster, keep more than one address, track orders and more.') ?></p> -->
+            <fieldset class="fieldset create info">
+                <!-- <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Personal Information') ?></span></legend><br> -->
+                <?php echo $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Name')->setObject($block->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
+               <!--OTP MODULE-->
+  <?php
+   
+        $smsProfileHelper = $this->helper('Magedelight\SMSProfile\Helper\Data');
+        $validateClass = '';
+        $required = 0;
+        $enableModule = $smsProfileHelper->getModuleStatus();
+        if ($enableModule) {
+            $required = $smsProfileHelper->getSmsProfilePhoneRequiredOnSignUp();
+            $validateClass = $smsProfileHelper->getSmsProfilePhoneValidationClass();
+            $sendOtpUrl = $this->getUrl('smsprofile/otp/send');
+            $verifyOtpUrl = $this->getUrl('smsprofile/otp/verify');
+            echo "<input type='hidden' class='sendUrl' value='" . $sendOtpUrl . "'/>";
+            echo "<input type='hidden' class='verifyUrl' value='" . $verifyOtpUrl . "'/>";
+            echo "<input type='hidden' class='signupOtpValidation' name='signupOtpValidation' value='0'/>";
+        }
+        ?>
+        <div class="field field-name-customer_mobile <?php if ($required) {
+            echo 'required';
+        } ?>">
+            <label class="label" for="telephone"><span>Customer Mobile</span></label>
+            <div class="control">
+                <input id="customer_mobile" name="customer_mobile" value="" title="customer_mobile"
+                       class="input-text <?php if ($required) {
+                           echo 'required-entry ';
+                       } ?> <?php echo $validateClass; ?>" <?php if ($required) {
+                    echo 'data-validate="{required:true}"';
+                } ?> autocomplete="off" aria-required="true" type="text" data-mage-init='{"validation":{}}'>
+
+                <div class="profile-notice-phone">
+                    <span><?php echo $smsProfileHelper->getPhoneNote(); ?></span>
+                </div>
+
+                <button class="send_otp action primary" style="display: none;margin-top: 15px;"
+                        type="button"><?php echo __('Generate OTP'); ?></button>
+                <span class="otp_generatenote">&nbsp;</span>
+            </div>
+            <div id="mobileresponse"></div>
+        </div>
+
+
+                <!--OTP END-->
+                <?php if ($block->isNewsletterEnabled()): ?>
+                    <!-- <div class="field choice newsletter">
+                        <input type="checkbox" name="is_subscribed" title="<?php /* @escapeNotVerified */ echo __('Sign Up for Newsletter') ?>" value="1" id="popup-is_subscribed" class="checkbox">
+                        <label for="is_subscribed" class="label"><span><?php /* @escapeNotVerified */ echo __('Sign Up for Newsletter') ?></span></label>
+                    </div> -->
+                <?php endif ?>
+            </fieldset>
+            <fieldset class="fieldset create account" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
+                <!-- <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Sign-in Information') ?></span></legend><br> -->
+                <div class="field required">
+                    <!-- <label for="popup-email_address" class="label"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span></label> -->
+                    <div class="control">
+                        <input type="email" name="email" placeholder="Email" autocomplete="email" id="popup-email_address" value="" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" class="input-text" data-validate="{required:true, 'validate-email':true}">
+                        <div id="emailresponse"></div>
+                    </div>
+                </div>
+                     <div class="field required">
+                <!-- <label for="popup-email_address" class="label"><span><?php /* @escapeNotVerified */ echo __('Postcode') ?></span></label> -->
+                <div class="control">
+                    <input type="text" name="postcode" placeholder="Postcode"
+                           value="<?= $block->escapeHtmlAttr($block->getFormData()->getPostcode()) ?>"
+                           title="<?php /* @escapeNotVerified */ echo __('Postcode') ?>" id="zip"
+                           class="input-text validate-zip-international <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('postcode')) ?>">
+                </div>
+            </div>
+            </fieldset>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button type="submit" class="action submit primary" title="<?php /* @escapeNotVerified */ echo __('Sign Up') ?>"><span><?php /* @escapeNotVerified */ echo __('Sign Up') ?></span></button>
+                </div>
+                <div class="or-another-selection">
+                    <p><?php echo __('or sign up via'); ?></p>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/homelaneinteriors" target="_blank" class="footer_footer-social-links__item__CAyle"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="35px" height="30px" viewBox="0 0 24 24" version="1.1"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="D1" transform="translate(-543.000000, -6022.000000)"><g id="Group-56" transform="translate(0.000000, 5391.000000)"><g id="Group-55" transform="translate(69.000000, 619.000000)"><g id="Group-39" transform="translate(462.000000, 0.000000)"><g id="Group-40-Copy-5"><g id="Group-64" transform="translate(12.000000, 12.000000)"><rect id="Rectangle" x="0" y="0" width="24" height="24"></rect><path d="M17.525,9.0000625 L14,9.0000625 L14,7.0000625 C14,5.9680625 14.084,5.3180625 15.563,5.3180625 L17.431,5.3180625 L17.431,2.1380625 C16.522,2.0440625 15.608,1.9980625 14.693,2 C11.98,2 10,3.6570625 10,6.6990625 L10,9.0000625 L7,9.0000625 L7,13.0000625 L10,12.9990625 L10,22.0000625 L14,22.0000625 L14,12.9970625 L17.066,12.9960625 L17.525,9.0000625 Z" id="Path" fill="#E71C24" fill-rule="nonzero"></path></g></g></g></g></g></g></g></svg></a>
+                            <a><svg xmlns="http://www.w3.org/2000/svg" width="35" height="30" class="jsx-1332155556" viewBox="0 0 112.196 112.196" id="google-sign-up"><g id="Google_Color" data-name="Google Color" transform="translate(20 21.4)" class="jsx-1332155556"><circle id="Ellipse_2" data-name="Ellipse 2" cx="56.098" cy="56.098" r="56.098" transform="translate(-20 -21.4)" fill="#f5f5f5" class="jsx-1332155556"></circle><path id="Path_2" data-name="Path 2" d="M15.735,162l-2.471,9.226-9.033.191a35.562,35.562,0,0,1-.261-33.15h0l8.042,1.474,3.523,7.994a21.187,21.187,0,0,0,.2,14.264Z" transform="translate(0 -119.094)" fill="#E71C24" class="jsx-1332155556"></path><path id="Path_3" data-name="Path 3" d="M295.727,208.176a35.486,35.486,0,0,1-12.655,34.316l0,0-10.129-.517-1.434-8.949a21.158,21.158,0,0,0,9.1-10.8H261.628V208.176h34.1Z" transform="translate(-225.348 -179.308)" fill="#E71C24" class="jsx-1332155556"></path><path id="Path_4" data-name="Path 4" d="M84,329.685l0,0a35.511,35.511,0,0,1-53.494-10.861l11.5-9.417a21.113,21.113,0,0,0,30.425,10.81Z" transform="translate(-26.278 -266.503)" fill="#E71C24" class="jsx-1332155556"></path><path id="Path_5" data-name="Path 5" d="M82.814,8.173l-11.5,9.415A21.11,21.11,0,0,0,40.191,28.642L28.626,19.174h0a35.507,35.507,0,0,1,54.19-11Z" transform="translate(-24.655)" fill="#E71C24" class="jsx-1332155556"></path></g></svg><a>
+                        </div>
+                </div>
+                <div class="secondary">
+                    <span><?php /* @escapeNotVerified */ echo __("Already have an account?") ?></span>
+                    <a class="action remind" href="<?php /* @escapeNotVerified */ echo $block->getBackUrl() ?>" id="customer-popup-sign-in"><span><?php /* @escapeNotVerified */ echo __('Log In') ?></span></a>
+                </div>
+                <div class="other-links">
+                    <a href="<?php /* @escapeNotVerified */ echo $baseUrl.'terms' ?>"><?php echo __('Terms & Conditions'); ?></a>|
+                    <a href="<?php /* @escapeNotVerified */ echo $baseUrl.'privacy-policy' ?>"><?php echo __('Privacy Policy'); ?></a>
+                </div>
+            </div>
+        </form>
+        <div class="right-img-box">
+            <img src='<?php echo $this->getViewFileUrl('images/createbox.png'); ?>' alt="logo" />
+        </div>
+        <script type="text/x-magento-init">
+            {
+                "#customer-popup-register": {
+                    "PHPCuong_CustomerAccount/js/action/customer-authentication-popup": {
+                        "popupTitle": "<?php /* @escapeNotVerified */ echo __('Create an Account'); ?>",
+                        "innerWidth": "800"
+                    }
+                }
+            }
+        </script>
+        <script type="text/javascript">
+require(['jquery'], function($){
+$(document).ready(function()
+{
+$('#customer_mobile').on('change', function () 
+ {
+   var mobileValue = jQuery("input[name='customer_mobile']").val();
+   
+    jQuery.ajax({
+                url: 'http://homelane.local/index.php/user/customer/index',
+                // url: "getAjaxUrl()",
+                data: {mobile:mobileValue},
+                type: "POST",
+                dataType: "json",
+                complete: function(mobileResult) {
+                    $("#mobileresponse").html(""); 
+                    $("#mobileresponse").append(mobileResult.responseJSON);  
+                    
+                }
+              
+            });
+});
+});
+});
+</script>
+
+<script type="text/javascript">
+require(['jquery'], function($){
+$(document).ready(function()
+{ 
+$('#popup-email_address').on('change', function () 
+ {
+    var emailValue = $("#popup-email_address").val();
+   jQuery.ajax({
+                url: 'http://homelane.local/index.php/user/customer/index',
+                // url: "getAjaxUrl()",
+                data: {email:emailValue},
+                type: "POST",
+                dataType: "json",
+                complete: function(resultJson) {
+                    $("#emailresponse").html(""); 
+                    $("#emailresponse").append(resultJson.responseJSON);  
+                  
+                }
+              
+            });
+});
+});
+});
+</script>
+    </div>
+<?php endif; ?>
+
