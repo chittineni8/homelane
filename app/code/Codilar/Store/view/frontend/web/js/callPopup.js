@@ -9,7 +9,7 @@ require(
     ) {
         const popup = {
             type: 'popup',
-            modalClass: 'modal-popup',
+            modalClass: 'modal-popup city-popup',
             responsive: true,
             innerScroll: true,
             clickableOverlay: true,
