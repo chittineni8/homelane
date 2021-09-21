@@ -16,7 +16,7 @@ foreach ($parsedUrl as $url)
     $path = $url['path'];
 }
 $sessionData = $viewModel->getSessionValue();
-$cookieData = $viewModel->getWebsiteCookie(); // set cookie and session if website code is present then don't show popup
+$cookieData = $viewModel->getWebsiteCookie();
 if ($cookieData == null) {
     if ($sessionData == null) {
 ?>

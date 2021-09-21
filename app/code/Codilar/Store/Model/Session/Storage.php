@@ -13,7 +13,7 @@ class Storage extends SessionStorage
      */
     public function __construct(
         StoreManagerInterface $storeManager,
-        $namespace = 'websitecode',
+        $namespace = 'website_code',
         array $data = []
     ) {
         parent::__construct($namespace, $data);

@@ -64,6 +64,6 @@ class Session extends SessionManager
             $appState
         );
         $this->response = $response;
-        $this->_eventManager->dispatch('websitecode_session_init', ['websitecode_session' => $this]);
+        $this->_eventManager->dispatch('website_code_session_init', ['website_code_session' => $this]);
     }
 }
