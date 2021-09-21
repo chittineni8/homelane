@@ -37,9 +37,9 @@ class Option extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource
     {
         if ($this->_options === null) {
             $this->_options = [
-                ['label' => __('HomeLane'), 'value' => '1'],
-                ['label' => __('HomeLane Store'), 'value' => '2'],
-                ['label' => __('SpaceCraft'), 'value' => '3']
+                ['label' => __('HomeLane'), 'value' => 'homeLane'],
+                ['label' => __('HomeLane Store'), 'value' => 'homeLane store'],
+                ['label' => __('SpaceCraft'), 'value' => 'spacecraft']
             ];
 
         }

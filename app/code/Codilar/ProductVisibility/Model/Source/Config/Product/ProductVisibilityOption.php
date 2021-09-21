@@ -10,9 +10,9 @@ class ProductVisibilityOption extends AbstractSource
     public function getAllOptions()
     {
         $this->_options = [];
-        $this->_options[] = ['label' => 'homelane', 'value' => ' 1'];
-        $this->_options[] = ['label' => 'homelane store', 'value' => '2'];
-        $this->_options[] = ['label' => 'spacecraft', 'value' => '3'];
+        $this->_options[] = ['label' => 'Homelane', 'value' => 'homeLane'];
+        $this->_options[] = ['label' => 'Homelane store', 'value' => 'homeLane store'];
+        $this->_options[] = ['label' => 'SpaceCraft', 'value' => 'spacecraft'];
 
         return $this->_options;
     }
