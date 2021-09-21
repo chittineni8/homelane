@@ -59,7 +59,7 @@ class IsSalablePlugin
         $scope = ScopeInterface::SCOPE_STORE;
 
         if ($this->scopeConfig->getValue(self::DISABLE_ADD_TO_CART, $scope)) {
-            return false;
+            return true;
         }
         return true;
     }
