@@ -7,8 +7,9 @@
         comment="customer Name"/>
     <column xsi:type="varchar" name="email" nullable="false" length="20"
         comment="email id"/>
-    <column xsi:type="varchar" name="phoneno" nullable="false" length="20"  comment="Phone No"/>
-        <constraint xsi:type="primary" referenceId="PRIMARY">
+    <column xsi:type="int" name="phoneno" nullable="false" length="20"  comment="PhoneNo"/>
+    <column xsi:type="int" name="pincode" nullable="false" length="20"  comment="PinCode"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="id"/>
         </constraint>
 
