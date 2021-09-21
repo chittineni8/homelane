@@ -38,11 +38,6 @@
                     <comment>Enter Password</comment>
                     <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
-                <field id="get_token" translate="label" type="button" sortOrder="1" showInDefault="1" showInWebsite="1"
-                       showInStore="1">
-                    <label>Get Token</label>
-                    <frontend_model>Codilar\TokenAPI\Block\System\Config\Token</frontend_model>
-                </field>
             </group>
             <group id="signup_oauth" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0">
                 <label>LeadGen oAuth Details</label>
@@ -72,6 +67,38 @@
                        showInStore="0">
                     <label>API Endpoint</label>
                     <comment>Login Endpoint</comment>
+                </field>
+            </group>
+
+           <group id="user_exists_oauth" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0">
+                <label>User Exists oAuth Details</label>
+                <field id="userexist_request_url" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0">
+                    <label>Request URI</label>
+                    <comment>User Exists Base URI</comment>
+                </field>
+                <field id="userexist_endpoint" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0">
+                    <label>API Endpoint</label>
+                    <comment>User Exists Endpoint</comment>
+                </field>
+            </group>
+
+               <group id="forgot_pass_oauth" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0">
+                <label>Forget Password oAuth Details</label>
+                <field id="forgot_password_request_url" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0">
+                    <label>Request URI</label>
+                    <comment>Forgot Password Base URI</comment>
+                </field>
+                <field id="forgot_password_endpoint" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0">
+                    <label>API Endpoint</label>
+                    <comment>Forgot Password Endpoint</comment>
                 </field>
             </group>
         </section>
