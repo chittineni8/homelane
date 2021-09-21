@@ -80,5 +80,16 @@
                 <dataScope>email</dataScope>
             </settings>
         </field>
+        <field name="pincode" sortOrder="30" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Pincode</label>
+                <visible>true</visible>
+                <dataScope>pincode</dataScope>
+            </settings>
+        </field>
     </fieldset>
 </form>
