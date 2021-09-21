@@ -49,14 +49,13 @@ $cookieData = $viewModel->getWebsiteCookie();
             $imageUrl = $mediaUrl . 'website/icons/' . $value['imageUrl'];
             $storeName = $value['storeName'];
             $webUrl = $value['webUrl'];
-            $parsedWebCode = $viewModel->getParsedWebCode($webUrl);
-            ?>
+            $parsedWebCode = $viewModel->getParsedWebCode($webUrl); ?>
             <li>
             <?php
             foreach ($parsedWebCode as $webCode) {
                 $code = $webCode['path']; ?>
                 <a onclick="<?php $viewModel->setSessionValue($code);
-                $viewModel->setWebsiteCookie($code); ?>" href="<?php echo $webUrl ?>">
+                $viewModel->setWebsiteCookie($code); ?>" href="<?php echo $webUrl . '' . substr($path, 1); ?>">
                 <?php if ($imageUrl): ?>
                     <div class="store-image">
                         <img src="<?php echo $imageUrl ?>" alt="<?php echo $storeName ?>" title="<?php echo $storeName ?>" class="img-responsive" width="200" height="200"/>
