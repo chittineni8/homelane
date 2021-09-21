@@ -48,7 +48,7 @@ class IsSaleable implements DataPatchInterface
 
         $eavSetup->addAttribute(\Magento\Catalog\Model\Product::ENTITY, 'issaleable', [
             'group' => 'General',
-            'type' => 'boolean',
+            'type' => 'int',
             'backend' => '',
             'frontend' => '',
             'sort_order' => 210,
