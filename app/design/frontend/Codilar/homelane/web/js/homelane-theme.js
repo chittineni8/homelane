@@ -1,13 +1,12 @@
 require(['jquery'], function($) {
 	$(document).ready( function() {
-		console.log('comming...');
 		if($('ul.header.links').find('.customer-register-link').length <= 0) {
 			$("body").addClass("logged-in");
 		}
 
 		$(function() {
 			//cache a reference to the tabs
-			var tabs = $('#moving-tabs li');
+			var tabs = $('#moving-tabs > li');
 			//on click to tab, turn it on, and turn previously-on tab off
 			tabs.click(function() { 
 				$(this).addClass('on').siblings('.on').removeClass('on');
