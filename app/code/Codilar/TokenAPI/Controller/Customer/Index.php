@@ -180,7 +180,7 @@ class Index extends Action
                     $mobileResult->setData(
                         'This phone number is associated with the
                      email id' . ' ' . $hiddenEmail . ' ' . 'Please log in using
-   that email id. If this is not your email id, click here to report the error.'
+   that email id. If this is not your email id, <b>click here to report the error.</b>'
                     );
                     return $mobileResult;
                 else :

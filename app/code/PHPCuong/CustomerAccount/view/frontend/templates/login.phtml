@@ -75,7 +75,7 @@ $baseSecureUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_WE
                         </div>
                         <div class = "forgot-password-error"></div>
                         <div class="actions-toolbar">
-                            <div class="primary"><button type="submit" class="action login primary" name="send" id="send2-login"><span><?php /* @escapeNotVerified */ echo __('Sign In') ?></span></button></div>
+                            <div class="primary"><button type="submit" class="action login primary" name="send" id="send2-login"><span><?php /* @escapeNotVerified */ echo __('LOGIN') ?></span></button></div>
                             <?php if ($block->getRegistration()->isAllowed()): ?>
                                 <div class="or-another-selection">
                                     <p><?php echo __('or login via'); ?></p>
@@ -89,7 +89,7 @@ $baseSecureUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_WE
                                     <a class="action remind" href="<?php /* @escapeNotVerified */ echo $block->getCustomerRegistrationUrl() ?>" id="customer-popup-registration"><span><?php /* @escapeNotVerified */ echo __('Sign Up') ?></span></a>
                                 </div>
                                 <div class="other-links">
-                                    <a href="<?php /* @escapeNotVerified */ echo $baseUrl.'terms' ?>"><?php echo __('Terms & Conditions'); ?></a>|
+                                    <a href="<?php /* @escapeNotVerified */ echo $baseUrl.'terms' ?>"><?php echo __('Terms & Conditions'); ?></a> |
                                     <a href="<?php /* @escapeNotVerified */ echo $baseUrl.'privacy-policy' ?>"><?php echo __('Privacy Policy'); ?></a>
                                 </div>
                             <?php endif; ?>
