@@ -32,6 +32,7 @@
             </referenceBlock>
         </referenceBlock>
     </referenceContainer>
+    <move element="store_language" destination="header-wrapper" before="header.links" />
 </body>
 </page>
 
