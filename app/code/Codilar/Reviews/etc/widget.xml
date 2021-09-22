@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="rh_custom_widget" class="Codilar\Reviews\Block\Widget\PageWidget">
+        <label>Customer Reviews</label>
+        <description> Customer Reviews Widget</description>
+        <parameters>
+
+            <!--                                        1ST SLIDE                                       -->
+            <parameter name="customer1" xsi:type="text" visible="true" required="true">
+                <label translate="true">CustomerName</label>
+            </parameter>
+            <parameter name="woplace" xsi:type="text" visible="true" required="false">
+                <label translate="true">Place</label>
+            </parameter>
+            <parameter name="wotext1" xsi:type="text" visible="true" required="false">
+                <label translate="true">Text</label>
+            </parameter>
+            <parameter name="wotext2" xsi:type="text" visible="true" required="false">
+                <label translate="true">Text2</label>
+            </parameter>
+            <parameter name="wodescription" xsi:type="block" visible="true" required="true">
+                <label translate="true">Product Description</label>
+                <block class="Codilar\Reviews\Block\Adminhtml\Widget\Reviews">
+                </block>
+            </parameter>
+            <!-- product Image Uploader -->
+            <parameter name="wop_image" xsi:type="block" visible="true" required="false">
+                <label translate="true">Product image</label>
+                <block class="Codilar\Reviews\Block\Adminhtml\Widget\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string"> Product Attachment...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <!-- customer Image Uploader -->
+            <parameter name="woc_image" xsi:type="block" visible="true" required="false">
+                <label translate="true">Customer Profile image</label>
+                <block class="Codilar\Reviews\Block\Adminhtml\Widget\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string"> Customer Profile Attachment...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+
+            <!--                                        2nd SLIDE                                       -->
+            <parameter name="customer2" xsi:type="text" visible="true" required="true">
+                <label translate="true">Customer Name</label>
+            </parameter>
+            <parameter name="wtplace" xsi:type="text" visible="true" required="false">
+                <label translate="true">Place</label>
+            </parameter>
+            <parameter name="wttext1" xsi:type="text" visible="true" required="false">
+                <label translate="true">Text</label>
+            </parameter>
+            <parameter name="wttext2" xsi:type="text" visible="true" required="false">
+                <label translate="true">Text2</label>
+            </parameter>
+            <parameter name="wtdescription" xsi:type="block" visible="true" required="true">
+                <label translate="true">Product Description</label>
+                <block class="Codilar\Reviews\Block\Adminhtml\Widget\Reviews">
+                </block>
+            </parameter>
+            <!-- product Image Uploader -->
+            <parameter name="wtp_image" xsi:type="block" visible="true" required="false">
+                <label translate="true">Product Image</label>
+                <block class="Codilar\Reviews\Block\Adminhtml\Widget\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Product Attachment...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <!-- customer sImage Uploader -->
+            <parameter name="wtc_image" xsi:type="block" visible="true" required="false">
+                <label translate="true">customer Image</label>
+                <block class="Codilar\Reviews\Block\Adminhtml\Widget\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Customer Attachment...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+
+            <!--                                        3rd SLIDE                                       -->
+            <parameter name="customer3" xsi:type="text" visible="true" required="true">
+                <label translate="true">Customer Name</label>
+            </parameter>
+            <parameter name="wthplace" xsi:type="text" visible="true" required="false">
+                <label translate="true">Place</label>
+            </parameter>
+            <parameter name="wthtext1" xsi:type="text" visible="true" required="false">
+                <label translate="true">Text</label>
+            </parameter>
+            <parameter name="wthtext2" xsi:type="text" visible="true" required="false">
+                <label translate="true">Text2</label>
+            </parameter>
+            <parameter name="wthdescription" xsi:type="block" visible="true" required="true">
+                <label translate="true">Product Description</label>
+                <block class="Codilar\Reviews\Block\Adminhtml\Widget\Reviews">
+                </block>
+            </parameter>
+            <!-- product Image Uploader -->
+            <parameter name="wthp_image" xsi:type="block" visible="true" required="false">
+                <label translate="true">Product Image</label>
+                <block class="Codilar\Reviews\Block\Adminhtml\Widget\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Product Attachment...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <!-- customer sImage Uploader -->
+            <parameter name="wthc_image" xsi:type="block" visible="true" required="false">
+                <label translate="true">customer Image</label>
+                <block class="Codilar\Reviews\Block\Adminhtml\Widget\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Customer Attachment...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+
+            <!--                                        4th SLIDE                                       -->
+            <parameter name="customer4" xsi:type="text" visible="true" required="true">
+                <label translate="true">Customer Name</label>
+            </parameter>
+            <parameter name="wfoplace" xsi:type="text" visible="true" required="false">
+                <label translate="true">Place</label>
+            </parameter>
+            <parameter name="wfotext1" xsi:type="text" visible="true" required="false">
+                <label translate="true">Text</label>
+            </parameter>
+            <parameter name="wfotext2" xsi:type="text" visible="true" required="false">
+                <label translate="true">Text2</label>
+            </parameter>
+            <parameter name="wfodescription" xsi:type="block" visible="true" required="true">
+                <label translate="true">Product Description</label>
+                <block class="Codilar\Reviews\Block\Adminhtml\Widget\Reviews">
+                </block>
+            </parameter>
+            <!-- product Image Uploader -->
+            <parameter name="wfop_image" xsi:type="block" visible="true" required="false">
+                <label translate="true">Product Image</label>
+                <block class="Codilar\Reviews\Block\Adminhtml\Widget\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Product Attachment...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <!-- customer sImage Uploader -->
+            <parameter name="wfoc_image" xsi:type="block" visible="true" required="false">
+                <label translate="true">customer Image</label>
+                <block class="Codilar\Reviews\Block\Adminhtml\Widget\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Customer Attachment...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+
+            <!--                                        5th SLIDE                                       -->
+            <parameter name="customer5" xsi:type="text" visible="true" required="true">
+                <label translate="true">Customer Name</label>
+            </parameter>
+            <parameter name="wfvplace" xsi:type="text" visible="true" required="false">
+                <label translate="true">Place</label>
+            </parameter>
+            <parameter name="wfvtext1" xsi:type="text" visible="true" required="false">
+                <label translate="true">Text</label>
+            </parameter>
+            <parameter name="wfvtext2" xsi:type="text" visible="true" required="false">
+                <label translate="true">Text2</label>
+            </parameter>
+            <parameter name="wfvdescription" xsi:type="block" visible="true" required="true">
+                <label translate="true">Product Description</label>
+                <block class="Codilar\Reviews\Block\Adminhtml\Widget\Reviews">
+                </block>
+            </parameter>
+            <!-- product Image Uploader -->
+            <parameter name="wfvp_image" xsi:type="block" visible="true" required="false">
+                <label translate="true">Product Image</label>
+                <block class="Codilar\Reviews\Block\Adminhtml\Widget\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Product Attachment...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <!-- customer sImage Uploader -->
+            <parameter name="wfvc_image" xsi:type="block" visible="true" required="false">
+                <label translate="true">customer Image</label>
+                <block class="Codilar\Reviews\Block\Adminhtml\Widget\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Customer Attachment...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+        </parameters>
+</widget>
+</widgets>
+
