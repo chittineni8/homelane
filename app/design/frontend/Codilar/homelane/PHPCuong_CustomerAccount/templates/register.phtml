@@ -160,7 +160,7 @@ $('#customer_mobile').on('change', function ()
    var mobileValue = jQuery("input[name='customer_mobile']").val();
    
     jQuery.ajax({
-                url: 'http://homelane.local/index.php/user/customer/index',
+                url: '/user/customer/index',
                 // url: "getAjaxUrl()",
                 data: {mobile:mobileValue},
                 type: "POST",
@@ -185,7 +185,7 @@ $('#popup-email_address').on('change', function ()
  {
     var emailValue = $("#popup-email_address").val();
    jQuery.ajax({
-                url: 'http://homelane.local/index.php/user/customer/index',
+                url: '/user/customer/index',
                 // url: "getAjaxUrl()",
                 data: {email:emailValue},
                 type: "POST",
