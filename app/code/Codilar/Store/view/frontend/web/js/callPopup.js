@@ -9,7 +9,7 @@ require(
     ) {
         const popup = {
             type: 'popup',
-            modalClass: 'modal-popup',
+            modalClass: 'modal-popup city-popup',
             responsive: true,
             innerScroll: true,
             clickableOverlay: true,
@@ -18,5 +18,8 @@ require(
         // const callPopup = modal(popup, $('.call-popup'));
         $('.call-popup').modal(popup).modal('openModal');
         // $('.modal-footer').hide();
+        $("div#switcher-store-trigger").click(function() {
+            $('.call-popup').modal('openModal');
+        });
     }
 );

@@ -7,6 +7,10 @@ body#html-body {
     max-width: 1224px;
     margin: 0 auto;  
 }
+body:not(.cms-index-index) main#maincontent, body:not(.cms-index-index) .page-main,
+body:not(.cms-index-index) .breadcrumbs {
+    max-width: 1224px;
+}
 * {
     box-sizing: border-box;
 }
@@ -90,20 +94,41 @@ body#html-body {
     }
 }
 .header.content {
-    div#switcher-language-nav {
+    #switcher-store {
         display: flex;
+        position: relative;
         strong.label.switcher-label {
             display: none;
         }
+        strong:before {
+            content: "";
+            display: inline-block;
+            background: url('@{baseDir}images/store_icon.png') no-repeat 0 0;
+            width: 23px;
+            height: 24px;
+        }
+        span {
+            font-weight: 400;
+            font-size: 12px;
+            position: relative;
+            top: -6px;
+        }
         .switcher-options.active {
             ul.dropdown.switcher-dropdown {
-                display: block;
+                display: none;
                 position: absolute;
-                padding: 0 8px;
+                padding: 10px 8px 0;
                 z-index: 11;
                 background: #fff;
+                width: 100%;
+                box-shadow: 0px 0px 4px #4a4a4a;
+                top: 25px;
                 li {
                     list-style: none;
+                    a {
+                        color: #4a4a4a;
+                        font-size: 12px;
+                    }
                 }
             }
         }
@@ -146,7 +171,7 @@ ul.header.links {
         font-size: 0;
         text-decoration: none;
         &:before {
-            content: "Login /";
+            content: "Login / ";
             font-size: 12px;
             line-height: 38px;
             vertical-align: text-bottom;
@@ -361,12 +386,18 @@ aside.modal-popup.city-popup {
         }
     }
     .box-store-content {
-        .store-name a {
+        padding-top: 5px;
+        .store-name {
             color: #4A4A4A;
             font-size: 13px;
         }
-        .store-image img {
-            width: auto;
+        .store-image {
+            background: #F5F5F5;
+            border-radius: 30px;
+            padding: 0 5px;
+            img {
+                width: auto;
+            }
         }
         ul {
             padding: 0;
@@ -380,11 +411,6 @@ aside.modal-popup.city-popup {
                 padding: 0 5px;
                 box-sizing: border-box;
             }
-        }
-        .store-image {
-            background: #F5F5F5;
-            border-radius: 30px;
-            padding: 6px 0;
         }
     }
 }
@@ -823,7 +849,7 @@ h2.account-heading {
     overflow: hidden;
     clear: both;
     text-align: center;
-    padding-top: 10px;
+    padding: 10px 0;
 }
 .other-links a {
     color: #9B9B9B;
@@ -893,6 +919,53 @@ h2.account-heading {
     position: relative;
 }
 
+/*************Reset Password Page****************/
+.user-resetpassword-index {
+    .page-title-wrapper {
+        text-align: center;
+        margin: 20px 0 0;
+        h1.page-title {
+            font-size: 22px;
+            font-weight: 500;
+        }
+    }
+    .field.user-email-id {
+        span.user-id {
+            color: #E71C24;
+            padding-left: 15px;
+        }
+        span {
+            color: #9B9B9B;
+            font-weight: 500;
+            font-size: 16px;
+        }
+    }
+    form#addData {
+        .actions-toolbar > .primary button.primary {
+            width: auto;
+            padding: 10px 20px;
+            border-radius: 4px;
+        }
+        .fieldset:last-child {
+            margin-bottom: 0;
+        }
+        .fieldset {
+            margin: 0 0 20px;
+        }
+        .control {
+            width: 300px;
+            input {
+                border: 1px solid #E4E4E4;
+            }
+        }
+    }
+    .columns form .actions-toolbar {
+        margin-left: 0;
+    }
+}
+
+
+/*********************************Media Query************************************************/
 
 @media only screen and (min-width: 1366px) {
     .navigation, .breadcrumbs, .page-header .header.panel, .header.content, .footer.content, .page-wrapper>.widget, .page-wrapper>.page-bottom, .block.category.event, .top-container, .page-main {
@@ -1161,13 +1234,16 @@ h2.account-heading {
         margin-bottom: 0;
     }
     ul.header.links li.link.wishlist {
-        margin-right: 0;
+        margin-right: 10px;
     }
     .header.content .nav-sections .header-top-content {
         display: block;
         max-width: 100%;
         padding: 20px 15px;
         background: #656262;
+    }
+    .header.content #switcher-store {
+        display: none;
     }
     .header.content .nav-sections .header-top-content a {
         display: block;
