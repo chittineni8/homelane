@@ -3,7 +3,8 @@
 namespace Codilar\TokenAPI\Model\Plugin\Controller\Account;
 
 use Closure;
-use Magento\Customer\Controller\Account\CreatePost;
+// use Magento\Customer\Controller\Account\CreatePost;
+use PHPCuong\CustomerAccount\Controller\Customer\Ajax\Register;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\Result\Redirect;
@@ -132,30 +133,33 @@ class RestrictCustomer
     }
 
     /**
-     * @param CreatePost $subject
+     * @param Register $subject
      * @param Closure $proceed
      * @return mixed
      * @throws LocalizedException
      */
     public function aroundExecute(
-        CreatePost $subject,
+        Register $subject,
         Closure    $proceed
     )
     {
         /** @var RequestInterface $request */
-        $firstname = $subject->getRequest()->getParam('firstname');
+         $firstname = $subject->getRequest()->getParam('firstname');
+
         $lastname = $subject->getRequest()->getParam('lastname');
-        $email = $subject->getRequest()->getParam('email');
-        $phone_number = $subject->getRequest()->getParam('telephone');
-        $city = $subject->getRequest()->getParam('city');
-        $signup_source = $this->_storeManager->getStore()->getBaseUrl();
-        $postcode = $subject->getRequest()->getParam('postcode');
-        // $apiRequestEndpoint = $this->getSignupApiEndpoint();
-        // $requestMethod = Request::METHOD_POST;
+         $email = $subject->getRequest()->getParam('email');
+       $phone_number = $subject->getRequest()->getParam('customer_mobile');
+      $city = $subject->getRequest()->getParam('city');
+         $signup_source = $this->_storeManager->getStore()->getBaseUrl();
+         $postcode = $subject->getRequest()->getParam('postcode');
+       
+      
         $parambody = [
             'full_name' => $firstname . ' ' . $lastname, 'email' => $email, 'phone_number' => $phone_number,
             'city' => $city, 'signup_source' => $signup_source, 'pincode' => $postcode
         ];
+
+
      
         list($apiRequestEndpoint, $requestMethod, $params) = $this->prepareParams($parambody);
         $response = $this->doRequest($apiRequestEndpoint,$requestMethod,$params);
@@ -163,31 +167,29 @@ class RestrictCustomer
         $responseBody = $response->getBody();
         $responseContent = $responseBody->getContents();
         $responseDecodee = json_decode($responseContent, true);
+       //  print_r($status);
+       // print_r($responseContent);
 
-        // echo "<pre>";
-        // print_r($status);
-        //  print_r($responseContent);
-        //  print_r($responseDecodee);
-        // die;
+
         if ($status == 400) {
 
             $this->messageManager->addErrorMessage(
                 'User Already Exists'
             );
-            $defaultUrl = $this->urlModel->getUrl('*/*/create', ['_secure' => true]);
-            /** @var Redirect $resultRedirect */
-            $resultRedirect = $this->resultRedirectFactory->create();
+            // $defaultUrl = $this->urlModel->getUrl('*/*/create', ['_secure' => true]);
+            // /** @var Redirect $resultRedirect */
+            // $resultRedirect = $this->resultRedirectFactory->create();
             $this->loggerResponse->addInfo("Error" . ' ' . $status . ' ' . "Missing mandatory params or Lead already
             exists");
-            return $resultRedirect->setUrl($defaultUrl);
+            // return $resultRedirect->setUrl($defaultUrl);
 
         }elseif($status == 401){
             $this->messageManager->addErrorMessage(
                 'Authorization Failed'
             );
-            $defaultUrl = $this->urlModel->getUrl('*/*/create', ['_secure' => true]);
-            /** @var Redirect $resultRedirect */
-            $resultRedirect = $this->resultRedirectFactory->create();
+            // $defaultUrl = $this->urlModel->getUrl('*/*/create', ['_secure' => true]);
+            // * @var Redirect $resultRedirect 
+            // $resultRedirect = $this->resultRedirectFactory->create();
             $this->loggerResponse->addInfo("Error" . ' ' . $status . ' ' . "Authorization failed or Token
             not passed. Please refresh
             the access token");
@@ -197,9 +199,9 @@ class RestrictCustomer
         }
 
         else{
-            $this->loggerResponse->addInfo("User Created");
+          
            
-return $proceed();
+          return $proceed();
 
     }
 }
@@ -240,7 +242,7 @@ return $proceed();
        $params['form_params'] = json_decode($bodyJson, true);
     //    print_r(json_decode($bodyJson, true));
         // $params['body'] = $bodyJson;
-//         // $params['debug'] = true;
+        $params['debug'] = false;
 // //        $params['http_errors'] = false;
 // //        $params['handler'] = $tapMiddleware($stack);
         $params['headers'] = [
