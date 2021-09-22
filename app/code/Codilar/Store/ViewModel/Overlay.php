@@ -28,6 +28,7 @@ use Magento\Framework\Stdlib\CookieManagerInterface;
 use Magento\Framework\Stdlib\Cookie\CookieMetadataFactory;
 use Magento\Framework\Session\SessionManagerInterface;
 use Magento\Framework\App\Response\Http;
+//use Magento\Tests\NamingConvention\true\string;
 
 /**
  * Class Overlay
@@ -219,14 +220,16 @@ class Overlay implements ArgumentInterface
         return $this->urlInterface->getCurrentUrl();
     }
 
+
     /**
-     * @return array
+     * @return array|string
      */
-    public function getParsedUrl(): array
+    public function getParsedUrl()
     {
-//        $baseUrl = $this->urlInterface->getBaseUrl();
+        $baseUrl = $this->urlInterface->getBaseUrl();
         $currentUrl = $this->getCurrentUrl();
-        return $this->unparsedUrl(parse_url($currentUrl));
+        return ltrim($currentUrl,$baseUrl);
+//        return $this->unparsedUrl(parse_url($currentUrl));
 //        return $websiteUrl['scheme'].'/'.$websiteCode.$websiteUrl['path'];
     }
 
