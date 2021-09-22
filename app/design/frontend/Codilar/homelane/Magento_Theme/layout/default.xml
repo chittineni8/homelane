@@ -18,11 +18,22 @@
                 </block>
                 <!-- <block class="Magento\Customer\Block\Form\Login" name="custom_customer_form_login" template="Magento_Customer::form/login.phtml" after="-"/> -->
         </referenceContainer>
-
+        <referenceContainer name="header-wrapper">
+              <block class="Magento\Framework\View\Element\Html\Links" name="header.links" after="-">
+                  <arguments>
+                    <argument name="css_class" xsi:type="string">header links bottom</argument>
+                  </arguments>
+              </block>
+        </referenceContainer>
+        <move element="header.links" destination="header-wrapper" after="-" />
         <move element="top.links" destination="header-wrapper" after="-" />
-        <move element="minicart" destination="header-wrapper" before="top.links" />
+        <move element="minicart" destination="header-wrapper" before="header.links" />
         <move element="navigation.sections" destination="header-wrapper" after="logo" />
         
+        
+        <move element="store_switcher" destination="header-wrapper" before="header.links" />
+        <!-- remove store switcher ofheader -->
+        <referenceBlock name="store.settings.language" remove="true"/>
         <!-- remove footer content -->
         <referenceBlock name="footer_links" remove="true" />
         <referenceBlock name="report.bugs" remove="true" />

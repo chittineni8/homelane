@@ -146,7 +146,6 @@
                 <label translate="true"> Name</label>
             </settings>
         </column>
-
         <column name="email">
             <settings>
                 <filter>text</filter>
@@ -169,6 +168,18 @@
                     <editorType>text</editorType>
                 </editor>
                 <label translate="true">PhoneNo</label>
+            </settings>
+        </column>
+        <column name="pincode">
+            <settings>
+                <filter>text</filter>
+                <editor>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                    <editorType>text</editorType>
+                </editor>
+                <label translate="true">PinCode</label>
             </settings>
         </column>
         <actionsColumn name="actions" class="Codilar\Query\Ui\Component\Query\Listing\Column\Action">

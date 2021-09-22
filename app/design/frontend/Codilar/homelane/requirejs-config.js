@@ -6,13 +6,16 @@
 var config = {
 	map: {
         '*': {
-            'homelanetheme': 'js/homelane-theme'
+            'homelanetheme': 'js/homelane-theme',
+            'slickslider': 'js/slick.min'
         }
     },
     deps: [
-        'homelanetheme'
+        'homelanetheme',
+        'slickslider'
     ],
     shim: {
-        'homelanetheme': ['jquery']
+        'homelanetheme': ['jquery'],
+        'slickslider': ['jquery']
     }
 };

@@ -23,7 +23,7 @@ if ($exist = ($block->getProductCollection() && $block->getProductCollection()->
     $title = __('New Products');
     $items = $block->getProductCollection()->getItems();
 
-    $showWishlist = false;
+    $showWishlist = true;
     $showCompare = false;
     $showCart = false;
     $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::DEFAULT_VIEW;
@@ -36,6 +36,7 @@ if ($exist = ($block->getProductCollection() && $block->getProductCollection()->
         <div class="block-title">
             <strong role="heading" aria-level="2"><?= $block->escapeHtml($title) ?></strong>
         </div>
+        <div class="see-all-link"><a href="">See all</a></div>
         <div class="block-content">
             <?= /* @noEscape */ '<!-- ' . $image . '-->' ?>
             <div class="products-<?= /* @noEscape */ $mode ?> <?= /* @noEscape */ $mode ?>">

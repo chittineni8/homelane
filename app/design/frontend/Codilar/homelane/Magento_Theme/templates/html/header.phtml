@@ -39,3 +39,11 @@ $welcomeMessage = $block->getWelcome();
 <?php elseif ($block->getShowPart() == 'other') :?>
     <?= $block->getChildHtml() ?>
 <?php endif ?>
+<script type="text/javascript">
+    require(['jquery','Magento_Ui/js/modal/modal'],function ($,modal) {
+        $("li.link.wishlist").click(function(e) {
+            e.preventDefault();
+            $('#customer-popup-login').modal('openModal');
+        });
+    });
+</script>

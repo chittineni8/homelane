@@ -15,7 +15,8 @@ require(
             clickableOverlay: true,
             buttons: []
         };
-        const callPopup = modal(popup, $('.call-popup'));
-        $('.call-popup').modal('openModal');
+        // const callPopup = modal(popup, $('.call-popup'));
+        $('.call-popup').modal(popup).modal('openModal');
+        // $('.modal-footer').hide();
     }
 );
