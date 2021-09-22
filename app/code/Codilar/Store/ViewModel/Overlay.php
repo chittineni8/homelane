@@ -228,7 +228,8 @@ class Overlay implements ArgumentInterface
     {
         $baseUrl = $this->urlInterface->getBaseUrl();
         $currentUrl = $this->getCurrentUrl();
-        return ltrim($currentUrl,$baseUrl);
+        return str_replace($baseUrl,'',$currentUrl);
+//        return ltrim($currentUrl,$baseUrl);
 //        return $this->unparsedUrl(parse_url($currentUrl));
 //        return $websiteUrl['scheme'].'/'.$websiteCode.$websiteUrl['path'];
     }
