@@ -222,10 +222,7 @@
                        title="<?= $block->escapeHtmlAttr(__('Email')) ?>" data-mage-init='{"mage/trim-input":{}}'
                        class="input-text" data-validate="{required:true, 'validate-email':true}"> 
                        <div id="emailresponse"></div>
-    <!-- <?php /* <input type="email" name="email" id="email_address" autocomplete="off"
-     value="<?php echo $block->escapeHtml($block->getFormData()->getEmail()) ?>" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" 
-     class="input-text" data-validate="{required:true, 'validate-email':true, 'remote':'<?php //echo $this->getUrl('userexist/customer/index', ['_secure' => true]); ?>'}"/> */?> -->
-            </div>
+        </div>
         </div>
         <div class="field password required">
             <label for="password" class="label"><span><?= $block->escapeHtml(__('Password')) ?></span></label>
@@ -337,54 +334,3 @@
 
 </script>
 
-<script type="text/javascript">
-require(['jquery'], function($){
-$(document).ready(function()
-{
-$('#customer_mobile').on('change', function () 
- {
-   var mobileValue = jQuery("input[name='customer_mobile']").val();
-   
-    jQuery.ajax({
-                url: 'http://homelane.local/index.php/userexist/customer/index',
-                // url: "getAjaxUrl()",
-                data: {mobile:mobileValue},
-                type: "POST",
-                dataType: "json",
-                complete: function(mobileResult) {
-                    $("#mobileresponse").html(""); 
-                    $("#mobileresponse").append(mobileResult.responseJSON);  
-                    
-                }
-              
-            });
-});
-});
-});
-</script>
-
-<script type="text/javascript">
-require(['jquery'], function($){
-$(document).ready(function()
-{
-$('#email_address').on('change', function () 
- {
-    var emailValue = jQuery("input[name='email']").val();
-    
-   jQuery.ajax({
-                url: 'http://homelane.local/index.php/userexist/customer/index',
-                // url: "getAjaxUrl()",
-                data: {email:emailValue},
-                type: "POST",
-                dataType: "json",
-                complete: function(resultJson) {
-                    $("#emailresponse").html(""); 
-                    $("#emailresponse").append(resultJson.responseJSON);  
-                  
-                }
-              
-            });
-});
-});
-});
-</script>

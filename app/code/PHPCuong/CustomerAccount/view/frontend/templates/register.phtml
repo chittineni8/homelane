@@ -43,6 +43,48 @@ $baseSecureUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_WE
             <fieldset class="fieldset create info">
                 <!-- <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Personal Information') ?></span></legend><br> -->
                 <?php echo $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Name')->setObject($block->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
+               <!--OTP MODULE-->
+  <?php
+   
+        $smsProfileHelper = $this->helper('Magedelight\SMSProfile\Helper\Data');
+        $validateClass = '';
+        $required = 0;
+        $enableModule = $smsProfileHelper->getModuleStatus();
+        if ($enableModule) {
+            $required = $smsProfileHelper->getSmsProfilePhoneRequiredOnSignUp();
+            $validateClass = $smsProfileHelper->getSmsProfilePhoneValidationClass();
+            $sendOtpUrl = $this->getUrl('smsprofile/otp/send');
+            $verifyOtpUrl = $this->getUrl('smsprofile/otp/verify');
+            echo "<input type='hidden' class='sendUrl' value='" . $sendOtpUrl . "'/>";
+            echo "<input type='hidden' class='verifyUrl' value='" . $verifyOtpUrl . "'/>";
+            echo "<input type='hidden' class='signupOtpValidation' name='signupOtpValidation' value='0'/>";
+        }
+        ?>
+        <div class="field field-name-customer_mobile <?php if ($required) {
+            echo 'required';
+        } ?>">
+            <label class="label" for="telephone"><span>Customer Mobile</span></label>
+            <div class="control">
+                <input id="customer_mobile" name="customer_mobile" value="" title="customer_mobile"
+                       class="input-text <?php if ($required) {
+                           echo 'required-entry ';
+                       } ?> <?php echo $validateClass; ?>" <?php if ($required) {
+                    echo 'data-validate="{required:true}"';
+                } ?> autocomplete="off" aria-required="true" type="text" data-mage-init='{"validation":{}}'>
+
+                <div class="profile-notice-phone">
+                    <span><?php echo $smsProfileHelper->getPhoneNote(); ?></span>
+                </div>
+
+                <button class="send_otp action primary" style="display: none;margin-top: 15px;"
+                        type="button"><?php echo __('Generate OTP'); ?></button>
+                <span class="otp_generatenote">&nbsp;</span>
+            </div>
+            <div id="mobileresponse"></div>
+        </div>
+
+
+                <!--OTP END-->
                 <?php if ($block->isNewsletterEnabled()): ?>
                     <!-- <div class="field choice newsletter">
                         <input type="checkbox" name="is_subscribed" title="<?php /* @escapeNotVerified */ echo __('Sign Up for Newsletter') ?>" value="1" id="popup-is_subscribed" class="checkbox">
@@ -56,6 +98,7 @@ $baseSecureUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_WE
                     <!-- <label for="popup-email_address" class="label"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span></label> -->
                     <div class="control">
                         <input type="email" name="email" placeholder="Email" autocomplete="email" id="popup-email_address" value="" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" class="input-text" data-validate="{required:true, 'validate-email':true}">
+                        <div id="emailresponse"></div>
                     </div>
                 </div>
                 <div class="field password required" data-mage-init='{"passwordStrengthIndicator": {}}'>
@@ -120,5 +163,56 @@ $baseSecureUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_WE
                 }
             }
         </script>
+        <script type="text/javascript">
+require(['jquery'], function($){
+$(document).ready(function()
+{
+$('#customer_mobile').on('change', function () 
+ {
+   var mobileValue = jQuery("input[name='customer_mobile']").val();
+   
+    jQuery.ajax({
+                url: 'http://homelane.local/index.php/user/customer/index',
+                // url: "getAjaxUrl()",
+                data: {mobile:mobileValue},
+                type: "POST",
+                dataType: "json",
+                complete: function(mobileResult) {
+                    $("#mobileresponse").html(""); 
+                    $("#mobileresponse").append(mobileResult.responseJSON);  
+                    
+                }
+              
+            });
+});
+});
+});
+</script>
+
+<script type="text/javascript">
+require(['jquery'], function($){
+$(document).ready(function()
+{ 
+$('#popup-email_address').on('change', function () 
+ {
+    var emailValue = $("#popup-email_address").val();
+   jQuery.ajax({
+                url: 'http://homelane.local/index.php/user/customer/index',
+                // url: "getAjaxUrl()",
+                data: {email:emailValue},
+                type: "POST",
+                dataType: "json",
+                complete: function(resultJson) {
+                    $("#emailresponse").html(""); 
+                    $("#emailresponse").append(resultJson.responseJSON);  
+                  
+                }
+              
+            });
+});
+});
+});
+</script>
     </div>
 <?php endif; ?>
+

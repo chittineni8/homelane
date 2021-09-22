@@ -178,9 +178,9 @@ class Index extends Action
                     $hiddenEmail = $this->hideEmailAddress($userEmail);
 
                     $mobileResult->setData(
-                        'This phone number is associated with the
+                    'This phone number is associated with the
                      email id' . ' ' . $hiddenEmail . ' ' . 'Please log in using
-   that email id. If this is not your email id, click here to report the error.'
+                     that email id. If this is not your email id, click here to report the error.'
                     );
                     return $mobileResult;
                 else :
@@ -190,7 +190,7 @@ class Index extends Action
 
             $resultJson = $this->resultJsonFactory->create();
             $email = $this->getRequest()->getParam('email');
-            if ($email) :
+           if ($email) :
                 $emailbody = ['email' => $email];
 
                 list($apiRequestEndpoint, $requestMethod, $params) = $this->prepareParams($emailbody);
