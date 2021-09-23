@@ -51,6 +51,10 @@ atlassian*
 /pub/media/custom_options/*
 !/pub/media/custom_options/.htaccess
 /pub/media/theme/*
+/pub/media/avatar/*
+/pub/media/marketplace/*
+/pub/media/placeholder/*
+/pub/media/revslider/*
 /pub/media/theme_customization/*
 !/pub/media/theme_customization/.htaccess
 /pub/media/wysiwyg/*
@@ -60,6 +64,7 @@ atlassian*
 /pub/media/captcha/*
 /pub/media/sitemap/*
 !/pub/media/sitemap/.htaccess
+/pub/media/website/*
 /pub/static/*
 !/pub/static/.htaccess
 

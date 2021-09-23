@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="codilar" translate="label" sortOrder="500">
+            <label>Codilar</label>
+        </tab>
+        <section id="codilar_customer_api" translate="label" type="text" sortOrder="10"
+                 showInDefault="1"
+                 showInWebsite="0"
+                 showInStore="0">
+            <tab>codilar</tab>
+            <resource>Codilar_TokenAPI::tokenapi_config</resource>
+            <label>Customer</label>
+            <group id="oauth" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0">
+                <label>oAuth Details</label>
+                <field id="request_url" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>Request URI</label>
+                    <comment>Base URI</comment>
+                </field>
+                <field id="endpoint" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>API Endpoint</label>
+                    <comment>Endpoint for Token Generation.</comment>
+                </field>
+            </group>
+            <group id="token" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0">
+                <label>Token Credentials</label>
+                <field id="username" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>Username</label>
+                    <comment>Enter Username</comment>
+                </field>
+                <field id="password" translate="label" type="obscure" sortOrder="1" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>Password</label>
+                    <comment>Enter Password</comment>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>
+            </group>
+            <group id="signup_oauth" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0">
+                <label>LeadGen oAuth Details</label>
+                <field id="signup_request_url" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0">
+                    <label>Request URI</label>
+                    <comment>Signup Base URI</comment>
+                </field>
+                <field id="signup_endpoint" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0">
+                    <label>API Endpoint</label>
+                    <comment>Signup Endpoint</comment>
+                </field>
+            </group>
+            <group id="login_oauth" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0">
+                <label>Login oAuth Details</label>
+                <field id="login_request_url" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0">
+                    <label>Request URI</label>
+                    <comment>Login Base URI</comment>
+                </field>
+                <field id="login_endpoint" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0">
+                    <label>API Endpoint</label>
+                    <comment>Login Endpoint</comment>
+                </field>
+            </group>
+
+           <group id="user_exists_oauth" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0">
+                <label>User Exists oAuth Details</label>
+                <field id="userexist_request_url" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0">
+                    <label>Request URI</label>
+                    <comment>User Exists Base URI</comment>
+                </field>
+                <field id="userexist_endpoint" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0">
+                    <label>API Endpoint</label>
+                    <comment>User Exists Endpoint</comment>
+                </field>
+            </group>
+
+               <group id="forgot_pass_oauth" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0">
+                <label>Forget Password oAuth Details</label>
+                <field id="forgot_password_request_url" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0">
+                    <label>Request URI</label>
+                    <comment>Forgot Password Base URI</comment>
+                </field>
+                <field id="forgot_password_endpoint" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0">
+                    <label>API Endpoint</label>
+                    <comment>Forgot Password Endpoint</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<body>
+    <referenceContainer name="footer">
+        <block class="Codilar\Store\Block\View" template="Codilar_Store::popup.phtml" cacheable="false">
+        <arguments>
+            <argument name="viewModel" xsi:type="object">Codilar\Store\ViewModel\Overlay</argument>
+        </arguments>
+        </block>
+    </referenceContainer>
+    <referenceContainer name="header.container">
+        <referenceContainer name="header.panel.wrapper">
+            <referenceContainer name="header.panel">
+                <block class="Magento\Store\Block\Switcher" name="store_language" as="store_language" template="Codilar_Store::switch.phtml">
+                    <arguments>
+                        <argument name="websiteSwitcher" xsi:type="object">Codilar\Store\ViewModel\WebsiteSwitcher</argument>
+                    </arguments>
+                </block>
+            </referenceContainer>
+        </referenceContainer>
+    </referenceContainer>
+    <referenceContainer name="page.top">
+        <referenceBlock name="navigation.sections">
+            <referenceBlock name="store.settings" >
+                <referenceBlock class="Magento\Store\Block\Switcher" name="store.settings.language" template="Codilar_Store::switch.phtml">
+                    <arguments>
+                        <argument name="id_modifier" xsi:type="string">nav</argument>
+                        <argument name="websiteSwitcher" xsi:type="object">Codilar\Store\ViewModel\WebsiteSwitcher</argument>
+                    </arguments>
+                </referenceBlock>
+            </referenceBlock>
+        </referenceBlock>
+    </referenceContainer>
+    <move element="store_language" destination="header-wrapper" before="header.links" />
+</body>
+</page>
+
+

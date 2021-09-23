@@ -1,0 +1,104 @@
+<?php
+use Codilar\Store\ViewModel\Overlay;
+use Magento\Cms\Block\BlockByIdentifier;
+
+/** @var BlockByIdentifier $block */
+/** @var $viewModel Overlay */
+$viewModel = $block->getData("viewModel");
+$storeDetails = $viewModel->getStoreDetail();
+$mediaUrl = $viewModel->getMediaUrl();
+$parsedUrl = $viewModel->getParsedUrl();
+$redirect = $viewModel->getHttpResponse();
+$baseUrl = $viewModel->getBaseUrl();
+//foreach ($parsedUrl as $url) {
+//    $schema = $url['scheme'];
+//    $path = $url['path'];
+//}
+$sessionData = $viewModel->getSessionValue();
+$cookieData = $viewModel->getWebsiteCookie();
+//if ($cookieData == null) {
+//    if ($sessionData == null) {
+//?>
+<div class="call-popup" data-mage-init='{"callPopup":{}}'>
+    <div class="call-popup-top">
+        <div class="call-popup-img">
+            <img src='<?php echo $this->getViewFileUrl('images/city-popup-image.png'); ?>' alt="city popup image">
+        </div>
+        <div class="search-section">
+            <h2><?php echo __('Hi There! looking for new furniture?') ?></h2>
+            <div class="control">
+                <input id="city-search"
+                       type="text"
+                       name=""
+                       value=""
+                       placeholder="<?php echo __('Search your city here') ?>"
+                       class="input-text"
+                       maxlength="" onkeyup="citySearchFunction()" />
+            </div>
+        </div>
+    </div>
+    <div class="block-title">
+        <h3 class="title">
+            <span><?php echo __('Please select your city') ?></span>
+        </h3>
+    </div>
+    <div class="box-store-content">
+        <ul id="searchable-content">
+        <?php
+        foreach ($storeDetails as $key => $value) {
+            $imageUrl = $mediaUrl . 'website/icons/' . $value['imageUrl'];
+            $storeName = $value['storeName'];
+            $webUrl = $value['webUrl'];
+            $parsedWebCode = $viewModel->getParsedWebCode($webUrl); ?>
+            <li>
+            <?php
+            foreach ($parsedWebCode as $webCode) {
+                $code = $webCode['path']; ?>
+                <a onclick="<?php $viewModel->setSessionValue($code);
+                $viewModel->setWebsiteCookie($code); ?>" href="<?php echo $webUrl . '' . $parsedUrl; ?>">
+                <?php if ($imageUrl): ?>
+                    <div class="store-image">
+                        <img src="<?php echo $imageUrl ?>" alt="<?php echo $storeName ?>" title="<?php echo $storeName ?>" class="img-responsive" width="200" height="200"/>
+                    </div>
+                <?php endif ?>
+                <?php if ($storeName): ?>
+                    <div class="store-name">
+                            <?php echo $storeName ?>
+                    </div>
+                <?php endif ?>
+                </a>
+            <?php
+            } ?>
+            </li>
+        <?php
+        } ?>
+        </ul>
+    </div>
+</div>
+<!--        --><?php
+//    }?>
+<?php
+//} else {
+//        $viewModel->setSessionValue($cookieData);
+//        return $redirect->setRedirect($baseUrl . $cookieData);
+//    }
+?>
+
+<script type="text/javascript">
+    function citySearchFunction() {
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById("city-search");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("searchable-content");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+</script>

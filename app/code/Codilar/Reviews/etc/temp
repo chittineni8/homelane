@@ -1,0 +1,92 @@
+
+        <parameter name="customer" xsi:type="text" visible="true" required="true">
+            <label translate="true">Customer Name</label>
+        </parameter>
+            <parameter name="wtplace" xsi:type="text" visible="true" required="false">
+                <label translate="true">Place</label>
+            </parameter>
+            <parameter name="wttext1" xsi:type="text" visible="true" required="false">
+                <label translate="true">Text</label>
+            </parameter>
+            <parameter name="wttext2" xsi:type="text" visible="true" required="false">
+            <label translate="true">Text2</label>
+            </parameter>
+        <parameter name="description" xsi:type="block" visible="true" required="true">
+            <label translate="true">Product Description</label>
+            <block class="Codilar\Reviews\Block\Adminhtml\Widget\ImageChooser"/>
+        </parameter>
+            <!-- product Image Uploader -->
+        <parameter name="wtp_image" xsi:type="block" visible="true" required="false">
+            <label translate="true">Product Image</label>
+            <block class="Codilar\Reviews\Block\Adminhtml\Widget\ImageChooser">
+                <data>
+                    <item name="button" xsi:type="array">
+                        <item name="open" xsi:type="string">Product Attachment...</item>
+                    </item>
+                </data>
+            </block>
+        </parameter>
+            <!-- customer sImage Uploader -->
+            <parameter name="wtc_image" xsi:type="block" visible="true" required="false">
+                <label translate="true">customer Image</label>
+                <block class="Codilar\Reviews\Block\Adminhtml\Widget\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Customer Attachment...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+
+
+                                                        1st
+
+
+
+
+
+
+
+
+
+
+                                                                    <!--                                        1ST SLIDE                                       -->
+                                                                    <parameter name="rh_title" xsi:type="text" visible="true" required="true">
+                                                                        <label translate="true">CustomerName</label>
+                                                                    </parameter>
+                                                                    <parameter name="woplace" xsi:type="text" visible="true" required="false">
+                                                                        <label translate="true">Place</label>
+                                                                    </parameter>
+                                                                    <parameter name="wotext1" xsi:type="text" visible="true" required="false">
+                                                                        <label translate="true">Text</label>
+                                                                    </parameter>
+                                                                    <parameter name="wotext2" xsi:type="text" visible="true" required="false">
+                                                                        <label translate="true">Text2</label>
+                                                                    </parameter>
+                                                                    <parameter name="rh_description" xsi:type="block" visible="true" required="true">
+                                                                        <label translate="true">Product Description</label>
+                                                                        <block class="Codilar\Reviews\Block\Adminhtml\Widget\Reviews">
+                                                                        </block>
+                                                                    </parameter>
+                                                                    <!-- product Image Uploader -->
+                                                                    <parameter name="rh_image" xsi:type="block" visible="true" required="false">
+                                                                        <label translate="true">Product image</label>
+                                                                        <block class="Codilar\Reviews\Block\Adminhtml\Widget\ImageChooser">
+                                                                            <data>
+                                                                                <item name="button" xsi:type="array">
+                                                                                    <item name="open" xsi:type="string"> Product Attachment...</item>
+                                                                                </item>
+                                                                            </data>
+                                                                        </block>
+                                                                    </parameter>
+                                                                    <!-- customer Image Uploader -->
+                                                                    <parameter name="c_image" xsi:type="block" visible="true" required="false">
+                                                                        <label translate="true">Customer Profile image</label>
+                                                                        <block class="Codilar\Reviews\Block\Adminhtml\Widget\ImageChooser">
+                                                                            <data>
+                                                                                <item name="button" xsi:type="array">
+                                                                                    <item name="open" xsi:type="string"> Customer Profile Attachment...</item>
+                                                                                </item>
+                                                                            </data>
+                                                                        </block>
+                                                                    </parameter>
