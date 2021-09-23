@@ -32,13 +32,13 @@ class Save extends Action
             $this->queryResourceModel->save($query);
             // created custom event:- form_submit_event
             $this->_eventManager->dispatch('form_submit_event');
-            $this->messageManager->addSuccessMessage(__("Your Qurey added Successfully,We will reach You Soon !!!"));
+            $this->messageManager->addSuccessMessage(__("Your Query added Successfully,We will reach You Soon !!!"));
         } catch (\Exception $e) {
             $this->messageManager->addErrorMessage(__("Something went wrong"));
         }
 
         $redirect = $this->resultRedirectFactory->create();
-        $redirect->setPath('query');
+        $redirect->setUrl($this->_redirect->getRefererUrl());
         return $redirect;
     }
 }
