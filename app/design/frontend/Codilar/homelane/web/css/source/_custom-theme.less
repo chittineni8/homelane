@@ -635,6 +635,9 @@ form.query-form {
     margin: 0;
     padding: 0;
     position: relative;
+    ul {
+        padding: 0;
+    }
     li {
         display: inline-block;
         width: 90px;
@@ -707,6 +710,88 @@ form.query-form {
         background: url('@{baseDir}images/path.png') no-repeat 0 0;
     }
 }
+.hp-customer-review-outer {
+    h2 {
+        text-align: center;
+        font-size: 28px;
+        font-weight: 800;
+        color: #E71C24;
+        margin-bottom: 40px;
+    }
+    .home-page-customer-review-content {
+        display: flex !important;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 0 50px;
+        .left-sec {
+            flex: 1 0 50%;
+            background: #FAFAFA;
+            padding: 25px 15px 0px 25px;
+            .title {
+                font-weight: 700;
+                color: #222222;
+                font-size: 18px;
+                padding-top: 10px;
+            }
+            .attribute {
+                background: #3777B61A;
+                display: inline-block;
+                margin: 8px 5px 0 0;
+                padding: 2px 8px;
+                border-radius: 12px;
+                font-size: 12px;
+                font-weight: 700;
+            }
+            .description {
+                font-size: 16px;
+                color: #222222;
+                margin-top: 15px;
+            }
+        }
+        .right-sec {
+            flex: 1 0 50%;
+            .video-link {
+                display: none;
+            }
+        }
+    }
+    ul.slick-slider {
+        padding: 0;
+    }
+    .slick-prev, .slick-next {
+        height: 48px;
+        width: 48px;
+        z-index: 11;
+        background: #E71C24;
+        border-radius: 50%;
+    }
+    .slick-next {
+        right: 0;
+    }
+    .slick-prev {
+        left: 0;
+    }
+    .slick-prev:before, .slick-next:before, .slick-prev:after, .slick-next:after {
+        color: #fff;
+        font-size: 22px;
+    }
+    .slick-dots {
+        li {
+            &.slick-active {
+                button {
+                    background: #E71C24;
+                }
+            }
+            button {
+                width: 10px;
+                height: 10px;
+            }
+        }
+    }
+}
+
+
+
 
 
 
@@ -777,21 +862,21 @@ form .actions-toolbar>.secondary a {
     margin-bottom: 0;
     .forgot-password {
         text-align: right;
-        a#forgotPassword {
-            color: #E71C24;
-            font-size: 12px;
-            font-weight: 400;
-        }
-        .forgot-password-error {
-            color: #E71C24;
-            font-size: 12px;
-        }
     }
     .field.password.required {
         margin-bottom: 0;
     }
     .actions-toolbar {
         margin-top: 20px;
+    }
+    a#forgotPassword {
+        color: #E71C24;
+        font-size: 12px;
+        font-weight: 400;
+    }
+    .forgot-password-error, div#email-error {
+        color: #E71C24;
+        font-size: 12px;
     }
 }
 .right-img-box {
@@ -1058,8 +1143,21 @@ h2.account-heading {
             flex: 1 0 100%;
         }
     }
-    .footer-four-up-box .pagebuilder-column {
-        border-right: none;
+    .footer.content {
+        border-top: none;
+    }
+    .footer-four-up-box {
+        padding: 0;
+        .pagebuilder-column {
+            border-right: none;
+        }
+    }
+    .page-bottom {
+        overflow: unset;
+        form.query-form fieldset {
+            box-shadow: 0px 0px 4px #4a4a4a;
+            padding-bottom: 0;
+        }
     }
     .footer-bottom {
         .social-icons {
@@ -1343,6 +1441,45 @@ h2.account-heading {
             right: 0;
         }
     }
+    .max-container.hp-customer-review {
+        margin-top: 60px;
+    } 
+    .hp-customer-review-outer {
+        .home-page-customer-review-content {
+            padding: 0 10px;
+            flex-flow: wrap-reverse;
+            .left-sec {
+                flex: 1 0 100%;
+                padding: 10px 15px 0px 15px;
+                .cimage {
+                    display: none;
+                }
+                .attribute {
+                    background: none;
+                    padding: 2px 0;
+                    font-size: 13px;
+                    color: #9B9B9B;
+                }
+            }
+        }
+        .slick-prev:before, .slick-next:before, .slick-prev:after, .slick-next:after {
+            color: #222222;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .slick-prev, .slick-next {
+            height: 48px;
+            top: 40%;
+            width: 30px;
+            border-radius: 8px;
+            box-shadow: 1px 0px 4px #4a4a4a;
+            background: #fff;
+        }
+        .slick-dots {
+            display: none;
+        }
+    }
+    
     
 }
 

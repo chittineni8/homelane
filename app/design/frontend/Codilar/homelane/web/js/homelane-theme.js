@@ -6,7 +6,7 @@ require(['jquery','slickslider'], function($) {
 
 		$(function() {
 			//cache a reference to the tabs
-			var tabs = $('#moving-tabs > li');
+			var tabs = $('#moving-tabs  li');
 			//on click to tab, turn it on, and turn previously-on tab off
 			tabs.click(function() { 
 				$(this).addClass('on').siblings('.on').removeClass('on');
@@ -64,6 +64,10 @@ require(['jquery','slickslider'], function($) {
 		        centerMode: true,centerPadding: '80px',autoplay: true,initialSlide: 1,speed: 1000,cssEase: 'linear',
 		    });
 		}
+		$(".hp-customer-review-outer ul").not(".slick-initialized").slick({
+		    dots: true,arrows: true,infinite: true,speed: 300,slidesToShow: 1,slidesToScroll: 1,
+		    autoplay: true,initialSlide: 1,speed: 1000,cssEase: 'linear',
+		});
         
 	});
 });
