@@ -565,6 +565,12 @@ form.query-form {
             input {
                 height: 40px;
             }
+            input.checkbox {
+                height: auto;
+            }
+            .whatsapp-lable {
+                color: #888888;
+            }
         }
         &:after {
             background: #fff url('@{baseDir}images/form-bg-image-right.png') no-repeat 0 0;
@@ -1040,7 +1046,7 @@ h2.account-heading {
     font-weight: 700;
 }
 .cms-home.page-layout-1column .block.widget .block-title {
-    margin: 0;
+    margin: 0 0 30px;
 }
 .block.widget .products-grid .product-item .price-box .price {
     font-size: 1.2rem;
@@ -1112,7 +1118,11 @@ h2.account-heading {
 
 
 /*********************************Media Query************************************************/
-
+@media only screen and (min-width: 1680px) {
+    .header.content #switcher-store {
+        right: -90px;
+    }
+}
 /*@media only screen and (min-width: 1366px) {
     .navigation, .breadcrumbs, .page-header .header.panel, .header.content, .footer.content, .page-wrapper>.widget, .page-wrapper>.page-bottom, .block.category.event, .top-container, .page-main {
         max-width: 1366px;
@@ -1204,7 +1214,7 @@ h2.account-heading {
     }
     .cms-home.page-layout-1column .block.widget .products-grid .product-item {
         width: auto;
-        flex: 1 0 25%;
+        flex: 1 0 24.5%;
     }
 }
 
