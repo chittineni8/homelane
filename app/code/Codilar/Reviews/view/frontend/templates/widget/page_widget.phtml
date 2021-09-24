@@ -25,13 +25,15 @@
     </div>
       <div class="right-sec">
       <div class="image">
-          <span class="widget-pimage">
-            <img src="<?php echo $block->getUrl("media/") . $block->getData('wop_image'); ?>"/>
-          </span>
+          <img src="<?php echo $block->getUrl("media/") . $block->getData('wop_image'); ?>"/>
       </div>
+      <span class="play-button" id="play-button"></span>
+      <div id="modal-video">
       <div class="video-link">
-          <span class="widget-video-val"><?php echo $block->getData('video1'); ?></span>
+        <iframe src="<?php echo $block->getData('video1'); ?>" width="100%" height="500" frameborder="0" allowfullscreen="allowfullscreen">
+        </iframe>
       </div>
+    </div>
     </div>
   </li>
   <?php endif; ?>
@@ -62,8 +64,12 @@
       <div class="image">
          <img src="<?php echo $block->getUrl("media/") . $block->getData('wtp_image'); ?>" />
       </div>
+      <span class="play-button" id="play-button1"></span>
+      <div id="modal-video1">
       <div class="video-link">
-          <span class="widget-video-val"><?php echo $block->getData('video2'); ?></span>
+        <iframe src="<?php echo $block->getData('video2'); ?>" width="100%" height="500" frameborder="0" allowfullscreen="allowfullscreen">
+        </iframe>
+      </div>
       </div>
     </div>
   </li>
@@ -96,8 +102,12 @@
       <div class="image">
         <img src="<?php echo $block->getUrl("media/") . $block->getData('wthp_image'); ?>" />
       </div>
+      <span class="play-button" id="play-button2"></span>
+      <div id="modal-video2">
       <div class="video-link">
-          <span class="widget-video-val"><?php echo $block->getData('video3'); ?></span>
+        <iframe src="<?php echo $block->getData('video3'); ?>" width="100%" height="500" frameborder="0" allowfullscreen="allowfullscreen">
+        </iframe>
+      </div>
       </div>
     </div>
   </li>
@@ -129,9 +139,13 @@
       <div class="image">
         <img src="<?php echo $block->getUrl("media/") . $block->getData('wfop_image'); ?>" />
       </div>
+      <span class="play-button" id="play-button3"></span>
+      <div id="modal-video3">
       <div class="video-link">
-          <span class="widget-video-val"><?php echo $block->getData('video4'); ?></span>
+        <iframe src="<?php echo $block->getData('video4'); ?>" width="100%" height="500" frameborder="0" allowfullscreen="allowfullscreen">
+        </iframe>
       </div>
+    </div>
     </div>
   </li>
   <?php endif; ?>
@@ -163,12 +177,49 @@
       <div class="image">
         <img src="<?php echo $block->getUrl("media/") . $block->getData('wfvp_image'); ?>" />
       </div>
+      <span class="play-button" id="play-button4"></span>
+      <div id="modal-video4">
       <div class="video-link">
-          <span class="widget-video-val"><?php echo $block->getData('video5'); ?></span>
+        <iframe src="<?php echo $block->getData('video5'); ?>" width="100%" height="500" frameborder="0" allowfullscreen="allowfullscreen">
+        </iframe>
       </div>
     </div>
-  </div>
+    </div>
+  </li>
 </ul>
   <?php endif; ?>
 </div>
-
+<script type="text/javascript">
+    require([
+        "jquery",
+        "Magento_Ui/js/modal/modal"
+    ],function($, modal) {
+        var options = {
+            type: 'popup',
+            modalClass: 'video-popup',
+            responsive: true,
+            buttons: [],
+            innerScroll: true
+        };
+        var popup = modal(options, $('#modal-video'));
+        $("#play-button").click(function() {
+            $('#modal-video').modal('openModal');
+        });
+        var popup = modal(options, $('#modal-video1'));
+        $("#play-button1").click(function() {
+            $('#modal-video1').modal('openModal');
+        });
+        var popup = modal(options, $('#modal-video2'));
+        $("#play-button2").click(function() {
+            $('#modal-video2').modal('openModal');
+        });
+        var popup = modal(options, $('#modal-video3'));
+        $("#play-button3").click(function() {
+            $('#modal-video3').modal('openModal');
+        });
+        var popup = modal(options, $('#modal-video4'));
+        $("#play-button4").click(function() {
+            $('#modal-video4').modal('openModal');
+        });
+    });
+</script>
