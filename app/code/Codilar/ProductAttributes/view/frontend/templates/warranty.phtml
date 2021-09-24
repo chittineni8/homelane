@@ -1,0 +1,20 @@
+<?php
+/**
+ * @package     Homelane
+ * @description ProductAttributes Module to show custom attributes value in PDP tabs
+ * @author      Manav Padhariya <manav.p@codilar.com>
+ * @copyright   2021 Codilar Technologies Pvt. Ltd. . All rights reserved.
+ * @license     Open Source
+ * @see         https://www.codilar.com/
+ */
+use Codilar\ProductAttributes\Block\Product\Warranty;
+
+/** @var Warranty $block */
+$attributeInfo = $block->getTabsContent();
+?>
+<div class="product.warranty">
+    <?php if ($attributeInfo['warranty'] != null): ?>
+        <p><b>Warranty Period in Years : </b><?php echo $attributeInfo['warranty']; ?></p>
+    <?php endif; ?>
+</div>
+

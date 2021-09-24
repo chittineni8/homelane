@@ -1,0 +1,23 @@
+<?php
+/**
+ * @package     Homelane
+ * @description ProductAttributes Module to show custom attributes value in PDP tabs
+ * @author      Manav Padhariya <manav.p@codilar.com>
+ * @copyright   2021 Codilar Technologies Pvt. Ltd. . All rights reserved.
+ * @license     Open Source
+ * @see         https://www.codilar.com/
+ */
+use Codilar\ProductAttributes\Block\Product\Specifications;
+
+/** @var Specifications $block */
+$attributeInfo = $block->getTabsContent();
+?>
+<div class="product.specifications">
+    <?php if ($attributeInfo['brand'] != null): ?>
+    <p><b>Brand : </b><?php echo $attributeInfo['brand']; ?></p>
+    <?php endif; if ($attributeInfo['height'] != null): ?>
+    <p><b>Height : </b><?php echo $attributeInfo['height']; ?></p>
+    <?php endif; if ($attributeInfo['material'] != null):?>
+    <p><b>Material : </b><?php echo $attributeInfo['material']; ?></p>
+    <?php endif; ?>
+</div>

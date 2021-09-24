@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * module.xml
+ *
+ * @package     Homelane
+ * @description ProductAttributes Module to show custom attributes value in PDP tabs
+ * @author      Manav Padhariya <manav.p@codilar.com>
+ * @copyright   2021 Codilar Technologies Pvt. Ltd. . All rights reserved.
+ * @license     Open Source
+ * @see         https://www.codilar.com/
+ *
+ * ProductAttributes Module to show custom attributes value in PDP tabs
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Codilar_ProductAttributes" />
+</config>
