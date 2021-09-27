@@ -1,193 +1,225 @@
-  <h2>Customer review</h2>
+  <div class="hp-customer-review-outer">
+  <h2>Customer Reviews</h2>
   <?php if ($block->getData('customer1') && $block->getData('wodescription')): ?>
-  <div class="home-page-customer-review-content">
+  <ul>
+  <li class="home-page-customer-review-content">
+    <div class="left-sec">
+      <div class="cimage">
+        <img src="<?php echo $block->getUrl("media/") . $csimage=$block->getData('woc_image'); ?>"/>
+      </div>
       <div class="title">
-          <span class="widget-title"><?php echo __("Customer Name : "); ?></span>
           <span class="widget-title-val"><?php echo $block->getData('customer1'); ?></span>
       </div>
-      <div class="place">
-          <span class="widget-title"><?php echo __("Place : "); ?></span>
+      <div class="place attribute">
           <span><?php echo $block->getData('woplace'); ?></span>
       </div>
-      <div class="txt1">
-          <span class="widget-title"><?php echo __("Text1 : "); ?></span>
+      <div class="txt1 attribute">
           <span class="widget-title-val"><?php echo $block->getData('wotext1'); ?></span>
       </div>
-      <div class="txt2">
-          <span class="widget-title"><?php echo __("Text2 : "); ?></span>
+      <div class="txt2 attribute">
           <span><?php echo $block->getData('wotext2'); ?></span>
       </div>
       <div class="description">
-          <span class="widget-desc"><?php echo __("Product Description : "); ?></span>
           <span class="widget-desc-val"><?php echo $block->getData('wodescription'); ?></span>
       </div>
+    </div>
+      <div class="right-sec">
       <div class="image">
-          <span class="widget-desc"><?php echo __("Product Image media: "); ?></span>
-          <span class="widget-pimage"> <?php echo $block->getData('wop_image'); ?> </span>
-          </span>
+          <img src="<?php echo $block->getUrl("media/") . $block->getData('wop_image'); ?>"/>
       </div>
-      <div class="cimage">
-          <span class="widget-desc"><?php echo __("customer Image : "); ?></span>
-          <span class="widget-cu_image"><?php echo $csimage=$block->getData('woc_image');?><br>
-      </div>
+      <span class="play-button" id="play-button"></span>
+      <div id="modal-video">
       <div class="video-link">
-          <span class="widget-video"><?php echo __("Video Link : "); ?></span>
-          <span class="widget-video-val"><?php echo $block->getData('video1'); ?></span>
+        <iframe src="<?php echo $block->getData('video1'); ?>" width="100%" height="500" frameborder="0" allowfullscreen="allowfullscreen">
+        </iframe>
       </div>
-  </div>
+    </div>
+    </div>
+  </li>
   <?php endif; ?>
 <!--                                2nd slide                           -->
   <?php if ($block->getData('customer2') && $block->getData('wtdescription')): ?>
-  <div class="home-page-customer-review-content">
+  <li class="home-page-customer-review-content">
+    <div class="left-sec">
+      <div class="cimage">
+        <img src="<?php echo $block->getUrl("media/") . $csimage=$block->getData('wtc_image'); ?>" />
+      </div>
       <div class="title">
-          <span class="widget-title"><?php echo __("Customer Name : "); ?></span>
           <span><?php echo $block->getData('customer2'); ?></span>
       </div>
-      <div class="place">
-          <span class="widget-title"><?php echo __("Place : "); ?></span>
+      <div class="place attribute">
           <span><?php echo $block->getData('wtplace'); ?></span>
       </div>
-      <div class="txt1">
-          <span class="widget-title"><?php echo __("Text1 : "); ?></span>
+      <div class="txt1 attribute">
           <span ><?php echo $block->getData('wttext1'); ?></span>
       </div>
-      <div class="txt2">
-          <span class="widget-title"><?php echo __("Text2 : "); ?></span>
+      <div class="txt2 attribute">
           <span><?php echo $block->getData('wttext2'); ?></span>
       </div>
       <div class="description">
-          <span class="widget-desc"><?php echo __("Product Description : "); ?></span>
           <span ><?php echo $block->getData('wtdescription'); ?></span>
       </div>
+    </div>
+    <div class="right-sec">
       <div class="image">
-          <span class="widget-desc"><?php echo __("Product Image "); ?></span>
-          <span > <?php echo $block->getData('wtp_image'); ?> </span>
-          </span>
+         <img src="<?php echo $block->getUrl("media/") . $block->getData('wtp_image'); ?>" />
       </div>
-      <div class="cimage">
-          <span class="widget-desc"><?php echo __("customer Image : "); ?></span>
-          <span ><?php echo $csimage=$block->getData('wtc_image');?><br>
-      </div>
+      <span class="play-button" id="play-button1"></span>
+      <div id="modal-video1">
       <div class="video-link">
-          <span class="widget-video"><?php echo __("Video Link : "); ?></span>
-          <span class="widget-video-val"><?php echo $block->getData('video2'); ?></span>
+        <iframe src="<?php echo $block->getData('video2'); ?>" width="100%" height="500" frameborder="0" allowfullscreen="allowfullscreen">
+        </iframe>
       </div>
-  </div>
+      </div>
+    </div>
+  </li>
   <?php endif; ?>
       <!--                                3rd slide                           -->
 
   <?php if ($block->getData('customer3') && $block->getData('wthdescription')): ?>
-  <div class="home-page-customer-review-content">
+  <li class="home-page-customer-review-content">
+    <div class="left-sec">
+      <div class="cimage">
+          <span ><?php echo $block->getUrl("media/") . $csimage=$block->getData('wthc_image');?></span>
+      </div>
       <div class="title">
-          <span class="widget-title"><?php echo __("Customer Name : "); ?></span>
           <span><?php echo $block->getData('customer3'); ?></span>
       </div>
-      <div class="place">
-          <span class="widget-title"><?php echo __("Place : "); ?></span>
+      <div class="place attribute">
           <span><?php echo $block->getData('wthplace'); ?></span>
       </div>
-      <div class="txt1">
-          <span class="widget-title"><?php echo __("Text1 : "); ?></span>
+      <div class="txt1 attribute">
           <span ><?php echo $block->getData('wthtext1'); ?></span>
       </div>
-      <div class="txt2">
-          <span class="widget-title"><?php echo __("Text2 : "); ?></span>
+      <div class="txt2 attribute">
           <span><?php echo $block->getData('wthtext2'); ?></span>
       </div>
       <div class="description">
-          <span class="widget-desc"><?php echo __("Product Description : "); ?></span>
-          <span ><?php echo $block->getData('wthdescription'); ?></span>
+          <span><?php echo $block->getData('wthdescription'); ?></span>
       </div>
+    </div>
+    <div class="right-sec">
       <div class="image">
-          <span class="widget-desc"><?php echo __("Product Image "); ?></span>
-          <span > <?php echo $block->getData('wthp_image'); ?> </span>
-          </span>
+        <img src="<?php echo $block->getUrl("media/") . $block->getData('wthp_image'); ?>" />
       </div>
-      <div class="cimage">
-          <span class="widget-desc"><?php echo __("customer Image : "); ?></span>
-          <span ><?php echo $csimage=$block->getData('wthc_image');?><br>
-      </div>
+      <span class="play-button" id="play-button2"></span>
+      <div id="modal-video2">
       <div class="video-link">
-          <span class="widget-video"><?php echo __("Video Link : "); ?></span>
-          <span class="widget-video-val"><?php echo $block->getData('video3'); ?></span>
+        <iframe src="<?php echo $block->getData('video3'); ?>" width="100%" height="500" frameborder="0" allowfullscreen="allowfullscreen">
+        </iframe>
       </div>
-  </div>
+      </div>
+    </div>
+  </li>
   <?php endif; ?>
   <!--                                4th slide                           -->
   <?php if ($block->getData('customer4') && $block->getData('wfodescription')): ?>
-  <div class="home-page-customer-review-content">
+  <li class="home-page-customer-review-content">
+    <div class="left-sec">
+      <div class="cimage">
+          <span ><?php echo $block->getUrl("media/") . $csimage=$block->getData('wfoc_image');?></span>
+      </div>
       <div class="title">
-          <span class="widget-title"><?php echo __("Customer Name : "); ?></span>
           <span><?php echo $block->getData('customer4'); ?></span>
       </div>
       <div class="place">
-          <span class="widget-title"><?php echo __("Place : "); ?></span>
           <span><?php echo $block->getData('wfoplace'); ?></span>
       </div>
       <div class="txt1">
-          <span class="widget-title"><?php echo __("Text1 : "); ?></span>
           <span ><?php echo $block->getData('wfotext1'); ?></span>
       </div>
       <div class="txt2">
-          <span class="widget-title"><?php echo __("Text2 : "); ?></span>
           <span><?php echo $block->getData('wfotext2'); ?></span>
       </div>
       <div class="description">
-          <span class="widget-desc"><?php echo __("Product Description : "); ?></span>
           <span ><?php echo $block->getData('wfodescription'); ?></span>
       </div>
+    </div>
+    <div class="right-sec">
       <div class="image">
-          <span class="widget-desc"><?php echo __("Product Image "); ?></span>
-          <span > <?php echo $block->getData('wfop_image'); ?> </span>
-          </span>
+        <img src="<?php echo $block->getUrl("media/") . $block->getData('wfop_image'); ?>" />
       </div>
-      <div class="cimage">
-          <span class="widget-desc"><?php echo __("customer Image : "); ?></span>
-          <span ><?php echo $csimage=$block->getData('wfoc_image');?><br>
-      </div>
+      <span class="play-button" id="play-button3"></span>
+      <div id="modal-video3">
       <div class="video-link">
-          <span class="widget-video"><?php echo __("Video Link : "); ?></span>
-          <span class="widget-video-val"><?php echo $block->getData('video4'); ?></span>
+        <iframe src="<?php echo $block->getData('video4'); ?>" width="100%" height="500" frameborder="0" allowfullscreen="allowfullscreen">
+        </iframe>
       </div>
-  </div>
+    </div>
+    </div>
+  </li>
   <?php endif; ?>
 
   <!--                               5th Slide                     -->
   <?php if ($block->getData('customer5') && $block->getData('wfvdescription')): ?>
-  <div class="home-page-customer-review-content">
+  <li class="home-page-customer-review-content">
+    <div class="left-sec">
+      <div class="cimage">
+          <span ><?php echo $block->getUrl("media/") . $csimage=$block->getData('wfvc_image');?></span>
+      </div>
       <div class="title">
-          <span class="widget-title"><?php echo __("Customer Name : "); ?></span>
           <span><?php echo $block->getData('customer5'); ?></span>
       </div>
       <div class="place">
-          <span class="widget-title"><?php echo __("Place : "); ?></span>
           <span><?php echo $block->getData('wfvplace'); ?></span>
       </div>
       <div class="txt1">
-          <span class="widget-title"><?php echo __("Text1 : "); ?></span>
           <span ><?php echo $block->getData('wfvtext1'); ?></span>
       </div>
       <div class="txt2">
-          <span class="widget-title"><?php echo __("Text2 : "); ?></span>
           <span><?php echo $block->getData('wfvtext2'); ?></span>
       </div>
       <div class="description">
-          <span class="widget-desc"><?php echo __("Product Description : "); ?></span>
           <span ><?php echo $block->getData('wfvdescription'); ?></span>
       </div>
+    </div>
+    <div class="right-sec">
       <div class="image">
-          <span class="widget-desc"><?php echo __("Product Image "); ?></span>
-          <span > <?php echo $block->getData('wfvp_image'); ?> </span>
-          </span>
+        <img src="<?php echo $block->getUrl("media/") . $block->getData('wfvp_image'); ?>" />
       </div>
-      <div class="cimage">
-          <span class="widget-desc"><?php echo __("customer Image : "); ?></span>
-          <span ><?php echo $csimage=$block->getData('wfvc_image');?><br>
-      </div>
+      <span class="play-button" id="play-button4"></span>
+      <div id="modal-video4">
       <div class="video-link">
-          <span class="widget-video"><?php echo __("Video Link : "); ?></span>
-          <span class="widget-video-val"><?php echo $block->getData('video5'); ?></span>
+        <iframe src="<?php echo $block->getData('video5'); ?>" width="100%" height="500" frameborder="0" allowfullscreen="allowfullscreen">
+        </iframe>
       </div>
-  </div>
+    </div>
+    </div>
+  </li>
+</ul>
   <?php endif; ?>
-
+</div>
+<script type="text/javascript">
+    require([
+        "jquery",
+        "Magento_Ui/js/modal/modal"
+    ],function($, modal) {
+        var options = {
+            type: 'popup',
+            modalClass: 'video-popup',
+            responsive: true,
+            buttons: [],
+            innerScroll: true
+        };
+        var popup = modal(options, $('#modal-video'));
+        $("#play-button").click(function() {
+            $('#modal-video').modal('openModal');
+        });
+        var popup = modal(options, $('#modal-video1'));
+        $("#play-button1").click(function() {
+            $('#modal-video1').modal('openModal');
+        });
+        var popup = modal(options, $('#modal-video2'));
+        $("#play-button2").click(function() {
+            $('#modal-video2').modal('openModal');
+        });
+        var popup = modal(options, $('#modal-video3'));
+        $("#play-button3").click(function() {
+            $('#modal-video3').modal('openModal');
+        });
+        var popup = modal(options, $('#modal-video4'));
+        $("#play-button4").click(function() {
+            $('#modal-video4').modal('openModal');
+        });
+    });
+</script>

@@ -19,12 +19,6 @@
  * @license     https://www.giaphugroup.com/LICENSE.txt
  */
  /** @var \PHPCuong\CustomerAccount\Block\Form\Login $block */
-
-$objectManager =  \Magento\Framework\App\ObjectManager::getInstance(); 
-$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
-$store = $storeManager->getStore();
-$baseUrl = $store->getBaseUrl();
-$baseSecureUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_WEB, true);
 ?>
 <?php if (!$block->customerIsAlreadyLoggedIn()): ?>
     <style>
@@ -89,8 +83,8 @@ $baseSecureUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_WE
                                     <a class="action remind" href="<?php /* @escapeNotVerified */ echo $block->getCustomerRegistrationUrl() ?>" id="customer-popup-registration"><span><?php /* @escapeNotVerified */ echo __('Sign Up') ?></span></a>
                                 </div>
                                 <div class="other-links">
-                                    <a href="<?php /* @escapeNotVerified */ echo $baseUrl.'terms' ?>"><?php echo __('Terms & Conditions'); ?></a> |
-                                    <a href="<?php /* @escapeNotVerified */ echo $baseUrl.'privacy-policy' ?>"><?php echo __('Privacy Policy'); ?></a>
+                                     <a href="<?= $this->getUrl('terms') ?>"><?php echo __('Terms & Conditions'); ?></a>|
+                    <a href="<?= $this->getUrl('privacy-policy') ?>"><?php echo __('Privacy Policy'); ?></a>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -128,7 +122,7 @@ $("#forgotPassword").click(function(){
  var emailVal = $("#email-login").val();
 
    jQuery.ajax({
-                url: 'http://homelane.local/index.php/user/forgetpassword/index',
+                url: '/user/forgetpassword/index',
                 // url: "getAjaxUrl()",
                 data: {email:emailVal},
                 type: "POST",

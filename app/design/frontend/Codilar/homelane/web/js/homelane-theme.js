@@ -6,18 +6,18 @@ require(['jquery','slickslider'], function($) {
 
 		$(function() {
 			//cache a reference to the tabs
-			var tabs = $('#moving-tabs > li');
+			var tabs = $('#moving-tabs  li');
 			//on click to tab, turn it on, and turn previously-on tab off
 			tabs.click(function() { 
 				$(this).addClass('on').siblings('.on').removeClass('on');
 			});
-			/*setInterval(function() {
+			setInterval(function() {
 				//get currently-on tab
 				var onTab = tabs.filter('.on');
 				//click either next tab, if exists, else first one
 				var nextTab = onTab.index() < tabs.length-1 ? onTab.next() : tabs.first();
-				nextTab.click();
-			}, 3000);*/
+				nextTab.addClass('on').siblings('.on').removeClass('on');;
+			}, 3000);
 		});
 
 		var submitIcon = $('form#search_mini_form .field.search label');
@@ -64,6 +64,17 @@ require(['jquery','slickslider'], function($) {
 		        centerMode: true,centerPadding: '80px',autoplay: true,initialSlide: 1,speed: 1000,cssEase: 'linear',
 		    });
 		}
-        
+		$(".hp-customer-review-outer ul").not(".slick-initialized").slick({
+		    dots: true,arrows: true,infinite: true,speed: 300,slidesToShow: 1,slidesToScroll: 1,
+		    autoplay: true,initialSlide: 1,speed: 1000,cssEase: 'linear',
+		});
+		$('form.query-form .control input').on('change keyup', function() {
+		  if ($(this).val().length > 0) {
+		    $(this).parent().addClass('input-has-value');
+		  } else {
+		    $(this).parent().removeClass('input-has-value');
+		  }  
+		});
+
 	});
 });

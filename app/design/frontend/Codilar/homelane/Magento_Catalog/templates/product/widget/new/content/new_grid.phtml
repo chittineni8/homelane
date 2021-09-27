@@ -34,7 +34,7 @@ if ($exist = ($block->getProductCollection() && $block->getProductCollection()->
 <?php if ($exist) :?>
     <div class="block max-container widget block-new-products <?= /* @noEscape */ $mode ?>">
         <div class="block-title">
-            <strong role="heading" aria-level="2"><?= $block->escapeHtml($title) ?></strong>
+            <strong role="heading" aria-level="2"><?= $block->escapeHtml(__('New Arrivals')) ?></strong>
         </div>
         <div class="see-all-link"><a href="">See all</a></div>
         <div class="block-content">

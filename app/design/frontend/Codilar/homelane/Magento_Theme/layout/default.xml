@@ -31,8 +31,8 @@
         <move element="navigation.sections" destination="header-wrapper" after="logo" />
         
         
-        <move element="store_switcher" destination="header-wrapper" before="header.links" />
         <!-- remove store switcher ofheader -->
+        <referenceBlock name="header.panel.wrapper" remove="true" />
         <referenceBlock name="store.settings.language" remove="true"/>
         <!-- remove footer content -->
         <referenceBlock name="footer_links" remove="true" />
