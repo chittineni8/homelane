@@ -1,5 +1,35 @@
 require(['jquery','slickslider'], function($) {
 	$(document).ready( function() {
+		$(window).scroll(function () {
+            if ($(this).scrollTop() > 200) {
+                $('body').addClass('stickyy');
+            } else {
+                $('body').removeClass('stickyy');
+            }
+            if ($(this).scrollTop() > 201) {
+                $('body').addClass('slideDown');
+            } else {
+                $('body').removeClass('slideDown');
+            }
+        });
+        $(window).resize(function () {
+            if ($(window).width() < 1024) {
+                if ($(this).scrollTop() > 50) {
+                    $('body').addClass('stickyy');
+                } else {
+                    $('body').removeClass('stickyy');
+                }
+
+                if ($(this).scrollTop() > 51) {
+                    $('body').addClass('slideDown');
+                } else {
+                    $('body').removeClass('slideDown');
+                }
+            }
+        });
+
+
+
 		if($('ul.header.links').find('.customer-register-link').length <= 0) {
 			$("body").addClass("logged-in");
 		}
@@ -68,13 +98,24 @@ require(['jquery','slickslider'], function($) {
 		    dots: true,arrows: true,infinite: true,speed: 300,slidesToShow: 1,slidesToScroll: 1,
 		    autoplay: true,initialSlide: 1,speed: 1000,cssEase: 'linear',
 		});
-		$('form.query-form .control input').on('change keyup', function() {
+/*		$('form.query-form .control input').on('change keyup', function() {
 		  if ($(this).val().length > 0) {
 		    $(this).parent().addClass('input-has-value');
 		  } else {
 		    $(this).parent().removeClass('input-has-value');
 		  }  
+		});*/
+
+		$("form.query-form .control input[type='email']").on('change keyup',function () {    
+			var inputvalues = $(this).val();    
+			var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;    
+			if(regex.test(inputvalues)) {    
+   				$(this).parent().addClass('input-has-value');
+			} else {
+				$(this).parent().removeClass('input-has-value');
+			}
 		});
+
 
 	});
 });
