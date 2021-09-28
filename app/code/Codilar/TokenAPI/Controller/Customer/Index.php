@@ -253,7 +253,7 @@ class Index extends Action
         $params['form_params'] = json_decode($bodyJson, true);
         $params['headers'] = [
             'Content-Type' => 'application/x-www-form-urlencoded',
-            'Authorization' => 'Bearer' . ' ' . $this->callapi->getToken(),
+            'Authorization' => 'Bearer' . ' ' . $this->callapi->getToken()
         ];
         return [
             $apiRequestEndpoint,
