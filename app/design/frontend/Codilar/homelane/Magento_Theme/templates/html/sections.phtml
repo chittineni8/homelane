@@ -14,6 +14,10 @@ $groupCss = $block->getGroupCss();
 <?php if ($detailedInfoGroup = $block->getGroupChildNames($group)):?>
     <div class="sections <?= $block->escapeHtmlAttr($groupCss) ?>">
         <div class="logo-img"><img src='<?php echo $this->getViewFileUrl('images/drawer-store-logo.png'); ?>' alt="logo"></div>
+        <li class="link authorization-link" data-label="or">
+            <a class="customer-login-link">Log In</a>
+        </li>
+        <div class="mob-store-switcher"></div>
         <?php $layout = $block->getLayout(); ?>
         <div class="section-items <?= $block->escapeHtmlAttr($groupCss) ?>-items"
              data-mage-init='{"tabs":{"openedState":"active"}}'>
