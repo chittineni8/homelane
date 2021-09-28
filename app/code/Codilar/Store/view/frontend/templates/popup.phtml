@@ -10,6 +10,16 @@ $mediaUrl = $viewModel->getMediaUrl();
 $parsedUrl = $viewModel->getParsedUrl();
 $redirect = $viewModel->getHttpResponse();
 $baseUrl = $viewModel->getBaseUrl();
+$currentUrl = $viewModel->getCurrentUrl();
+$gets = parse_url($currentUrl);
+$queryParam = '?city_change=true';
+if (isset($gets['query'])) {
+    if (strpos($gets['query'], 'city_change=true') !== false) {
+        $queryParam = '';
+    } else {
+        $queryParam = '&city_change=true';
+    }
+}
 //foreach ($parsedUrl as $url) {
 //    $schema = $url['scheme'];
 //    $path = $url['path'];
@@ -18,6 +28,7 @@ $sessionData = $viewModel->getSessionValue();
 $cookieData = $viewModel->getWebsiteCookie();
 //if ($cookieData == null) {
 //    if ($sessionData == null) {
+
 //?>
 <div class="call-popup" data-mage-init='{"callPopup":{}}'>
     <div class="call-popup-top">
@@ -54,8 +65,7 @@ $cookieData = $viewModel->getWebsiteCookie();
             <?php
             foreach ($parsedWebCode as $webCode) {
                 $code = $webCode['path']; ?>
-                <a onclick="<?php $viewModel->setSessionValue($code);
-                $viewModel->setWebsiteCookie($code); ?>" href="<?php echo $webUrl . '' . $parsedUrl; ?>">
+                <a href="<?php echo $webUrl . '' . $parsedUrl . '' . $queryParam; ?>">
                 <?php if ($imageUrl): ?>
                     <div class="store-image">
                         <img src="<?php echo $imageUrl ?>" alt="<?php echo $storeName ?>" title="<?php echo $storeName ?>" class="img-responsive" width="200" height="200"/>

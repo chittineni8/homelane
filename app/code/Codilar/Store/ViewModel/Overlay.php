@@ -121,21 +121,21 @@ class Overlay implements ArgumentInterface
 
     public function setSessionValue($value)
     {
-        $this->session->start();
-        $this->session->unsetWebsiteCode('website_code');
-        $this->session->setWebsiteCode('website_code', $value);
+        $this->sessionManager->start();
+        $this->sessionManager->unsetWebsiteCode();
+        $this->sessionManager->setWebsiteCode($value);
     }
 
     public function getSessionValue()
     {
-        $this->session->start();
-        return $this->session->getWebsiteCode();
+        $this->sessionManager->start();
+        return $this->sessionManager->getWebsiteCode();
     }
 
     public function unSetSessionValue()
     {
-        $this->session->start();
-        return $this->session->unsetData('website_code');
+        $this->sessionManager->start();
+        return $this->sessionManager->unsetData('website_code');
     }
 
     /**
@@ -146,26 +146,28 @@ class Overlay implements ArgumentInterface
         return $this->httpResponse;
     }
 
+
     /**
-     * @throws InputException
+     * @param $websiteCode
      * @throws CookieSizeLimitReachedException
      * @throws FailureToSendException
-     * @return void
+     * @throws InputException
      */
     public function setWebsiteCookie($websiteCode)
     {
-        $metadata = $this->cookieMetadataFactory->createPublicCookieMetadata();
-        $metadata->setDuration(self::COOKIE_LIFETIME);
-        $metadata->setPath($this->sessionManager->getCookiePath());
-        $metadata->setHttpOnly(false);
+        $publicCookieMetadata = $this->cookieMetadataFactory->createPublicCookieMetadata();
+        $publicCookieMetadata->setDurationOneYear();
+        $publicCookieMetadata->setPath('/');
+        $publicCookieMetadata->setHttpOnly(false);
 
-        return $this->cookieManager->setPublicCookie('website_code', $websiteCode, $metadata);
+        return $this->cookieManager->setPublicCookie('website_code', $websiteCode, $publicCookieMetadata);
     }
+
 
     /**
      * @return string|null
      */
-    public function getWebsiteCookie(): ?string
+    public function getWebsiteCookie()
     {
         return $this->cookieManager->getCookie(
             'website_code'
