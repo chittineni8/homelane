@@ -27,6 +27,11 @@ require(['jquery','slickslider'], function($) {
                 }
             }
         });
+        if ($(window).width() < 768) {
+           	var storeclone = $('div#switcher-store div#switcher-store-trigger').clone();
+           	console.log(storeclone);
+  			$('.mob-store-switcher').html(storeclone);
+        }
 
 
 
@@ -98,19 +103,35 @@ require(['jquery','slickslider'], function($) {
 		    dots: true,arrows: true,infinite: true,speed: 300,slidesToShow: 1,slidesToScroll: 1,
 		    autoplay: true,initialSlide: 1,speed: 1000,cssEase: 'linear',
 		});
-/*		$('form.query-form .control input').on('change keyup', function() {
+
+		$("form.query-form .control input[type='text']").on('change keyup', function() {
 		  if ($(this).val().length > 0) {
 		    $(this).parent().addClass('input-has-value');
 		  } else {
 		    $(this).parent().removeClass('input-has-value');
 		  }  
-		});*/
-
+		});
 		$("form.query-form .control input[type='email']").on('change keyup',function () {    
 			var inputvalues = $(this).val();    
 			var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;    
 			if(regex.test(inputvalues)) {    
    				$(this).parent().addClass('input-has-value');
+			} else {
+				$(this).parent().removeClass('input-has-value');
+			}
+		});
+		$("form.query-form .control.phoneno input[type='number']").on('change keyup',function () { 
+			var mobNum = $(this).val();   
+			if(mobNum.length == 10) {
+				$(this).parent().addClass('input-has-value');
+			} else {
+				$(this).parent().removeClass('input-has-value');
+			}
+		});
+		$("form.query-form .control.pincode input[type='number']").on('change keyup',function () { 
+			var mobNum = $(this).val();   
+			if(mobNum.length == 6) {
+				$(this).parent().addClass('input-has-value');
 			} else {
 				$(this).parent().removeClass('input-has-value');
 			}
