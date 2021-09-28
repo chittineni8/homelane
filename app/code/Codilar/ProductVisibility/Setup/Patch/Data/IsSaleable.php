@@ -52,7 +52,7 @@ class IsSaleable implements DataPatchInterface
             'backend' => '',
             'frontend' => '',
             'sort_order' => 210,
-            'label' => 'IsSaleable',
+            'label' => 'Is Saleable',
             'input' => 'select',
             'class' => '',
             'source' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
