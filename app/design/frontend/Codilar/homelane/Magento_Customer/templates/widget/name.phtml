@@ -81,8 +81,8 @@ $suffix = $block->showSuffix();
             </div>
         </div>
     <?php endif; ?>
-        <div class="field field-name-lastname required">
-            <!-- <label class="label" for="<?= $block->escapeHtmlAttr($block->getFieldId('lastname')) ?>"><span><?= $block->escapeHtml($block->getStoreLabel('lastname')) ?></span></label> -->
+        <!-- <div class="field field-name-lastname required">
+            <label class="label" for="<?= $block->escapeHtmlAttr($block->getFieldId('lastname')) ?>"><span><?= $block->escapeHtml($block->getStoreLabel('lastname')) ?></span></label>
             <div class="control">
                 <input type="text" id="<?= $block->escapeHtmlAttr($block->getFieldId('lastname')) ?>"
                        name="<?= $block->escapeHtmlAttr($block->getFieldName('lastname')) ?>"
@@ -91,7 +91,7 @@ $suffix = $block->showSuffix();
                        title="<?= $block->escapeHtmlAttr($block->getStoreLabel('lastname')) ?>"
                        class="input-text <?= $block->escapeHtmlAttr($block->getAttributeValidationClass('lastname')) ?>" <?= ($block->getAttributeValidationClass('lastname') == 'required-entry') ? ' data-validate="{required:true}"' : '' ?>>
             </div>
-        </div>
+        </div> -->
     <?php if ($suffix) : ?>
         <div class="field field-name-suffix<?= $block->isSuffixRequired() ? ' required' : '' ?>">
             <label class="label" for="<?= $block->escapeHtmlAttr($block->getFieldId('suffix')) ?>"><span><?= $block->escapeHtml($block->getStoreLabel('suffix')) ?></span></label>

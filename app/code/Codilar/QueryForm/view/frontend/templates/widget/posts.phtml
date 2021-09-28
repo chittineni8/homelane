@@ -21,18 +21,19 @@ $baseSecureUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_WE
                 </div>
             </div>
             <div class="field required">
-                <div class="control">
+                <div class="control phoneno">
                     <input name="phoneno" value="" placeholder=" Enter your mobile number" type="number" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your mobile number') ?>" data-validate="{required:true}">
                 </div>
             </div>
         <div class="field required">
             <div class="control">
-                <input name="whatsapp" value="yes"   type="checkbox" class="input-text checkbox" title="<?php /* @escapeNotVerified */ echo __('You can reach me on WhatsApp') ?>">
-                <label for="whatsapp" class="label whatsapp-lable">You can reach me on WhatsApp</label>
+                <label for="whatsapp" class="label whatsapp-lable">
+                <input name="whatsapp" value="You can reach me on WhatsApp"   type="checkbox" class="input-text checkbox" title="<?php /* @escapeNotVerified */ echo __('You can reach me on WhatsApp') ?>">
+                </label>
             </div>
         </div>
             <div class="field required">
-                <div class="control">
+                <div class="control pincode">
                     <input name="pincode" value="" placeholder="Enter your residence pincode" type="number" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your residence pincode') ?>" data-validate="{required:true}">
                 </div>
             </div>
