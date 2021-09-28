@@ -179,8 +179,8 @@ class Index extends Action
 
                     $mobileResult->setData(
                     'This phone number is associated with the
-                     email id' . ' ' . $hiddenEmail . ' ' . 'Please log in u
-   that email id. If this is not your email id, <b>click here to report the error.</b>'
+                     email id' . ' ' . $hiddenEmail . ' ' . 'Please log in using 
+                     that email id. If this is not your email id, <b>click here to report the error.</b>'
                     );
                     return $mobileResult;
                 else :
@@ -253,7 +253,7 @@ class Index extends Action
         $params['form_params'] = json_decode($bodyJson, true);
         $params['headers'] = [
             'Content-Type' => 'application/x-www-form-urlencoded',
-            'Authorization' => 'Bearer' . ' ' . $this->callapi->getToken(),
+            'Authorization' => 'Bearer' . ' ' . $this->callapi->getToken()
         ];
         return [
             $apiRequestEndpoint,

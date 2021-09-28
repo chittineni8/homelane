@@ -157,9 +157,9 @@ class Index extends Action
             $email = $this->getRequest()->getParam('email');
 
             if ($email) :
-                $emailbody = ['email' => $email];
+                $emailbody = ['email' => $email , 'hlStore' => 1];
 
-                list($apiRequestEndpoint, $requestMethod, $params) = $this->prepareParams($emailbody);
+              list($apiRequestEndpoint, $requestMethod, $params) = $this->prepareParams($emailbody);
                 $emailData = $this->doRequest($apiRequestEndpoint, $requestMethod, $params);
                 $status = $emailData->getStatusCode();
                 $responseBody = $emailData->getBody();
@@ -171,6 +171,8 @@ class Index extends Action
                     $result->setData($error);
                     return $result;
                 else :
+                    $result->setData('Instructions on how to reset your password have just been
+                    sent to' .' '.$email);
                     return $result;
                 endif;
 

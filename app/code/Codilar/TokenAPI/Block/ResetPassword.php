@@ -6,4 +6,11 @@ class ResetPassword extends \Magento\Framework\View\Element\Template
     {
         return parent::_prepareLayout();
     }
+
+public function getFormAction()
+    {
+        return $this->getUrl('user/resetpassword/submit', ['_secure' => true]);
+    }
+
+    
 }
