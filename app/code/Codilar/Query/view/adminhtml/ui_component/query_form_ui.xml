@@ -68,7 +68,19 @@
                 <dataScope>phoneno</dataScope>
             </settings>
         </field>
-          <field name="email" sortOrder="28" formElement="input">
+        <field name="whatsapp" sortOrder="28" formElement="input">
+            <settings>
+<!--                <validation>-->
+<!--                    <rule name="required-entry" xsi:type="boolean">true</rule>-->
+<!--                </validation>-->
+                <dataType>text</dataType>
+                <label translate="true">Can we reach them on WhatsApp</label>
+                <visible>true</visible>
+                <dataScope>whatsapp</dataScope>
+            </settings>
+        </field>
+
+          <field name="email" sortOrder="27" formElement="input">
             <settings>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">true</rule>

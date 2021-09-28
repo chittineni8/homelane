@@ -170,6 +170,18 @@
                 <label translate="true">PhoneNo</label>
             </settings>
         </column>
+        <column name="whatsapp">
+            <settings>
+                <filter>text</filter>
+                <editor>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                    <editorType>text</editorType>
+                </editor>
+                <label translate="true">Can we reach them on WhatsApp</label>
+            </settings>
+        </column>
         <column name="pincode">
             <settings>
                 <filter>text</filter>

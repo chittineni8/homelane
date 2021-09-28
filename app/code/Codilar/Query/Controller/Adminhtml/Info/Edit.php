@@ -15,7 +15,7 @@ class Edit extends Action
     public function execute()
     {
         $resultResponse = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-        $resultResponse->getConfig()->getTitle()->set(__(" edit  Query"));
+        $resultResponse->getConfig()->getTitle()->set(__(" Edit  Query"));
         return $resultResponse;
     }
 }
