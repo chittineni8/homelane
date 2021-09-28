@@ -8,7 +8,7 @@
     <column xsi:type="varchar" name="email" nullable="false" length="50"
         comment="email id"/>
     <column xsi:type="varchar" name="phoneno" nullable="false" length="15"  comment="PhoneNo"/>
-    <column xsi:type="varchar" name="whatsapp" nullable="false" length="5"  comment="whatsapp"/>
+    <column xsi:type="varchar" name="whatsapp" nullable="false" length="40"  comment="whatsapp"/>
     <column xsi:type="int" name="pincode" nullable="false" padding="20"  comment="PinCode"/>
     <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="id"/>
