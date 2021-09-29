@@ -219,7 +219,6 @@ class Submit extends Action
 
 
             if ($status == 200) {
-
                 if ($this->emailExistOrNot($email) == 0) {
                     $custId = $this->getCustomerIdByEmail($email);
                     $password = $PostValue['password'];
@@ -228,8 +227,11 @@ class Submit extends Action
                     $customerSecure->setRpToken(null);
                     $customerSecure->setRpTokenCreatedAt(null);
                     $customerSecure->setPasswordHash($this->_encryptor->getHash($password, true));
-                    $this->customerRepositoryInterface->save($customer);
-                    $this->messageManager->addSuccessMessage(
+                $this->customerRepositoryInterface->save($customer);
+                $this->loggerResponse->addInfo("========================PASSWORD RECOVERY API SUCCESS========================");
+                $this->loggerResponse->addInfo("Password Reset Successfully for email:".' '.$email);
+                $this->loggerResponse->addInfo("============================================================");
+                $this->messageManager->addSuccessMessage(
                         'New Password Saved'
                     );
                     $resultRedirect->setUrl($this->_redirect->getRefererUrl());

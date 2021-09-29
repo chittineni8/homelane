@@ -10,7 +10,7 @@ use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
 
 /**
- * @package     DanubeHome PWA
+ * @package     Homelane
  * @author        Codilar Technologies
  * @link              http://www.codilar.com/
  * @copyright © 2021 Codilar Technologies Pvt. Ltd.. All rights reserved.
