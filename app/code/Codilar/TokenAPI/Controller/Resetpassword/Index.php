@@ -3,7 +3,7 @@
  * Index.php
  *
  * @package     Homelane
- * @description  Verifies the password code api
+ * @description Verifies the password code api
  * @author      Abhinav Vinayak
  * @copyright   2021 Codilar Technologies Pvt. Ltd. . All rights reserved.
  * @license     Open Source
