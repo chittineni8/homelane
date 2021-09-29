@@ -7,17 +7,32 @@
 {{template config_path="design/email/header_template"}}
 
 <table>
-    <tr class="email-intro">
+    <tr >
         <td>
             <h1>
-                {{trans "Hello Admin}}
-                </h1>
-            <p>
-                {{trans " Query
-                received form %store_name." store_name=$store.frontend_name}}
-            </p>
-        </td>
+                {{trans "Hello Admin"}}
+            </h1>
+            {{trans " Query
+            received form %store_name." store_name=$store.frontend_name}} <br>
+    <tr>
+        <td><strong>{{trans "Name"}}</strong></td>
+        <td>{{var name}}</td>
+    </tr>
+    <tr>
+        <td><strong>{{trans "Email"}}</strong></td>
+        <td>{{var email}}</td>
+    </tr>
+    <tr>
+        <td><strong>{{trans "Phone"}}</strong></td>
+        <td>{{var phoneno}}</td>
+    </tr>
+    <tr>
+        <td><strong>{{trans "PinCode"}}</strong></td>
+        <td>{{var pincode}}</td>
+    </tr>
+    <tr>
+        <td><strong>{{trans "Can We Reach You in WhatsApp"}}</strong></td>
+        <td>{{var whatsapp}}</td>
     </tr>
 </table>
-
 {{template config_path="design/email/footer_template"}}
