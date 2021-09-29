@@ -13,8 +13,6 @@
                         <argument name="block_id" xsi:type="string">homelane-footer-block</argument>
                     </arguments>
                 </block>
-                <!-- <block class="Magento\Customer\Block\Form\Login" name="custom_customer_form_login" template="Magento_Customer::form/login.phtml" after="-"/> -->
-                <block class="Magento\Framework\View\Element\Template" name="otp-popup" template="PHPCuong_CustomerAccount::otp-popup.phtml" after="-" />
         </referenceContainer>
         <referenceContainer name="header-wrapper">
               <block class="Magento\Framework\View\Element\Html\Links" name="header.links" after="-">
