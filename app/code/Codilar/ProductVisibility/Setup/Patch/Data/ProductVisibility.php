@@ -42,10 +42,10 @@ class ProductVisibility implements DataPatchInterface {
         $eavSetup->addAttribute(\Magento\Catalog\Model\Product::ENTITY,'product_visibility', [
             'group' => 'General',
             'type' => 'text',
-            'backend' => '',
+            'backend' => 'Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend',
             'frontend' => '',
             'sort_order' => 210,
-            'label' => 'ProductVisibility',
+            'label' => 'Product Visibility',
             'input' => 'multiselect',
             'class' => '',
             'source' => 'Codilar\ProductVisibility\Model\Source\Config\Product\ProductVisibilityOption',

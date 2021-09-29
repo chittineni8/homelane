@@ -10,6 +10,16 @@ $mediaUrl = $viewModel->getMediaUrl();
 $parsedUrl = $viewModel->getParsedUrl();
 $redirect = $viewModel->getHttpResponse();
 $baseUrl = $viewModel->getBaseUrl();
+$currentUrl = $viewModel->getCurrentUrl();
+$gets = parse_url($currentUrl);
+$queryParam = '?city_change=true';
+if (isset($gets['query'])) {
+    if (strpos($gets['query'], 'city_change=true') !== false) {
+        $queryParam = '';
+    } else {
+        $queryParam = '&city_change=true';
+    }
+}
 //foreach ($parsedUrl as $url) {
 //    $schema = $url['scheme'];
 //    $path = $url['path'];
@@ -18,8 +28,16 @@ $sessionData = $viewModel->getSessionValue();
 $cookieData = $viewModel->getWebsiteCookie();
 //if ($cookieData == null) {
 //    if ($sessionData == null) {
+//var_dump($sessionData);
+//var_dump($cookieData);
+//die;
 //?>
-<div class="call-popup" data-mage-init='{"callPopup":{}}'>
+
+<?php if ($sessionData == null && $sessionData == null): ?>
+<div class="call-popup" data-show-popup="true" data-mage-init='{"callPopup":{"show_popup":"true"}}'>
+<?php else: ?>
+    <div class="call-popup" data-show-popup="false" data-mage-init='{"callPopup":{"show_popup":"false"}}'>
+<?php endif; ?>
     <div class="call-popup-top">
         <div class="call-popup-img">
             <img src='<?php echo $this->getViewFileUrl('images/city-popup-image.png'); ?>' alt="city popup image">
@@ -54,8 +72,7 @@ $cookieData = $viewModel->getWebsiteCookie();
             <?php
             foreach ($parsedWebCode as $webCode) {
                 $code = $webCode['path']; ?>
-                <a onclick="<?php $viewModel->setSessionValue($code);
-                $viewModel->setWebsiteCookie($code); ?>" href="<?php echo $webUrl . '' . $parsedUrl; ?>">
+                <a href="<?php echo $webUrl . '' . $parsedUrl . '' . $queryParam; ?>">
                 <?php if ($imageUrl): ?>
                     <div class="store-image">
                         <img src="<?php echo $imageUrl ?>" alt="<?php echo $storeName ?>" title="<?php echo $storeName ?>" class="img-responsive" width="200" height="200"/>
@@ -75,14 +92,6 @@ $cookieData = $viewModel->getWebsiteCookie();
         </ul>
     </div>
 </div>
-<!--        --><?php
-//    }?>
-<?php
-//} else {
-//        $viewModel->setSessionValue($cookieData);
-//        return $redirect->setRedirect($baseUrl . $cookieData);
-//    }
-?>
 
 <script type="text/javascript">
     function citySearchFunction() {
