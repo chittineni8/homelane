@@ -8,7 +8,7 @@
                     <item name="sortOrder" xsi:type="number">60</item>
                     <item name="dataType" xsi:type="string">string</item>
                     <item name="formElement" xsi:type="string">multiselect</item>
-                    <item name="label" xsi:type="string" translate="true">Custom CategoryVisibility </item>
+                    <item name="label" xsi:type="string" translate="true">Category Visibility </item>
                 </item>
             </argument>
         </field>
