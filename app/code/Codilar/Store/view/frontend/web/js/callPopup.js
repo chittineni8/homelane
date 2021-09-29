@@ -15,11 +15,13 @@ require(
             clickableOverlay: true,
             buttons: []
         };
-        // const callPopup = modal(popup, $('.call-popup'));
-        $('.call-popup').modal(popup).modal('openModal');
+        let popupModel = $('.call-popup').modal(popup);
+        if ($('.call-popup').first().data('show-popup') == true){
+            popupModel.modal('openModal');
+        }
         // $('.modal-footer').hide();
         $("div#switcher-store-trigger").click(function() {
-            $('.call-popup').modal('openModal');
+            popupModel.modal('openModal');
         });
     }
 );

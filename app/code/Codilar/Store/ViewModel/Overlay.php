@@ -16,7 +16,6 @@ namespace Codilar\Store\ViewModel;
 
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Codilar\Store\Model\Session;
 use Magento\Framework\Stdlib\Cookie\CookieSizeLimitReachedException;
 use Magento\Framework\Stdlib\Cookie\FailureToSendException;
 use Magento\Framework\UrlInterface;
@@ -63,11 +62,6 @@ class Overlay implements ArgumentInterface
     protected $urlInterface;
 
     /**
-     * @var Session
-     */
-    protected $session;
-
-    /**
      * @var CookieManagerInterface
      */
     protected $cookieManager;
@@ -103,7 +97,6 @@ class Overlay implements ArgumentInterface
         ScopeConfigInterface $scopeConfig,
         StoreManagerInterface $storeManager,
         UrlInterface $urlInterface,
-        Session $session,
         CookieManagerInterface $cookieManager,
         CookieMetadataFactory $cookieMetadataFactory,
         SessionManagerInterface $sessionManager,
@@ -112,7 +105,6 @@ class Overlay implements ArgumentInterface
         $this->scopeConfig = $scopeConfig;
         $this->storeManager = $storeManager;
         $this->urlInterface = $urlInterface;
-        $this->session = $session;
         $this->cookieManager = $cookieManager;
         $this->cookieMetadataFactory = $cookieMetadataFactory;
         $this->sessionManager = $sessionManager;
