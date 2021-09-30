@@ -94,7 +94,7 @@ require(['jquery','slickslider'], function($) {
             }
         }
 		if ($(window).width() < 768) {
-			$(".hp-category-block .pagebuilder-column-group").not(".slick-initialized").slick({
+			$(".hp-category-block .pagebuilder-column-group, .category-grid .image-box").not(".slick-initialized").slick({
 		        dots: false,arrows: true,infinite: true,speed: 300,slidesToShow: 1,slidesToScroll: 1,
 		        centerMode: true,centerPadding: '80px',autoplay: true,initialSlide: 1,speed: 1000,cssEase: 'linear',
 		    });
