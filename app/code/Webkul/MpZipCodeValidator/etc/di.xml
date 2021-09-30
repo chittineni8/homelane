@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!-- /**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MpZipCodeValidator
+ * @author    Webkul <support@webkul.com>
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mpzipcodevalidator_region_list_data_source" xsi:type="string">Webkul\MpZipCodeValidator\Model\ResourceModel\Region\Grid\Collection</item>
+                <item name="mpzipcodevalidator_zipcode_list_data_source" xsi:type="string">Webkul\MpZipCodeValidator\Model\ResourceModel\Zipcode\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Webkul\MpZipCodeValidator\Model\ResourceModel\Region\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mpzipcodevalidator_region</argument>
+            <argument name="eventPrefix" xsi:type="string">mpzipcodevalidator_region_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">region_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\MpZipCodeValidator\Model\ResourceModel\Region</argument>
+        </arguments>
+    </type>
+    <type name="Webkul\MpZipCodeValidator\Model\ResourceModel\Zipcode\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mpzipcodevalidator_zipcode</argument>
+            <argument name="eventPrefix" xsi:type="string">mpzipcodevalidator_zipcode_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">zipcode_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\MpZipCodeValidator\Model\ResourceModel\Zipcode</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="MpZipCodeValidatorGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="RegionGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Webkul\MpZipCodeValidator\Model\ResourceModel\Region\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">MpZipCodeValidatorGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="ZipcodeGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Webkul\MpZipCodeValidator\Model\ResourceModel\Zipcode\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">MpZipCodeValidatorGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Webkul\MpAssignProduct\Helper\Data">
+        <plugin name="seller-search-region-data" type="Webkul\MpZipCodeValidator\Plugin\DataPlugin" sortOrder="10" />
+    </type>
+    <type name="Magento\Quote\Model\Quote\Address">
+        <plugin name="seller-region-data" type="Webkul\MpZipCodeValidator\Plugin\CheckoutPage" sortOrder="1" />
+    </type>
+    <type name="Webkul\Marketplace\Controller\Product\SaveProduct">
+        <plugin name="seller-product-save" type="Webkul\MpZipCodeValidator\Plugin\BeforeSaveProduct" sortOrder="1" />
+    </type>
+     <type name="Magento\Customer\Controller\Account\LoginPost">
+        <plugin name="Webkul_MpZipCodeValidator::loginpost" type="Webkul\MpZipCodeValidator\Plugin\Controller\Account\LoginPost" sortOrder="1" />
+    </type>
+    <type name="Webkul\MpAssignProduct\Block\Product\Products">
+        <plugin name="zipcode-search-data" type="Webkul\MpZipCodeValidator\Plugin\ZipcodeDataPlugin" sortOrder="10" />
+    </type>
+    <type name="Webkul\MpZipCodeValidator\Logger\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="Webkul\MpZipCodeValidator\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">mpzipcodevalidator</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">Webkul\MpZipCodeValidator\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

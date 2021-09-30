@@ -1,0 +1,103 @@
+Manage Region Entry,Manage Region Entry
+Save Entry,Save Entry
+Edit Region,Edit Region
+New Region,New Region
+Region Information,Region Information
+Regions disabled succesfully,Regions disabled succesfully
+Region Name,Region Name
+Enabled,Enabled
+Disabled,Disabled
+CSV,CSV
+Region Entries,Region Entries
+New Entry,New Entry
+Regions enabled succesfully,Regions enabled succesfully
+All Regions,All Regions
+Region Added Successfully,Region Added Successfully
+Region Updated Successfully,Region Updated Successfully
+Regions deleted Successfully,Regions deleted Successfully
+Zipcode deleted succesfully,Zipcode deleted succesfully
+Zipcode List,Zipcode List
+Marketplace Add Regions,Marketplace Add Regions
+Something went wrong.,Something went wrong.
+Regions enabled successfully,Regions enabled successfully
+Regions disabled successfully,Regions disabled successfully
+Something went wrong.,Something went wrong.
+Marketplace View Regions,Marketplace View Regions
+Delete,Delete
+Zipcode List,Zipcode List
+Marketplace Zipcode Validator Regions,Marketplace Zipcode Validator Regions
+Click,Click
+Edit,Edit
+Download Example CSV,Download Example CSV
+Enable,Enable
+Do you want to enable selected entries?,Do you want to enable selected entries?
+Disable,Disable
+Do you want to disable selected entries?,Do you want to disable selected entries?
+Id,Id
+Status,Status
+View All Zipcodes,View All Zipcodes
+Add Entry,Add Entry
+Do you want to delete selected entries?,Do you want to delete selected entries?
+zipcode,zipcode
+Add Regions,Add Regions
+View All Regions,View All Regions
+Available Regions,Available Regions
+Enter Delivery Zipcode,Enter Delivery Zipcode
+Save Region,Save Region
+Region List,Region List
+Date,Date
+Region Status,Region Status
+Search by Region name,Search by Region name
+From: ,From: 
+To: ,To: 
+All,All
+All Zipcodes,All Zipcodes
+Search by Zipcode Id,Search by Zipcode Id
+Submit,Submit
+Search by Zipcode,Search by Zipcode
+Please select entries to delete.,Please select entries to delete.
+Please select Action.,Please select Action.
+Product is available at ,Product is available at 
+Product is not available at ,Product is not available at 
+Saved Addresses,Saved Addresses
+ to see your saved addresses, to see your saved addresses
+Recent,Recent
+Skipped row %1. %2 already exists.,Skipped row %1. %2 already exists.
+"If yes, Buyer will be only able to place an order for saved zipcodes.","If yes, Buyer will be only able to place an order for saved zipcodes."
+Allow Place Order Only for Saved Zipcode,Allow Place Order Only for Saved Zipcode
+General Settings,General Settings
+No csv file has been updated,No csv file has been updated
+Shipping Availability Check,Shipping Availability Check
+Manage Shipping Region,Manage Shipping Region
+Add Region,Add Region
+The file was not uploaded.,The file was not uploaded.
+REGION NAME,REGION NAME
+STATUS,STATUS
+CREATED AT,CREATED AT
+Action,Action
+Zip Code Validator Availability,Zip Code Validator Availability
+Apply to all Products, Apply to all Products
+'Apply to all products' will enable zipcode check field in all products else select 'Apply to Individual product' to set manually from Individual product page.,'Apply to all products' will enable zipcode check field in all products else select 'Apply to Individual product' to set manually from Individual product page.
+Check,Check
+Enter a message for check the zipcode availability.,Enter a message for check the zipcode availability.
+Please enter your zipcode to know whether this product is available in your area or not.,Please enter your zipcode to know whether this product is available in your area or not.
+Apply to Individual Products,Apply to Individual Products
+Select the Regions,Select the Regions
+Region,Region
+Assign Product,Assign Product
+Zip Code Validation,Zip Code Validation
+No Validation,No Validation
+Apply default Configuration,Apply default Configuration
+All regions,All regions
+Select Specific,Select Specific
+"Note:- Zipcodes containing only Alphabets, Numerals, Space, UnderScore and Hyphen are allowed.","Note:- Zipcodes containing only Alphabets, Numerals, Space, UnderScore and Hyphen are allowed."
+Marketplace Zipcode Validator,Marketplace Zipcode Validator
+Enable,Enable
+Zip Code Validator Message,Zip Code Validator Message
+Product ID,Product ID
+Product Name,Product Name
+Product Sku,Product Sku
+Product Price,Product Price
+OK,OK
+Attention,Attention
+Please select valid entries.,Please select valid entries.

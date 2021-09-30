@@ -1,15 +1,32 @@
 <?php
+/**
+ * LoginPost.php
+ *
+ * @package     Homelane
+ * @description To check the registered homelane user and signing in.
+ * @author      Abhinav Vinayak
+ * @copyright   2021 Codilar Technologies Pvt. Ltd. . All rights reserved.
+ * @license     Open Source
+ * @see         https://www.codilar.com/
+ *
+ */
+
 
 namespace Codilar\TokenAPI\Plugin\Customer;
 
+use Magedelight\SMSProfile\Controller\Ajax\Login;
 use Magento\Customer\Api\AccountManagementInterface;
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\Json\Helper\Data;
 use Magento\Store\Model\StoreManagerInterface;
 use Codilar\TokenAPI\Model\Plugin\Controller\Account\RestrictCustomer;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Codilar\TokenAPI\Logger\Logger;
 use Magento\Framework\Serialize\Serializer\Json;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientFactory;
 use GuzzleHttp\Exception\GuzzleException;
+use Magento\Store\Model\ScopeInterface;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\ResponseFactory;
 use GuzzleHttp\HandlerStack;
@@ -31,21 +48,23 @@ class LoginPost
      * API base request Endpoint
      */
     const LOGIN_REQUEST_ENDPOINT = 'codilar_customer_api/login_oauth/login_endpoint';
-     /**
+
+    /**
      * @var AccountManagementInterface
      */
     protected $customerAccountManagement;
- 
+
     /**
      * @var StoreManagerInterface
      */
     protected $storeManager;
 
- /**
+    /**
      * @var RestrictCustomer
      */
     protected $signupcustomer;
-      /**
+
+    /**
      * @var ResponseFactory
      */
     private $responseFactory;
@@ -59,28 +78,34 @@ class LoginPost
      * @var HandlerStack
      */
     private $stack;
+
     /**
      * @var LoggerResponse
      */
     private $loggerResponse;
+
     /**
      * @var Json
      */
-
     protected $json;
     /**
      * @var StoreManagerInterface
      */
+
     /**
      * @var Callapi
      */
     protected $callapi;
-      /**
-     * @var \Magento\Customer\Model\CustomerFactory
+
+    /**
+     * @var CustomerFactory
      */
     protected $customerFactory;
 
-
+    /**
+     * @var ScopeConfigInterface
+     */
+    protected $scopeConfig;
 
 
     /**
@@ -88,22 +113,26 @@ class LoginPost
      *
      * @param AccountManagementInterface $customerAccountManagement
      * @param StoreManagerInterface $storeManager
-     * @param RestrictCustomer  $signupcustomer
+     * @param RestrictCustomer $signupcustomer
      */
 
+
     public function __construct(
-        \Magento\Framework\App\Action\Context $context,
+        Data                       $helper,
+        Context                    $context,
         AccountManagementInterface $customerAccountManagement,
-        StoreManagerInterface $storeManager,
-        RestrictCustomer $signupcustomer,
-        ClientFactory         $clientFactory,
-        ResponseFactory       $responseFactory,
-        HandlerStack          $stack,
-        Callapi               $callapi,
-        Json                  $json,
-        Logger                $loggerResponse,
-        CustomerFactory       $customerFactory
-    ) {
+        StoreManagerInterface      $storeManager,
+        RestrictCustomer           $signupcustomer,
+        ClientFactory              $clientFactory,
+        ScopeConfigInterface       $scopeConfig,
+        ResponseFactory            $responseFactory,
+        HandlerStack               $stack,
+        Callapi                    $callapi,
+        Json                       $json,
+        Logger                     $loggerResponse,
+        CustomerFactory            $customerFactory
+    )
+    {
         $this->_request = $context->getRequest();
         $this->_response = $context->getResponse();
         $this->resultRedirectFactory = $context->getResultRedirectFactory();
@@ -115,59 +144,95 @@ class LoginPost
         $this->stack = $stack;
         $this->json = $json;
         $this->clientFactory = $clientFactory;
+        $this->scopeConfig = $scopeConfig;
         $this->callapi = $callapi;
         $this->loggerResponse = $loggerResponse;
-        $this->customerFactory  = $customerFactory;
+        $this->customerFactory = $customerFactory;
+        $this->helper = $helper;
 
-    }
+    }//end __construct()
 
-    public function aroundExecute(\Magento\Customer\Controller\Account\LoginPost $subject, $proceed)
-    {           
-        $login =  $this->_request->getPost('login'); 
-      
-        $email = $login['username'];
-        $password = $login['password'];
-        $check = $this->emailExistOrNot($email);
+    /**
+     * @param Login $subject
+     * @param Callable $proceed
+     * @return mixed
+     * @throws LocalizedException
+     */
+    public function aroundExecute(Login $subject, callable $proceed)
+    {
+        try {
 
-        // $custom_redirect= false;
+            $login = $this->helper->jsonDecode($subject->getRequest()->getContent());
+            $email = $login['username'];
+            $password = $login['password'];
 
-        $returnValue = $proceed();
-                    
-
-        if ($check) {
-
-$loginParams=['email' => $email , 'password' => $password];
+            $loginParams = [
+                'email' => $email,
+                'password' => $password,
+                'ajax_save' => 1,
+                'ajax_mode' => 1,
+            ];
             list($apiRequestEndpoint, $requestMethod, $params) = $this->prepareParams($loginParams);
-        $response = $this->doRequest($apiRequestEndpoint,$requestMethod,$params);
-        echo "<pre>";
-         print_r($response);
-        die;
-           
-        }
-        // if (isset($login['press_room_page']) && $custom_redirect) {
-        //     $resultRedirect = $this->resultRedirectFactory->create();
-        //     $resultRedirect->setPath('mycustomlogin/index');
-        //     return $resultRedirect; 
-        // }
-        return $returnValue;
-    }
+            $response = $this->doRequest($apiRequestEndpoint, $requestMethod, $params);
+            $status = $response->getStatusCode();
+            $responseBody = $response->getBody();
+            $responseContent = $responseBody->getContents();
+            $responseDecodee = json_decode($responseContent, true);
+            if ($status == 200) {
+                if ($this->emailExistOrNot($email)) :
+                    $websiteId = $this->storeManager->getWebsite()->getWebsiteId();
+                    $customer = $this->customerFactory->create();
+                    $customer->setWebsiteId($websiteId);
 
+                    // Preparing data for existing Homelane customer
+                    $customer->setEmail($email);
+                    $customer->setFirstname($responseDecodee['first_name']);
+                    $customer->setLastname($responseDecodee['last_name']);
+                    $customer->setPassword($password);
+                    $customer->setHomelaneUserId($responseDecodee['user_id']);
+                    $customer->setCustomerMobile($responseDecodee['mobile']);
+                    // Save data
+                    $customer->save();
+                    $this->loggerResponse->addInfo('========================LOGIN SUCCESS========================');
+                    $this->loggerResponse->addInfo('Account Created Successfully for email:' . ' ' . $email);
+                    $this->loggerResponse->addInfo('============================================================');
+                endif;
+            } else if ($status == 401) {
+                $this->loggerResponse->addInfo('========================LOGIN API ERROR======================================');
+                $this->loggerResponse->addInfo('Invalid Email or Password' . ' / ' . 'No Auth Header was Present for email:' . ' ' . $email);
+                $this->loggerResponse->addInfo('=============================================================================');
+            } else {
+                $this->loggerResponse->addInfo('========================LOGIN API ERROR======================================');
+                $this->loggerResponse->addInfo('Error:'. $status . 'Missing Mandatory Params  for email:' . ' ' . $email);
+                $this->loggerResponse->addInfo('=============================================================================');
+            }//end if
+
+            $returnValue = $proceed();
+
+            return $returnValue;
+
+        } catch (\Exception $e) {
+            $this->loggerResponse->critical($e->getMessage() . ' ' . 'VERIFY PASSWORD CODE API EXCEPTION');
+        }//end try
+
+    }//end aroundExecute()
 
 
     /**
      *
-     * @param $email
-     * @return bool
+     * @param  $email
+     * @return boolean
      */
     public function emailExistOrNot($email): bool
     {
-        
         $websiteId = (int)$this->storeManager->getWebsite()->getId();
         $isEmailNotExists = $this->customerAccountManagement->isEmailAvailable($email, $websiteId);
         return $isEmailNotExists;
-    }
 
-     /**
+    }//end emailExistOrNot()
+
+
+    /**
      * Get request url
      *
      * @return string
@@ -175,7 +240,9 @@ $loginParams=['email' => $email , 'password' => $password];
     public function getLoginRequestUri()
     {
         return $this->scopeConfig->getValue(self::LOGIN_REQUEST_URI, ScopeInterface::SCOPE_STORE);
-    }
+
+    }//end getLoginRequestUri()
+
 
     /**
      * Get API Endpoint
@@ -185,26 +252,32 @@ $loginParams=['email' => $email , 'password' => $password];
     public function getLoginApiEndpoint()
     {
         return $this->scopeConfig->getValue(self::LOGIN_REQUEST_ENDPOINT, ScopeInterface::SCOPE_STORE);
-    }
+
+    }//end getLoginApiEndpoint()
+
 
     private function prepareParams($finalBrandData): array
     {
-        $apiRequestEndpoint = $this->getSignupApiEndpoint();
+        $apiRequestEndpoint = $this->getLoginApiEndpoint();
         $requestMethod = Request::METHOD_POST;
         $params = $finalBrandData;
 
-//         // collect param data
-//         $bodyJson = $this->json->serialize($finalBrandData);
-// //        $params['form_params'] = json_decode($bodyJson, true);
-//         $params['body'] = $bodyJson;
-//         // $params['debug'] = true;
-// //        $params['http_errors'] = false;
-// //        $params['handler'] = $tapMiddleware($stack);
-//         $params['headers'] = [
-//             'Content-Type' => 'application/json'
-//         ];
-        return array($apiRequestEndpoint, $requestMethod, $params);
-    }
+        // collect param data
+        $bodyJson = $this->json->serialize($finalBrandData);
+        $params['form_params'] = json_decode($bodyJson, true);
+
+        $params['debug'] = false;
+        $params['headers'] = [
+            'Content-Type' => 'application/x-www-form-urlencoded',
+            'Authorization' => 'Bearer' . ' ' . $this->callapi->getToken(),
+        ];
+        return [
+            $apiRequestEndpoint,
+            $requestMethod,
+            $params,
+        ];
+
+    }//end prepareParams()
 
     /**
      * Do API request with provided params
@@ -245,7 +318,7 @@ $loginParams=['email' => $email , 'password' => $password];
     }
 
 
-/**
+    /**
      * create middleware to add it in the request
      *
      * @return array
@@ -262,15 +335,7 @@ $loginParams=['email' => $email , 'password' => $password];
             //    echo $request->getBody();
         });
 
-        // $middleware = new Oauth1([
-        //     'consumer_key' => $this->getConsumerKey(),
-        //     'consumer_secret' => $this->getConsumerSecret(),
-        //     'token' => $this->getTokenKey(),
-        //     'token_secret' => $this->getTokenSecret(),
-        //     'realm' => $this->getRealm(),
-        //     'signature_method' => $this->getSignatureMethod()
-        // ]);
-        // $stack->push($middleware);
+
         return array($stack, $tapMiddleware);
     }
 

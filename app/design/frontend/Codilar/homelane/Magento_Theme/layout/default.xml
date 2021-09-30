@@ -7,16 +7,12 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <!-- <referenceContainer name="header.panel">
-            <block class="Magento\Framework\View\Element\Template" name="headertopcontent" template="Magento_Theme::html/header-top-content.phtml"/>
-        </referenceContainer> -->
         <referenceContainer name="footer">
                 <block before="-" class="Magento\Cms\Block\Block" name="homelane-footer-block">
                     <arguments>
                         <argument name="block_id" xsi:type="string">homelane-footer-block</argument>
                     </arguments>
                 </block>
-                <!-- <block class="Magento\Customer\Block\Form\Login" name="custom_customer_form_login" template="Magento_Customer::form/login.phtml" after="-"/> -->
         </referenceContainer>
         <referenceContainer name="header-wrapper">
               <block class="Magento\Framework\View\Element\Html\Links" name="header.links" after="-">
@@ -25,22 +21,22 @@
                   </arguments>
               </block>
         </referenceContainer>
+
         <move element="header.links" destination="header-wrapper" after="-" />
         <move element="top.links" destination="header-wrapper" after="-" />
         <move element="minicart" destination="header-wrapper" before="header.links" />
         <move element="navigation.sections" destination="header-wrapper" after="logo" />
         
-        
-        <!-- remove store switcher ofheader -->
-        <referenceBlock name="header.panel.wrapper" remove="true" />
-        <referenceBlock name="store.settings.language" remove="true"/>
         <!-- remove footer content -->
         <referenceBlock name="footer_links" remove="true" />
         <referenceBlock name="report.bugs" remove="true" />
         <referenceBlock name="form.subscribe" remove="true" />
+        <!-- remove store switcher ofheader -->
+        <referenceBlock name="header.panel.wrapper" remove="true" />
+        <referenceBlock name="store.settings.language" remove="true"/>
         <!-- remove advance search link of header -->
         <referenceBlock name="advanced-search-link" remove="true"/>
-        <referenceBlock name="minicart" remove="true"/>
+        <!-- <referenceBlock name="minicart" remove="true"/> -->
 
         <!-- remove compare link -->
         <referenceBlock name="catalog.compare.link" remove="true" />

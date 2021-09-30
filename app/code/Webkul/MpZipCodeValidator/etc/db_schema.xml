@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MpZipCodeValidator
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="mpzipcodevalidator_region" resource="default" engine="innodb" comment="MpZipCodeValidator Region Table">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" padding="10" identity="true" comment="Region Id"/>
+        <column xsi:type="int" name="seller_id" comment="Seller Id" unsigned="true" nullable="false" />
+        <column xsi:type="text" name="region_name" comment="Image Name" nullable="false"/>
+        <column xsi:type="int" name="status" comment="Status" unsigned="true" nullable="false" default="1" />
+        <column xsi:type="timestamp" name="created_at" on_update="false" comment="Created Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="false" comment="Updated Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+                <column name="id"/>
+            </constraint>
+    </table>
+    <table name="mpzipcodevalidator_zipcode" resource="default" engine="innodb" comment="MpZipCodeValidator Zipcode Table">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" padding="10" identity="true" comment="Zip Code Id"/>
+        <column xsi:type="int" name="region_id" comment="Region Id" unsigned="true" nullable="false" />
+        <column xsi:type="text" name="region_zipcode_from" comment="Zipcode From" nullable="false" />
+        <column xsi:type="text" name="region_zipcode_to" comment="Zipcode To" nullable="false" />
+        <column xsi:type="int" name="serial_no" comment="Serial No." unsigned="true" nullable="false" />
+        <column xsi:type="timestamp" name="created_at" on_update="false" comment="Created Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="false" comment="Updated Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+                <column name="id"/>
+            </constraint>
+    </table>
+    <table name="mpzipcodevalidator_assignproduct" resource="default" engine="innodb" comment="MpZipCodeValidator Assign Product Table">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" padding="10" identity="true" comment="Region Id"/>
+        <column xsi:type="int" name="assign_id" comment="Assign Product Id" unsigned="true" nullable="false" />
+        <column xsi:type="int" name="product_id" comment="Product Id" unsigned="true" nullable="false" />
+        <column xsi:type="text" name="region_ids" comment="Region Ids" nullable="false" />
+        <column xsi:type="timestamp" name="created_at" on_update="false" comment="Created Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="false" comment="Updated Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+                <column name="id"/>
+            </constraint>
+    </table>
+</schema>

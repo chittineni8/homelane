@@ -1,0 +1,20 @@
+{
+    "name": "webkul/marketplace-shipping-availability-check",
+    "description": "Webkul Marketplace Shipping Availability Check for Magento2",
+    "require": {
+        "webkul/module-marketplace": "5.*.*"
+    },
+    "type": "magento2-module",
+    "version": "5.0.0",
+    "license": [
+        "proprietary"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Webkul\\MpZipCodeValidator\\": ""
+        }
+    }
+}

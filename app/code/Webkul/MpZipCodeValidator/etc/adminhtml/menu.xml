@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- /**
+ * Webkul Software
+ *
+ * @category Webkul
+ * @package Webkul_MpZipCodeValidator
+ * @author Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license https://store.webkul.com/license.html
+ */ -->
+ <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Webkul_MpZipCodeValidator::region" title="Manage Shipping Region" module="Webkul_MpZipCodeValidator" sortOrder="1" parent="Webkul_MpZipCodeValidator::manager" action="mpzipcodevalidator/region" resource="Webkul_MpZipCodeValidator::region"/>
+        <add id="Webkul_MpZipCodeValidator::manager" title="Shipping Availability Check" module="Webkul_MpZipCodeValidator" sortOrder="11" resource="Webkul_MpZipCodeValidator::manager" parent="Webkul_Marketplace::marketplace"/>
+    </menu>
+</config>
+

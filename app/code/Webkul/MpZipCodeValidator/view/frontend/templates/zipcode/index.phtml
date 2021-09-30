@@ -1,0 +1,137 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MpZipCodeValidator
+ * @author    Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+$mpHelper = $block->getMpHelper();
+$isPartner = $mpHelper->isSeller();
+if ($isPartner == 1):
+    $collection = $block->getAllZipcodes();
+    $data = $block->getRequest()->getParams();
+    $filterid = '';
+    $filterzipcodeFrom = '';
+    $filterzipcodeTo = '';
+    if (isset($data['fid'])) {
+        $filterid = $data['fid'] != "" ? $data['fid'] : '';
+    }
+    if (isset($data['fzipFrom'])) {
+        $filterzipcodeFrom = $data['fzipFrom'] != "" ? $data['fzipFrom'] : '';
+    }
+
+    ?>
+
+<div class="wk-mp-design">
+    <fieldset class="fieldset info wk-mp-fieldset">
+        <legend class="legend">
+            <span><?= $block->escapeHtml(__('All Zipcodes')) ?></span>
+        </legend>
+        <div class="grid">
+            <div class="hor-scroll">
+                <form action="<?= $block->escapeUrl($block->getUrl(
+                    'mpzipcodevalidator/zipcode/index/id/'.$data['id'],
+                    ['_secure' => $block->getRequest()->isSecure()]
+                ))?>" method="get" id="form-zipcodelist-filter" name="formRegionlistFilter" 
+                data-mage-init='{"validation":{}}'>
+                    <table cellspacing="0" class="border wk-mp-list-table">
+                        <thead>
+                            <tr id="wk-mp-tr-heading">
+                                <th><span><?= $block->escapeHtml(__('Id')) ?></span></th>
+                                <th><span><?= $block->escapeHtml(__('Zipcode From')) ?></span></th>
+                                <th><span><?= $block->escapeHtml(__('Zipcode To')) ?></span></th>
+                                <th><span>&nbsp;</span></th>
+                            </tr>
+                        </thead>
+                        <tbody class="wk-mp-body">
+                            <tr>
+                                <td>
+                                   <input type="text" class="input-text" name="fid" 
+                                    placeholder='<?= $block->escapeHtml(__('Search by Zipcode Id')) ?>' 
+                                    value="<?= $block->escapeHtml($filterid)?>" id="zipcodeid"
+                                   />
+                                </td>
+                                <td>
+                                    <input type="text" class="input-text" name="fzipFrom" 
+                                        placeholder='<?= $block->escapeHtml(__('Search by Zipcode From')) ?>' 
+                                        value="<?= $block->escapeHtml($filterzipcodeFrom); ?>" id="zipcodevalue"
+                                    />
+                                </td>
+                                <td>
+                                    <input type="text" class="input-text" name="fzipTo" 
+                                        placeholder='<?= $block->escapeHtml(__('Search by Zipcode To')) ?>' 
+                                        value="<?= $block->escapeHtml($filterzipcodeTo); ?>" id="zipcodevalue"
+                                    />
+                                </td>
+                                <td>
+                                    <button class="button" title="Save" type="submit" id="fliter_zipcode_form">
+                                        <span><span><span><?= $block->escapeHtml(__('Submit')); ?></span></span></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<div class="wk-zcv-regionlist">
+    <?php if (count($collection)) { ?>
+        <fieldset class="fieldset">
+            <form method="post" action="<?= $block->escapeUrl($block->getUrl('mpzipcodevalidator/zipcode/delete')); ?>"
+                id="wk-zcv-delete-form" name="wk-zcv-delete-form"
+            >
+                <select class="wk-ssp-mass-action" 
+                        name="action" id="wk-zcv-zipcode-select">
+                    <option value="" selected><?= $block->escapeHtml(__('Action'));?></option>
+                    <option value="2"><?= $block->escapeHtml(__('Delete'));?></option>
+                </select>
+                <button title="Submit" class="wk-ssp-mass-action-submit action primary" id="wk-zcv-zipcode-button">
+                    <span><?= $block->escapeHtml(__("Submit")); ?></span>
+                </button>
+                <table class="data table wk-zcv-regionlist-table" >
+                    <thead>
+                        <th>
+                            <input type="checkbox" id="wk-zcv-delete-checkbox">
+                        </th>
+                        <th><?= $block->escapeHtml(__("ID")); ?></th>
+                        <th><?= $block->escapeHtml(__("ZIPCODE FROM")); ?></th>
+                        <th><?= $block->escapeHtml(__("ZIPCODE TO")); ?></th>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($collection as $zipcode) { ?>
+                            <tr>
+                                <td class="col">
+                                    <input class="wk-zcv-delete-checkbox" 
+                                        type="checkbox" name="wk-delete[]" 
+                                        value="<?= $block->escapeHtml($zipcode->getId()); ?>
+                                    ">
+                                </td>
+                                <td class="col"><?= $block->escapeHtml($zipcode->getId()); ?></td>
+                                <td class="col"><?= $block->escapeHtml($zipcode->getRegionZipcodeFrom()); ?></td>
+                                <td class="col"><?= $block->escapeHtml($zipcode->getRegionZipcodeTo()); ?></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </form>
+            <?php if ($block->getPagerHtml()): ?>
+                <div class="order-products-toolbar toolbar bottom"><?= $block->getPagerHtml(); ?></div>
+            <?php endif ?>    
+        </fieldset>
+    <?php } else { ?>
+        <div class="wk-emptymsg"><?= $block->escapeHtml(__('NO ZIPCODE AVAILABLE'));?></div>
+    <?php	} ?>
+</div>
+<script type="text/x-magento-init">
+{
+    "body": {
+        "Webkul_MpZipCodeValidator/js/regionlist": {}
+    }
+}
+</script>
+<?php endif;?>

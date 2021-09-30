@@ -1,0 +1,74 @@
+<?php
+/**
+ * Webkul software.
+ * @category Webkul
+ * @package Webkul_MpZipCodeValidator
+ * @author Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license https://store.webkul.com/license.html
+ */
+$product = $block->getProduct();
+$productId = $product->getId();
+$zipCodeValidation = $block->getZipCodeValidationValue($productId);
+$type = $product->getTypeId();
+$stock = $product->isSalable();
+$configValue = $block->getConfigApplyValue();
+$ifZipCodeConfiguredForProduct = $block->ifZipCodeConfiguredForProduct();
+if ($type != 'virtual' && $type != 'downloadable'
+    && $type != 'etickets' && $type != 'booking'
+    && $type != 'giftcard' && $stock && $ifZipCodeConfiguredForProduct
+    && ($zipCodeValidation != '1' || $configValue =='0')
+) {
+    $url = $block->getUrl();
+    $data = $block->getJsonHelper()->jsonEncode(['url' => $url ]);
+    $postcode = $block->getCustomerZipcode();
+    ?>
+<div class="wk-zcv-zipbox">
+    <div class="wk-zcv-zip">
+        <div class="wk-zcv-wrapper">
+            <div class="wk-zcv-zipcodeform">
+                <form autocomplete="off">
+                    <input type="text" id="wk-zcv-regex" name="zipcode" 
+                        placeholder="<?= $block->escapeHtml(__('Enter Delivery Zipcode')); ?>" 
+                        class="wk-zcv-zipform0" title="zipcode" 
+                        data-id="<?= $block->escapeHtml($product->getId()); ?>" 
+                        seller-data-id="0" value="<?= $block->escapeHtml($postcode) ; ?>" 
+                        autocomplete="off" />
+                    <div id="wk-zcv-check0" data-pro-id="<?= $block->escapeHtml($product->getId()); ?>" data-id="0">
+                        <span>Check</span>
+                    </div>
+                </form>
+                <div class="wk-zcv-zipcookie0">
+                    <ul id="wk-zcv-addr0"></ul>
+                    <ul id="wk-zcv-cookie0"></ul>
+                    <ul id="wk-zcv-login0"></ul>
+                </div>
+            </div>
+            <div class="wk-zcv-loader0"></div>
+        </div>
+        <div class="wk-zcv-ziperror0" id="wk-zcv-error"></div>
+        <div class="wk-zcv-zipsuccess0"></div>
+        
+        <div id="wk-zcv-error1" class="message warning" style="display:none"></div>
+        <div id="wk-zcv-zipcodemessage">
+            <?= $block->escapeHtml($block->getZipcodeMessage()); ?>
+        </div>
+    </div>
+</div>
+<div class="wk-zcv-login-popup" id="modal-popup">
+    <span class="close-login-popup">x</span>
+    <?= $block->getLayout()
+                                        ->createBlock(\Magento\Customer\Block\Form\Login::class)
+                                        ->setTemplate("Webkul_MpZipCodeValidator::customer/form/login.phtml")
+                                        ->toHtml();
+    ?>
+</div>
+
+<script type="text/x-magento-init">
+{
+    "body": {
+    "Webkul_MpZipCodeValidator/js/viewonproduct": <?= /* @noEscape */ $data ?>
+    }
+}
+</script>
+<?php } ?>
