@@ -29,9 +29,10 @@ class Save extends Action
         $params = $this->getRequest()->getParams();
         $query = $this->query->setData($params);
         try {
+
             $this->queryResourceModel->save($query);
             // created custom event:- form_submit_event
-            $this->_eventManager->dispatch('form_submit_event');
+            $this->_eventManager->dispatch('form_submit_event',['query'=>$params]);
             $this->messageManager->addSuccessMessage(__("Your Query added Successfully,We will reach You Soon !!!"));
         } catch (\Exception $e) {
             $this->messageManager->addErrorMessage(__("Something went wrong"));
