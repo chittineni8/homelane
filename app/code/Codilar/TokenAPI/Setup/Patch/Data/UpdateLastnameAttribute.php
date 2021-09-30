@@ -73,7 +73,7 @@ class UpdateLastnameAttribute implements DataPatchInterface, PatchVersionInterfa
      */
     public static function getVersion()
     {
-        return '2.0.14';
+        return '2.0.15';
     }
 
     /**
