@@ -1,5 +1,14 @@
 <?php
-
+/**
+ * UpdateLastnameAttribute.php
+ *
+ * @package     Homelane
+ * @author      Manav Padhariya <manav.p@codilar.com>
+ * @copyright   2021 Codilar Technologies Pvt. Ltd. . All rights reserved.
+ * @license     Open Source
+ * @see         https://www.codilar.com/
+ *
+ */
 
 namespace Codilar\TokenAPI\Setup\Patch\Data;
 
@@ -10,10 +19,16 @@ use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
 
 /**
- * @package     DanubeHome PWA
- * @author        Codilar Technologies
- * @link              http://www.codilar.com/
- * @copyright © 2021 Codilar Technologies Pvt. Ltd.. All rights reserved.
+ * Class UpdateLastnameAttribute
+ *
+ * @package     Homelane
+ * @description UpdateLastnameAttribute class for updating customer lastname attribute
+ * @author      Manav Padhariya <manav.p@codilar.com>
+ * @copyright   2021 Codilar Technologies Pvt. Ltd. . All rights reserved.
+ * @license     Open Source
+ * @see         https://www.codilar.com/
+ *
+ * UpdateLastnameAttribute class for updating customer lastname attribute
  */
 class UpdateLastnameAttribute implements DataPatchInterface, PatchVersionInterface
 {
