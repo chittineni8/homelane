@@ -157,25 +157,36 @@ class Index extends Action
             $email = $this->getRequest()->getParam('email');
 
             if ($email) :
-                $emailbody = ['email' => $email , 'hlStore' => 1];
+                $emailbody = ['email' => $email, 'hlStore' => 1];
 
-              list($apiRequestEndpoint, $requestMethod, $params) = $this->prepareParams($emailbody);
+                list($apiRequestEndpoint, $requestMethod, $params) = $this->prepareParams($emailbody);
                 $emailData = $this->doRequest($apiRequestEndpoint, $requestMethod, $params);
                 $status = $emailData->getStatusCode();
                 $responseBody = $emailData->getBody();
                 $responseContent = $responseBody->getContents();
                 $responsedecoded = json_decode($responseContent, true);
-                $error = $responsedecoded['error'];
+                if ($status == 200) :
+                    $message = $responsedecoded['msg'];
+                    $result->setData($message);
+                    return $result;
 
-                if ($error) :
-                    $result->setData($error);
-                    return $result;
-                else :
-                    $result->setData('Instructions on how to reset your password have just been
-                    sent to' .' '.$email);
-                    return $result;
+                elseif ($status == 401):
+                    if (array_key_exists('error', $responsedecoded)):
+                        $error = $responsedecoded['error'];
+                        $result->setData($error);
+                        return $result;
+                    else:
+                        $this->loggerResponse->addInfo("========================FORGOT PASSWORD ERROR========================");
+                        $this->loggerResponse->addInfo("STATUS" . ' ' . $status . ' ' . "NO AUTHORIZATION HEADER PRESENT for email:" . $email);
+                        $this->loggerResponse->addInfo("===================================================================");
+                    endif;
+                else:
+                    $error = $responsedecoded['error'];
+                    $this->loggerResponse->addInfo("========================FORGOT PASSWORD ERROR========================");
+                    $this->loggerResponse->addInfo("STATUS" . ' ' . $status . ' ' . $error . "for email:" . $email);
+                    $this->loggerResponse->addInfo("===================================================================");
+
                 endif;
-
             endif;
 
         } catch (\Exception $e) {
