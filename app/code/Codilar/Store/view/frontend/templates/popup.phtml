@@ -33,10 +33,10 @@ $cookieData = $viewModel->getWebsiteCookie();
 //die;
 //?>
 
-<?php if ($sessionData == null && $sessionData == null): ?>
-<div class="call-popup" data-show-popup="true" data-mage-init='{"callPopup":{"show_popup":"true"}}'>
+<?php if ($sessionData != null || $sessionData != null): ?>
+<div class="call-popup" data-show-popup="false" data-mage-init='{"callPopup":{}}'>
 <?php else: ?>
-    <div class="call-popup" data-show-popup="false" data-mage-init='{"callPopup":{"show_popup":"false"}}'>
+    <div class="call-popup" data-show-popup="true" data-mage-init='{"callPopup":{}}'>
 <?php endif; ?>
     <div class="call-popup-top">
         <div class="call-popup-img">
