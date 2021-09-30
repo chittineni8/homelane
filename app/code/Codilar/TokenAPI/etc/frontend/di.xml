@@ -5,7 +5,7 @@
         <plugin name="restrictCustomer"
                 type="Codilar\TokenAPI\Model\Plugin\Controller\Account\RestrictCustomer"/>
     </type>
-    <type name="Magento\Customer\Controller\Account\LoginPost">
-        <plugin name="HomelaneLoginAccountLoginPost" type="Codilar\TokenAPI\Plugin\Customer\LoginPost" sortOrder="1" disabled="false"/>
+    <type name="Magedelight\SMSProfile\Controller\Ajax\Login">
+        <plugin name="HomelaneLoginAccountLoginPost" type="Codilar\TokenAPI\Plugin\Customer\LoginPost" sortOrder="0" disabled="false"/>
     </type>
 </config>
