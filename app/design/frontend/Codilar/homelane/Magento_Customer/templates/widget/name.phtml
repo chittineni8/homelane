@@ -64,7 +64,7 @@ $suffix = $block->showSuffix();
                        name="<?= $block->escapeHtmlAttr($block->getFieldName('firstname')) ?>"
                        value="<?= $block->escapeHtmlAttr($block->getObject()->getFirstname()) ?>"
                        title="<?= $block->escapeHtmlAttr($block->getStoreLabel('firstname')) ?>"
-                       placeholder="First Name"
+                       placeholder="Name"
                        class="input-text <?= $block->escapeHtmlAttr($block->getAttributeValidationClass('firstname')) ?>" <?= ($block->getAttributeValidationClass('firstname') == 'required-entry') ? ' data-validate="{required:true}"' : '' ?>>
             </div>
         </div>
