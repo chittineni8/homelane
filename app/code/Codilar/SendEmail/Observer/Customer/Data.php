@@ -55,11 +55,12 @@ class Data implements ObserverInterface
      */
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
-//        $submit = $observer->getEvent()->getSubmit();`
-//
-//        if (!$submit) {
-//            return $this;
-//        }
+        $queryData = $observer->getEvent()->getQuery();
+        $name=$queryData['name'];
+        $phoneno=$queryData['phoneno'];
+        $email=$queryData['email'];
+        $pincode=$queryData['pincode'];
+        $whatsapp=$queryData['whatsapp'];
         /* Receiver Detail */
         $receiverInfo = [
             'name' => 'admin',
@@ -67,9 +68,12 @@ class Data implements ObserverInterface
         ];
         $store = $this->storeManager->getStore();
         $templateParams = ['store' => $store,
+            'name'=>$name,
+            'phoneno'=>$phoneno,
+            'email'=>$email,
+            'pincode'=>$pincode,
+            'whatsapp'=>$whatsapp,
             'administrator_name' => $receiverInfo['name']];
-
-
         $transport = $this->transportBuilder->setTemplateIdentifier(
             'email_section_sendmail_email_template'
         )->setTemplateOptions(
