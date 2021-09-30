@@ -1,0 +1,195 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MpZipCodeValidator
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+$mpHelper = $block->getMpHelper();
+$isPartner = $mpHelper->isSeller();
+if ($isPartner == 1):
+    $collection = $block->getAllRegions();
+    $data = $block->getRequest()->getParams();
+    $filter = '';
+    $filterStatus = 2;
+    $filterDateFrom = '';
+    $filterDateTo = '';
+    if ($storeName = $block->getRequest()->getParam('s')) {
+        $filter = $storeName != "" ? $storeName : "";
+    }
+    if (isset($data['status'])) {
+        $filterStatus = $data['status'] != "" ? $data['status'] : 2;
+    }
+    if ($storeFromDate = $block->getRequest()->getParam('from_date')) {
+        $filterDateFrom = $storeFromDate != "" ? $storeFromDate : "";
+    }
+    if ($storeToDate = $block->getRequest()->getParam('to_date')) {
+        $filterDateTo = $storeToDate != "" ? $storeToDate : "";
+    } ?>
+<div class="wk-mp-design">
+    <fieldset class="fieldset info wk-mp-fieldset">
+        <legend class="legend">
+            <span><?= $block->escapeHtml(__('Region List')) ?></span>
+        </legend>
+        <div class="grid">
+            <div class="hor-scroll">
+                <form action="<?= $block->escapeUrl($block->getUrl('mpzipcodevalidator/region/view/', ['_secure' =>
+                $block->getRequest()->isSecure()]))?>" method="get" id="form-regionlist-filter"  
+                name="formRegionlistFilter" data-mage-init='{"validation":{}}'>
+                    <table cellspacing="0" class="border wk-mp-list-table">
+                        <thead>
+                            <tr id="wk-mp-tr-heading">
+                                <th><span><?= $block->escapeHtml(__('Region Name')) ?></span></th>
+                                <th><span><?= $block->escapeHtml(__('Date')) ?></span></th>
+                                <th><span><?= $block->escapeHtml(__('Region Status')) ?></span></th>
+                                <th><span>&nbsp;</span></th>
+                            </tr>
+                        </thead>
+                        <tbody class="wk-mp-body">
+                            <tr>
+                                <td>
+                                    <input type="text" class="input-text" 
+                                        name="s" 
+                                        placeholder='<?= $block->escapeHtml(__('Search by Region name')) ?>' 
+                                        value="<?= $block->escapeHtml($filter)?>" id="regionname"
+                                    />
+                                </td>
+                                <td>
+                                    <span class="wk-mp-td-span">
+                                        <?= $block->escapeHtml(__('From: ')) ?>
+                                        <input name="from_date" id="special-from-date" 
+                                            class="input-text" value="<?= $block->escapeHtml($filterDateFrom)?>"
+                                        />
+                                    </span>                                
+                                    <span class="wk-mp-td-span">
+                                        <?= $block->escapeHtml(__('To: ')) ?>
+                                        <input name="to_date" id="special-to-date" class="input-text" 
+                                            value="<?= $block->escapeHtml($filterDateTo)?>"
+                                        />
+                                    </span>
+                                </td>
+                                <td>
+                                    <select name="status" class="input-text">
+                                        <option value="" 
+                                            <?php if ($filterStatus == 2) { echo 'selected="selected"'; }?>
+                                        >
+                                            <?= $block->escapeHtml(__('All')) ?>
+                                        </option>
+                                        <option value="1" 
+                                            <?php if ($filterStatus == 1) { echo 'selected="selected"'; }?>
+                                        >
+                                            <?= $block->escapeHtml(__('Enable')) ?>
+                                        </option>
+                                        <option value="0" 
+                                            <?php if ($filterStatus == 0) { echo 'selected="selected"'; }?>
+                                        >
+                                            <?= $block->escapeHtml(__('Disable')) ?>
+                                        </option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <button id="filterForm" class="button" title="Save" type="submit" >
+                                        <span><span>
+                                            <span><?= $block->escapeHtml(__('Submit')) ?></span>
+                                        </span></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </fieldset>
+</div>
+    <?php if ($collection != false) { ?>
+<div class="wk-zcv-regionlist">
+        <?php if (count($collection)) { ?>
+        <fieldset class="fieldset">
+            <form method="post" action="<?= $block->escapeHtml($block->getUrl('mpzipcodevalidator/region/massaction'))
+            ; ?>" id="wk-zcv-delete-form" name="wk-zcv-delete-form" class="table-wrapper">
+                <select class="wk-ssp-mass-action" name="action" id="wk-zcv-select-action">
+                    <option value="" selected><?= $block->escapeHtml(__('Action'));?></option>
+                    <option value="2"><?= $block->escapeHtml(__('Enable'));?></option>
+                    <option value="3"><?= $block->escapeHtml(__('Disable'));?></option>
+                    <option value="4"><?= $block->escapeHtml(__('Delete'));?></option>
+                </select>
+                <button title="Submit" class="wk-ssp-mass-action-submit action primary" id="submitButton">
+                    <span><?= $block->escapeHtml(__("Submit")); ?></span>
+                </button>
+                <table class="data table wk-zcv-regionlist-table" >
+                    <thead>
+                        <th>
+                            <input type="checkbox" id="wk-zcv-delete-checkbox">
+                        </th>
+                        <th><?= $block->escapeHtml(__("REGION NAME")); ?></th>
+                        <th><?= $block->escapeHtml(__("STATUS")); ?></th>
+                        <th><?= $block->escapeHtml(__("CREATED AT")); ?></th>
+                        <th><?= $block->escapeHtml(__("View All Zipcodes")); ?></th>
+                        <th><?= $block->escapeHtml(__("Action")); ?></th>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($collection as $region) { ?>
+                            <tr>
+                                <td data-th="<?= $block->escapeHtml(__("Select"))?>" scope="col" class="col">
+                                    <input class="wk-zcv-delete-checkbox" 
+                                        type="checkbox" name="wk-delete[]" 
+                                        value="<?= $block->escapeHtml($region->getId()); ?>">
+                                </td>
+                                <td data-th="<?= $block->escapeHtml(__("REGION NAME"))?>" scope="col" class="col">
+                                        <?= $block->escapeHtml($region->getRegionname()); ?>
+                                    </td>
+                                <td data-th="<?= $block->escapeHtml(__("STATUS"))?>" scope="col" class="col">
+                                    <?php
+                                    if ($region->getStatus() == 1) { echo $block->escapeHtml(__("Enable"));
+                                    } elseif ($region->getStatus() == 0) { echo  $block->escapeHtml(__("Disable"));}
+                                    ?>
+                                </td>
+                                <td data-th="<?= $block->escapeHtml(__("CREATED AT"))?>" scope="col" class="col">
+                                    <?= $block->escapeHtml(date('d-m-Y', strtotime($region->getCreatedAt()))); ?>
+                                </td>
+                                <td data-th="<?= $block->escapeHtml(__("View All Zipcodes"))?>" scope="col" class="col">
+                                    <a href="<?= $block->escapeUrl($block->getUrl(
+                                        'mpzipcodevalidator/zipcode/index/id/'.$region->getId()
+                                    ));?>">
+                                        <?= $block->escapeHtml(__("click"));?>
+                                    </a>
+                                </td>
+                                <td data-th="<?= $block->escapeHtml(__("Action"))?>" scope="col" class="col">
+                                    <a href="<?= $block->escapeUrl($block->getUrl(
+                                        'mpzipcodevalidator/region/add/id/'.$region->getId()
+                                    ));?>">
+                                        <?= $block->escapeHtml(__("edit"));?>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </form>
+            <?php if ($block->getPagerHtml()): ?>
+                <div class="order-products-toolbar toolbar bottom"><?= $block->getPagerHtml(); ?></div>
+            <?php endif ?>    
+        </fieldset>
+    <?php } else { ?>
+        <div class="wk-emptymsg"><?= $block->escapeHtml(__('NO REGION AVAILABLE'));?></div>
+    <?php	} ?>
+</div>
+    <?php } else { ?>
+    <div class="wk-emptymsg"><?= $block->escapeHtml(__('NO REGION AVAILABLE'));?></div>
+    <?php } ?>
+    <?php
+    $editUrl = $block->geturl('mpzipcodevalidator/region/edit');
+    $deleteUrl = $block->geturl('mpzipcodevalidator/region/delete');
+    $data = $block->getJsonHelper()->jsonEncode(["editUrl"=>$editUrl, "deleteUrl" => $deleteUrl]);?>
+<script type="text/x-magento-init">
+{
+    "body": {
+        "Webkul_MpZipCodeValidator/js/regionlist": <?= /* @noEscape*/ $data ?>
+    }
+}
+</script>
+<?php endif;?>

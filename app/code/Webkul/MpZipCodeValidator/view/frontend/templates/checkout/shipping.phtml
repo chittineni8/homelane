@@ -1,0 +1,20 @@
+<?php
+$viewModel = $block->getData("view_model");
+$addresses = $block->getAddresses();
+$data = [];
+foreach ($addresses as $_address) {
+    $data[]['zipcode'] = $_address->getData('postcode');
+    foreach ($block->getAddressItems($_address) as $_item) {
+        $data[]['productId'] = $_item->getProductId();
+    }
+}
+$data = $viewModel->getJsonHelper()->jsonEncode(['data' => $data ]);
+?>
+<div class="multi_shipping_error_message"></div>
+<script type="text/x-magento-init">
+{
+    "body": {
+        "Webkul_MpZipCodeValidator/js/multishipping": <?= /* @noEscape */ $data ?>
+    }
+}
+</script>

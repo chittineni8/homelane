@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul software.
+ * @category Webkul
+ * @package Webkul_MpZipCodeValidator
+ * @author Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license https://store.webkul.com/license.html
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<css src="Webkul_MpZipCodeValidator::css/styles.css"/>
+	</head>
+	<body>
+		<referenceContainer name="alert.urls">
+			<block class="Webkul\MpZipCodeValidator\Block\Product\ViewOnProduct" name="zipcode_form" template="Webkul_MpZipCodeValidator::product/viewonproduct.phtml" before="-" ifconfig="mpzipcode/general/enable" />
+		</referenceContainer>
+		<referenceContainer name="content">
+            <block class="Magento\Captcha\Block\Captcha" name="captcha" after="-">
+                <action method="setFormId">
+                    <argument name="formId" xsi:type="string">user_login</argument>
+                </action>
+                <action method="setImgWidth">
+                    <argument name="width" xsi:type="string">230</argument>
+                </action>
+                <action method="setImgHeight">
+                    <argument name="width" xsi:type="string">50</argument>
+                </action>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="head.components">
+            <block class="Magento\Framework\View\Element\Js\Components" name="captcha_page_head_components" template="Magento_Captcha::js/components.phtml"/>
+        </referenceBlock>
+        <referenceBlock name="assignproduct_list">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Webkul_MpZipCodeValidator::assignproduct.phtml</argument>
+            </action>
+            <arguments>
+                <argument name="viewModel" xsi:type="object">Webkul\MpZipCodeValidator\ViewModel\View</argument>
+            </arguments>
+        </referenceBlock>
+
+	</body>
+</page>

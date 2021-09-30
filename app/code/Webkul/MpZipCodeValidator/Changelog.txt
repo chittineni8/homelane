@@ -1,0 +1,36 @@
+Legend
+
++ Features
+- Bugs
+
+-------------------------------- Version 5.0.0 --------------------------------------
+    +  Compatible with mangento 2.4.x.
+
+-------------------------------- Version 3.1.0 --------------------------------------
+    +  Mass assign Region to products.
+    +  Global configuration for regions, Apply to all or individual products.
+    -  Fixed bugs
+
+-------------------------------- Version 3.0.0 --------------------------------------
+    +  Updated module version for magento 2.3 
+    -  Fixed bugs
+    
+-------------------------------- Version 2.1.0 --------------------------------------
+
+    +  Mass assign Region to products.
+    +  Global configuration for regions, Apply to all or individual products.
+    -  Fixed other bugs
+
+-------------------------------- Version 2.0.1 --------------------------------------
+
+    + Updated composer.json as per magento 2.2.x version.
+    + Updated according to magento 2.2.x and marketplace 2.1.x version
+    - Fixed other bugs
+
+-------------------------------- Version 2.0.0 --------------------------------------
+	
+    + Allow seller/admin to add/edit multiple regions.
+    + Allow seller/admin to upload csv of region zipcodes.
+    + seller/admin can select region on product add/edit page. 
+    + It show product is available for shipping at given location or not.
+    + It will allow user to check shipping availability.

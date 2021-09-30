@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "03f352c8735b0d12aa5fd4b241154818",
+    "content-hash": "be65928e9e412c1aa166f9655aad4cc6",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -19355,6 +19355,87 @@
             "time": "2021-08-13T09:24:49+00:00"
         },
         {
+            "name": "mageplaza/module-ajax-layered-navigation",
+            "version": "4.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "reference": "f73543ac4e1def05f1a70bcd1525c8a157a1ad09"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/f73543ac4e1def05f1a70bcd1525c8a157a1ad09",
+                "reference": "f73543ac4e1def05f1a70bcd1525c8a157a1ad09",
+                "shasum": ""
+            },
+            "require": {
+                "mageplaza/module-core": "^1.4.5"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Mageplaza\\AjaxLayer\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Mageplaza",
+                    "email": "support@mageplaza.com",
+                    "homepage": "https://www.mageplaza.com",
+                    "role": "Technical Support"
+                }
+            ],
+            "description": "Magento 2 Ajax Layered Navigation Extension",
+            "time": "2021-08-22T11:23:56+00:00"
+        },
+        {
+            "name": "mageplaza/module-better-wishlist",
+            "version": "4.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "reference": "f73543ac4e1def05f1a70bcd1525c8a157a1ad09"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/f73543ac4e1def05f1a70bcd1525c8a157a1ad09",
+                "reference": "f73543ac4e1def05f1a70bcd1525c8a157a1ad09",
+                "shasum": ""
+            },
+            "require": {
+                "mageplaza/module-core": "^1.4.5"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Mageplaza\\BetterWishlist\\": ""
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Mageplaza",
+                    "email": "support@mageplaza.com",
+                    "homepage": "https://www.mageplaza.com",
+                    "role": "Technical Support"
+                }
+            ],
+            "description": "Magento 2 Better Wishlist Extension",
+            "time": "2021-08-10T06:53:39+00:00"
+        },
+        {
             "name": "mageplaza/module-core",
             "version": "1.4.11",
             "source": {
@@ -21518,12 +21599,12 @@
             "version": "1.12.6",
             "source": {
                 "type": "git",
-                "url": "https://github.com/swissup/module-core.git",
+                "url": "https://github.com/2tvenom/CBOREncode.git",
                 "reference": "cd8bd5daadf5b0c5b7fbd0024c2bf59f48165220"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swissup/module-core/zipball/cd8bd5daadf5b0c5b7fbd0024c2bf59f48165220",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/cd8bd5daadf5b0c5b7fbd0024c2bf59f48165220",
                 "reference": "cd8bd5daadf5b0c5b7fbd0024c2bf59f48165220",
                 "shasum": ""
             },
@@ -21551,12 +21632,12 @@
             "version": "1.9.15",
             "source": {
                 "type": "git",
-                "url": "https://github.com/swissup/module-easytabs.git",
+                "url": "git@github.com:swissup/module-ajaxpro.git",
                 "reference": "b45f393bd3005b88c1720cbb3c5e631033941f62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swissup/module-easytabs/zipball/b45f393bd3005b88c1720cbb3c5e631033941f62",
+                "url": "https://api.github.com/repos/swissup/module-ajaxpro/zipball/b45f393bd3005b88c1720cbb3c5e631033941f62",
                 "reference": "b45f393bd3005b88c1720cbb3c5e631033941f62",
                 "shasum": ""
             },

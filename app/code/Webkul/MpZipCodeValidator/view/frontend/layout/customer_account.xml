@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MpZipCodeValidator
+ * @author    Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="seller_account_navigation">
+            <block class="Webkul\MpZipCodeValidator\Block\Account\Navigation"  name="mpzipcodevalidator_account_navigation" before="-" template="Webkul_MpZipCodeValidator::account/navigation.phtml" ifconfig="mpzipcode/general/enable">
+                <arguments>
+                    <argument xsi:type="helper" helper="\Webkul\Marketplace\Helper\Data::isSeller" name="isPartner"></argument>
+                    <argument xsi:type="helper" helper="\Webkul\Marketplace\Helper\Data::getAllowedProductType" name="allow_pro_type"></argument>
+                    <argument xsi:type="helper" helper="\Webkul\Marketplace\Helper\Data::isSellerGroupModuleInstalled" name="isSellerGroup"></argument>
+                    <argument xsi:type="helper" helper="\Webkul\Marketplace\Helper\Data::isAllowedAction" name="isAllowedActionAdd">mpzipcodevalidator/region/add</argument>
+                    <argument xsi:type="helper" helper="\Webkul\Marketplace\Helper\Data::isAllowedAction" name="isAllowedActionView">mpzipcodevalidator/region/view</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

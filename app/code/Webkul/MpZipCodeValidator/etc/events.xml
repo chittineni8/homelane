@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MpZipCodeValidator
+ * @author    Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="mpassignproduct_items_save_after">
+        <observer name="webkul_mpzipcodevalidator_assign_product_save_after" instance="Webkul\MpZipCodeValidator\Observer\AssignProductSaveAfter" />
+    </event>
+    <event name="customer_delete_after">
+        <observer name="webkul_mpzincodevalidator_customer_region_delete_after" instance="Webkul\MpZipCodeValidator\Observer\CustomerRegionDeleteAfter" />
+    </event>
+</config>

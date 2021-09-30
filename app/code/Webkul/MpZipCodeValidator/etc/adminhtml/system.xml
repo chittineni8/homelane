@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!--
+/** Webkul MpZipCodeValidator system xml
+ * @category  Webkul
+ * @package   Webkul_MpZipCodeValidator
+ * @author    Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Config/etc/system_file.xsd">
+    <system>
+        <tab id="webkul" translate="label" sortOrder="10">
+            <label>Webkul</label>
+        </tab>
+        <section id="mpzipcode" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Marketplace Zipcode Validator</label>
+            <tab>webkul</tab>
+            <resource>Webkul_MpZipCodeValidator::config_mpzipcodevalidator</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="enable" translate="label comment" sortOrder="1" type="select" showInDefault="1" showInStore="0" >
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="enablecheckout" translate="label comment" sortOrder="1" type="select" showInDefault="1" showInStore="0" >
+                    <label>Allow Place Order Only for Saved Zipcode</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If yes, Buyer will be only able to place an order for saved zipcodes.</comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="applyto" translate="label comment" sortOrder="1" type="select" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <source_model>Webkul\MpZipCodeValidator\Model\Config\Source\Apply</source_model>
+                    <label>Zip Code Validator Availability</label>
+                    <validate>required-entry</validate>
+                    <comment>'Apply to all products' will enable zipcode check field in all products else select 'Apply to Individual product' to set manually from Individual product page.</comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="regionids" translate="label" sortOrder="1" type="multiselect" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <source_model>Webkul\MpZipCodeValidator\Model\Config\Source\RegionOptions</source_model>
+                    <label>Select the Regions</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="applyto">1</field>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="zipcodemessage" translate="label comment" sortOrder="1" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Zip Code Validator Message</label>
+                    <validate>required-entry</validate>
+                    <comment>Enter a message for check the zipcode availability.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

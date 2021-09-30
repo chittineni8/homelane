@@ -16,6 +16,8 @@
         "magento/composer-root-update-plugin": "~1.1",
         "magento/product-community-edition": "2.4.3",
         "mageplaza/magento-2-social-login": "^4.1",
+        "mageplaza/module-ajax-layered-navigation": "^4.0",
+        "mageplaza/module-better-wishlist": "^4.0",
         "mageplaza/module-smtp": "^4.5",
         "swissup/module-easytabs": "^1.9",
         "twilio/sdk": "^6.28"
@@ -80,6 +82,10 @@
         "swissup": {
             "type": "composer",
             "url": "https://docs.swissuplabs.com/packages/"
+        },
+        "mageplaza": {
+            "type": "composer",
+            "url": "https://repo.mageplaza.com"
         }
     },
     "extra": {

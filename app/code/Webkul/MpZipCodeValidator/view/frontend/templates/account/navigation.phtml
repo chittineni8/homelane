@@ -1,0 +1,54 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MpZipCodeValidator
+ * @author    Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+
+$isPartner= $block->getData("isPartner");
+$magentoCurrentUrl = $block->getCurrentUrl();
+$allow_pro_type = $block->getData("allow_pro_type");
+$isSellerGroup = $block->getData("isSellerGroup");
+?>
+<style type="text/css">
+    @media only screen and (max-width: 767px){
+
+        .block-collapsible-nav.wk-mp-main{
+            top: 20px;
+        }
+    }
+</style>
+<nav class="account-nav">
+    <ul class="nav items">
+        <?php
+        if ($isPartner) { ?>
+            <?php if (($isSellerGroup && $block->getData("isAllowedActionAdd")) || !$isSellerGroup) { ?>
+            <li class="nav item <?= strpos($magentoCurrentUrl, 'mpzipcodevalidator/region/add')? "current":"";?>">      
+                    <a href="<?= $block->escapeUrl($block->getUrl(
+                        'mpzipcodevalidator/region/add',
+                        ['_secure' => $block->getRequest()->isSecure()]
+                    )); ?>">
+                        <?= $block->escapeHtml(__('Add Regions')) ?>
+                    </a>                                     
+            </li>
+            <?php } ?>
+            <?php if (($isSellerGroup && $block->getData("isAllowedActionView")) || !$isSellerGroup) { ?>
+            <li class="nav item 
+                <?= strpos($magentoCurrentUrl, 'mpzipcodevalidator/region/view')? "current":"";?>"
+            >      
+                    <a href="<?= $block->escapeUrl($block->getUrl(
+                        'mpzipcodevalidator/region/view',
+                        ['_secure' => $block->getRequest()->isSecure()]
+                    )); ?>">
+                        <?= $block->escapeHtml(__('View All Regions')) ?>
+                    </a>                                     
+            </li>
+            <?php } ?>
+        <?php } ?>
+    </ul>
+</nav>
+

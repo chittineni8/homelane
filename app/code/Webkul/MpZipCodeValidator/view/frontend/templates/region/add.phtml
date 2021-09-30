@@ -1,0 +1,85 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MpZipCodeValidator
+ * @author    Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+$mpHelper = $block->getMpHelper();
+$isPartner = $mpHelper->isSeller();
+$region = $block->getRegion();
+$status = 3;
+$regionName = '';
+if ($region != '') {
+    $regionName = $region->getRegionName();
+    $status = $region->getStatus();
+}
+?>
+<?php if ($isPartner == 1): ?>
+<div>
+    <form method="post" action="<?= $block->escapeUrl($block->getUrl('mpzipcodevalidator/region/save')); ?>" 
+        enctype="multipart/form-data" data-mage-init='{"validation":{}}' id="wk-mpzcv-form">
+    <?php if ($region != '') { ?>
+        <input type="hidden" name="region_id" value="<?= $block->escapeHtml($region->getid());?>">
+    <?php } ?>
+        <fieldset class="fieldset">
+            <?= $block->escapeHtml($block->getFormKeyBlockHtml()); ?>
+            <legend class="legend">
+                <span><?= $block->escapeHtml(__("Add Region")); ?></span>
+                <button class="button wk-mp-btn" type="submit">
+                    <span><span><?= $block->escapeHtml(__("Save Region")); ?></span></span>
+                </button>
+                <div class="region_note">
+                    <?= $block->escapeHtml(
+                        __("Note:- Zipcodes containing only Alphabets, Numerals, Space, UnderScore and Hyphen are 
+                        allowed.")
+                    ); ?>
+                </div>
+            </legend>
+            <div class="field required">
+                <label for="mpzcv-region" class="label">
+                    <span><?= $block->escapeHtml(__("Region Name")); ?></span>
+                </label>
+                <div class="control">
+                    <input type="text" class="input-text required-entry validate-no-html-tags" 
+                        title="<?= $block->escapeHtml(__('Region Name')); ?>" name="region_name" 
+                        id="mpzcv-region" value="<?= $block->escapeHtml($regionName); ?>" aria-required="true">
+                </div>
+            </div>
+            <div class="field">
+                <span>
+                    <a  href="<?= $block->escapeUrl($block->getViewFileUrl(
+                        'Webkul_MpZipCodeValidator::zipcodes.csv'
+                    ));?>">
+                    <?= $block->escapeHtml(__("Download Example CSV")); ?>
+                </a>
+                </span><br/>
+                <label for="mpzcv-zipcodes" class="label">
+                    <span><?= $block->escapeHtml(__("CSV")); ?></span>
+                </label>
+                <div class="control">
+                    <input type="file" class="input-file" title="Zipcodes CSV" name="zipcodes-csv" id="mpzcv-zipcodes">
+                </div>
+            </div>
+            <div class="field required">
+                <label for="mpzcv-zipcodes" class="label">
+                    <span><?= $block->escapeHtml(__("Status")); ?></span>
+                </label>
+                <div class="control">
+                    <select name="status" class="required-entry">
+                        <option value="1" <?php if ($status == 1) {echo "selected"; }?> >
+                            <?= $block->escapeHtml(__("Enable")); ?>
+                        </option>
+                        <option value="0" <?php if ($status == 0) {echo "selected"; }?> >
+                            <?= $block->escapeHtml(__('Disable')); ?>
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<?php endif; ?>

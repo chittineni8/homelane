@@ -1,0 +1,48 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MpZipCodeValidator
+ * @author    Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+$allRegions = $block->getAllRegions();
+$assignData = $block->getProductId();
+$product_id = $assignData->getProductId();
+if ($product_id) {
+    $product = $block->getProduct($product_id);
+    $type = $product->getTypeId();
+    $visibility = $product->getVisibility();
+    $selectedRegions = $assignData->getRegionIds();
+    $selected = explode(',', $selectedRegions);
+    if ($type != 'virtual' && $type != 'downloadable' && $visibility != 1) {
+        ?>
+<div class="field" id="wk-mp-zcv-region">
+    <div><label class="wk-zcv-label"><?= $block->escapeHtml(__("Available Regions")); ?>:</label></div>
+    <div>
+        <input type="hidden" name="region_assign_id" value="<?= $block->escapeHtml($assignData->getId()); ?>">
+        <select multiple class="wk-zcv-multiple-select" name="product[available_region][]">
+            <?php if (count($allRegions)) {
+                foreach ($allRegions as $key => $value) { ?>
+                <option value="<?= $block->escapeHtml($value->getId()); ?>" 
+                    <?php if (in_array($value->getId(), $selected)) { echo "selected"; } ?> 
+                >
+                    <?= $block->escapeHtml($value->getRegionName()); ?>
+                </option>
+                <?php } } ?>
+        </select>
+    </div>
+</div>
+    <?php } ?>
+<script type="text/javascript">
+        require([
+            "jquery",
+            "mage/mage"
+        ], function($){
+            var html = $('#wk-mp-zcv-region');
+            $('#wk_mpassignproduct_form .fieldset [class="field"]').after(html);
+        });
+</script>
+<?php }

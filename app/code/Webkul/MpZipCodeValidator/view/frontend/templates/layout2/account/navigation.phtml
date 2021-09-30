@@ -1,0 +1,58 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MpZipCodeValidator
+ * @author    Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+
+$isPartner= $block->getData("isPartner");
+$magentoCurrentUrl = $block->getCurrentUrl();
+$allow_pro_type = $block->getData("allow_pro_type");
+$isSellerGroup = $block->getData("isSellerGroup");
+if ($isPartner) {
+    ?>
+<li class="level-0 <?= strpos($magentoCurrentUrl, 'mpzipcodevalidator/region')? "current active":"";?>">
+    <a href="#" onclick="return false;" class="">
+        <span><?= $block->escapeHtml(__('Manage Shipping Region'))?></span>
+    </a>
+    <div class="wk-mp-submenu">
+        <strong class="wk-mp-submenu-title"><?= $block->escapeHtml(__('Manage Shipping Region'))?></strong>
+        <a href="#" class="action-close _close" data-role="wk-mp-close-submenu"></a>
+        <ul>
+            <li data-ui-id="menu-webkul-marketplace-menu" class="item-menu  parent  level-1">
+                <strong class="wk-mp-submenu-group-title">
+                    <span><?= $block->escapeHtml(__('Menu'))?></span>
+                </strong>
+                <div class="wk-mp-submenu">
+                    <ul>
+                        <?php if (($isSellerGroup && $block->getData("isAllowedActionAdd")) || !$isSellerGroup) { ?>
+                            <li class="level-2">
+                                <a href="<?= $block->escapeUrl($block->getUrl(
+                                    'mpzipcodevalidator/region/add',
+                                    ['_secure' => $block->getRequest()->isSecure()]
+                                )); ?>">
+                                    <span><?= $block->escapeHtml(__('Add Regions')) ?></span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <?php if (($isSellerGroup && $block->getData("isAllowedActionView")) || !$isSellerGroup) { ?>
+                            <li class="level-2">
+                                <a href="<?= $block->escapeUrl($block->getUrl(
+                                    'mpzipcodevalidator/region/view',
+                                    ['_secure' => $block->getRequest()->isSecure()]
+                                )); ?>">
+                                    <span><?= $block->escapeHtml(__('View All Regions')) ?></span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</li>
+<?php }
