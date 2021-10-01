@@ -39,7 +39,7 @@ securityContext: {}
 
 php:
   image:
-    repository:  codilartech/homeland
+    repository:  codilartech/homelane-dev
     pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
     tag: "latest"
@@ -84,7 +84,7 @@ php:
   database:
     host:  codilar-database-5-7.clwbla60cx2g.ap-south-1.rds.amazonaws.com
     port: 3306
-    database_name: homeland_dev
+    database_name: homelane_dev
     user: admin
     password: "pUErg7PM5dPIOkR4zZ88"
 
