@@ -222,8 +222,8 @@ class Submit extends Action
                 if ($this->emailExistOrNot($email) == 0) {
                     $custId = $this->getCustomerIdByEmail($email);
                     $password = $PostValue['password'];
-                    $customer = $this->customerRepositoryInterface->getById($customerId);
-                    $customerSecure = $this->customerRegistry->retrieveSecureData($customerId);
+                    $customer = $this->customerRepositoryInterface->getById($custId);
+                    $customerSecure = $this->customerRegistry->retrieveSecureData($custId);
                     $customerSecure->setRpToken(null);
                     $customerSecure->setRpTokenCreatedAt(null);
                     $customerSecure->setPasswordHash($this->_encryptor->getHash($password, true));
@@ -258,7 +258,7 @@ class Submit extends Action
                 $this->loggerResponse->addInfo("============================================================");
             }
         } catch (\Exception $e) {
-            $this->loggerResponse->critical($e->getMessage() . ' ' . 'VERIFY PASSWORD CODE API EXCEPTION');
+            $this->loggerResponse->critical($e->getMessage() . ' ' . 'RECOVERY PASSWORD API EXCEPTION');
         }//end try
     }//end execute()
 

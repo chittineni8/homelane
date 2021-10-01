@@ -3,7 +3,7 @@
 namespace Codilar\TokenAPI\Model\Plugin\Controller\Account;
 
 use Closure;
-// use Magento\Customer\Controller\Account\CreatePost;
+
 use PHPCuong\CustomerAccount\Controller\Customer\Ajax\Register;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\RequestInterface;
@@ -26,6 +26,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use Magento\Framework\Webapi\Rest\Request;
 use Codilar\TokenAPI\Model\Common\Callapi;
+use Magento\Framework\Encryption\EncryptorInterface;
 
 
 class RestrictCustomer
@@ -100,6 +101,7 @@ class RestrictCustomer
      * @param ResponseFactory $responseFactory
      * @param HandlerStack $stack
      * @param Callapi $callapi
+     * @param EncryptorInterface $encryptor
      * @param StoreManagerInterface $storeManager
      * @param Json $json
      * @param Logger $loggerResponse
@@ -111,6 +113,7 @@ class RestrictCustomer
         ManagerInterface      $messageManager,
         ClientFactory         $clientFactory,
         ResponseFactory       $responseFactory,
+        EncryptorInterface    $encryptor,
         HandlerStack          $stack,
         Callapi               $callapi,
         StoreManagerInterface $storeManager,
@@ -126,6 +129,7 @@ class RestrictCustomer
         $this->scopeConfig = $scopeConfig;
         $this->responseFactory = $responseFactory;
         $this->stack = $stack;
+        $this->encryptor = $encryptor;
         $this->json = $json;
         $this->callapi = $callapi;
         $this->loggerResponse = $loggerResponse;
@@ -140,72 +144,69 @@ class RestrictCustomer
      */
     public function aroundExecute(
         Register $subject,
-        Closure    $proceed
+        Closure  $proceed
     )
     {
         /** @var RequestInterface $request */
-         $firstname = $subject->getRequest()->getParam('firstname');
+        $firstname = $subject->getRequest()->getParam('firstname');
+        $email = $subject->getRequest()->getParam('email');
+        $phone_number = $subject->getRequest()->getParam('customer_mobile');
+        $signup_source = $this->_storeManager->getStore()->getBaseUrl();
+        $postcode = $subject->getRequest()->getParam('postcode');
 
-        $lastname = $subject->getRequest()->getParam('lastname');
-         $email = $subject->getRequest()->getParam('email');
-       $phone_number = $subject->getRequest()->getParam('customer_mobile');
-      $city = $subject->getRequest()->getParam('city');
-         $signup_source = $this->_storeManager->getStore()->getBaseUrl();
-         $postcode = $subject->getRequest()->getParam('postcode');
-       
-      
+
         $parambody = [
-            'full_name' => $firstname . ' ' . $lastname, 'email' => $email, 'phone_number' => $phone_number,
-            'city' => $city, 'signup_source' => $signup_source, 'pincode' => $postcode
+            'full_name' => $firstname, 'email' => $email, 'phone_number' => $phone_number,
+            'signup_source' => $signup_source, 'pincode' => $postcode
         ];
 
 
-     
         list($apiRequestEndpoint, $requestMethod, $params) = $this->prepareParams($parambody);
-        $response = $this->doRequest($apiRequestEndpoint,$requestMethod,$params);
+        $response = $this->doRequest($apiRequestEndpoint, $requestMethod, $params);
         $status = $response->getStatusCode();
         $responseBody = $response->getBody();
         $responseContent = $responseBody->getContents();
         $responseDecodee = json_decode($responseContent, true);
-       //  print_r($status);
-       // print_r($responseContent);
+      
+         if ($status == 200) {
 
+            $this->homelanepassword = $responseDecodee['password'];
+            $this->homelaneuserID = $responseDecodee['user_id'];
+            $this->loggerResponse->addInfo("================================LEADGEN API SUCCESS======================");
+            $this->loggerResponse->addInfo("Successful Registeration for Email:" . $email);
+            $this->loggerResponse->addInfo("======================================================================");
 
-        if ($status == 400) {
-
-            $this->messageManager->addErrorMessage(
-                'User Already Exists'
-            );
+        } elseif ($status == 400) {
             // $defaultUrl = $this->urlModel->getUrl('*/*/create', ['_secure' => true]);
             // /** @var Redirect $resultRedirect */
             // $resultRedirect = $this->resultRedirectFactory->create();
+            $this->loggerResponse->addInfo("================================LEADGEN API ERROR===================");
             $this->loggerResponse->addInfo("Error" . ' ' . $status . ' ' . "Missing mandatory params or Lead already
             exists");
+            $this->loggerResponse->addInfo("======================================================================");
             // return $resultRedirect->setUrl($defaultUrl);
 
-        }elseif($status == 401){
-            $this->messageManager->addErrorMessage(
-                'Authorization Failed'
-            );
-            // $defaultUrl = $this->urlModel->getUrl('*/*/create', ['_secure' => true]);
-            // * @var Redirect $resultRedirect 
-            // $resultRedirect = $this->resultRedirectFactory->create();
+        } else {
+            $this->loggerResponse->addInfo("================================LEADGEN API ERROR===================");
             $this->loggerResponse->addInfo("Error" . ' ' . $status . ' ' . "Authorization failed or Token
-            not passed. Please refresh
-            the access token");
-            return $resultRedirect->setUrl($defaultUrl);
-
-
+            not passed. Please refresh the access token");
+            $this->loggerResponse->addInfo("================================LEADGEN API ERROR===================");
         }
 
-        else{
-          
-           
-          return $proceed();
+        return $proceed();
 
     }
-}
 
+
+    public function getUserId()
+    {
+        return $this->homelaneuserID;
+    }
+
+    public function getPassword()
+    {
+        return $this->homelanepassword;
+    }
 
     /**
      * Get request url
@@ -239,15 +240,15 @@ class RestrictCustomer
 
 //         // collect param data
         $bodyJson = $this->json->serialize($finalBrandData);
-       $params['form_params'] = json_decode($bodyJson, true);
-    //    print_r(json_decode($bodyJson, true));
+        $params['form_params'] = json_decode($bodyJson, true);
+        //    print_r(json_decode($bodyJson, true));
         // $params['body'] = $bodyJson;
         $params['debug'] = false;
 // //        $params['http_errors'] = false;
 // //        $params['handler'] = $tapMiddleware($stack);
         $params['headers'] = [
             'Content-Type' => 'application/x-www-form-urlencoded',
-            'Authorization'  => 'Bearer'.' '.$this->callapi->getToken()
+            'Authorization' => 'Bearer' . ' ' . $this->callapi->getToken()
         ];
         return array($apiRequestEndpoint, $requestMethod, $params);
     }
@@ -273,7 +274,7 @@ class RestrictCustomer
         $client = $this->clientFactory->create(['config' => [
             'base_uri' => $this->getSignupRequestUri(),
             'handler' => $tapMiddleware($stack),
-            'Authorization' => "Bearer" .$this->callapi->getToken()
+            'Authorization' => "Bearer" . $this->callapi->getToken()
         ]]);
 
         try {
@@ -307,15 +308,7 @@ class RestrictCustomer
             //    echo $request->getBody();
         });
 
-        // $middleware = new Oauth1([
-        //     'consumer_key' => $this->getConsumerKey(),
-        //     'consumer_secret' => $this->getConsumerSecret(),
-        //     'token' => $this->getTokenKey(),
-        //     'token_secret' => $this->getTokenSecret(),
-        //     'realm' => $this->getRealm(),
-        //     'signature_method' => $this->getSignatureMethod()
-        // ]);
-        // $stack->push($middleware);
+
         return array($stack, $tapMiddleware);
     }
 

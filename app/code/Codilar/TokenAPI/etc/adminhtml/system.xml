@@ -86,7 +86,7 @@
                 </field>
             </group>
 
-               <group id="forgot_pass_oauth" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0">
+              <group id="forgot_pass_oauth" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0">
                 <label>Forget Password oAuth Details</label>
                 <field id="forgot_password_request_url" translate="label" type="text" sortOrder="1" showInDefault="1"
                        showInWebsite="0"
