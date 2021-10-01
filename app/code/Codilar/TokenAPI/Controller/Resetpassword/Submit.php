@@ -239,7 +239,7 @@ class Submit extends Action
                     return $resultRedirect;
                 }
               }catch (\Exception $e) {
-            $this->loggerResponse->critical($e->getMessage() . ' ' . 'Homelane Store Password Reset Error for emailID:' $email);
+        $this->loggerResponse->critical($e->getMessage() . ' ' . 'Homelane Store Password Reset Error for emailID:' .$email);
         }//end try
             } elseif ($status == 400) {
 
