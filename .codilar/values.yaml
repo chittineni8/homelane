@@ -1,0 +1,164 @@
+# Default values for nginx.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: nginx
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "1.20"
+
+imagePullSecrets: 
+  - name: regcred
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+php:
+  image:
+    repository:  codilartech/homeland
+    pullPolicy: Always
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: "latest"
+  imagePullSecrets:
+    - name: regcred
+
+  magento:
+    basepath: "/var/www/html"
+    firstName: "Codilar"
+    lastName: "Developer"
+    email: "developer@codilar.com"
+    user: "admin"
+    password: "admin123"
+    admin_uri: "admin"
+    mode: "developer"
+    base_url: "http://homelane-dev.codilar.in"
+    base_secure_url: "https://homelane-dev.codilar.in"
+  elasticsearch:
+    enabled: true
+    host: "45.252.190.83"
+    port: 9200
+    index_prefix: homeland_k8s_
+    auth:
+      enabled: true
+      auth: 1
+      user: elastic
+      password: "xBuFGyiGRDUnIWLWizQD"
+  rabbitmq:
+    enabled: false
+    host: localhost.local
+    user: rabbitmq
+    pass: rabbitmq
+    default_vhost: /
+    resources:
+      limits:
+        cpu: 1
+        memory: 3Gi
+      requests:
+        cpu: 50m
+        memory: 512Mi
+
+  database:
+    host:  codilar-database-5-7.clwbla60cx2g.ap-south-1.rds.amazonaws.com
+    port: 3306
+    database_name: homeland_dev
+    user: admin
+    password: "pUErg7PM5dPIOkR4zZ88"
+
+  redis:
+    image:
+      repository: redis
+      pullPolicy: IfNotPresent
+      # Overrides the image tag whose default is the chart appVersion.
+      tag: "5"
+    persisted:
+      enabled: false
+      storage: 2Gi
+    resources:
+      limits:
+        cpu: 250m
+        memory: 500Mi
+      requests:
+        cpu: 50m
+        memory: 128Mi
+
+  persisted:
+    enabled: false
+    storage:
+      code: 5Gi
+      static_content: 2Gi
+      media: 1Gi
+      generated: 2Gi
+      config: 1Gi
+      var: 2Gi
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/proxy-buffering: "on"
+    nginx.ingress.kubernetes.io/proxy-buffers-number: "16"
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "256k"
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: homelane-dev.codilar.in
+      paths:
+        - path: /?(.*)
+          pathType: Prefix
+  tls:
+   - secretName: codilar-in-tls-secret
+     hosts:
+       - homelane-dev.codilar.in
+
+resources: 
+  # We usually recommend not to specify default resources and to leave this as a conscious
+   #choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+   limits:
+     cpu: 250m
+     memory: 128Mi
+   requests:
+     cpu: 50m
+     memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

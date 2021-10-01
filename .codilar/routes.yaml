@@ -1,0 +1,33 @@
+# The routes of the project.
+#
+# Each route describes how an incoming URL is going to be processed.
+
+"http://{default}/":
+    type: upstream
+    upstream: "mymagento:http"
+
+"http://{all}/":
+    type: upstream
+    upstream: "mymagento:http"
+
+#These route is for singapore website with new domain name
+"https://mcstaging.aldosingapore.com/":
+    type: upstream
+    upstream: "mymagento:http"
+
+#These route is for malaysia website with new domain name
+"https://mcstaging.aldomalaysia.com/":
+    type: upstream
+    upstream: "mymagento:http"
+
+#These route is for thailand website with new domain name
+"https://mcstaging.aldothailand.com/":
+    type: upstream
+    upstream: "mymagento:http"
+
+#These route is for Indonesia website with new domain name
+"https://mcstaging.aldoindonesia.com/":
+    type: upstream
+    upstream: "mymagento:http"
+
+
