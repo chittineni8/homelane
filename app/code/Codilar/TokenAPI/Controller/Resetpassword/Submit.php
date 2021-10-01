@@ -219,6 +219,7 @@ class Submit extends Action
 
 
             if ($status == 200) {
+                try{
                 if ($this->emailExistOrNot($email) == 0) {
                     $custId = $this->getCustomerIdByEmail($email);
                     $password = $PostValue['password'];
@@ -237,7 +238,9 @@ class Submit extends Action
                     $resultRedirect->setUrl($this->_redirect->getRefererUrl());
                     return $resultRedirect;
                 }
-
+              }catch (\Exception $e) {
+            $this->loggerResponse->critical($e->getMessage() . ' ' . 'Homelane Store Password Reset Error for emailID:' $email);
+        }//end try
             } elseif ($status == 400) {
 
                 $this->messageManager->addErrorMessage(
