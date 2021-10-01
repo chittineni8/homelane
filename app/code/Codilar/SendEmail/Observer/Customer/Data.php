@@ -27,6 +27,9 @@ class Data implements ObserverInterface
      */
     private $transportBuilder;
 
+
+    private $scopeConfig;
+
     /**
      * OrderDetails constructor.
      * @param LoggerInterface $logger
@@ -35,12 +38,14 @@ class Data implements ObserverInterface
      * @param TransportBuilder $transportBuilder
      */
     public function __construct(
+        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         LoggerInterface $logger,
         StoreManagerInterface $storeManager,
         StateInterface $inlineTranslation,
         TransportBuilder $transportBuilder
     )
     {
+        $this->scopeConfig = $scopeConfig;
         $this->logger = $logger;
         $this->storeManager = $storeManager;
         $this->inlineTranslation = $inlineTranslation;
@@ -62,38 +67,41 @@ class Data implements ObserverInterface
         $pincode=$queryData['pincode'];
         $whatsapp=$queryData['whatsapp'];
         /* Receiver Detail */
-        $receiverInfo = [
-            'name' => 'admin',
-            'email' => 'kdcadmin@gmail.com'
-        ];
+        $receivers = $this->scopeConfig->getValue(
+            'email_section/sendmail/receiver',
+            ScopeInterface::SCOPE_STORE
+        );
+        $receiver_array=explode(",",$receivers);
         $store = $this->storeManager->getStore();
         $templateParams = ['store' => $store,
             'name'=>$name,
             'phoneno'=>$phoneno,
             'email'=>$email,
             'pincode'=>$pincode,
-            'whatsapp'=>$whatsapp,
-            'administrator_name' => $receiverInfo['name']];
-        $transport = $this->transportBuilder->setTemplateIdentifier(
-            'email_section_sendmail_email_template'
-        )->setTemplateOptions(
-            ['area' => 'frontend', 'store' => $store->getId()]
-        )->addTo(
-            $receiverInfo['email'], $receiverInfo['name']
-        )->setTemplateVars(
-            $templateParams
-        )->setFrom(
-            'general'
-        )->getTransport();
+            'whatsapp'=>$whatsapp
+        ];
+        foreach ($receiver_array as $receiver) {
+            $transport = $this->transportBuilder->setTemplateIdentifier(
+                'email_section_sendmail_email_template'
+            )->setTemplateOptions(
+                ['area' => 'frontend', 'store' => $store->getId()]
+            )->addTo(
+                $receiver
 
-        try {
-            // Send an email
-            $transport->sendMessage();
-            $this->logger->info('Mail sent successfully');
-        } catch (\Exception $e)
-        {
-            // Write a log message whenever get errors
-            $this->logger->critical($e->getMessage());
+            )->setTemplateVars(
+                $templateParams
+            )->setFrom(
+                'general'
+            )->getTransport();
+
+            try {
+                // Send an email
+                $transport->sendMessage();
+                $this->logger->info('Mail sent successfully');
+            } catch (\Exception $e) {
+                // Write a log message whenever get errors
+                $this->logger->critical($e->getMessage());
+            }
         }
         return $this;
     }
