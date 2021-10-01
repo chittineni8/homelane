@@ -96,7 +96,7 @@ class Submit extends Action
     /**
      * @var CustomerRepositoryInterface
      */
-    protected $customerRepository;
+    protected $customerRepositoryInterface;
 
 
     /**
@@ -164,7 +164,7 @@ class Submit extends Action
         HandlerStack                $stack,
         Callapi                     $callapi,
         CustomerRegistry            $customerRegistry,
-        CustomerRepositoryInterface $customerRepository,
+        CustomerRepositoryInterface $customerRepositoryInterface,
         StoreManagerInterface       $storeManager,
         ClientFactory               $clientFactory,
         Json                        $json,
@@ -186,7 +186,7 @@ class Submit extends Action
         $this->customerAccountManagement = $customerAccountManagement;
         $this->callapi = $callapi;
         $this->clientFactory = $clientFactory;
-        $this->customerRepository = $customerRepository;
+        $this->customerRepositoryInterface = $customerRepositoryInterface;
         $this->loggerResponse = $loggerResponse;
         $this->curl = $curl;
         parent::__construct($context);
