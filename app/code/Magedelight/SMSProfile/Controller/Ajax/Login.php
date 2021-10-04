@@ -105,11 +105,15 @@ class Login extends \Magento\Customer\Controller\Ajax\Login
                     $this->customerSession->regenerateId();
 
                 } else {
-                    $customer = $this->customerAccountManagement->authenticate(
-                        $credentials['username'],
-                        $credentials['password']
-                    );
-                    $this->customerSession->setCustomerDataAsLoggedIn($customer);
+                    // $customer = $this->customerAccountManagement->authenticate(
+                    //     $credentials['username'],
+                    //     $credentials['password']
+                    // );
+                    // $this->customerSession->setCustomerDataAsLoggedIn($customer);
+                    // $this->customerSession->regenerateId();
+                    $this->customer->setWebsiteId($this->store->getStore()->getWebsiteId());
+                    $customer = $this->customer->loadByEmail($credentials['username']);
+                    $this->customerSession->setCustomerAsLoggedIn($customer);
                     $this->customerSession->regenerateId();
                 }
                 $redirectRoute = $this->getAccountRedirect()->getRedirectCookie();
