@@ -19,6 +19,7 @@
         "mageplaza/module-ajax-layered-navigation": "^4.0",
         "mageplaza/module-better-wishlist": "^4.0",
         "mageplaza/module-smtp": "^4.5",
+        "smile/module-product-label": "^1.1",
         "swissup/module-easytabs": "^1.9",
         "twilio/sdk": "^6.28"
     },
