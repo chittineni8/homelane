@@ -1,7 +1,7 @@
 var config = {
     map: {
         '*': {
-            categoryfilter: 'Codilar/js/category'
+            categoryfilter: 'Codilar_Category/js/category'
         }
     }
 };
