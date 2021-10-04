@@ -167,8 +167,12 @@ class RestrictCustomer
         $responseBody = $response->getBody();
         $responseContent = $responseBody->getContents();
         $responseDecodee = json_decode($responseContent, true);
-      
-         if ($status == 200) {
+        // print_r($status);
+        // print_r($responseContent);
+        // print_r($responseDecodee);
+
+
+        if ($status == 200) {
 
             $this->homelanepassword = $responseDecodee['password'];
             $this->homelaneuserID = $responseDecodee['user_id'];

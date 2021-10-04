@@ -170,7 +170,7 @@ class LoginPost
                 'email' => $email,
                 'password' => $password,
                 'ajax_save' => 1,
-                'ajax_mode' => 1,
+                'ajax_mode' => 1
             ];
             list($apiRequestEndpoint, $requestMethod, $params) = $this->prepareParams($loginParams);
             $response = $this->doRequest($apiRequestEndpoint, $requestMethod, $params);
