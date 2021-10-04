@@ -1,0 +1,30 @@
+<?php
+$categories = $block->getCategories();
+?>
+<div class="category-filter-area">
+    <div class="filter-heading">
+        <h3><?php echo __('CATEGORY'); ?></h3>
+    </div>
+    <div class="category-filter">
+        <ul class="o-list">
+            <?php
+            // Loop through root and child categories
+            foreach ( $categories as $category ) {
+                ?>
+                <li class="level0">
+                    <a href="<?php echo $block->getCategoryUrl($category); ?>" title="<?php echo $category->getName(); ?>">
+                        <?php echo $category->getName(); ?>
+                    </a>
+                    <?php if ( $category->hasChildren() ) { ?>
+                        <span class="expand"><i class="fa fa-plus"></i></span>
+                    <?php } ?>
+
+                    <?php  echo $block->getChildCategoryView($category, $html = '', $level = $category->getLevel() + 1); ?>
+                </li>
+            <?php } ?>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    require(['jquery','categoryfilter'], function () {});
+</script>
