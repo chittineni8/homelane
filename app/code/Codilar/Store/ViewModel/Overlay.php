@@ -155,6 +155,19 @@ class Overlay implements ArgumentInterface
         return $this->cookieManager->setPublicCookie('website_code', $websiteCode, $publicCookieMetadata);
     }
 
+    /**
+     * @throws FailureToSendException
+     * @throws InputException
+     */
+    public function deleteCookie()
+    {
+        if ($this->cookieManager->getCookie('website_code')) {
+            $metadata = $this->cookieMetadataFactory->createPublicCookieMetadata();
+            $metadata->setPath('/');
+
+            return $this->cookieManager->deleteCookie('website_code',$metadata);
+        }
+    }
 
     /**
      * @return string|null
