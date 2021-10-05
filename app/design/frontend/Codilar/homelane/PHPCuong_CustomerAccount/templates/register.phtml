@@ -62,7 +62,7 @@
         } ?>">
            <!--  <label class="label" for="telephone"><span>Customer Mobile</span></label> -->
             <div class="control">
-                <input id="customer_mobile" data-validate='{"required":true}' placeholder="Phone Number" name="customer_mobile" value="" title="customer_mobile"
+                <input type="number" id="customer_mobile" data-validate='{"required":true}' placeholder="Phone Number" name="customer_mobile" value="" title="customer_mobile"
                        class="input-text <?php if ($required) {
                            echo 'required-entry ';
                        } ?> <?php echo $validateClass; ?>" <?php if ($required) {
@@ -130,9 +130,6 @@
                 </div>
             </div>
         </form>
-       <div id="popup-mpdal" style="display:none;">
-    <?php include ($block->getTemplateFile('Codilar_TokenAPI::popup.phtml')) ?>
-</div>
 
         <div class="right-img-box">
             <img src='<?php echo $this->getViewFileUrl('images/createbox.png'); ?>' alt="logo" />
@@ -165,7 +162,8 @@ $('#customer_mobile').on('change', function ()
                 complete: function(mobileResult) {
                     $("#mobileresponse").html(""); 
                     $("#mobileresponse").append(mobileResult.responseJSON);
-           }
+                   
+              }
             });
 });
 });
@@ -188,8 +186,8 @@ $('#popup-email_address').on('change', function ()
                 complete: function(resultJson) {
                     $("#emailresponse").html(""); 
                     $("#emailresponse").append(resultJson.responseJSON);
-                   
-                  }
+                    
+                }
               
             });
 });
