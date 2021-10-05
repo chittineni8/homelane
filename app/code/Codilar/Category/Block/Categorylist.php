@@ -1,9 +1,13 @@
 <?php
 
 namespace Codilar\Category\Block;
-
+use \Magento\Catalog\Api\CategoryRepositoryInterface;
 class Categorylist extends \Magento\Framework\View\Element\Template {
 
+
+    protected $jsonHelper;
+
+    private $categoryRepository;
     /**
      * @var \Magento\Catalog\Helper\Category
      */
@@ -27,6 +31,8 @@ class Categorylist extends \Magento\Framework\View\Element\Template {
      * @param array                                                   $data
      */
     public function __construct(
+        \Magento\Framework\Json\Helper\Data      $jsonHelper,
+        CategoryRepositoryInterface             $categoryRepository,
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Catalog\Helper\Category $categoryHelper,
         \Magento\Catalog\Model\Indexer\Category\Flat\State $categoryFlatState,
@@ -34,10 +40,17 @@ class Categorylist extends \Magento\Framework\View\Element\Template {
         $data = []
     )
     {
+        $this->jsonHelper                = $jsonHelper;
+        $this->categoryRepository        = $categoryRepository;
         $this->_categoryHelper           = $categoryHelper;
         $this->categoryFlatConfig        = $categoryFlatState;
         $this->_categoryFactory          = $categoryFactory;
         parent::__construct($context, $data);
+    }
+
+    public function getcurrentCategory(){
+        $categoryIdd = (int)$this->getRequest()->getParam('id', false);
+        return $this->jsonHelper->jsonDecode($this->jsonHelper->jsonEncode($this->categoryRepository->get($categoryIdd)));
     }
 
     /**
