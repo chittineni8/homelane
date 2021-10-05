@@ -1,5 +1,4 @@
-<!--@subject {{trans " Query
-                received form %store_name." store_name=$store.frontend_name}} @-->
+<!--@subject {{trans "New Customer Query"}}  @-->
 <!--@vars {
 "var store.frontend_name":"Store Frontend Name",
 } @-->
@@ -9,11 +8,11 @@
 <table>
     <tr >
         <td>
-            <h1>
+            <h3>
                 {{trans "Hello Admin"}}
-            </h1>
-            {{trans " Query
-            received form %store_name." store_name=$store.frontend_name}} <br>
+            </h3>
+            <!--{{trans " Query
+            received form %store_name." store_name=$store.frontend_name}}--> <br>
     <tr>
         <td><strong>{{trans "Name"}}</strong></td>
         <td>{{var name}}</td>
