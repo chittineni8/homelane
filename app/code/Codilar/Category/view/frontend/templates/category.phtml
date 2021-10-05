@@ -3,7 +3,7 @@ $categories = $block->getCategories();
 ?>
 <div class="category-filter-area">
     <div class="filter-heading">
-        <h3><?php echo __('CATEGORY'); ?></h3>
+        <h3><?php echo __('Category'); ?></h3>
     </div>
     <div class="category-filter">
         <ul class="o-list">
@@ -16,7 +16,7 @@ $categories = $block->getCategories();
                         <?php echo $category->getName(); ?>
                     </a>
                     <?php if ( $category->hasChildren() ) { ?>
-                        <span class="expand"><i class="fa fa-plus"></i></span>
+                        <span class="expand"></span>
                     <?php } ?>
 
                     <?php  echo $block->getChildCategoryView($category, $html = '', $level = $category->getLevel() + 1); ?>

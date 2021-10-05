@@ -29,8 +29,18 @@ require(['jquery','slickslider'], function($) {
         });
         if ($(window).width() < 768) {
            	var storeclone = $('div#switcher-store div#switcher-store-trigger').clone();
-           	console.log(storeclone);
   			$('.mob-store-switcher').html(storeclone);
+  			var breadcrumbsclone = $('.breadcrumbs').clone();
+  			$('.filter-breadcrumbs .content').html(breadcrumbsclone);
+  			var sortbarclone = $('.toolbar-sorter.sorter').clone();
+  			$('.filter-sortbar').html(sortbarclone);
+
+  			$("span.close-filter").click(function () {
+		      $('div#layered-filter-block').toggleClass("active");
+		      $('.block.filter .filter-title > strong').attr("aria-expanded","false");
+		      $('.block.filter .filter-title > strong').attr("aria-selected","false");
+		      $('body').toggleClass("filter-active");
+		    });
         }
 
 
@@ -136,6 +146,17 @@ require(['jquery','slickslider'], function($) {
 				$(this).parent().removeClass('input-has-value');
 			}
 		});
+		$("ol.filter-list").each(function () {
+	      var liCount = $(this).children("li").length;
+	      if (liCount > 5) {
+	        $(this).next(".more").addClass("showMe");
+	      }
+	    });
+
+	    $("label.more").click(function () {
+	      $(this).prev("ol").find("li").toggleClass("showList");
+	      $(this).text(this.innerHTML.includes("All") ? "See less..." : "See All");
+	    });
 
 
 	});

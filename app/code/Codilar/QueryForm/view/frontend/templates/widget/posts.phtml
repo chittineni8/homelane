@@ -27,9 +27,10 @@ $baseSecureUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_WE
             </div>
         <div class="field required">
             <div class="control">
-                <label for="whatsapp" class="label whatsapp-lable">
                 <input name="whatsapp" value="No" type="hidden" checked>
-                <input name="whatsapp" value="Yes"   type="checkbox" class="input-text checkbox" title="<?php /* @escapeNotVerified */ echo __('You can reach me on WhatsApp') ?>">
+                <input name="whatsapp" id="whatsapp" value="Yes"   type="checkbox" class="input-text checkbox" title="<?php /* @escapeNotVerified */ echo __('You can reach me on WhatsApp') ?>">
+                <label for="whatsapp" class="label whatsapp-lable">
+                    You can reach me on Whatsapp
                 </label>
             </div>
         </div>
