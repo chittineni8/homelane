@@ -13,7 +13,7 @@
             <resource>Codilar_TokenAPI::tokenapi_config</resource>
             <label>Customer</label>
             <group id="oauth" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0">
-                <label>oAuth Details</label>
+                <label>Token oAuth Details</label>
                 <field id="request_url" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0"
                        showInStore="0">
                     <label>Request URI</label>
@@ -120,6 +120,21 @@
                        showInStore="0">
                     <label>API Endpoint</label>
                     <comment>Regenerate Password Endpoint</comment>
+                </field>
+            </group>
+             <group id="otp_oauth" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0">
+                <label>OTP oAuth Details</label>
+                <field id="otp_request_url" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0">
+                    <label>Request URI</label>
+                    <comment>OTP Base URI</comment>
+                </field>
+                <field id="otp_endpoint" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0">
+                    <label>API Endpoint</label>
+                    <comment>OTP API Endpoint</comment>
                 </field>
             </group>
         </section>
