@@ -11,8 +11,8 @@ require(['jquery'], function ($) {
             } else {
                 element.addClass('active');
                 element.children('ul').slideDown();
-                element.parent('ul').find('i').addClass('fa-plus');
-                element.find('> span i').addClass('fa-minus');
+                //element.parent('ul').find('i').addClass('fa-plus');
+                //element.find('> span i').addClass('fa-minus');
             }
         });
     });

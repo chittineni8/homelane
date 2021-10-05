@@ -30,6 +30,7 @@
         }
     </style>
     <div id="customer-popup-register" class="customer-popup-register">
+        <div class="customer-account-wrapper">
         <form class="form-create-account" action="<?php /* @escapeNotVerified */ echo $block->getPostActionUrl() ?>" method="post" id="customer-popup-form-register" enctype="multipart/form-data" autocomplete="off" data-mage-init='{"validation":{}}'>
             <h2 class="account-heading"><?php echo __('Sign up'); ?></h2>
             <?php echo $block->getBlockHtml('formkey'); ?>
@@ -135,6 +136,7 @@
 
         <div class="right-img-box">
             <img src='<?php echo $this->getViewFileUrl('images/createbox.png'); ?>' alt="logo" />
+        </div>
         </div>
         <script type="text/x-magento-init">
             {
