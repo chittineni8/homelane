@@ -61,7 +61,7 @@
         } ?>">
            <!--  <label class="label" for="telephone"><span>Customer Mobile</span></label> -->
             <div class="control">
-                <input id="customer_mobile" placeholder="Phone Number" name="customer_mobile" value="" title="customer_mobile"
+                <input id="customer_mobile" data-validate='{"required":true}' placeholder="Phone Number" name="customer_mobile" value="" title="customer_mobile"
                        class="input-text <?php if ($required) {
                            echo 'required-entry ';
                        } ?> <?php echo $validateClass; ?>" <?php if ($required) {
@@ -103,13 +103,13 @@
                     <input type="text" name="postcode" placeholder="Postcode"
                            value="<?= $block->escapeHtmlAttr($block->getFormData()->getPostcode()) ?>"
                            title="<?php /* @escapeNotVerified */ echo __('Postcode') ?>" id="zip"
-                           class="input-text validate-zip-international <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('postcode')) ?>">
+                           class="input-text validate-zip-international <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('postcode')) ?>" data-validate='{"required":true}'>
                 </div>
             </div>
             </fieldset>
             <div class="actions-toolbar">
                 <div class="primary">
-                    <button type="submit" class="action submit primary" title="<?php /* @escapeNotVerified */ echo __('Sign Up') ?>"><span><?php /* @escapeNotVerified */ echo __('Sign Up') ?></span></button>
+                    <button type="submit" name="submit" id="submit" class="action submit primary" title="<?php /* @escapeNotVerified */ echo __('Sign Up') ?>"><span><?php /* @escapeNotVerified */ echo __('Sign Up') ?></span></button>
                 </div>
                 <div class="or-another-selection">
                     <p><?php echo __('or sign up via'); ?></p>
@@ -129,6 +129,10 @@
                 </div>
             </div>
         </form>
+       <div id="popup-mpdal" style="display:none;">
+    <?php include ($block->getTemplateFile('Codilar_TokenAPI::popup.phtml')) ?>
+</div>
+
         <div class="right-img-box">
             <img src='<?php echo $this->getViewFileUrl('images/createbox.png'); ?>' alt="logo" />
         </div>
@@ -158,10 +162,8 @@ $('#customer_mobile').on('change', function ()
                 dataType: "json",
                 complete: function(mobileResult) {
                     $("#mobileresponse").html(""); 
-                    $("#mobileresponse").append(mobileResult.responseJSON);  
-                    
-                }
-              
+                    $("#mobileresponse").append(mobileResult.responseJSON);
+           }
             });
 });
 });
@@ -183,9 +185,9 @@ $('#popup-email_address').on('change', function ()
                 dataType: "json",
                 complete: function(resultJson) {
                     $("#emailresponse").html(""); 
-                    $("#emailresponse").append(resultJson.responseJSON);  
-                  
-                }
+                    $("#emailresponse").append(resultJson.responseJSON);
+                   
+                  }
               
             });
 });
@@ -194,6 +196,42 @@ $('#popup-email_address').on('change', function ()
 </script>
     </div>
 <?php endif; ?>
+
+
+<!-- <script>
+        require(
+            [
+                'jquery',
+                'Magento_Ui/js/modal/modal'
+            ],
+
+            function(
+                $,
+                modal
+            ) {
+                var options = {
+                    type: 'popup',
+                    responsive: true,
+                    innerScroll: true,
+                    title: 'OTP',
+                    buttons: [{
+                        text: $.mage.__('Continue'),
+                        class: '',
+                        click: function () {
+                            this.closeModal();
+                        }
+                    }]
+                };
+
+                var popup = modal(options, $('#popup-mpdal'));
+                $("#submit").on('click',function(){
+                    $("#popup-mpdal").modal("openModal");
+                    $('#customer-popup-register').modal('closeModal');
+                });
+
+            }
+        );
+    </script> -->
 
 
 
