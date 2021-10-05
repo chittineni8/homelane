@@ -1,6 +1,7 @@
 require(
     [
         'jquery',
+        'jquery/jquery.cookie',
         'Magento_Ui/js/modal/modal'
     ],
     function (
@@ -16,7 +17,8 @@ require(
             buttons: []
         };
         let popupModel = $('.call-popup').modal(popup);
-        if ($('.call-popup').first().data('show-popup') == true){
+        let website_code = $.cookie("website_code");
+        if (website_code == null){
             popupModel.modal('openModal');
         }
         // $('.modal-footer').hide();
