@@ -233,7 +233,7 @@ class Submit extends Action
                 $this->loggerResponse->addInfo("Password Reset Successfully for email:".' '.$email);
                 $this->loggerResponse->addInfo("============================================================");
                 $this->messageManager->addSuccessMessage(
-                        'New Password Saved'
+                        'Password Reset Successfully'
                     );
                     $resultRedirect->setUrl($this->_redirect->getRefererUrl());
                     return $resultRedirect;
@@ -416,7 +416,7 @@ class Submit extends Action
     {
         $customerId = null;
         try {
-            $customerData = $this->customerRepository->get($email);
+            $customerData = $this->customerRepositoryInterface->get($email);
             $customerId = (int)$customerData->getId();
         } catch (NoSuchEntityException $noSuchEntityException) {
         }
