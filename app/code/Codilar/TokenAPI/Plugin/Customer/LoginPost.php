@@ -29,6 +29,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use Magento\Store\Model\ScopeInterface;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\ResponseFactory;
+use Magento\Framework\Controller\Result\JsonFactory;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use Magento\Framework\Webapi\Rest\Request;
@@ -120,6 +121,7 @@ class LoginPost
     public function __construct(
         Data                       $helper,
         Context                    $context,
+        JsonFactory                $resultJsonFactory,
         AccountManagementInterface $customerAccountManagement,
         StoreManagerInterface      $storeManager,
         RestrictCustomer           $signupcustomer,
@@ -149,6 +151,7 @@ class LoginPost
         $this->loggerResponse = $loggerResponse;
         $this->customerFactory = $customerFactory;
         $this->helper = $helper;
+        $this->resultJsonFactory=$resultJsonFactory;
 
     }//end __construct()
 
@@ -179,7 +182,7 @@ class LoginPost
             $responseContent = $responseBody->getContents();
             $responseDecodee = json_decode($responseContent, true);
             if ($status == 200) {
-                if ($this->emailExistOrNot($email)) :
+                if ($this->emailExistOrNot($email)):
                     $websiteId = $this->storeManager->getWebsite()->getWebsiteId();
                     $customer = $this->customerFactory->create();
                     $customer->setWebsiteId($websiteId);
@@ -197,19 +200,29 @@ class LoginPost
                     $this->loggerResponse->addInfo('Account Created Successfully for email:' . ' ' . $email);
                     $this->loggerResponse->addInfo('============================================================');
                 endif;
+                return $proceed();
             } else if ($status == 401) {
                 $this->loggerResponse->addInfo('========================LOGIN API ERROR======================================');
                 $this->loggerResponse->addInfo('Invalid Email or Password' . ' / ' . 'No Auth Header was Present for email:' . ' ' . $email);
                 $this->loggerResponse->addInfo('=============================================================================');
+                $response = [
+                    'errors' => true,
+                    'message' => __('Invalid login or password.')
+                ];
             } else {
                 $this->loggerResponse->addInfo('========================LOGIN API ERROR======================================');
                 $this->loggerResponse->addInfo('Error:'. $status . 'Missing Mandatory Params  for email:' . ' ' . $email);
                 $this->loggerResponse->addInfo('=============================================================================');
+                $response = [
+                    'errors' => true,
+                    'message' => __('Missing Mandatory Parameters.')
+                ];
             }//end if
-
-            $returnValue = $proceed();
-
-            return $returnValue;
+        
+        /** @var \Magento\Framework\Controller\Result\Json $resultJson */
+        $resultJson = $this->resultJsonFactory->create();
+        return $resultJson->setData($response);
+          
 
         } catch (\Exception $e) {
             $this->loggerResponse->critical($e->getMessage() . ' ' . 'VERIFY PASSWORD CODE API EXCEPTION');
