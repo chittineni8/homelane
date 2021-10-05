@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * di.xml
+ *
+ * @package     Homelane
+ * @description ExtendedMpZipCodeValidator Module to override functionality of Webkul_MpZipCodeValidator module
+ * @author      Manav Padhariya <manav.p@codilar.com>
+ * @copyright   2021 Codilar Technologies Pvt. Ltd. . All rights reserved.
+ * @license     Open Source
+ * @see         https://www.codilar.com/
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Webkul\MpZipCodeValidator\Ui\DataProvider\Product\Form\Modifier\ZipCodeOptions" type="Codilar\ExtendedMpZipCodeValidator\Ui\DataProvider\Product\Form\Modifier\ZipCodeOptions" />
+</config>
