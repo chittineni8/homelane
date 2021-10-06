@@ -12,6 +12,9 @@ if ($block->getCustomerIsLoggedIn()) :
     $customerEmail = $customer->getEmail();
     endif;
     ?>
+    <li class="login link wishlist" data-bind="scope: 'wishlist'">
+        <a href="<?= $this->getUrl('wishlist/') ?>"></a>
+    </li>
     <li class="customer-welcome">
 
         <span class="customer-name"
@@ -47,14 +50,16 @@ if ($block->getCustomerIsLoggedIn()) :
             <?= $block->getChildHtml() ?>
             <ul class="top">
                 <li>
-                    <a href=""><?php echo $customerName; ?></a>
-                    <a href=""><?php echo $customerEmail; ?></a>
+                    <div>
+                    <a><?php echo $customerName; ?></a>
+                    <a class="mail"><?php echo $customerEmail; ?></a>
+                    </div>
                 </li>
             </ul>
             <ul class="header links">
-                <li><a href="<?= $this->getUrl('customer/account') ?>">My Profile</a></li>
-                <li><a href="<?= $this->getUrl('wishlist') ?>">My Wishlist</a></li>
-                <li><a href="#">Homelane care</a></li>
+                <li class="login-profile"><a href="<?= $this->getUrl('customer/account') ?>">My Profile</a></li>
+                <li class="login-wishlist"><a href="<?= $this->getUrl('wishlist') ?>">My Wishlist</a></li>
+                <li class="login-hl"><a href="#">Homelane care</a></li>
             </ul>
             <ul class="bottom">
                 <li><a href="<?= $this->getUrl('customer/account/logout') ?>">Logout</a></li>

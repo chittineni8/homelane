@@ -27,7 +27,6 @@ define([
     'productListToolbarForm'
 ], function ($, submitFilterAction, ultil) {
     "use strict";
-    console.log('ssgsfg');
     $.widget('mageplaza.layer', $.mage.accordion, {
         options: {
             openedState: 'active',
@@ -35,6 +34,7 @@ define([
             multipleCollapsible: true,
             animate: 200,
             mobileShopbyElement: '#layered-filter-block .filter-title [data-role=title]',
+            mobilecloseElement: '#layered-filter-block span.close-filter',
             collapsibleElement: '[data-role=ln_collapsible]',
             header: '[data-role=ln_title]',
             
@@ -154,7 +154,6 @@ define([
                 if (!link) {
                     return;
                 }
-
                 el.bind('click', function (e) {
                     if (el.hasClass('swatch-option-link-layered')) {
                         self.selectSwatchOption(el);
@@ -165,7 +164,15 @@ define([
                     e.preventDefault();
                 });
             });
-
+            $("#layered-filter-block").on("click","span.close-filter", function(){
+                $('div#layered-filter-block').removeClass("active");
+                $('.block.filter .filter-title > strong').attr("aria-expanded","false");
+                $('.block.filter .filter-title > strong').attr("aria-selected","false");
+                $('body').removeClass("filter-active");
+            });
+            var breadcrumbsclone = $('.breadcrumbs').clone();
+            $('.filter-breadcrumbs .content').html(breadcrumbsclone);
+                   
             var swatchElements = this.element.find('.swatch-attribute');
             swatchElements.each(function (index) {
                 var el = $(this);
@@ -229,6 +236,5 @@ define([
             })
         }
     });
-
     return $.mageplaza.layer;
 });

@@ -122,7 +122,7 @@ class Categorylist extends \Magento\Framework\View\Element\Template {
                     }
                     if ($childCategory->hasChildren())
                     {
-                        $html .= '<span class="expand"><i class="fa fa-plus">+/-</i></span>';
+                        $html .= '<span class="expand"></span>';
                         $html .= $this->getChildCategoryView($childCategory, '', ($level + 1));
                     }
 

@@ -315,6 +315,15 @@ ul.header.links {
     }
     li.customer-welcome{
         position: relative;
+        top: -2px;
+    }
+    li.login.link.wishlist {
+        display: inline-block;
+        position: relative;
+        top: 3px;
+        a:before {
+            height: 25px;
+        }
     }
 }
 .logged-in .header ul.header.links.bottom > li:last-child {
@@ -382,6 +391,30 @@ li.customer-welcome {
                         color: #E71C24;
                     }
                 }
+                li.login-profile a:before {
+                    content: '';
+                    display: inline-block;
+                    background: url(../images/login-user.png) no-repeat 0 0;
+                    width: 24px;
+                    height: 18px;
+                    margin-bottom: -5px;
+                }
+                li.login-wishlist a:before {
+                    content: '';
+                    display: inline-block;
+                    background: url(../images/login-wishlist.png) no-repeat 0 0;
+                    width: 24px;
+                    height: 18px;
+                    margin-bottom: -5px;
+                }
+                li.login-hl a:before {
+                    content: '';
+                    display: inline-block;
+                    background: url(../images/login-homelane.png) no-repeat 0 0;
+                    width: 24px;
+                    height: 18px;
+                    margin-bottom: -5px;
+                }
             }
             ul {
                 padding:0;
@@ -396,8 +429,33 @@ li.customer-welcome {
             }
             ul.top {
                 border-bottom: 1px solid #E4E4E4;
-                padding: 20px 0 15px;
+                padding: 20px 15px 15px;
                 text-align: center;
+                li {
+                    &:before {
+                        content: "";
+                        display: inline-block;
+                        background: url(../images/login-user-icon.png) no-repeat 0 0;
+                        width: 50px;
+                        height: 45px;
+                        margin-bottom: 0;
+                        background-size: 85%;
+                    }
+                    div {
+                        display: inline-block;
+                        width: 79%;
+                        vertical-align: top;
+                        margin-top: 4px;
+                        a {
+                            display: block;
+                            text-align: left;
+                        }
+                        .mail {
+                            font-size: 12px;
+                            color: #888888;
+                        }
+                    }
+                }
             }
             ul.bottom {
                 padding: 8px 8px;
@@ -1360,8 +1418,26 @@ h2.account-heading {
 .product-items .product-item .price-box {
     margin: 5px 0 0;
 }
-.block {
-    .products-grid {
+.product-item .product-image-wrapper {
+    .top_left {
+        top: 6%;
+        max-width: 100%;
+    }
+    .top_right {
+        top: 16%;
+        max-width: 100%;
+    }
+    .lower_left, lower_right {
+        bottom: 6%;
+        max-width: 100%;
+    }
+    .lower_right {
+        bottom: 6%;
+        max-width: 100%;
+    }
+} 
+.columns {
+    .products {
         .product-item {
             .special-price {
                 display: inline-block;
@@ -1378,7 +1454,9 @@ h2.account-heading {
         }
     }
 }
-
+div#layered-filter-block-container {
+    border-top: 1px solid #eae7e7;
+}
 .block.filter {
     margin-top: 20px;
     span.filter-value {
@@ -1392,6 +1470,20 @@ h2.account-heading {
         .filter-options-title {
             font-weight: 600;
             text-transform: capitalize;
+        }
+        .swatch-option {
+            height: auto;
+            background: #fff;
+            font-size: 13px;
+            color: #9B9B9B;
+            border: 1px solid #D8D8D8;
+            padding: 6px 10px 6px 10px;
+            border-radius: 6px;
+            &:hover {
+                border-color: red;
+                outline: unset;
+                color: red;
+            }
         }
         .filter-options-content {
             .item {
@@ -1411,6 +1503,8 @@ h2.account-heading {
         .item {
             position: relative;
             display: inline-block;
+            margin-bottom: 12px;
+            line-height: 20px;
             .filter-label {
                 display: none;
                 font-weight: 700;
@@ -1473,7 +1567,6 @@ h2.account-heading {
     }
 }
 .category-filter-area {
-    border-bottom: 1px solid #eae7e7;
     padding-bottom: 20px;
     .filter-heading h3 {
         font-weight: 700;
@@ -1489,6 +1582,7 @@ h2.account-heading {
             a {
                 color: #4A4A4A;
                 text-decoration: none;
+                padding: 2px 6px;
                 &:hover {
                     color: #E71C24;
                 }
@@ -1502,7 +1596,7 @@ h2.account-heading {
                 top: 0;
                 line-height: 20px;
             }
-            &.active {
+            &.active, &.active-cat {
                 > span.expand:before {
                     color: #3777B6;
                     content: '\e607';
@@ -1511,6 +1605,9 @@ h2.account-heading {
             i.fa {
                 display: none;
             }
+        }
+        li.current-category a {
+            background: #ffc76633;
         }
     }
 }
@@ -1710,6 +1807,7 @@ h2.account-heading {
     }
     .sections .navigation .level1.category-item > a {
         color: #9B9B9B;
+        text-transform: uppercase;
     }
     .sections .navigation .level1.category-item > a:hover {
         color: #E71C24;
@@ -1843,6 +1941,9 @@ h2.account-heading {
     }
     .block-content.filter-content strong.mob-heading, .block-content.filter-content .filter-breadcrumbs {
         display: none;
+    }
+    .catalogsearch-result-index .search-page-title {
+        margin-bottom: -37px;
     }
 }
 
@@ -2210,6 +2311,7 @@ h2.account-heading {
     }
     .page-wrapper .block.widget .products-grid .product-item {
         flex: 0 0 50%;
+        margin-bottom: 20px;
     }
     .page-wrapper .block.widget .block-content {
         padding: 0 16px;
@@ -2285,10 +2387,10 @@ h2.account-heading {
                 background: #fff;
             }
             .slick-prev {
-                left: -15px;
+                left: 0;
             }
             .slick-next {
-                right: -15px;
+                right: 0;
             }
             .slick-dots {
                 display: none !important;
@@ -2328,12 +2430,46 @@ h2.account-heading {
             }
         }
     }
+    .category-grid .image-box {
+        display: block;
+    }
+    .catalog-category-view.page-layout-1column .category-view {
+        display: block;
+    }
     /***************************PLP Listing Page*******************************/
-    .category-view, div.breadcrumbs,.toolbar-products {
+    .category-view, div.breadcrumbs {
         display: none;
+    }
+    .catalogsearch-result-index, .catalog-category-view {
+        .toolbar-sorter.sorter {
+            padding: 0 0;
+            width: 200px;
+            margin-top: 10px;
+        }
     }
     .page-products .products .product-items .product-item {
         margin-bottom: 20px;
+    }
+    div#layered-filter-block-container {
+        border-top: none;
+    }
+    .filter-options {
+        .filter-options-content {
+            .item {
+                height: auto;
+                background: #fff;
+                font-size: 13px;
+                color: #9B9B9B;
+                border: 1px solid #D8D8D8;
+                padding: 6px 10px 6px 10px;
+                border-radius: 6px;
+                display: inline-block;
+                margin-right: 4px;
+                input[type="checkbox"] {
+                    display: none;
+                }
+            }
+        }
     }
     .block.filter {
         margin: 10px 0 0;
@@ -2341,6 +2477,11 @@ h2.account-heading {
         border-top: 1px solid #eae7e7;
         border-bottom: 1px solid #eae7e7;
         position: relative;
+        .filter-list {
+            li.showList:nth-child(n + 6) {
+                display: inline-block;
+            }
+        }
         .filter-title {
             margin-bottom: 0;
             width: auto;
@@ -2429,6 +2570,9 @@ h2.account-heading {
                     position: static;
                 }
             }
+        }
+        .filter-breadcrumbs {
+            margin-bottom: 20px;
         }
     }
     .category-filter-area {
