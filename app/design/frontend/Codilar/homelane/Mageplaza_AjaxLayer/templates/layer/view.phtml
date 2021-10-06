@@ -42,8 +42,6 @@
                 <strong data-role="title"><?= /** @noEscape */ __('Categories') ?></strong>
                 <div class="content"></div>
             </div>
-            <?= $block->getToolbarHtml() ?>
-            <div class="filter-sortbar"></div>
             <?= /** @noEscape */ $block->getChildHtml('state') ?>
             <?php if ($block->getLayer()->getState()->getFilters()) : ?>
                 <div class="block-actions filter-actions">

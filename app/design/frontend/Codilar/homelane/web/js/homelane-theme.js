@@ -30,8 +30,6 @@ require(['jquery','slickslider'], function($) {
         if ($(window).width() < 768) {
            	var storeclone = $('div#switcher-store div#switcher-store-trigger').clone();
   			$('.mob-store-switcher').html(storeclone);
-  			var breadcrumbsclone = $('.breadcrumbs').clone();
-  			$('.filter-breadcrumbs .content').html(breadcrumbsclone);
   			var sortbarclone = $('.toolbar-sorter.sorter').clone();
   			$('.filter-sortbar').html(sortbarclone);
 
@@ -157,7 +155,6 @@ require(['jquery','slickslider'], function($) {
 	      $(this).prev("ol").find("li").toggleClass("showList");
 	      $(this).text(this.innerHTML.includes("All") ? "See less..." : "See All");
 	    });
-
 
 	});
 });
