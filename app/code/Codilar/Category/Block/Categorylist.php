@@ -5,7 +5,7 @@ use \Magento\Catalog\Api\CategoryRepositoryInterface;
 class Categorylist extends \Magento\Framework\View\Element\Template {
 
 
-    protected $jsonHelper;
+//    protected $jsonHelper;
 
     private $categoryRepository;
     /**
@@ -31,7 +31,7 @@ class Categorylist extends \Magento\Framework\View\Element\Template {
      * @param array                                                   $data
      */
     public function __construct(
-        \Magento\Framework\Json\Helper\Data      $jsonHelper,
+//        \Magento\Framework\Json\Helper\Data      $jsonHelper,
         CategoryRepositoryInterface             $categoryRepository,
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Catalog\Helper\Category $categoryHelper,
@@ -40,7 +40,7 @@ class Categorylist extends \Magento\Framework\View\Element\Template {
         $data = []
     )
     {
-        $this->jsonHelper                = $jsonHelper;
+//        $this->jsonHelper                = $jsonHelper;
         $this->categoryRepository        = $categoryRepository;
         $this->_categoryHelper           = $categoryHelper;
         $this->categoryFlatConfig        = $categoryFlatState;
@@ -48,9 +48,11 @@ class Categorylist extends \Magento\Framework\View\Element\Template {
         parent::__construct($context, $data);
     }
 
-    public function getcurrentCategory(){
+    public function getcurrentCategoryId(){
         $categoryIdd = (int)$this->getRequest()->getParam('id', false);
-        return $this->jsonHelper->jsonDecode($this->jsonHelper->jsonEncode($this->categoryRepository->get($categoryIdd)));
+//        $this->jsonHelper->jsonDecode($this->jsonHelper->jsonEncode($this->categoryRepository->get($categoryIdd)));
+        $currentCategoryId=$this->categoryRepository->get($categoryIdd);
+        return $currentCategoryId->getId();
     }
 
     /**
@@ -101,6 +103,7 @@ class Categorylist extends \Magento\Framework\View\Element\Template {
         // Check if category has children
         if ( $category->hasChildren() )
         {
+            $currentCategoryId=$this->getcurrentCategoryId();
             $childCategories = $this->getSubcategories($category);
             $childCount = (int)$category->getChildrenCount();
             if ( $childCount > 0 )
@@ -109,8 +112,14 @@ class Categorylist extends \Magento\Framework\View\Element\Template {
                 // Loop through children categories
                 foreach ( $childCategories as $childCategory )
                 {
+                    if($currentCategoryId==$childCategory->getId()) {
+                        $html .= '<li class="level' . $level . ' current-category">';
+                        $html .= '<a href="' . $this->getCategoryUrl($childCategory) . '" title="' . $childCategory->getName() . '">' . $childCategory->getName() . '</a>';
+                    }
+                    else{
                     $html .= '<li class="level' . $level . '">';
                     $html .= '<a href="' . $this->getCategoryUrl($childCategory) . '" title="' . $childCategory->getName() . '">' . $childCategory->getName() . '</a>';
+                    }
                     if ($childCategory->hasChildren())
                     {
                         $html .= '<span class="expand"><i class="fa fa-plus">+/-</i></span>';
