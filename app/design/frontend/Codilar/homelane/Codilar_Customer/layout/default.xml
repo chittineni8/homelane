@@ -7,12 +7,13 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
- 
+
         <referenceBlock name="header.links">
-            <block class="Magento\Customer\Block\Account\Customer" name="customer" template="account/customer.phtml" before="-"/>
+<!--            <block class="Magento\Customer\Block\Account\Customer" name="customer" template="account/customer.phtml" before="-"/>-->
+            <block class="Codilar\Customer\Block\CustomerData" name="customer" template="account/customer.phtml" before="-"/>
             <!-- <block class="Magento\Wishlist\Block\Link" name="wishlist-nav" template="Magento_Customer::account/wishlist.phtml" after="customer"/> -->
         </referenceBlock>
         <!-- <move element="top.links" destination="customer"/> -->
     </body>
 </page>
-   
+

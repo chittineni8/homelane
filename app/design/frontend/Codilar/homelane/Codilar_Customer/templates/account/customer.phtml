@@ -4,10 +4,14 @@
  * See COPYING.txt for license details.
  */
 
+/** @var Codilar\Customer\Block\CustomerData $block*/
+if ($block->getCustomerIsLoggedIn()) :
 
-/** @var Magento\Customer\Block\Account\Customer $block */
-?>
-<?php if ($block->customerLoggedIn()) : ?>
+    if ($customer = $block->getCustomerDetails()) :
+    $customerName = $customer->getName();
+    $customerEmail = $customer->getEmail();
+    endif;
+    ?>
     <li class="customer-welcome">
 
         <span class="customer-name"
@@ -39,20 +43,23 @@
         </script>
 
         <?php //if ($block->getChildHtml()) :?>
-            <div class="customer-menu" data-target="dropdown">
-                <?= $block->getChildHtml() ?>
-                <ul class="top">
-                    <li><a href="">My Profile</a></li>
-                </ul>
-                <ul class="header links">
-                        <li><a href="<?= $this->getUrl('customer/account') ?>">My Profile</a></li>
-                        <li><a href="<?= $this->getUrl('wishlist') ?>">My Wishlist</a></li>
-                        <li><a href="#">Homelane care</a></li>
-                </ul>
-                <ul class="bottom">
-                    <li><a href="<?= $this->getUrl('customer/account/logout') ?>">Logout</a></li>
-                </ul>
-            </div>
+        <div class="customer-menu" data-target="dropdown">
+            <?= $block->getChildHtml() ?>
+            <ul class="top">
+                <li>
+                    <a href=""><?php echo $customerName; ?></a>
+                    <a href=""><?php echo $customerEmail; ?></a>
+                </li>
+            </ul>
+            <ul class="header links">
+                <li><a href="<?= $this->getUrl('customer/account') ?>">My Profile</a></li>
+                <li><a href="<?= $this->getUrl('wishlist') ?>">My Wishlist</a></li>
+                <li><a href="#">Homelane care</a></li>
+            </ul>
+            <ul class="bottom">
+                <li><a href="<?= $this->getUrl('customer/account/logout') ?>">Logout</a></li>
+            </ul>
+        </div>
         <?php //endif; ?>
 
     </li>
