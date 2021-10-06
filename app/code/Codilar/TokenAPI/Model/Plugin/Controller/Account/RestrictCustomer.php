@@ -43,6 +43,17 @@ class RestrictCustomer
     const SIGNUP_REQUEST_ENDPOINT = 'codilar_customer_api/signup_oauth/signup_endpoint';
 
 
+    /**
+     * API base OTP request URI
+     */
+    const OTP_REQUEST_URI = 'codilar_customer_api/otp_oauth/otp_request_url';
+
+    /**
+     * API base OTP request Endpoint
+     */
+    const OTP_REQUEST_ENDPOINT = 'codilar_customer_api/otp_oauth/otp_endpoint';
+
+
     /** @var UrlInterface */
     protected $urlModel;
 
@@ -167,12 +178,8 @@ class RestrictCustomer
         $responseBody = $response->getBody();
         $responseContent = $responseBody->getContents();
         $responseDecodee = json_decode($responseContent, true);
-        // print_r($status);
-        // print_r($responseContent);
-        // print_r($responseDecodee);
-
-
-        if ($status == 200) {
+   
+         if ($status == 200) {
 
             $this->homelanepassword = $responseDecodee['password'];
             $this->homelaneuserID = $responseDecodee['user_id'];
@@ -180,7 +187,20 @@ class RestrictCustomer
             $this->loggerResponse->addInfo("Successful Registeration for Email:" . $email);
             $this->loggerResponse->addInfo("======================================================================");
 
-        } elseif ($status == 400) {
+          ///////////////////OTP-GENERATE//////////////////////////////
+
+            $otpParams = ['flag' => 1 , 'email' => $email, 'phone' => $phone_number , 'signup_source' => $signup_source 
+     ];
+
+         list($apiRequestEndpoint, $requestMethod, $params) = $this->prepareOtpParams($otpParams);
+            $response = $this->doOtpRequest($apiRequestEndpoint, $requestMethod, $params);
+            $status = $response->getStatusCode();
+            $responseBody = $response->getBody();
+            $responseContent = $responseBody->getContents();
+            $responseDecodee = json_decode($responseContent, true);
+
+
+} elseif ($status == 400) {
             // $defaultUrl = $this->urlModel->getUrl('*/*/create', ['_secure' => true]);
             // /** @var Redirect $resultRedirect */
             // $resultRedirect = $this->resultRedirectFactory->create();
@@ -232,6 +252,31 @@ class RestrictCustomer
         return $this->scopeConfig->getValue(self::SIGNUP_REQUEST_ENDPOINT, ScopeInterface::SCOPE_STORE);
     }
 
+
+     /**
+     * Get otp request url
+     *
+     * @return string
+     */
+    public function getOtpRequestUri()
+    {
+        return $this->scopeConfig->getValue(self::OTP_REQUEST_URI, ScopeInterface::SCOPE_STORE);
+
+    }//end getOtpRequestUri()
+
+
+    /**
+     * Get otp API Endpoint
+     *
+     * @return string
+     */
+    public function getOtpApiEndpoint()
+    {
+        return $this->scopeConfig->getValue(self::OTP_REQUEST_ENDPOINT, ScopeInterface::SCOPE_STORE);
+
+    }//end getOtpApiEndpoint()
+
+
     /**
      * @param $finalBrandData
      * @return array
@@ -256,6 +301,36 @@ class RestrictCustomer
         ];
         return array($apiRequestEndpoint, $requestMethod, $params);
     }
+
+ /**
+     * @param $paramsOtp
+     * @return array
+     */
+private function prepareOtpParams($paramsOtp): array
+    {
+        $apiRequestEndpoint = $this->getOtpApiEndpoint();
+        $requestMethod = Request::METHOD_POST;
+        $params = $paramsOtp;
+
+//         // collect param data
+        $bodyJson = $this->json->serialize($paramsOtp);
+        $params['form_params'] = json_decode($bodyJson, true);
+        //    print_r(json_decode($bodyJson, true));
+        // $params['body'] = $bodyJson;
+        $params['debug'] = false;
+// //        $params['http_errors'] = false;
+// //        $params['handler'] = $tapMiddleware($stack);
+        $params['headers'] = [
+            'Content-Type' => 'application/x-www-form-urlencoded',
+            'Authorization' => 'Bearer' . ' ' . $this->callapi->getToken()
+        ];
+        return array($apiRequestEndpoint, $requestMethod, $params);
+    }
+
+
+
+
+
 
     /**
      * Do API request with provided params
@@ -294,6 +369,48 @@ class RestrictCustomer
 
         return $response;
     }
+
+
+
+ /**
+     * Do API request for  OTP with provided params
+     *
+     * @param $apiRequestEndpoint
+     * @param string $requestMethod
+     * @param array $params
+     * @return Response
+     */
+    public function doOtpRequest(
+        $apiRequestEndpoint,
+        $requestMethod,
+        array $params = []
+    ): Response
+    {
+        // create middleware to add it in the request
+        list($stack, $tapMiddleware) = $this->generateMiddleWare();
+
+        /** @var Client $client */
+        $client = $this->clientFactory->create(['config' => [
+            'base_uri' => $this->getOtpRequestUri(),
+            'handler' => $tapMiddleware($stack)
+            
+        ]]);
+
+        try {
+            $response = $client->request($requestMethod, $apiRequestEndpoint, $params);
+        } catch (GuzzleException $exception) {
+            /** @var Response $response */
+            $response = $this->responseFactory->create([
+                'status' => $exception->getCode(),
+                'body' => $exception->getResponse()->getBody(),
+                'reason' => $exception->getMessage()
+            ]);
+        }
+
+        return $response;
+    }
+
+
 
     /**
      * create middleware to add it in the request
