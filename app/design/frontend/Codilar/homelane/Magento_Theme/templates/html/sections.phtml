@@ -17,6 +17,7 @@ $groupCss = $block->getGroupCss();
         <li class="link authorization-link" data-label="or">
             <a class="customer-login-link">Log In</a>
         </li>
+        <div class="user-details-login"></div>
         <div class="mob-store-switcher"></div>
         <?php $layout = $block->getLayout(); ?>
         <div class="section-items <?= $block->escapeHtmlAttr($groupCss) ?>-items"
@@ -44,5 +45,6 @@ $groupCss = $block->getGroupCss();
                 </div>
             <?php endforeach;?>
         </div>
+        <div class="login-user-details"></div>
     </div>
 <?php endif; ?>

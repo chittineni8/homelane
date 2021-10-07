@@ -32,6 +32,10 @@ require(['jquery','slickslider'], function($) {
   			$('.mob-store-switcher').html(storeclone);
   			var sortbarclone = $('.toolbar-sorter.sorter').clone();
   			$('.filter-sortbar').html(sortbarclone);
+  			var username = $('.customer-menu ul.top').clone();
+  			$('.user-details-login').html(username);
+  			var loginuserdetail = $('div.customer-menu').clone();
+  			$('.login-user-details').html(loginuserdetail);
 
   			$("span.close-filter").click(function () {
 		      $('div#layered-filter-block').toggleClass("active");
