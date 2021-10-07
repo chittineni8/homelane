@@ -1,13 +1,17 @@
 <?php
 
 namespace Codilar\Category\Block;
-use \Magento\Catalog\Api\CategoryRepositoryInterface;
+//use \Magento\Catalog\Api\CategoryRepositoryInterface;
+use Magento\Catalog\Model\Layer\Resolver;
+
 class Categorylist extends \Magento\Framework\View\Element\Template {
 
 
+      protected $resolver;
+
 //    protected $jsonHelper;
 
-    private $categoryRepository;
+//    private $categoryRepository;
     /**
      * @var \Magento\Catalog\Helper\Category
      */
@@ -32,29 +36,35 @@ class Categorylist extends \Magento\Framework\View\Element\Template {
      */
     public function __construct(
 //        \Magento\Framework\Json\Helper\Data      $jsonHelper,
-        CategoryRepositoryInterface             $categoryRepository,
+//        CategoryRepositoryInterface             $categoryRepository,
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Catalog\Helper\Category $categoryHelper,
         \Magento\Catalog\Model\Indexer\Category\Flat\State $categoryFlatState,
         \Magento\Catalog\Model\CategoryFactory $categoryFactory,
+        Resolver                               $layerResolver,
         $data = []
     )
     {
 //        $this->jsonHelper                = $jsonHelper;
-        $this->categoryRepository        = $categoryRepository;
+//        $this->categoryRepository        = $categoryRepository;
+        $this->layerResolver             = $layerResolver;
         $this->_categoryHelper           = $categoryHelper;
         $this->categoryFlatConfig        = $categoryFlatState;
         $this->_categoryFactory          = $categoryFactory;
         parent::__construct($context, $data);
     }
 
-    public function getcurrentCategoryId(){
+  /*  public function getcurrentCategoryId(){
         $categoryIdd = (int)$this->getRequest()->getParam('id', false);
 //        $this->jsonHelper->jsonDecode($this->jsonHelper->jsonEncode($this->categoryRepository->get($categoryIdd)));
         $currentCategoryId=$this->categoryRepository->get($categoryIdd);
         return $currentCategoryId->getId();
-    }
+    }*/
 
+    public function getCurrentCategory(){
+
+        return $this->layerResolver->get()->getCurrentCategory();
+    }
     /**
      * Get all categories
      *
@@ -103,7 +113,7 @@ class Categorylist extends \Magento\Framework\View\Element\Template {
         // Check if category has children
         if ( $category->hasChildren() )
         {
-            $currentCategoryId=$this->getcurrentCategoryId();
+            $currentCategoryId=$this->getCurrentCategory()->getId();
             $childCategories = $this->getSubcategories($category);
             $childCount = (int)$category->getChildrenCount();
             if ( $childCount > 0 )
