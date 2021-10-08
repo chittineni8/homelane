@@ -53,7 +53,8 @@ class ActionPredispatch implements \Magento\Framework\Event\ObserverInterface
             $redirectSessionValue = $this->overlay->getSessionValue();
             $redirectCookieValue = $this->overlay->getWebsiteCookie();
             if ($this->isCityChange() == 'true') {
-
+                $this->overlay->unSetSessionValue();
+                $this->overlay->deleteCookie();
                 $this->overlay->setSessionValue($this->overlay->getBaseUrl());
                 $this->overlay->setWebsiteCookie($this->overlay->getBaseUrl());
 //                $this->overlay->getHttpResponse()->setRedirect($this->overlay->getBaseUrl() . '' . $filteredURL);

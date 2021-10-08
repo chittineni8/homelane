@@ -1,0 +1,70 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var Codilar\Customer\Block\CustomerData $block*/
+if ($block->getCustomerIsLoggedIn()) :
+
+    $customerName = $block->getCustomerName();
+    $customerEmail = $block->getCustomerEmail();
+
+    ?>
+    <li class="login link wishlist" data-bind="scope: 'wishlist'">
+        <a href="<?= $this->getUrl('wishlist/') ?>"></a>
+    </li>
+    <li class="customer-welcome">
+
+        <span class="customer-name"
+              role="link"
+              tabindex="0"
+              data-mage-init='{"dropdown":{}}'
+              data-toggle="dropdown"
+              data-trigger-keypress-button="true"
+              data-bind="scope: 'customer'">
+            <button type="button"
+                    class="action switch"
+                    tabindex="-1"
+                    data-action="customer-menu-toggle">
+                <span><?= $block->escapeHtml(__('Change')) ?></span>
+            </button>
+        </span>
+        <script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "customer": {
+                            "component": "Magento_Customer/js/view/customer"
+                        }
+                    }
+                }
+            }
+        }
+        </script>
+
+        <?php //if ($block->getChildHtml()) :?>
+        <div class="customer-menu" data-target="dropdown">
+            <?= $block->getChildHtml() ?>
+            <ul class="top">
+                <li>
+                    <div>
+                    <a><?php echo $customerName; ?></a>
+                    <a class="mail"><?php echo $customerEmail; ?></a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="header links">
+                <li class="login-profile"><a href="<?= $this->getUrl('customer/account') ?>">My Profile</a></li>
+                <li class="login-wishlist"><a href="<?= $this->getUrl('wishlist') ?>">My Wishlist</a></li>
+                <li class="login-hl"><a href="#">Homelane care</a></li>
+            </ul>
+            <ul class="bottom">
+                <li><a href="<?= $this->getUrl('customer/account/logout') ?>">Logout</a></li>
+            </ul>
+        </div>
+        <?php //endif; ?>
+
+    </li>
+<?php endif; ?>

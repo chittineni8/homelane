@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "be65928e9e412c1aa166f9655aad4cc6",
+    "content-hash": "36ff36c1b4157f313a8df27e646697ca",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -21338,6 +21338,59 @@
                 "os"
             ],
             "time": "2020-10-29T15:55:28+00:00"
+        },
+        {
+            "name": "smile/module-product-label",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "reference": "56c65ae482c40411b74a65f97629d16b0e7662ee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/56c65ae482c40411b74a65f97629d16b0e7662ee",
+                "reference": "56c65ae482c40411b74a65f97629d16b0e7662ee",
+                "shasum": ""
+            },
+            "require": {
+                "magento/framework": ">=103.0.0",
+                "magento/module-catalog": ">=104.0.0",
+                "magento/module-eav": ">=102.0.0",
+                "magento/module-media-storage": ">=100.4.0"
+            },
+            "require-dev": {
+                "smile/magento2-smilelab-quality-suite": "^1.1.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Smile\\ProductLabel\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Houda El Rhozlane",
+                    "email": "houda.elrhozlane@smile.fr",
+                    "homepage": "https://www.smile.eu/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Extension of Magento2 to be able to contribute images associated to product attribute values.",
+            "keywords": [
+                "image",
+                "label",
+                "magento2",
+                "product"
+            ],
+            "time": "2021-08-31T08:27:51+00:00"
         },
         {
             "name": "sonata-project/google-authenticator",

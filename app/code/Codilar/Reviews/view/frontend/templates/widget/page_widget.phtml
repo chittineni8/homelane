@@ -5,27 +5,41 @@
   <li class="home-page-customer-review-content">
     <div class="left-sec">
       <div class="cimage">
-        <img src="<?php echo $block->getUrl("media/") . $csimage=$block->getData('woc_image'); ?>"/>
+        <img src="<?php echo $block->getMediaUrl() . $csimage=$block->getData('woc_image'); ?>"/>
       </div>
       <div class="title">
           <span class="widget-title-val"><?php echo $block->getData('customer1'); ?></span>
       </div>
-      <div class="place attribute">
-          <span><?php echo $block->getData('woplace'); ?></span>
-      </div>
-      <div class="txt1 attribute">
-          <span class="widget-title-val"><?php echo $block->getData('wotext1'); ?></span>
-      </div>
-      <div class="txt2 attribute">
-          <span><?php echo $block->getData('wotext2'); ?></span>
-      </div>
+        <?php
+        if ($block->getData('woplace')):
+        ?>
+              <div class="place attribute">
+                  <span><?php echo $block->getData('woplace'); ?></span>
+              </div>
+        <?php
+        endif;
+        if ($block->getData('wotext1')):
+        ?>
+              <div class="txt1 attribute">
+                  <span class="widget-title-val"><?php echo $block->getData('wotext1'); ?></span>
+              </div>
+        <?php
+        endif;
+        if ($block->getData('wotext2')):
+        ?>
+              <div class="txt2 attribute">
+                  <span><?php echo $block->getData('wotext2'); ?></span>
+              </div>
+        <?php
+        endif;
+        ?>
       <div class="description">
           <span class="widget-desc-val"><?php echo $block->getData('wodescription'); ?></span>
       </div>
     </div>
       <div class="right-sec">
       <div class="image">
-          <img src="<?php echo $block->getUrl("media/") . $block->getData('wop_image'); ?>"/>
+          <img src="<?php echo $block->getMediaUrl() . $block->getData('wop_image'); ?>"/>
       </div>
       <span class="play-button" id="play-button"></span>
       <div id="modal-video">
@@ -42,27 +56,41 @@
   <li class="home-page-customer-review-content">
     <div class="left-sec">
       <div class="cimage">
-        <img src="<?php echo $block->getUrl("media/") . $csimage=$block->getData('wtc_image'); ?>" />
+        <img src="<?php echo $block->getMediaUrl() . $csimage=$block->getData('wtc_image'); ?>" />
       </div>
       <div class="title">
           <span><?php echo $block->getData('customer2'); ?></span>
       </div>
-      <div class="place attribute">
-          <span><?php echo $block->getData('wtplace'); ?></span>
-      </div>
-      <div class="txt1 attribute">
-          <span ><?php echo $block->getData('wttext1'); ?></span>
-      </div>
-      <div class="txt2 attribute">
-          <span><?php echo $block->getData('wttext2'); ?></span>
-      </div>
+        <?php
+        if ($block->getData('wtplace')):
+        ?>
+              <div class="place attribute">
+                  <span><?php echo $block->getData('wtplace'); ?></span>
+              </div>
+        <?php
+        endif;
+        if ($block->getData('wttext1')):
+        ?>
+              <div class="txt1 attribute">
+                  <span ><?php echo $block->getData('wttext1'); ?></span>
+              </div>
+        <?php
+        endif;
+        if ($block->getData('wttext2')):
+        ?>
+              <div class="txt2 attribute">
+                  <span><?php echo $block->getData('wttext2'); ?></span>
+              </div>
+        <?php
+        endif;
+        ?>
       <div class="description">
           <span ><?php echo $block->getData('wtdescription'); ?></span>
       </div>
     </div>
     <div class="right-sec">
       <div class="image">
-         <img src="<?php echo $block->getUrl("media/") . $block->getData('wtp_image'); ?>" />
+         <img src="<?php echo $block->getMediaUrl() . $block->getData('wtp_image'); ?>" />
       </div>
       <span class="play-button" id="play-button1"></span>
       <div id="modal-video1">
@@ -80,27 +108,41 @@
   <li class="home-page-customer-review-content">
     <div class="left-sec">
       <div class="cimage">
-          <span ><?php echo $block->getUrl("media/") . $csimage=$block->getData('wthc_image');?></span>
+          <img src="<?php echo $block->getMediaUrl() . $csimage=$block->getData('wthc_image'); ?>"/>
       </div>
       <div class="title">
           <span><?php echo $block->getData('customer3'); ?></span>
       </div>
-      <div class="place attribute">
-          <span><?php echo $block->getData('wthplace'); ?></span>
-      </div>
-      <div class="txt1 attribute">
-          <span ><?php echo $block->getData('wthtext1'); ?></span>
-      </div>
-      <div class="txt2 attribute">
-          <span><?php echo $block->getData('wthtext2'); ?></span>
-      </div>
+        <?php
+        if ($block->getData('wthplace')):
+        ?>
+              <div class="place attribute">
+                  <span><?php echo $block->getData('wthplace'); ?></span>
+              </div>
+        <?php
+        endif;
+        if ($block->getData('wthtext1')):
+        ?>
+              <div class="txt1 attribute">
+                  <span ><?php echo $block->getData('wthtext1'); ?></span>
+              </div>
+        <?php
+        endif;
+        if ($block->getData('wthtext2')):
+        ?>
+              <div class="txt2 attribute">
+                  <span><?php echo $block->getData('wthtext2'); ?></span>
+              </div>
+        <?php
+        endif;
+        ?>
       <div class="description">
           <span><?php echo $block->getData('wthdescription'); ?></span>
       </div>
     </div>
     <div class="right-sec">
       <div class="image">
-        <img src="<?php echo $block->getUrl("media/") . $block->getData('wthp_image'); ?>" />
+        <img src="<?php echo $block->getMediaUrl() . $block->getData('wthp_image'); ?>" />
       </div>
       <span class="play-button" id="play-button2"></span>
       <div id="modal-video2">
@@ -117,27 +159,41 @@
   <li class="home-page-customer-review-content">
     <div class="left-sec">
       <div class="cimage">
-          <span ><?php echo $block->getUrl("media/") . $csimage=$block->getData('wfoc_image');?></span>
+          <img src="<?php echo $block->getMediaUrl() . $csimage=$block->getData('wfoc_image'); ?>"/>
       </div>
       <div class="title">
           <span><?php echo $block->getData('customer4'); ?></span>
       </div>
-      <div class="place">
-          <span><?php echo $block->getData('wfoplace'); ?></span>
-      </div>
-      <div class="txt1">
-          <span ><?php echo $block->getData('wfotext1'); ?></span>
-      </div>
-      <div class="txt2">
-          <span><?php echo $block->getData('wfotext2'); ?></span>
-      </div>
+        <?php
+        if ($block->getData('wfoplace')):
+        ?>
+              <div class="place attribute">
+                  <span><?php echo $block->getData('wfoplace'); ?></span>
+              </div>
+        <?php
+        endif;
+        if ($block->getData('wfotext1')):
+        ?>
+              <div class="txt1 attribute">
+                  <span ><?php echo $block->getData('wfotext1'); ?></span>
+              </div>
+        <?php
+        endif;
+        if ($block->getData('wfotext2')):
+        ?>
+              <div class="txt2 attribute">
+                  <span><?php echo $block->getData('wfotext2'); ?></span>
+              </div>
+        <?php
+        endif;
+        ?>
       <div class="description">
           <span ><?php echo $block->getData('wfodescription'); ?></span>
       </div>
     </div>
     <div class="right-sec">
       <div class="image">
-        <img src="<?php echo $block->getUrl("media/") . $block->getData('wfop_image'); ?>" />
+        <img src="<?php echo $block->getMediaUrl() . $block->getData('wfop_image'); ?>" />
       </div>
       <span class="play-button" id="play-button3"></span>
       <div id="modal-video3">
@@ -155,27 +211,41 @@
   <li class="home-page-customer-review-content">
     <div class="left-sec">
       <div class="cimage">
-          <span ><?php echo $block->getUrl("media/") . $csimage=$block->getData('wfvc_image');?></span>
+          <img src="<?php echo $block->getMediaUrl() . $csimage=$block->getData('wfvc_image'); ?>"/>
       </div>
       <div class="title">
           <span><?php echo $block->getData('customer5'); ?></span>
       </div>
-      <div class="place">
-          <span><?php echo $block->getData('wfvplace'); ?></span>
-      </div>
-      <div class="txt1">
-          <span ><?php echo $block->getData('wfvtext1'); ?></span>
-      </div>
-      <div class="txt2">
-          <span><?php echo $block->getData('wfvtext2'); ?></span>
-      </div>
+        <?php
+        if ($block->getData('wfvplace')):
+        ?>
+              <div class="place attribute">
+                  <span><?php echo $block->getData('wfvplace'); ?></span>
+              </div>
+        <?php
+        endif;
+        if ($block->getData('wfvtext1')):
+        ?>
+              <div class="txt1 attribute">
+                  <span ><?php echo $block->getData('wfvtext1'); ?></span>
+              </div>
+        <?php
+        endif;
+        if ($block->getData('wfvtext2')):
+        ?>
+              <div class="txt2 attribute">
+                  <span><?php echo $block->getData('wfvtext2'); ?></span>
+              </div>
+        <?php
+        endif;
+        ?>
       <div class="description">
           <span ><?php echo $block->getData('wfvdescription'); ?></span>
       </div>
     </div>
     <div class="right-sec">
       <div class="image">
-        <img src="<?php echo $block->getUrl("media/") . $block->getData('wfvp_image'); ?>" />
+        <img src="<?php echo $block->getMediaUrl() . $block->getData('wfvp_image'); ?>" />
       </div>
       <span class="play-button" id="play-button4"></span>
       <div id="modal-video4">

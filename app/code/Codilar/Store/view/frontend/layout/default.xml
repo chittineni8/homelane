@@ -3,7 +3,7 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
 <body>
     <referenceContainer name="footer">
-        <block class="Codilar\Store\Block\View" template="Codilar_Store::popup.phtml" cacheable="false">
+        <block class="Codilar\Store\Block\View" template="Codilar_Store::popup.phtml">
         <arguments>
             <argument name="viewModel" xsi:type="object">Codilar\Store\ViewModel\Overlay</argument>
         </arguments>

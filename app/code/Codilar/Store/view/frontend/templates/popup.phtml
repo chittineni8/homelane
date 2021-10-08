@@ -20,24 +20,8 @@ if (isset($gets['query'])) {
         $queryParam = '&city_change=true';
     }
 }
-//foreach ($parsedUrl as $url) {
-//    $schema = $url['scheme'];
-//    $path = $url['path'];
-//}
-$sessionData = $viewModel->getSessionValue();
-$cookieData = $viewModel->getWebsiteCookie();
-//if ($cookieData == null) {
-//    if ($sessionData == null) {
-//var_dump($sessionData);
-//var_dump($cookieData);
-//die;
-//?>
-
-<?php if ($sessionData != null || $sessionData != null): ?>
-<div class="call-popup" data-show-popup="false" data-mage-init='{"callPopup":{}}'>
-<?php else: ?>
-    <div class="call-popup" data-show-popup="true" data-mage-init='{"callPopup":{}}'>
-<?php endif; ?>
+?>
+<div class="call-popup" data-mage-init='{"callPopup":{}}'>
     <div class="call-popup-top">
         <div class="call-popup-img">
             <img src='<?php echo $this->getViewFileUrl('images/city-popup-image.png'); ?>' alt="city popup image">

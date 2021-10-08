@@ -1,0 +1,63 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+?>
+<?php
+/** @var \Magento\LayeredNavigation\Block\Navigation\FilterRenderer $block */
+/** @var \Magento\Framework\Escaper $escaper */
+/** @var \Magento\LayeredNavigation\ViewModel\Layer\Filter $viewModel */
+$viewModel = $block->getData('product_layer_view_model');
+?>
+
+<ol class="items filter-list">
+    <?php foreach ($filterItems as $filterItem): ?>
+        <li class="item">
+            <?php if ($filterItem->getCount() > 0): ?>
+                <a
+                    href="<?= $escaper->escapeUrl($filterItem->getUrl()) ?>"
+                    rel="nofollow"
+                >
+                <input type="checkbox" id="web">
+                <label for="web"><?= /* @noEscape */ $filterItem->getLabel() ?></label>
+                </a>
+            <?php endif; ?>
+        </li>
+    <?php endforeach ?>
+</ol>
+<label class="more">See All</label>
+<script type="text/javascript">
+require(['jquery'], function($) {
+    jQuery(document).ready(function(){
+        jQuery(function(){ // document ready
+            if (!!$('.sidebar.sidebar-main').length) { // make sure "#sticky" element exists
+            var el = $('.sidebar.sidebar-main');
+            var stickyTop = $('.sidebar.sidebar-main').offset().top; // returns number
+            var footerTop = $('.page-bottom').offset().top; // returns number
+            var stickyHeight = $('.sidebar.sidebar-main').height();
+            var limit = footerTop - stickyHeight - 20;
+            $(window).scroll(function(){ // scroll event
+            var windowTop = $(window).scrollTop(); // returns number
+
+            if (stickyTop < windowTop){
+             el.css({ position: 'fixed', top: 70 });
+             el.addClass('sticky');
+            }
+            else {
+             el.css('position','static');
+             el.removeClass('sticky');
+            }
+
+            if (limit < windowTop) {
+            var diff = limit - windowTop;
+
+            el.css('position','static');
+            }     
+            });
+            }
+        });   
+    });
+});
+</script>
