@@ -51,8 +51,12 @@ if ($block->getCustomerIsLoggedIn()) :
             <ul class="top">
                 <li>
                     <div>
-                    <a><?php echo $customerName; ?></a>
-                    <a class="mail"><?php echo $customerEmail; ?></a>
+                    <?php if (!empty($customerName)) { ?>
+                    <a href=""><?php echo $customerName; ?></a>
+                    <?php }?>
+                    <?php if (!empty($customerName)) { ?>
+                    <a href=""><?php echo $customerEmail; ?></a>
+                    <?php }?>
                     </div>
                 </li>
             </ul>
