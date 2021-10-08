@@ -129,6 +129,9 @@
                 </div>
             </div>
         </form>
+     <!--   <div id="popup-mpdal" style="display:none;">
+    <?php //include ($block->getTemplateFile('Codilar_TokenAPI::popup.phtml')) ?>
+</div> -->
 
         <div class="right-img-box">
             <img src='<?php echo $this->getViewFileUrl('images/createbox.png'); ?>' alt="logo" />
@@ -160,7 +163,17 @@ $('#customer_mobile').on('change', function ()
                 complete: function(mobileResult) {
                     $("#mobileresponse").html(""); 
                     $("#mobileresponse").append(mobileResult.responseJSON);
-                   
+            //         if($('#mobileresponse').is(':empty') && $('#emailresponse').is(':empty'))  { 
+            //         $("button[name=submit]").prop('disabled', false);
+            //     }
+            //       else if($('#mobileresponse').is(':empty')) { 
+            //         $("button[name=submit]").prop('disabled', false);
+            //     }
+             
+            //    else{
+            //          $("button[name=submit]").prop('disabled', true);
+                
+            // }
               }
             });
 });
@@ -184,7 +197,17 @@ $('#popup-email_address').on('change', function ()
                 complete: function(resultJson) {
                     $("#emailresponse").html(""); 
                     $("#emailresponse").append(resultJson.responseJSON);
-                    
+                //      if($('#mobileresponse').is(':empty') && $('#emailresponse').is(':empty'))  { 
+                //     $("button[name=submit]").prop('disabled', false);
+                // }  
+                //    else if($('#emailresponse').is(':empty')) { 
+                //     $("button[name=submit]").prop('disabled', false);
+                // }
+           
+                // else{
+                //      $("button[name=submit]").prop('disabled', true);
+                // }
+                  
                 }
               
             });
@@ -212,25 +235,28 @@ $('#popup-email_address').on('change', function ()
                     responsive: true,
                     innerScroll: true,
                     title: 'OTP',
-                    buttons: [{
-                        text: $.mage.__('Continue'),
-                        class: '',
-                        click: function () {
-                            this.closeModal();
-                        }
-                    }]
+                    buttons: []
                 };
 
                 var popup = modal(options, $('#popup-mpdal'));
                 $("#submit").on('click',function(){
+                    var value = $("#customer_mobile").val();
+                   var email = $("#popup-email_address").val();
+
                     $("#popup-mpdal").modal("openModal");
+
                     $('#customer-popup-register').modal('closeModal');
+                 
+                    $('#cnumber').val(value);
+                    $('#email').val(email);
+
+                    setTimeout(function(){ $('#popup-mpdal').modal('openModal'); }, 4000);
                 });
 
             }
         );
-    </script> -->
-
+    </script>
+ -->
 
 
 
