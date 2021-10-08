@@ -7,10 +7,9 @@
 /** @var Codilar\Customer\Block\CustomerData $block*/
 if ($block->getCustomerIsLoggedIn()) :
 
-    if ($customer = $block->getCustomerDetails()) :
-    $customerName = $customer->getName();
-    $customerEmail = $customer->getEmail();
-    endif;
+    $customerName = $block->getCustomerName();
+    $customerEmail = $block->getCustomerEmail();
+
     ?>
     <li class="login link wishlist" data-bind="scope: 'wishlist'">
         <a href="<?= $this->getUrl('wishlist/') ?>"></a>
