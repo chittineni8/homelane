@@ -320,7 +320,7 @@ ul.header.links {
     li.login.link.wishlist {
         display: inline-block;
         position: relative;
-        top: 3px;
+        top: 4px;
         a:before {
             height: 25px;
         }
@@ -1010,8 +1010,8 @@ form.query-form {
         padding: 0;
     }
     .slick-prev, .slick-next {
-        height: 48px;
-        width: 48px;
+        height: 55px;
+        width: 55px;
         z-index: 11;
     }
     .slick-prev:before, .slick-next:before, .slick-prev:after, .slick-next:after {
@@ -1281,13 +1281,21 @@ h2.account-heading {
 
 /*************Reset Password Page****************/
 .user-resetpassword-index {
-    .page-title-wrapper {
-        text-align: center;
-        margin: 20px 0 0;
-        h1.page-title {
-            font-size: 22px;
-            font-weight: 500;
+    main#maincontent {
+        background: #f3f3f3;
+        padding-bottom: 60px;
+        .column.main {
+            background: #fff;
+            padding: 20px 20px;
+            h1.page-title {
+                font-size: 25px;
+                font-weight: 500;
+                text-align: center;
+            }
         }
+    }
+    .page-title-wrapper {
+        display: none;
     }
     .field.user-email-id {
         span.user-id {
@@ -1313,7 +1321,7 @@ h2.account-heading {
             margin: 0 0 20px;
         }
         .control {
-            width: 300px;
+            width: 448px;
             input {
                 border: 1px solid #E4E4E4;
             }
@@ -1803,7 +1811,7 @@ div#layered-filter-block-container {
         border: none;
     }
     .navigation .level0 .submenu li.level1 {
-        flex: 1 0 33.33%;
+        flex: 1 0 auto;
     }
     .header.content .navigation .level0 .level1 .submenu {
         position: relative;
@@ -1829,7 +1837,7 @@ div#layered-filter-block-container {
     }
     .header.content .navigation .level0 > .submenu {
         padding-top: 10px;
-        padding-bottom: 10px;
+        padding-bottom: 18px;
     }
     nav.navigation ul.level0.submenu {
         opacity: 0;
@@ -1927,6 +1935,9 @@ div#layered-filter-block-container {
                 background-size: 100%;
                 display: inline-block;
             }
+        }
+        .slick-prev,.slick-next {
+            top: 42%;
         }
     }
     /****************PLP Page Design*********************/
@@ -2103,7 +2114,7 @@ div#layered-filter-block-container {
             &:before {
                 background: url(../images/popup-close.png) no-repeat 0 0;
                 width: 100%;
-                height: 100%;
+                height: 62px;
                 content: "";
                 display: block;
                 position: absolute;
@@ -2125,6 +2136,7 @@ div#layered-filter-block-container {
     }
     .block.block-customer-login,form#customer-popup-form-register {
         width: 100%;
+        padding: 35px 25px 0;
     }
     .right-img-box {
         display: none;
@@ -2245,7 +2257,7 @@ div#layered-filter-block-container {
         width:100%;
     }
     .block.block-search.searchbox-open {
-        width: 80%;
+        width: 76%;
         z-index: 111;
         right: 16px;
         margin-top: 0;
@@ -2260,6 +2272,30 @@ div#layered-filter-block-container {
         width: 25px;
         height: 38px;
         content: "";
+        margin-left: 8px;
+    }
+    .block.block-search.searchbox-open form.form.minisearch .action.search:before {
+        color: #E71C24;
+        font-weight: 500;
+        font-size: 26px;
+        line-height: 22px;
+        content: '\e615';
+        font-family: 'icons-blank-theme';
+    }
+    .block.block-search.searchbox-open form.form.minisearch .action.search {
+        right: 8px;
+        top:11px;
+        display: block;
+        position: absolute;
+        background: #fff;
+        border: none;
+        padding: 0;
+        line-height: 10px;
+        left: unset;
+        z-index: 1;
+        span {
+            font-size:0;
+        }
     }
     .searchbox-open input#search {
         display: block;
@@ -2270,17 +2306,17 @@ div#layered-filter-block-container {
         display: none;
     }
     .nav-sections {
-        li.link.authorization-link a {
-            color: #E71C24;
-            font-weight: 700;
-        }
         li.link.authorization-link {
             list-style: none;
-            border: 1px solid #E71C24;
-            display: inline-block;
-            padding: 5px 14px;
-            border-radius: 4px;
             margin-left: 15px;
+            a {
+                color: #E71C24;
+                font-weight: 700;
+                border: 1px solid #E71C24;
+                display: inline-block;
+                padding: 5px 14px;
+                border-radius: 4px;
+            }
         }
         .mob-store-switcher {
             margin: 25px 0 0 16px;
@@ -2318,6 +2354,9 @@ div#layered-filter-block-container {
                 height: 24px;
             }
         }
+    }
+    .logged-in .header ul.header.links.bottom li.login.link.wishlist {
+        top: 1px;
     }
     .logged-in {
         .login-user-details {
@@ -2426,7 +2465,7 @@ div#layered-filter-block-container {
         }
         .slick-prev, .slick-next {
             height: 48px;
-            top: 40%;
+            top: 40% !important;
             width: 30px;
             border-radius: 8px;
             filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.16));
@@ -2679,9 +2718,24 @@ div#layered-filter-block-container {
             margin-top: -33px;
         }
     }
+    /***********************reset password page****************************/
+    .user-resetpassword-index {
+        main#maincontent {
+            padding: 20px 15px;
+        }
+        form#addData .control {
+            width: 100%;
+        }
+    }
+}
+@media only screen and (max-width: 380px) {
+    .block.block-search.searchbox-open {
+        width: 74%;
+    }
 }
 @media only screen and (max-width: 360px) {
     .block.block-search {
         right: 0;
     }
 }
+
