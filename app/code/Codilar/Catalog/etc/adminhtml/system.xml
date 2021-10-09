@@ -11,6 +11,10 @@
                     <label>Change Simple Product URL to Configurable Product URL</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
+                <field id="latest_category" translate="label" type="multiselect" sortOrder="260" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>New Product Category</label>
+                    <source_model>Codilar\Catalog\Model\Config\Source\CategoryList</source_model>
+                </field>
             </group>
         </section>
     </system>
