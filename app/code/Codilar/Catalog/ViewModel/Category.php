@@ -73,10 +73,14 @@ class Category implements ArgumentInterface
      */
     public function getNewCategory(): string
     {
-        $categoryId =  $this->scopeConfig->getValue(
+        $categoryId = $this->scopeConfig->getValue(
             self::CATALOG_FRONTEND_LATEST_CATEGORY,
             ScopeInterface::SCOPE_STORE
         );
+        if($categoryId == null || empty($categoryId))
+        {
+            $categoryId = 3;
+        }
         $category = $this->categoryRepository->get($categoryId, $this->storeManager->getStore()->getId());
         return $category->getUrl();
     }
