@@ -143,10 +143,10 @@ $("#forgotPassword").click(function(){
                     $(".forgot-password-error").html(""); 
                     $(".forgot-password-success").html(""); 
                     $(".forgot-password-success").append(result.responseJSON);
-
+                           $('#forgotPassword').hide(); 
                   }
-                 $('#forgotPassword').hide(); 
-                }
+                 
+            }
               
             });
 }

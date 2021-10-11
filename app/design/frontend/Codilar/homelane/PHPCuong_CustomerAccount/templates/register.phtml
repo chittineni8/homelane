@@ -30,7 +30,6 @@
         }
     </style>
     <div id="customer-popup-register" class="customer-popup-register">
-        <div class="customer-account-wrapper">
         <form class="form-create-account" action="<?php /* @escapeNotVerified */ echo $block->getPostActionUrl() ?>" method="post" id="customer-popup-form-register" enctype="multipart/form-data" autocomplete="off" data-mage-init='{"validation":{}}'>
             <h2 class="account-heading"><?php echo __('Sign up'); ?></h2>
             <?php echo $block->getBlockHtml('formkey'); ?>
@@ -125,18 +124,17 @@
                     <span><?php /* @escapeNotVerified */ echo __("here") ?></span>
                 </div>
                 <div class="other-links">
-                    <a href="<?= $this->getUrl('terms') ?>"><?php echo __('Terms & Conditions'); ?></a> |
+                    <a href="<?= $this->getUrl('terms') ?>"><?php echo __('Terms & Conditions'); ?></a>|
                     <a href="<?= $this->getUrl('privacy-policy') ?>"><?php echo __('Privacy Policy'); ?></a>
                 </div>
             </div>
         </form>
-     <!--   <div id="popup-mpdal" style="display:none;">
-    <?php //include ($block->getTemplateFile('Codilar_TokenAPI::popup.phtml')) ?>
-</div> -->
+     <div id="popup-mpdal" style="display:none;">
+    <?php include ($block->getTemplateFile('Codilar_TokenAPI::popup.phtml')) ?>
+</div> 
 
         <div class="right-img-box">
             <img src='<?php echo $this->getViewFileUrl('images/createbox.png'); ?>' alt="logo" />
-        </div>
         </div>
         <script type="text/x-magento-init">
             {
@@ -221,7 +219,7 @@ $('#popup-email_address').on('change', function ()
 <?php endif; ?>
 
 
-<!-- <script>
+<script>
         require(
             [
                 'jquery',
@@ -241,7 +239,8 @@ $('#popup-email_address').on('change', function ()
                 };
 
                 var popup = modal(options, $('#popup-mpdal'));
-                $("#submit").on('click',function(){
+                $("#submit").on('click',function(event){
+                       event.preventDefault();
                     var value = $("#customer_mobile").val();
                    var email = $("#popup-email_address").val();
 
@@ -249,16 +248,16 @@ $('#popup-email_address').on('change', function ()
 
                     $('#customer-popup-register').modal('closeModal');
                  
-                    $('#cnumber').val(value);
+                    $('#otp_mobile').val(value);
                     $('#email').val(email);
 
-                    setTimeout(function(){ $('#popup-mpdal').modal('openModal'); }, 4000);
+                    
                 });
 
             }
         );
     </script>
- -->
+
 
 
 
