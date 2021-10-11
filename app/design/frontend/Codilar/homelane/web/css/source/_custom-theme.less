@@ -3,6 +3,15 @@ body#html-body {
     font-weight: 400;
     color: #4A4A4A;
 }
+.control.pincode,  .control.phoneno {
+    position: relative;
+}
+#errmsgpincode, #errmsgnumber {
+    color: #e71c24;
+    font-size: 12px;
+    position: absolute;
+    bottom: -18px;
+}
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -317,12 +326,18 @@ ul.header.links {
         position: relative;
         top: -2px;
     }
-    li.login.link.wishlist {
+    li.login.link.wishlists {
         display: inline-block;
         position: relative;
-        top: 4px;
+        top: 5px;
+        margin-right: 20px;
         a:before {
+            content: "";
+            display: inline-block;
+            background: url(../images/wishlist-icon3x.png) no-repeat 0 0;
+            width: 25px;
             height: 25px;
+            background-size: 100%;
         }
     }
 }
@@ -742,6 +757,23 @@ aside.modal-popup.city-popup {
         }
     }
 }
+.validate-form {
+    .control.input-has-value {
+        position: relative;
+        &:after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            background: #fff url('@{baseDir}images/right-click.png') no-repeat 0 0;
+        }
+    }  
+}
+form.query-form.validate-form .control.input-has-value::after {
+    top: 14px;
+}
 .page-bottom {
     overflow: hidden;
 }
@@ -763,6 +795,7 @@ form.query-form {
             }
             input.checkbox {
                 height: auto;
+                top: 0;
             }
             .whatsapp-lable {
                 color: #888888;
@@ -791,18 +824,6 @@ form.query-form {
             top: 0;
             background-size: cover;
             background-position: bottom;
-        }
-        .control.input-has-value {
-            position: relative;
-            &:after {
-                content: "";
-                position: absolute;
-                right: 0;
-                top: 12px;
-                width: 20px;
-                height: 20px;
-                background: #fff url('@{baseDir}images/right-click.png') no-repeat 0 0;
-            }
         }
     }
     button {
@@ -1280,17 +1301,20 @@ h2.account-heading {
 }
 
 /*************Reset Password Page****************/
-.user-resetpassword-index {
-    main#maincontent {
-        background: #f3f3f3;
-        padding-bottom: 60px;
-        .column.main {
-            background: #fff;
-            padding: 20px 20px;
-            h1.page-title {
-                font-size: 25px;
-                font-weight: 500;
-                text-align: center;
+body.user-resetpassword-index {
+    .page-wrapper {
+        main#maincontent {
+            background: #f3f3f3;
+            padding-bottom: 60px;
+            padding-top: 50px;
+            .column.main {
+                background: #fff;
+                padding: 20px 20px;
+                h1.page-title {
+                    font-size: 25px;
+                    font-weight: 500;
+                    text-align: center;
+                }
             }
         }
     }
@@ -1308,7 +1332,8 @@ h2.account-heading {
             font-size: 16px;
         }
     }
-    form#addData {
+    form#pass-validate {
+        padding-bottom: 30px;
         .actions-toolbar > .primary button.primary {
             width: auto;
             padding: 10px 20px;
@@ -1329,6 +1354,9 @@ h2.account-heading {
     }
     .columns form .actions-toolbar {
         margin-left: 0;
+    }
+    form div.mage-error[generated] {
+        font-weight: 700;
     }
 }
 .forgot-password-success {
@@ -1879,7 +1907,8 @@ div#layered-filter-block-container {
     }
     .page-wrapper .block.widget .products-grid .product-item {
         width: auto;
-        flex: 0 0 24.5%;
+        flex: 0 0 25%;
+        margin: 0 !important;
     }
     .hp-category-block {
         div.pagebuilder-column {
@@ -2355,8 +2384,8 @@ div#layered-filter-block-container {
             }
         }
     }
-    .logged-in .header ul.header.links.bottom li.login.link.wishlist {
-        top: 1px;
+    .logged-in .header ul.header.links.bottom li.login.link.wishlists {
+        top: 2px;
     }
     .logged-in {
         .login-user-details {
@@ -2719,11 +2748,13 @@ div#layered-filter-block-container {
         }
     }
     /***********************reset password page****************************/
-    .user-resetpassword-index {
-        main#maincontent {
-            padding: 20px 15px;
+    body.user-resetpassword-index {
+        .page-wrapper {
+            main#maincontent {
+                padding: 20px 15px;
+            }
         }
-        form#addData .control {
+        form#pass-validate .control {
             width: 100%;
         }
     }
