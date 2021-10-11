@@ -14,6 +14,9 @@
 // phpcs:disable Magento2.Files.LineLength.MaxExceeded
 // phpcs:disable Magento2.Templates.ThisInTemplate.FoundThis
 
+$viewModel = $block->getData("viewModel");
+$categoryUrl = $viewModel->getNewCategory();
+
 if ($exist = ($block->getProductCollection() && $block->getProductCollection()->getSize())) {
     $type = 'widget-new-grid';
 
@@ -36,7 +39,7 @@ if ($exist = ($block->getProductCollection() && $block->getProductCollection()->
         <div class="block-title">
             <strong role="heading" aria-level="2"><?= $block->escapeHtml(__('New Arrivals')) ?></strong>
         </div>
-        <div class="see-all-link"><a href="">See all</a></div>
+        <div class="see-all-link"><a href="<?php echo $categoryUrl; ?>">See all</a></div>
         <div class="block-content">
             <?= /* @noEscape */ '<!-- ' . $image . '-->' ?>
             <div class="products-<?= /* @noEscape */ $mode ?> <?= /* @noEscape */ $mode ?>">
