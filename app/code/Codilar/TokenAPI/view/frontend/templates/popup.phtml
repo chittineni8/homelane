@@ -1,0 +1,210 @@
+<div class="otp-wrapper">
+    <h2>Verify your number</h2>
+    <form class="otp-form" method="post">
+
+        <div class="control">
+            <input type="hidden" name="email"
+                   id="email" value=""
+                   class="input-text"
+                   autocomplete="off">
+        </div>
+        <div class="control">
+            <input type="hidden" name="phone"
+                   id="oldphone" value=""
+                   class="input-text"
+                   autocomplete="off">
+        </div>
+
+        <div class="field otp">
+            <label for="whatsapp" class="label whatsapp-lable">Phone Number:</label>
+            <input type="number" name="otp_mobile" id="otp_mobile" value="" autocomplete="off"/>
+            <span class="otp-edit">Edit</span>
+            <span class="otp-edit-send">Send</span>
+        </div>
+        <div class="field get-otp">
+            <label for="whatsapp" class="label whatsapp-lable">One Time Password</label>
+            <input type="number" name="getotpnumber" id="getotp" value="" autocomplete="off"/>
+            <p id="otpExpire">Your OTP will expire in &nbsp;<span style="color:#ff2c00">02:30</span></p>
+        </div>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button type="submit" class="action login primary" name="send" id="send2-otp-verify">
+                    <span><?php /* @escapeNotVerified */
+                        echo __('Submit') ?></span>
+                </button>
+            </div>
+            <span class="resend-otp">Resend</span>
+            <span class="voice-call-otp">VoiceCall</span>
+        </div>
+    </form>
+    <p id="set-otp">we have sent the otp to your number, please verify</p>
+    <p id="reset-otp" style="display:none">we have reset the otp and sent to your number, please verify</p>
+    <p id="user-exist-error"></p>
+</div>
+
+<script type="text/javascript">
+    require(['jquery'], function ($) {
+        $(document).ready(function () {
+            $('#otp_mobile').on('change', function () {
+
+                var mobileValue = $("input[name='otp_mobile']").val();
+
+                jQuery.ajax({
+                    url: '/user/customer/index',
+                    // url: "getAjaxUrl()",
+                    data: {mobile: mobileValue},
+                    type: "POST",
+                    dataType: "json",
+                    complete: function (mobileResult) {
+                        $("#user-exist-error").html("");
+                        $("#user-exist-error").append(mobileResult.responseJSON);
+
+                    }
+                });
+            });
+        });
+    });
+</script>
+<script type="text/javascript">
+    require(['jquery'], function ($) {
+        $(document).ready(function () {
+
+            $('.otp-edit-send').click(function () {
+                var mobile = $('#oldphone').val();
+                var mobileValue = $("input[name='otp_mobile']").val();
+                var emailID = $('#email').val();
+                var flag = 1;
+
+                jQuery.ajax({
+                    url: '/user/otp/otpgenerate',
+                    // url: "getAjaxUrl()",
+                    data: {
+                        phone: mobileValue,
+                        flag: flag,
+                        email: emailID,
+                        type: 'text',
+                        isEditNum: 'true',
+                        isResendOtpClick: 'no'
+                    },
+                    type: "POST",
+                    dataType: "json",
+                    complete: function (mobileResult) {
+                        $("#user-exist-error").html("");
+                        $("#user-exist-error").append("Error");
+                    }
+                });
+                jQuery.ajax({
+                    url: '/user/otp/updatephone',
+                    // url: "getAjaxUrl()",
+                    data: {altmobile: mobileValue, email: emailID, mobile: mobile},
+                    type: "POST",
+                    dataType: "json",
+                    complete: function (mobileResult) {
+                        $("#user-exist-error").html("");
+                        $("#user-exist-error").append("Error");
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    require(['jquery'], function ($) {
+        $(document).ready(function () {
+
+            $('.resend-otp').click(function () {
+
+                var mobileValue = $("input[name='otp_mobile']").val();
+                var emailID = $('#email').val();
+                var flag = 2;
+
+                jQuery.ajax({
+                    url: '/user/otp/otpgenerate',
+                    // url: "getAjaxUrl()",
+                    data: {
+                        phone: mobileValue,
+                        flag: flag,
+                        email: emailID,
+                        type: 'text',
+                        isEditNum: '',
+                        isResendOtpClick: 'no'
+                    },
+                    type: "POST",
+                    dataType: "json",
+                    complete: function (mobileResult) {
+                        $("#user-exist-error").html("");
+                        $("#user-exist-error").append("Error");
+
+                    }
+                });
+            });
+            $('.voice-call-otp').click(function () {
+
+                var mobileValue = $("input[name='otp_mobile']").val();
+                var emailID = $('#email').val();
+                var flag = 2;
+
+                jQuery.ajax({
+                    url: '/user/otp/otpgenerate',
+                    // url: "getAjaxUrl()",
+                    data: {
+                        phone: mobileValue,
+                        flag: flag,
+                        email: emailID,
+                        type: 'voice',
+                        isEditNum: '',
+                        isResendOtpClick: 'no'
+                    },
+                    type: "POST",
+                    dataType: "json",
+                    complete: function (mobileResult) {
+                        $("#user-exist-error").html("");
+                        $("#user-exist-error").append("Error");
+                        //         if($('#mobileresponse').is(':empty') && $('#emailresponse').is(':empty'))  {
+                        //         $("button[name=submit]").prop('disabled', false);
+                        //     }
+                        //       else if($('#mobileresponse').is(':empty')) {
+                        //         $("button[name=submit]").prop('disabled', false);
+                        //     }
+
+                        //    else{
+                        //          $("button[name=submit]").prop('disabled', true);
+
+                        // }
+                    }
+                });
+            });
+
+        });
+    });
+</script>
+
+
+<script type="text/javascript">
+    require(['jquery'], function ($) {
+        $(document).ready(function () {
+
+            $('#send2-otp-verify').click(function () {
+
+                var mobileValue = $("input[name='otp_mobile']").val();
+                var emailID = $('#email').val();
+                var flag = 3;
+                var otp = $('#getotp').val();
+                jQuery.ajax({
+                    url: '/user/otp/otpgenerate',
+                    // url: "getAjaxUrl()",
+                    data: {phone: mobileValue, flag: flag, email: emailID, type: 'text', otp: otp},
+                    type: "POST",
+                    dataType: "json",
+                    complete: function (mobileResult) {
+                        $("#user-exist-error").html("");
+                        $("#user-exist-error").append("Error");
+
+                    }
+                });
+            });
+        });
+    });
+</script>
+
