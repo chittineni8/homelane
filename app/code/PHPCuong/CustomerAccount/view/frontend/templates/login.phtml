@@ -112,20 +112,17 @@
     </div>
     <script type="text/javascript">
 require(['jquery'], function($){
-$(document).ready(function()
-{ 
+$(document).ready(function() { 
 $("#forgotPassword").click(function(){
     var emailVal = $("#email-login").val();
-  if ( emailVal.length <= 0 ) {
+    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if ( emailVal.length <= 0 || !regex.test(emailVal) ) {
+        $("#email-error").html(""); 
+        $("#email-error").append('Please enter your valid email address'); 
+    } else {
 
-     $("#email-error").html(""); 
-     $("#email-error").append('Please enter your email'); 
-
-}else{
-
- var emailVal = $("#email-login").val();
-
-   jQuery.ajax({
+    var emailVal = $("#email-login").val();
+    jQuery.ajax({
                 url: '/user/forgetpassword/index',
                 // url: "getAjaxUrl()",
                 data: {email:emailVal},
@@ -151,6 +148,10 @@ $("#forgotPassword").click(function(){
             });
 }
   });
+    $("#email-login").on('change keyup',function () {
+        $('#forgotPassword').show();
+        //$(".forgot-password-error").hide();
+    });
 });
 });
 </script>

@@ -11,7 +11,7 @@ if ($block->getCustomerIsLoggedIn()) :
     $customerEmail = $block->getCustomerEmail();
 
     ?>
-    <li class="login link wishlist" data-bind="scope: 'wishlist'">
+    <li class="login link wishlists" data-bind="scope: 'wishlist'">
         <a href="<?= $this->getUrl('wishlist/') ?>"></a>
     </li>
     <li class="customer-welcome">
@@ -50,8 +50,12 @@ if ($block->getCustomerIsLoggedIn()) :
             <ul class="top">
                 <li>
                     <div>
+                    <?php if (!empty($customerName)) { ?>
                     <a><?php echo $customerName; ?></a>
+                    <?php }?>
+                    <?php if (!empty($customerName)) { ?>
                     <a class="mail"><?php echo $customerEmail; ?></a>
+                    <?php }?>
                     </div>
                 </li>
             </ul>
