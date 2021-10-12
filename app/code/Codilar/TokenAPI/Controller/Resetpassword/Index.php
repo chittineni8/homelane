@@ -159,7 +159,7 @@ class Index extends Action
                     $email = $responseDecodee['email'];
                     $data = ['email' => $email, 'code' => $this->code];
                     $resultPage = $this->resultPageFactory->create();
-                    $resultPage->getConfig()->getTitle()->set(__('Reset Password'));
+                    $resultPage->getConfig()->getTitle()->set(__('Reset Your Password'));
                     $resultPage->getLayout()->getBlock('homelane_resetpassword')->setFormData($data);
                     return $resultPage;
 
