@@ -47,6 +47,7 @@ class Overlay implements ArgumentInterface
 {
     const IMAGE_URL = 'general/locale/city_image';
     const SECURE_WEB_URL = 'web/secure/base_url';
+    const HIGHLIGHTED_IMAGE_URL = 'general/locale/highlighted_city_image';
     const COOKIE_LIFETIME = 1;
     /**
      * @var ScopeConfigInterface
@@ -201,6 +202,7 @@ class Overlay implements ArgumentInterface
             $storeDetails[] = [
                 "storeName" => $store->getName(),
                 "imageUrl" => $this->getConfigValue(self::IMAGE_URL, $store->getId()),
+                "highlightedImageUrl" => $this->getConfigValue(self::HIGHLIGHTED_IMAGE_URL, $store->getId()),
                 "webUrl" => $this->scopeConfig->getValue(
                     self::SECURE_WEB_URL,
                     ScopeInterface::SCOPE_WEBSITE,
