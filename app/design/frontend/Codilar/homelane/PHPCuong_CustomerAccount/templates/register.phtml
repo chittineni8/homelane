@@ -101,7 +101,7 @@
           <div class="field required">
                 <!-- <label for="postcode" class="label"><span><?php /* @escapeNotVerified */ echo __('Postcode') ?></span></label> -->
                 <div class="control">
-                    <input type="text" name="postcode" placeholder="Current residence PIN code"
+                    <input type="number" name="postcode" placeholder="Current residence PIN code"
                            value="<?= $block->escapeHtmlAttr($block->getFormData()->getPostcode()) ?>"
                            title="<?php /* @escapeNotVerified */ echo __('Postcode') ?>" id="zip"
                            class="input-text validate-zip-international <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('postcode')) ?>" data-validate='{"required":true}'>
