@@ -6,6 +6,7 @@ use Magento\Cms\Block\BlockByIdentifier;
 /** @var $viewModel Overlay */
 $viewModel = $block->getData("viewModel");
 $storeDetails = $viewModel->getStoreDetail();
+$websiteName = $viewModel->getWebsite()->getName();
 $mediaUrl = $viewModel->getMediaUrl();
 $parsedUrl = $viewModel->getParsedUrl();
 $redirect = $viewModel->getHttpResponse();
@@ -52,8 +53,12 @@ if (isset($gets['query'])) {
             $storeName = $value['storeName'];
             $webUrl = $value['webUrl'];
             $parsedWebCode = $viewModel->getParsedWebCode($webUrl); ?>
-            <li>
             <?php
+            if ($websiteName == $storeName) {
+                echo '<li class="current-website">';
+            } else {
+                echo '<li>';
+            }
             foreach ($parsedWebCode as $webCode) {
                 $code = $webCode['path']; ?>
                 <a href="<?php echo $webUrl . '' . $parsedUrl . '' . $queryParam; ?>">

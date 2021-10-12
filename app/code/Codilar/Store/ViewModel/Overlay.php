@@ -15,12 +15,14 @@
 namespace Codilar\Store\ViewModel;
 
 use Magento\Framework\Exception\InputException;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Stdlib\Cookie\CookieSizeLimitReachedException;
 use Magento\Framework\Stdlib\Cookie\FailureToSendException;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Api\Data\WebsiteInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\Stdlib\CookieManagerInterface;
@@ -280,5 +282,13 @@ class Overlay implements ArgumentInterface
     public function getMediaUrl(): string
     {
         return  $this->storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA);
+    }
+
+    /**
+     * @throws LocalizedException
+     */
+    public function getWebsite(): WebsiteInterface
+    {
+        return $this->storeManager->getWebsite();
     }
 }
