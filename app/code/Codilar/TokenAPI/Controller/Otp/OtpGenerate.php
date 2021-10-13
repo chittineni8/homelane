@@ -1,9 +1,9 @@
 <?php
 /**
- * Generate.php
+ * OtpGenerate.php
  *
  * @package     Homelane
- * @description To generate  the otp.
+ * @description To regenerate  the otp.
  * @author      Abhinav Vinayak
  * @copyright   2021 Codilar Technologies Pvt. Ltd. . All rights reserved.
  * @license     Open Source
@@ -222,39 +222,15 @@ $parambody = [
 
 endif;
 
-
-
-
-print_r($postOtp);
-
-      die('ff');
-
-        
-
-list($apiRequestEndpoint, $requestMethod, $params) = $this->prepareParams($parambody);
+           list($apiRequestEndpoint, $requestMethod, $params) = $this->prepareParams($parambody);
             $response = $this->doRequest($apiRequestEndpoint, $requestMethod, $params);
             $status = $response->getStatusCode();
             $responseBody = $response->getBody();
             $responseContent = $responseBody->getContents();
             $responseDecodee = json_decode($responseContent, true);
-print_r($status);
-print_r($responseBody);
-            print_r($responseContent);
 
 
-            die('dddddddd');
-
-
-                    // $resultPage = $this->resultPageFactory->create();
-                    // $resultPage->getConfig()->getTitle()->set(__('RPassword'));
-                    // $resultPage->getLayout()->getBlock('homelane_otp')->setFormData($post);
-                    // // var_dump($resultPage);
-                    // // die('ffffff');
-                    // return $resultPage;
-
-
-
-    }//end execute()
+}//end execute()
 
 
     /**

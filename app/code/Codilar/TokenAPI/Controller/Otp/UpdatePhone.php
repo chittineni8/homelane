@@ -1,9 +1,9 @@
 <?php
 /**
- * Generate.php
+ * UpdatePhone.php
  *
  * @package     Homelane
- * @description To generate  the otp.
+ * @description To update mobile inside the otp popup.
  * @author      Abhinav Vinayak
  * @copyright   2021 Codilar Technologies Pvt. Ltd. . All rights reserved.
  * @license     Open Source

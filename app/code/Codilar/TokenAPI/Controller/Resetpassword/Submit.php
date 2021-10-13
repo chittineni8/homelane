@@ -203,7 +203,7 @@ class Submit extends Action
         try {
             $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
             $PostValue = $this->getRequest()->getParams();
-            $email = $PostValue['email'];
+
 
             $parambody = [
                 'password' => $PostValue['password'], 'code' => $PostValue['code']
@@ -220,6 +220,7 @@ class Submit extends Action
 
             if ($status == 200) {
                 try{
+                    $email = $PostValue['email'];
                 if ($this->emailExistOrNot($email) == 0) {
                     $custId = $this->getCustomerIdByEmail($email);
                     $password = $PostValue['password'];

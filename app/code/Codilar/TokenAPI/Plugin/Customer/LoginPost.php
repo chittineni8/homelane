@@ -112,9 +112,20 @@ class LoginPost
     /**
      * Data constructor.
      *
+     * @param Data $helper
+     * @param Context $context
+     * @param JsonFactory $resultJsonFactory
      * @param AccountManagementInterface $customerAccountManagement
      * @param StoreManagerInterface $storeManager
      * @param RestrictCustomer $signupcustomer
+     * @param ClientFactory $clientFactory
+     * @param ScopeConfigInterface $scopeConfig
+     * @param ResponseFactory $responseFactory
+     * @param HandlerStack $stack
+     * @param Callapi $callapi
+     * @param Json $json
+     * @param Logger $loggerResponse
+     * @param CustomerFactory $customerFactory
      */
 
 
@@ -218,11 +229,11 @@ class LoginPost
                     'message' => __('Missing Mandatory Parameters.')
                 ];
             }//end if
-        
+
         /** @var \Magento\Framework\Controller\Result\Json $resultJson */
         $resultJson = $this->resultJsonFactory->create();
         return $resultJson->setData($response);
-          
+
 
         } catch (\Exception $e) {
             $this->loggerResponse->critical($e->getMessage() . ' ' . 'VERIFY PASSWORD CODE API EXCEPTION');

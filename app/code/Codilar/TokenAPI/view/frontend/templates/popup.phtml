@@ -1,6 +1,6 @@
 <div class="otp-wrapper">
     <h2>Verify your number</h2>
-    <form class="otp-form" method="post">
+    <form class="otp-form">
 
         <div class="control">
             <input type="hidden" name="email"
@@ -161,17 +161,7 @@
                     complete: function (mobileResult) {
                         $("#user-exist-error").html("");
                         $("#user-exist-error").append("Error");
-                        //         if($('#mobileresponse').is(':empty') && $('#emailresponse').is(':empty'))  {
-                        //         $("button[name=submit]").prop('disabled', false);
-                        //     }
-                        //       else if($('#mobileresponse').is(':empty')) {
-                        //         $("button[name=submit]").prop('disabled', false);
-                        //     }
-
-                        //    else{
-                        //          $("button[name=submit]").prop('disabled', true);
-
-                        // }
+                       
                     }
                 });
             });
@@ -185,8 +175,8 @@
     require(['jquery'], function ($) {
         $(document).ready(function () {
 
-            $('#send2-otp-verify').click(function () {
-
+            $('#send2-otp-verify').click(function (event) {
+ event.preventDefault();
                 var mobileValue = $("input[name='otp_mobile']").val();
                 var emailID = $('#email').val();
                 var flag = 3;
