@@ -15,12 +15,14 @@
 namespace Codilar\Store\ViewModel;
 
 use Magento\Framework\Exception\InputException;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Stdlib\Cookie\CookieSizeLimitReachedException;
 use Magento\Framework\Stdlib\Cookie\FailureToSendException;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Api\Data\WebsiteInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\Stdlib\CookieManagerInterface;
@@ -45,6 +47,7 @@ class Overlay implements ArgumentInterface
 {
     const IMAGE_URL = 'general/locale/city_image';
     const SECURE_WEB_URL = 'web/secure/base_url';
+    const HIGHLIGHTED_IMAGE_URL = 'general/locale/highlighted_city_image';
     const COOKIE_LIFETIME = 1;
     /**
      * @var ScopeConfigInterface
@@ -199,6 +202,7 @@ class Overlay implements ArgumentInterface
             $storeDetails[] = [
                 "storeName" => $store->getName(),
                 "imageUrl" => $this->getConfigValue(self::IMAGE_URL, $store->getId()),
+                "highlightedImageUrl" => $this->getConfigValue(self::HIGHLIGHTED_IMAGE_URL, $store->getId()),
                 "webUrl" => $this->scopeConfig->getValue(
                     self::SECURE_WEB_URL,
                     ScopeInterface::SCOPE_WEBSITE,
@@ -280,5 +284,13 @@ class Overlay implements ArgumentInterface
     public function getMediaUrl(): string
     {
         return  $this->storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA);
+    }
+
+    /**
+     * @throws LocalizedException
+     */
+    public function getWebsite(): WebsiteInterface
+    {
+        return $this->storeManager->getWebsite();
     }
 }

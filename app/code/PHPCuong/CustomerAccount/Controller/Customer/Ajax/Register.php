@@ -292,8 +292,7 @@ class Register extends \Magento\Framework\App\Action\Action
                 $response = [
                     'errors' => true,
                     'message' => __(
-                        'There is already an account with this email address. If you are sure that it is your email address, <a href="%1">click here</a> to get your password and access your account.',
-                        $url
+                        'There is already an account with this email address.'
                     )
                 ];
             } catch (InputException $e) {

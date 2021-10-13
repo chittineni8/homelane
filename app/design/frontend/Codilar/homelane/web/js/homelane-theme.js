@@ -160,5 +160,43 @@ require(['jquery','slickslider'], function($) {
 	      $(this).text(this.innerHTML.includes("All") ? "See less..." : "See All");
 	    });
 
+	    /*sign up form*/
+	    $(".customer-account-wrapper .control input[type='text']").on('change keyup', function() {
+		  if ($(this).val().length > 0) {
+		    $(this).parent().addClass('input-has-value');
+		  } else {
+		    $(this).parent().removeClass('input-has-value');
+		  }  
+		});
+		$(".customer-account-wrapper .control #popup-email_address").on('change keyup',function () {    
+			var inputvalues = $(this).val();    
+			var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;    
+			if(regex.test(inputvalues)) {    
+   				$(this).parent().addClass('input-has-value');
+			} else {
+				$(this).parent().removeClass('input-has-value');
+			}
+		});
+		$(".customer-account-wrapper .control #customer_mobile").on('change keyup blur',function () {
+			$(this).parent().find('div.mage-error').hide(); 
+			var mobNum = $(this).val();
+			console.log('hghg');  
+			if(mobNum.length == 10) {
+				$(this).parent().addClass('input-has-value');
+			} else {
+				$(this).parent().removeClass('input-has-value');
+			}
+		});
+		$(".customer-account-wrapper .control .validate-zip-international").on('change keyup',function () {
+			$(this).parent().find('div.mage-error').hide(); 
+			var mobNum = $(this).val();   
+			if(mobNum.length == 6) {
+				$(this).parent().addClass('input-has-value');
+			} else {
+				$(this).parent().removeClass('input-has-value');
+			}
+		});
+		/*end sign up form*/
+
 	});
 });

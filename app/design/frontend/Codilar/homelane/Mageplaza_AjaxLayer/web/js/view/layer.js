@@ -50,7 +50,7 @@ define([
 
             this.initProductListUrl();
             this.initObserve();
-            this.initWishlistCompare();
+            //this.initWishlistCompare();
         },
 
         initActiveItems: function () {

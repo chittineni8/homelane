@@ -6,6 +6,7 @@ use Magento\Cms\Block\BlockByIdentifier;
 /** @var $viewModel Overlay */
 $viewModel = $block->getData("viewModel");
 $storeDetails = $viewModel->getStoreDetail();
+$websiteName = $viewModel->getWebsite()->getName();
 $mediaUrl = $viewModel->getMediaUrl();
 $parsedUrl = $viewModel->getParsedUrl();
 $redirect = $viewModel->getHttpResponse();
@@ -49,19 +50,33 @@ if (isset($gets['query'])) {
         <?php
         foreach ($storeDetails as $key => $value) {
             $imageUrl = $mediaUrl . 'website/icons/' . $value['imageUrl'];
+            $highlightedImageUrl = $mediaUrl . 'website/icons/' . $value['highlightedImageUrl'];
             $storeName = $value['storeName'];
             $webUrl = $value['webUrl'];
             $parsedWebCode = $viewModel->getParsedWebCode($webUrl); ?>
-            <li>
             <?php
+            if ($websiteName == $storeName) {
+                echo '<li class="current-website">';
+            } else {
+                echo '<li>';
+            }
             foreach ($parsedWebCode as $webCode) {
                 $code = $webCode['path']; ?>
                 <a href="<?php echo $webUrl . '' . $parsedUrl . '' . $queryParam; ?>">
-                <?php if ($imageUrl): ?>
-                    <div class="store-image">
-                        <img src="<?php echo $imageUrl ?>" alt="<?php echo $storeName ?>" title="<?php echo $storeName ?>" class="img-responsive" width="200" height="200"/>
-                    </div>
-                <?php endif ?>
+                <?php
+                    if ($websiteName == $storeName) {
+                        if ($highlightedImageUrl): ?>
+                            <div class="store-image">
+                                <img src="<?php echo $highlightedImageUrl ?>" alt="<?php echo $storeName ?>" title="<?php echo $storeName ?>" class="img-responsive" width="200" height="200"/>
+                            </div>
+                        <?php endif ?>
+                    <?php } else {?>
+                        <?php if ($imageUrl): ?>
+                            <div class="store-image">
+                                <img src="<?php echo $imageUrl ?>" alt="<?php echo $storeName ?>" title="<?php echo $storeName ?>" class="img-responsive" width="200" height="200"/>
+                            </div>
+                        <?php endif ?>
+                    <?php } ?>
                 <?php if ($storeName): ?>
                     <div class="store-name">
                             <?php echo $storeName ?>
