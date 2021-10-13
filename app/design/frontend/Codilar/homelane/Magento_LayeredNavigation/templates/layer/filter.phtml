@@ -31,33 +31,35 @@ $viewModel = $block->getData('product_layer_view_model');
 <script type="text/javascript">
 require(['jquery'], function($) {
     jQuery(document).ready(function(){
-        jQuery(function(){ // document ready
-            if (!!$('.sidebar.sidebar-main').length) { // make sure "#sticky" element exists
-            var el = $('.sidebar.sidebar-main');
-            var stickyTop = $('.sidebar.sidebar-main').offset().top; // returns number
-            var footerTop = $('.page-bottom').offset().top; // returns number
-            var stickyHeight = $('.sidebar.sidebar-main').height();
-            var limit = footerTop - stickyHeight - 20;
-            $(window).scroll(function(){ // scroll event
-            var windowTop = $(window).scrollTop(); // returns number
+        if ($(window).width() > 768) {
+            jQuery(function() {
+                if (!!$('.sidebar.sidebar-main').length) { // make sure "#sticky" element exists
+                var el = $('.sidebar.sidebar-main');
+                var stickyTop = $('.sidebar.sidebar-main').offset().top; // returns number
+                var footerTop = $('.page-bottom').offset().top; // returns number
+                var stickyHeight = $('.sidebar.sidebar-main').height();
+                var limit = footerTop - stickyHeight - 20;
+                $(window).scroll(function(){ // scroll event
+                var windowTop = $(window).scrollTop(); // returns number
 
-            if (stickyTop < windowTop){
-             el.css({ position: 'fixed', top: 70 });
-             el.addClass('sticky');
-            }
-            else {
-             el.css('position','static');
-             el.removeClass('sticky');
-            }
+                if (stickyTop < windowTop){
+                 el.css({ position: 'fixed', top: 70 });
+                 el.addClass('sticky');
+                }
+                else {
+                 el.css('position','static');
+                 el.removeClass('sticky');
+                }
 
-            if (limit < windowTop) {
-            var diff = limit - windowTop;
+                if (limit < windowTop) {
+                var diff = limit - windowTop;
 
-            el.css('position','static');
-            }     
+                el.css('position','static');
+                }     
+                });
+                }
             });
-            }
-        });   
+        };  
     });
 });
 </script>
