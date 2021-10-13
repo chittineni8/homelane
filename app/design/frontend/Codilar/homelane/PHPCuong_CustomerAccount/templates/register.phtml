@@ -129,9 +129,9 @@
                 </div>
             </div>
         </form>
-     <div id="popup-mpdal" style="display:none;">
-    <?php include ($block->getTemplateFile('Codilar_TokenAPI::popup.phtml')) ?>
-</div> 
+<div id="popup-mpdal" style="display:none;">
+    <?php  include ($block->getTemplateFile('Codilar_TokenAPI::popup.phtml')) ?>
+</div>  
 
         <div class="right-img-box">
             <img src='<?php echo $this->getViewFileUrl('images/createbox.png'); ?>' alt="logo" />
@@ -163,17 +163,7 @@ $('#customer_mobile').on('change', function ()
                 complete: function(mobileResult) {
                     $("#mobileresponse").html(""); 
                     $("#mobileresponse").append(mobileResult.responseJSON);
-            //         if($('#mobileresponse').is(':empty') && $('#emailresponse').is(':empty'))  { 
-            //         $("button[name=submit]").prop('disabled', false);
-            //     }
-            //       else if($('#mobileresponse').is(':empty')) { 
-            //         $("button[name=submit]").prop('disabled', false);
-            //     }
-             
-            //    else{
-            //          $("button[name=submit]").prop('disabled', true);
-                
-            // }
+            
               }
             });
 });
@@ -197,16 +187,7 @@ $('#popup-email_address').on('change', function ()
                 complete: function(resultJson) {
                     $("#emailresponse").html(""); 
                     $("#emailresponse").append(resultJson.responseJSON);
-                //      if($('#mobileresponse').is(':empty') && $('#emailresponse').is(':empty'))  { 
-                //     $("button[name=submit]").prop('disabled', false);
-                // }  
-                //    else if($('#emailresponse').is(':empty')) { 
-                //     $("button[name=submit]").prop('disabled', false);
-                // }
-           
-                // else{
-                //      $("button[name=submit]").prop('disabled', true);
-                // }
+              
                   
                 }
               
@@ -241,6 +222,27 @@ $('#popup-email_address').on('change', function ()
                 var popup = modal(options, $('#popup-mpdal'));
                 $("#submit").on('click',function(event){
                        event.preventDefault();
+                       var regEmail =  $("#popup-email_address").val();
+                        var regPhone = $("#customer_mobile").val();
+                         var regName = $("#firstname").val();
+                          var regZip = $("#zip").val();
+                    jQuery.ajax({
+                    url: '/phpcuong/customer_ajax/register',
+                    // url: "getAjaxUrl()",
+                    data: {
+                        customer_mobile:regPhone,
+                       firstname:regName,
+                        email: regEmail,
+                        postcode: regZip
+                       },
+                    type: "POST",
+                    // dataType: "json",
+                    success: function(response){
+            console.log('Abhi');
+        }
+                       
+                
+                });
                     var value = $("#customer_mobile").val();
                    var email = $("#popup-email_address").val();
 
@@ -250,6 +252,7 @@ $('#popup-email_address').on('change', function ()
                  
                     $('#otp_mobile').val(value);
                     $('#email').val(email);
+                    // $('#oldphone').val(value);
 
                     
                 });
