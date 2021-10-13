@@ -137,6 +137,21 @@
                     <comment>OTP API Endpoint</comment>
                 </field>
             </group>
+            <group id="update_mobile_oauth" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0">
+                <label>Update Mobile oAuth Details</label>
+                <field id="update_mobile_request_url" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0">
+                    <label>Request URI</label>
+                    <comment>Update Mobile Base URI</comment>
+                </field>
+                <field id="update_mobile_endpoint" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="0"
+                       showInStore="0">
+                    <label>API Endpoint</label>
+                    <comment>Update Mobile API Endpoint</comment>
+                </field>
+            </group>
         </section>
     </system>
 </config>

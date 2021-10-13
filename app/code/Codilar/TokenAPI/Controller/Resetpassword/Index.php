@@ -152,10 +152,10 @@ class Index extends Action
                 $responseBody = $response->getBody();
                 $responseContent = $responseBody->getContents();
                 $responseDecodee = json_decode($responseContent, true);
-                $msg = $responseDecodee['msg'];
+               
 
                 if ($status == 200) {
-
+                     
                     $email = $responseDecodee['email'];
                     $data = ['email' => $email, 'code' => $this->code];
                     $resultPage = $this->resultPageFactory->create();
@@ -165,6 +165,7 @@ class Index extends Action
 
 
                 } elseif ($status == 400) {
+                     $msg = $responseDecodee['msg'];
                     $resultPage = $this->resultPageFactory->create();
                     $this->loggerResponse->addInfo("========================VERIFY PASSWORD CODE API ERROR========================");
                     $this->loggerResponse->addInfo("STATUS" . ' ' . $status . ' ' . "This link is not valid any more.");

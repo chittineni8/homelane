@@ -234,11 +234,11 @@ class Register extends \Magento\Framework\App\Action\Action
                 'message' => __('Customer registration is already disabled.')
             ];
         } elseif (!$formKeyValidation) {
-            $response = [
-                'errors' => true,
-                'message' => $this->getRequest()->getParam('password')
-            ];
-        } else {
+            // $response = [
+            //     'errors' => true,
+            //     'message' => $this->getRequest()->getParam('password')
+            // ];
+        // } else {
             $this->session->regenerateId();
             try {
                 $customer = $this->customerExtractor->extract('customer_account_create', $this->_request);

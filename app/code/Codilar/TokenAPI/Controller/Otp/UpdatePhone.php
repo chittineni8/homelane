@@ -1,9 +1,9 @@
 <?php
 /**
- * Submit.php
+ * UpdatePhone.php
  *
  * @package     Homelane
- * @description To reset the password.
+ * @description To update mobile inside the otp popup.
  * @author      Abhinav Vinayak
  * @copyright   2021 Codilar Technologies Pvt. Ltd. . All rights reserved.
  * @license     Open Source
@@ -11,7 +11,7 @@
  *
  */
 
-namespace Codilar\TokenAPI\Controller\Resetpassword;
+namespace Codilar\TokenAPI\Controller\Otp;
 
 use Magento\Customer\Model\Customer;
 use Magento\Framework\App\Action\Context;
@@ -26,6 +26,7 @@ use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\View\Result\PageFactory;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientFactory;
 use GuzzleHttp\Exception\GuzzleException;
@@ -38,27 +39,26 @@ use GuzzleHttp\Middleware;
 use Magento\Framework\Webapi\Rest\Request;
 use Codilar\TokenAPI\Model\Common\Callapi;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\HTTP\Client\Curl;
 use Magento\Customer\Model\CustomerRegistry;
 
-class Submit extends Action
+class UpdatePhone extends Action
 {
 
 
     /**
-     * API base request URI
+     * API base OTP request URI
      */
-    const RECOVERY_REQUEST_URI = 'codilar_customer_api/regenerate_password_oauth/regenerate_password_request_url';
+    const UPDATE_MOB_REQUEST_URI = 'codilar_customer_api/update_mobile_oauth/update_mobile_request_url';
 
     /**
-     * API base request Endpoint
+     * API base OTP request Endpoint
      */
-    const RECOVERY_REQUEST_ENDPOINT = 'codilar_customer_api/regenerate_password_oauth/regenerate_password_endpoint';
+    const UPDATE_MOB_REQUEST_ENDPOINT = 'codilar_customer_api/update_mobile_oauth/update_mobile_endpoint';
 
     /**
-     * @var Curl
+     * @var Page
      */
-    protected $curl;
+    protected $resultPageFactory;
 
 
     /**
@@ -140,11 +140,16 @@ class Submit extends Action
 
     /**
      * @param Context $context
-     * @param Curl $curl
      * @param JsonFactory $resultJsonFactory
+     * @param AccountManagementInterface $customerAccountManagement
      * @param ResponseFactory $responseFactory
+     * @param ManagerInterface $messageManager
+     * @param EncryptorInterface $encryptor
      * @param HandlerStack $stack
+     * @param PageFactory $resultPageFactory
      * @param Callapi $callapi
+     * @param CustomerRegistry $customerRegistry
+     * @param CustomerRepositoryInterface $customerRepositoryInterface
      * @param StoreManagerInterface $storeManager
      * @param ClientFactory $clientFactory
      * @param Json $json
@@ -155,13 +160,13 @@ class Submit extends Action
 
     public function __construct(
         Context                     $context,
-        Curl                        $curl,
         JsonFactory                 $resultJsonFactory,
         AccountManagementInterface  $customerAccountManagement,
         ResponseFactory             $responseFactory,
         ManagerInterface            $messageManager,
         EncryptorInterface          $encryptor,
         HandlerStack                $stack,
+        PageFactory                 $resultPageFactory,
         Callapi                     $callapi,
         CustomerRegistry            $customerRegistry,
         CustomerRepositoryInterface $customerRepositoryInterface,
@@ -174,6 +179,7 @@ class Submit extends Action
     )
     {
         $this->resultJsonFactory = $resultJsonFactory;
+        $this->resultPageFactory = $resultPageFactory;
         $this->_customerModel = $customerModel;
         $this->responseFactory = $responseFactory;
         $this->stack = $stack;
@@ -188,7 +194,6 @@ class Submit extends Action
         $this->clientFactory = $clientFactory;
         $this->customerRepositoryInterface = $customerRepositoryInterface;
         $this->loggerResponse = $loggerResponse;
-        $this->curl = $curl;
         parent::__construct($context);
 
     }
@@ -201,12 +206,12 @@ class Submit extends Action
     public function execute()
     {
         try {
-            $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
-            $PostValue = $this->getRequest()->getParams();
+            $postOtp = $this->getRequest()->getPostValue();
+            $signup_source = $this->_storeManager->getStore()->getBaseUrl();
 
 
             $parambody = [
-                'password' => $PostValue['password'], 'code' => $PostValue['code']
+                'email' => $postOtp['email'], 'mobile' => $postOtp['mobile'], 'alt_mobile' => $postOtp['altmobile']
             ];
 
 
@@ -216,54 +221,33 @@ class Submit extends Action
             $responseBody = $response->getBody();
             $responseContent = $responseBody->getContents();
             $responseDecodee = json_decode($responseContent, true);
+            // print_r($status);
+            // print_r($responseBody);
+            // print_r($responseContent);
+            if ($status == 200):
+
+                $this->loggerResponse->addInfo("========================OTP UPDATE MOBILE SUCCESS========================");
 
 
-            if ($status == 200) {
-                try{
-                    $email = $PostValue['email'];
-                if ($this->emailExistOrNot($email) == 0) {
-                    $custId = $this->getCustomerIdByEmail($email);
-                    $password = $PostValue['password'];
-                    $customer = $this->customerRepositoryInterface->getById($custId);
-                    $customerSecure = $this->customerRegistry->retrieveSecureData($custId);
-                    $customerSecure->setRpToken(null);
-                    $customerSecure->setRpTokenCreatedAt(null);
-                    $customerSecure->setPasswordHash($this->_encryptor->getHash($password, true));
-                $this->customerRepositoryInterface->save($customer);
-                $this->loggerResponse->addInfo("========================PASSWORD RECOVERY API SUCCESS========================");
-                $this->loggerResponse->addInfo("Password Reset Successfully for email:".' '.$email);
-                $this->loggerResponse->addInfo("============================================================");
-                $this->messageManager->addSuccessMessage(
-                        'Password Reset Successfully'
-                    );
-                    $resultRedirect->setUrl($this->_redirect->getRefererUrl());
-                    return $resultRedirect;
-                }
-              }catch (\Exception $e) {
-        $this->loggerResponse->critical($e->getMessage() . ' ' . 'Homelane Store Password Reset Error for emailID:' .$email);
-        }//end try
-            } elseif ($status == 400) {
+            elseif ($status == 400):
 
-                $this->messageManager->addErrorMessage(
-                    'This link is not valid any more'
-                );
-                $resultRedirect->setUrl($this->_redirect->getRefererUrl());
-                return $resultRedirect;
-                $this->loggerResponse->addInfo("========================PASSWORD RECOVERY API ERROR========================");
-                $this->loggerResponse->addInfo("Error" . ' ' . $status . ' ' . "This link is not valid any more/Missing mandatory params");
-                $this->loggerResponse->addInfo("============================================================");
+                $this->loggerResponse->addInfo("========================OTP UPDATE MOBILE API ERROR========================");
+                $this->loggerResponse->addInfo("STATUS" . ' ' . $status . ' ' . "Missing required params.");
+                $this->loggerResponse->addInfo("===================================================================");
+
+            else:
+                $this->loggerResponse->addInfo("========================OTP UPDATE MOBILE API ERROR========================");
+                $this->loggerResponse->addInfo("STATUS" . ' ' . $status . ' ' . "Authorization Failed");
+                $this->loggerResponse->addInfo("===================================================================");
 
 
-            } else {
-                $resultRedirect->setUrl($this->_redirect->getRefererUrl());
-                return $resultRedirect;
-                $this->loggerResponse->addInfo("========================PASSWORD RECOVERY API ERROR========================");
-                $this->loggerResponse->addInfo("Error" . ' ' . $status . ' ' . "No Authorization Header Present");
-                $this->loggerResponse->addInfo("============================================================");
-            }
+            endif;
+
         } catch (\Exception $e) {
-            $this->loggerResponse->critical($e->getMessage() . ' ' . 'RECOVERY PASSWORD API EXCEPTION');
+            $this->loggerResponse->critical($e->getMessage() . ' ' . 'Update Phone API EXCEPTION');
         }//end try
+
+
     }//end execute()
 
 
@@ -272,11 +256,11 @@ class Submit extends Action
      *
      * @return string
      */
-    public function getRecoveryRequestUri()
+    public function getUpdateMobRequestUri()
     {
-        return $this->scopeConfig->getValue(self::RECOVERY_REQUEST_URI, ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->getValue(self::UPDATE_MOB_REQUEST_URI, ScopeInterface::SCOPE_STORE);
 
-    }//end getUserexistRequestUri()
+    }//end getOtpRequestUri()
 
 
     /**
@@ -284,11 +268,11 @@ class Submit extends Action
      *
      * @return string
      */
-    public function getRecoveryApiEndpoint()
+    public function getUpdateMobApiEndpoint()
     {
-        return $this->scopeConfig->getValue(self::RECOVERY_REQUEST_ENDPOINT, ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->getValue(self::UPDATE_MOB_REQUEST_ENDPOINT, ScopeInterface::SCOPE_STORE);
 
-    }//end getUserexistApiEndpoint()
+    }//end getOtpApiEndpoint()
 
 
     /**
@@ -312,7 +296,7 @@ class Submit extends Action
     private function prepareParams($finalBrandData): array
     {
 
-        $apiRequestEndpoint = $this->getRecoveryApiEndpoint();
+        $apiRequestEndpoint = $this->getUpdateMobApiEndpoint();
         $requestMethod = Request::METHOD_POST;
         $params = $finalBrandData;
         // collect param data
@@ -356,7 +340,7 @@ class Submit extends Action
         $client = $this->clientFactory->create(
             [
                 'config' => [
-                    'base_uri' => $this->getRecoveryRequestUri(),
+                    'base_uri' => $this->getUpdateMobRequestUri(),
                     'handler' => $tapMiddleware($stack)
 
 
@@ -417,7 +401,7 @@ class Submit extends Action
     {
         $customerId = null;
         try {
-            $customerData = $this->customerRepositoryInterface->get($email);
+            $customerData = $this->customerRepository->get($email);
             $customerId = (int)$customerData->getId();
         } catch (NoSuchEntityException $noSuchEntityException) {
         }

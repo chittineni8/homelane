@@ -1,9 +1,9 @@
 <?php
 /**
- * Submit.php
+ * Generate.php
  *
  * @package     Homelane
- * @description To reset the password.
+ * @description To generate  the otp.
  * @author      Abhinav Vinayak
  * @copyright   2021 Codilar Technologies Pvt. Ltd. . All rights reserved.
  * @license     Open Source
@@ -11,7 +11,7 @@
  *
  */
 
-namespace Codilar\TokenAPI\Controller\Resetpassword;
+namespace Codilar\TokenAPI\Controller\Otp;
 
 use Magento\Customer\Model\Customer;
 use Magento\Framework\App\Action\Context;
@@ -26,6 +26,7 @@ use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\View\Result\PageFactory;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientFactory;
 use GuzzleHttp\Exception\GuzzleException;
@@ -41,24 +42,29 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\HTTP\Client\Curl;
 use Magento\Customer\Model\CustomerRegistry;
 
-class Submit extends Action
+class Generate extends Action
 {
 
 
     /**
-     * API base request URI
+     * API base OTP request URI
      */
-    const RECOVERY_REQUEST_URI = 'codilar_customer_api/regenerate_password_oauth/regenerate_password_request_url';
+    const OTP_REQUEST_URI = 'codilar_customer_api/otp_oauth/otp_request_url';
 
     /**
-     * API base request Endpoint
+     * API base OTP request Endpoint
      */
-    const RECOVERY_REQUEST_ENDPOINT = 'codilar_customer_api/regenerate_password_oauth/regenerate_password_endpoint';
+    const OTP_REQUEST_ENDPOINT = 'codilar_customer_api/otp_oauth/otp_endpoint';
 
     /**
      * @var Curl
      */
     protected $curl;
+
+    /**
+     * @var Page
+     */
+    protected $resultPageFactory;
 
 
     /**
@@ -142,9 +148,15 @@ class Submit extends Action
      * @param Context $context
      * @param Curl $curl
      * @param JsonFactory $resultJsonFactory
+     * @param AccountManagementInterface $customerAccountManagement
      * @param ResponseFactory $responseFactory
+     * @param ManagerInterface $messageManager
+     * @param EncryptorInterface $encryptor
      * @param HandlerStack $stack
+     * @param PageFactory $resultPageFactory
      * @param Callapi $callapi
+     * @param CustomerRegistry $customerRegistry
+     * @param CustomerRepositoryInterface $customerRepositoryInterface
      * @param StoreManagerInterface $storeManager
      * @param ClientFactory $clientFactory
      * @param Json $json
@@ -162,6 +174,7 @@ class Submit extends Action
         ManagerInterface            $messageManager,
         EncryptorInterface          $encryptor,
         HandlerStack                $stack,
+        PageFactory                 $resultPageFactory,
         Callapi                     $callapi,
         CustomerRegistry            $customerRegistry,
         CustomerRepositoryInterface $customerRepositoryInterface,
@@ -174,6 +187,7 @@ class Submit extends Action
     )
     {
         $this->resultJsonFactory = $resultJsonFactory;
+         $this->resultPageFactory = $resultPageFactory;
         $this->_customerModel = $customerModel;
         $this->responseFactory = $responseFactory;
         $this->stack = $stack;
@@ -200,70 +214,36 @@ class Submit extends Action
      */
     public function execute()
     {
-        try {
-            $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
-            $PostValue = $this->getRequest()->getParams();
+
+       
+         $post = $this->getRequest()->getPostValue();
 
 
-            $parambody = [
-                'password' => $PostValue['password'], 'code' => $PostValue['code']
-            ];
+//        $signup_source = $this->_storeManager->getStore()->getBaseUrl();
+
+//         $parambody = ['flag' => '1' , 'email' => $post['email'], 'phone' =>$post['customer_mobile'], 'signup_source' => $signup_source
+//      ];
+
+// list($apiRequestEndpoint, $requestMethod, $params) = $this->prepareParams($parambody);
+//             $response = $this->doRequest($apiRequestEndpoint, $requestMethod, $params);
+//             $status = $response->getStatusCode();
+//             $responseBody = $response->getBody();
+//             $responseContent = $responseBody->getContents();
+//             $responseDecodee = json_decode($responseContent, true);
+// print_r($status);
+// print_r($responseBody);
+//             print_r($responseContent);
 
 
-            list($apiRequestEndpoint, $requestMethod, $params) = $this->prepareParams($parambody);
-            $response = $this->doRequest($apiRequestEndpoint, $requestMethod, $params);
-            $status = $response->getStatusCode();
-            $responseBody = $response->getBody();
-            $responseContent = $responseBody->getContents();
-            $responseDecodee = json_decode($responseContent, true);
+                    $resultPage = $this->resultPageFactory->create();
+                    $resultPage->getConfig()->getTitle()->set(__('RPassword'));
+                    $resultPage->getLayout()->getBlock('homelane_otp')->setFormData($post);
+                    // var_dump($resultPage);
+                    // die('ffffff');
+                    return $resultPage;
 
 
-            if ($status == 200) {
-                try{
-                    $email = $PostValue['email'];
-                if ($this->emailExistOrNot($email) == 0) {
-                    $custId = $this->getCustomerIdByEmail($email);
-                    $password = $PostValue['password'];
-                    $customer = $this->customerRepositoryInterface->getById($custId);
-                    $customerSecure = $this->customerRegistry->retrieveSecureData($custId);
-                    $customerSecure->setRpToken(null);
-                    $customerSecure->setRpTokenCreatedAt(null);
-                    $customerSecure->setPasswordHash($this->_encryptor->getHash($password, true));
-                $this->customerRepositoryInterface->save($customer);
-                $this->loggerResponse->addInfo("========================PASSWORD RECOVERY API SUCCESS========================");
-                $this->loggerResponse->addInfo("Password Reset Successfully for email:".' '.$email);
-                $this->loggerResponse->addInfo("============================================================");
-                $this->messageManager->addSuccessMessage(
-                        'Password Reset Successfully'
-                    );
-                    $resultRedirect->setUrl($this->_redirect->getRefererUrl());
-                    return $resultRedirect;
-                }
-              }catch (\Exception $e) {
-        $this->loggerResponse->critical($e->getMessage() . ' ' . 'Homelane Store Password Reset Error for emailID:' .$email);
-        }//end try
-            } elseif ($status == 400) {
 
-                $this->messageManager->addErrorMessage(
-                    'This link is not valid any more'
-                );
-                $resultRedirect->setUrl($this->_redirect->getRefererUrl());
-                return $resultRedirect;
-                $this->loggerResponse->addInfo("========================PASSWORD RECOVERY API ERROR========================");
-                $this->loggerResponse->addInfo("Error" . ' ' . $status . ' ' . "This link is not valid any more/Missing mandatory params");
-                $this->loggerResponse->addInfo("============================================================");
-
-
-            } else {
-                $resultRedirect->setUrl($this->_redirect->getRefererUrl());
-                return $resultRedirect;
-                $this->loggerResponse->addInfo("========================PASSWORD RECOVERY API ERROR========================");
-                $this->loggerResponse->addInfo("Error" . ' ' . $status . ' ' . "No Authorization Header Present");
-                $this->loggerResponse->addInfo("============================================================");
-            }
-        } catch (\Exception $e) {
-            $this->loggerResponse->critical($e->getMessage() . ' ' . 'RECOVERY PASSWORD API EXCEPTION');
-        }//end try
     }//end execute()
 
 
@@ -272,11 +252,11 @@ class Submit extends Action
      *
      * @return string
      */
-    public function getRecoveryRequestUri()
+    public function getOtpRequestUri()
     {
-        return $this->scopeConfig->getValue(self::RECOVERY_REQUEST_URI, ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->getValue(self::OTP_REQUEST_URI, ScopeInterface::SCOPE_STORE);
 
-    }//end getUserexistRequestUri()
+    }//end getOtpRequestUri()
 
 
     /**
@@ -284,11 +264,11 @@ class Submit extends Action
      *
      * @return string
      */
-    public function getRecoveryApiEndpoint()
+    public function getOtpApiEndpoint()
     {
-        return $this->scopeConfig->getValue(self::RECOVERY_REQUEST_ENDPOINT, ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->getValue(self::OTP_REQUEST_ENDPOINT, ScopeInterface::SCOPE_STORE);
 
-    }//end getUserexistApiEndpoint()
+    }//end getOtpApiEndpoint()
 
 
     /**
@@ -312,7 +292,7 @@ class Submit extends Action
     private function prepareParams($finalBrandData): array
     {
 
-        $apiRequestEndpoint = $this->getRecoveryApiEndpoint();
+        $apiRequestEndpoint = $this->getOtpApiEndpoint();
         $requestMethod = Request::METHOD_POST;
         $params = $finalBrandData;
         // collect param data
@@ -356,7 +336,7 @@ class Submit extends Action
         $client = $this->clientFactory->create(
             [
                 'config' => [
-                    'base_uri' => $this->getRecoveryRequestUri(),
+                    'base_uri' => $this->getOtpRequestUri(),
                     'handler' => $tapMiddleware($stack)
 
 
@@ -417,7 +397,7 @@ class Submit extends Action
     {
         $customerId = null;
         try {
-            $customerData = $this->customerRepositoryInterface->get($email);
+            $customerData = $this->customerRepository->get($email);
             $customerId = (int)$customerData->getId();
         } catch (NoSuchEntityException $noSuchEntityException) {
         }
