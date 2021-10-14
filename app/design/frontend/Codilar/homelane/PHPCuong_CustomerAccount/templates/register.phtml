@@ -220,21 +220,7 @@ $('#popup-email_address').on('change', function ()
 
                 var popup = modal(options, $('#popup-mpdal'));
                 
-                $(".action.remind").on('click',function(e){
-                    e.preventDefault();
-                    $("#popup-mpdal").modal("openModal");
-                    $("#getotp").prop('disabled', true);
-                    $(".otp-edit").on('click',function(){
-                        $("#getotp").prop('disabled', false);
-                    });
-                    $("#getotp").on('change keyup',function(){
-                        var otpNum = $(this).val(); 
-                        if(otpNum.length == 10) {
-                            $(".otp-edit").hide();
-                            $(".otp-edit-send").show();
-                        }
-                    });
-                });
+                
                 $("#submit").on('click',function(event) {
                     event.preventDefault();
                     var regEmail =  $("#popup-email_address").val();
@@ -269,7 +255,6 @@ $('#popup-email_address').on('change', function ()
                         var otpNum = $(this).val(); 
                         if(otpNum.length == 10) {
                             $(".otp-edit").hide();
-                            $(".otp-edit-send").show();
                         }
                     });
                     /*timer*/

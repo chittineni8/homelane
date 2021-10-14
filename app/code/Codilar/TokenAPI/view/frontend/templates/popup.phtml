@@ -60,6 +60,7 @@
                         complete: function (mobileResult) {
                             $("#user-exist-error").html("");
                             $("#user-exist-error").append(mobileResult.responseJSON);
+                            $(".otp-edit-send").show();
                         }
                     });
                 }
