@@ -205,6 +205,9 @@ class OtpGenerate extends Action
      */
     public function execute()
     {
+        try{
+
+
          $postOtp = $this->getRequest()->getPostValue();
           $signup_source = $this->_storeManager->getStore()->getBaseUrl();
 
@@ -228,7 +231,52 @@ endif;
             $responseBody = $response->getBody();
             $responseContent = $responseBody->getContents();
             $responseDecodee = json_decode($responseContent, true);
+            $resultJson = $this->resultJsonFactory->create();
+            print_r($status);
+            print_r($responseDecodee);
 
+            if($status == 200):
+
+                if(array_key_exists('otpVerified',$responseDecodee)):
+
+                      $verified = $responseDecodee['otpVerified'];
+
+                      if($verified == 'true'):
+
+                         $resultJson->setData('Verified');
+                    return $resultJson;
+
+                    else:
+                    
+                    $resultJson->setData('Not Verified');
+                    return $resultJson;
+
+                endif;
+            endif;
+
+        elseif($status == 400):
+
+
+
+            $this->loggerResponse->addInfo('================================OTP POPUP API ERROR===================');
+            $this->loggerResponse->addInfo(
+                'Error'.' '.$status.' '.'Missing mandatory params or Lead already exists');
+            $this->loggerResponse->addInfo('======================================================================');
+
+else:
+
+
+      $this->loggerResponse->addInfo('=================OTP POPUP API ERROR===================');
+            $this->loggerResponse->addInfo(
+                'Error'.' '.$status.' '.'Authorization failed or Token
+            not passed. Please refresh the access token'
+            );
+            $this->loggerResponse->addInfo('================================LEADGEN API ERROR===================');
+endif;
+
+} catch (\Exception $e) {
+            $this->loggerResponse->critical($e->getMessage() . ' ' . 'VERIFY OTP API EXCEPTION');
+        }//end try
 
 }//end execute()
 
