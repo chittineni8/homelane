@@ -655,7 +655,7 @@ aside.modal-popup.city-popup {
         padding-bottom: 8px;
         display: inline-block;
     }
-    #otp_mobile {
+    #getotp {
         border: 1px solid #e0e0e0;
         height: 40px;
         text-align: center;
@@ -677,8 +677,11 @@ aside.modal-popup.city-popup {
     }
     .otp-form {
         border: 1px solid #e0e0e0;
-        padding: 15px 20px;
+        padding: 20px;
         margin-bottom: 8px;
+        .actions-toolbar > .primary button.primary {
+            padding: 13px 15px;
+        }
     }
     .links {
         overflow: hidden;
@@ -714,7 +717,7 @@ aside.modal-popup.city-popup {
             color: #e71c24;
         }
     }
-    #getotp {
+    #otp_mobile {
         border: none;
         display: inline-block;
         width: 100px;
@@ -724,7 +727,7 @@ aside.modal-popup.city-popup {
         background: transparent;
         border-bottom: 1px solid #e0e0e0;
     }
-    #getotp[disabled] {
+    #otp_mobile[disabled] {
         border-bottom: none;
     }
     .field.otp {
@@ -735,6 +738,9 @@ aside.modal-popup.city-popup {
     }
     .otp-edit {
         color: #3777B6;
+    }
+    .otp-edit, .otp-edit-send, .resend-otp, .voice-call-otp {
+        cursor: pointer;
     }
 }
 /*****-----------------Footer Section---------------*****/
@@ -1187,7 +1193,7 @@ aside.modal-popup.video-popup .modal-inner-wrap {
 ._keyfocus *:focus, input:not([disabled]):focus, textarea:not([disabled]):focus, select:not([disabled]):focus {
     box-shadow: none;
 }
-input[type="text"], input[type="password"], input[type="url"], input[type="tel"], input[type="search"], input[type="number"], input[type*="date"], input[type="email"] {
+input[type="text"], input[type="password"], input[type="url"], input[type="tel"], input[type="search"], input[type="number"], input[type*="date"], input[type="email"], input[type="numer"] {
     border: none;
     height: 32px;
     border-bottom: 1px solid #E4E4E4;
@@ -1195,6 +1201,9 @@ input[type="text"], input[type="password"], input[type="url"], input[type="tel"]
     font-family: 'Lato', sans-serif;
     font-weight: 400;
     color: #4a4a4a;
+}
+form input[type="numer"] {
+    width :100%;
 }
 .control input::placeholder {
     color: #9B9B9B;
