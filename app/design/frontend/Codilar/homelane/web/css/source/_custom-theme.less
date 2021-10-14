@@ -640,6 +640,7 @@ aside.modal-popup.city-popup {
         .modal-header {
             padding: 0;
             border: 0;
+            display: none;
         }
     }
 }
@@ -2335,7 +2336,17 @@ div#layered-filter-block-container {
     .right-img-box {
         display: none;
     }
-
+    .modal-popup.otp-popup {
+        width: 100%;
+        margin: 0 auto;
+        left: 0;
+        top: 0;
+        height: 100%;
+        z-index: 111 !important;
+        .modal-inner-wrap {
+            border-radius: 0;
+        }
+    }
     /************mobile design header*************/
     .sections .navigation .level0>.level-top {
         text-transform: capitalize;
