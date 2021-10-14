@@ -214,9 +214,7 @@ class RestrictCustomer
         } else if ($status == 400) {
             $this->loggerResponse->addInfo('================================LEADGEN API ERROR===================');
             $this->loggerResponse->addInfo(
-                'Error'.' '.$status.' '.'Missing mandatory params or Lead already
-            exists'
-            );
+                'Error'.' '.$status.' '.'Missing mandatory params or Lead already exists');
             $this->loggerResponse->addInfo('======================================================================');
             // return $resultRedirect->setUrl($defaultUrl);
         } else {

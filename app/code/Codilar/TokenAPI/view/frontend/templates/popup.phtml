@@ -189,7 +189,8 @@
                     data: {phone: mobileValue, flag: flag, email: emailID, type: 'text', otp: otp},
                     type: "POST",
                     dataType: "json",
-                    complete: function (mobileResult) {
+                    complete: function (resultJson) {
+                        console.log(resultJson);
                         $("#user-exist-error").html("");
                         $("#user-exist-error").append("Error");
 
