@@ -40,10 +40,22 @@ $welcomeMessage = $block->getWelcome();
     <?= $block->getChildHtml() ?>
 <?php endif ?>
 <script type="text/javascript">
-    require(['jquery','Magento_Ui/js/modal/modal'],function ($,modal) {
-        $("li.link.wishlist").click(function(e) {
-            e.preventDefault();
-            $('#customer-popup-login').modal('openModal');
+    require(['jquery','Magento_Ui/js/modal/modal','Magento_Customer/js/model/customer'],function ($,modal) {
+        $(document).ready(function() {
+            $("li.link.wishlist").click(function(e) {
+                e.preventDefault();
+                $('#customer-popup-login').modal('openModal');
+            });
+            if ($('body').hasClass('logged-out')) {
+                console.log('customer loged Out');
+                $('.product-item-details a.action.towishlist').removeAttr("data-post");
+                $('.product-item-details a.action.towishlist').on('click', function(e){
+                    e.preventDefault();
+                    $('#customer-popup-login').modal('openModal');
+                });
+            } else {
+                console.log('customer loged In');
+            }
         });
     });
 </script>

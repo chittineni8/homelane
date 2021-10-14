@@ -49,6 +49,8 @@ require(['jquery','slickslider'], function($) {
 
 		if($('ul.header.links').find('.customer-register-link').length <= 0) {
 			$("body").addClass("logged-in");
+		} else {
+			$("body").addClass("logged-out");
 		}
 
 		$(function() {

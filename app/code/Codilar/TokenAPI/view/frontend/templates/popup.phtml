@@ -14,17 +14,18 @@
                    class="input-text"
                    autocomplete="off">
         </div>
-
-        <div class="field otp">
-            <label for="whatsapp" class="label whatsapp-lable">Phone Number:</label>
-            <input type="number" name="otp_mobile" id="otp_mobile" value="" autocomplete="off"/>
+        <div class="field otp-number">
+            <label for="otp-number" class="label">Phone Number:</label>
+            <input type="numer" name="getotpnumber" id="getotp" value="9854774147" maxlength="10" autocomplete="off" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"/>
             <span class="otp-edit">Edit</span>
             <span class="otp-edit-send">Send</span>
         </div>
+        <div class="field otp">
+            <label for="otp" class="label otp-pass">One Time Password</label>
+            <input type="numer" name="otp_mobile" maxlength="4" id="otp_mobile" value="" autocomplete="off" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"/>
+        </div>
         <div class="field get-otp">
-            <label for="whatsapp" class="label whatsapp-lable">One Time Password</label>
-            <input type="number" name="getotpnumber" id="getotp" value="" autocomplete="off"/>
-            <p id="otpExpire">Your OTP will expire in &nbsp;<span style="color:#ff2c00">02:30</span></p>
+            <p id="otpExpire">Your OTP will expire in &nbsp;<span class="countdown" style="color:#ff2c00"></span></p>
         </div>
         <div class="actions-toolbar">
             <div class="primary">
@@ -33,8 +34,10 @@
                         echo __('Submit') ?></span>
                 </button>
             </div>
-            <span class="resend-otp">Resend</span>
-            <span class="voice-call-otp">VoiceCall</span>
+            <div class="links">
+                <span class="resend-otp">Resend</span>
+                <span class="voice-call-otp">VoiceCall</span>
+            </div>
         </div>
     </form>
     <p id="set-otp">we have sent the otp to your number, please verify</p>
@@ -45,22 +48,21 @@
 <script type="text/javascript">
     require(['jquery'], function ($) {
         $(document).ready(function () {
-            $('#otp_mobile').on('change', function () {
-
+            $('#otp_mobile').on('change keyup', function () {
                 var mobileValue = $("input[name='otp_mobile']").val();
-
-                jQuery.ajax({
-                    url: '/user/customer/index',
-                    // url: "getAjaxUrl()",
-                    data: {mobile: mobileValue},
-                    type: "POST",
-                    dataType: "json",
-                    complete: function (mobileResult) {
-                        $("#user-exist-error").html("");
-                        $("#user-exist-error").append(mobileResult.responseJSON);
-
-                    }
-                });
+                if(mobileValue.length == 10) {
+                    jQuery.ajax({
+                        url: '/user/customer/index',
+                        // url: "getAjaxUrl()",
+                        data: {mobile: mobileValue},
+                        type: "POST",
+                        dataType: "json",
+                        complete: function (mobileResult) {
+                            $("#user-exist-error").html("");
+                            $("#user-exist-error").append(mobileResult.responseJSON);
+                        }
+                    });
+                }
             });
         });
     });
@@ -176,7 +178,7 @@
         $(document).ready(function () {
 
             $('#send2-otp-verify').click(function (event) {
- event.preventDefault();
+                event.preventDefault();
                 var mobileValue = $("input[name='otp_mobile']").val();
                 var emailID = $('#email').val();
                 var flag = 3;
