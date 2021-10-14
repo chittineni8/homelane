@@ -30,6 +30,7 @@
         }
     </style>
     <div id="customer-popup-register" class="customer-popup-register">
+        <div class="customer-account-wrapper">
         <form class="form-create-account" action="<?php /* @escapeNotVerified */ echo $block->getPostActionUrl() ?>" method="post" id="customer-popup-form-register" enctype="multipart/form-data" autocomplete="off" data-mage-init='{"validation":{}}'>
             <h2 class="account-heading"><?php echo __('Sign up'); ?></h2>
             <?php echo $block->getBlockHtml('formkey'); ?>
@@ -129,13 +130,13 @@
                 </div>
             </div>
         </form>
-<div id="popup-mpdal" style="display:none;">
-    <?php  include ($block->getTemplateFile('Codilar_TokenAPI::popup.phtml')) ?>
-</div>  
-
+        <div id="popup-mpdal" style="display:none;">
+            <?php  include ($block->getTemplateFile('Codilar_TokenAPI::popup.phtml')) ?>
+        </div>  
         <div class="right-img-box">
             <img src='<?php echo $this->getViewFileUrl('images/createbox.png'); ?>' alt="logo" />
         </div>
+    </div>
         <script type="text/x-magento-init">
             {
                 "#customer-popup-register": {
@@ -187,8 +188,6 @@ $('#popup-email_address').on('change', function ()
                 complete: function(resultJson) {
                     $("#emailresponse").html(""); 
                     $("#emailresponse").append(resultJson.responseJSON);
-              
-                  
                 }
               
             });
@@ -213,47 +212,73 @@ $('#popup-email_address').on('change', function ()
             ) {
                 var options = {
                     type: 'popup',
+                    modalClass: 'otp-popup',
                     responsive: true,
                     innerScroll: true,
                     buttons: []
                 };
 
                 var popup = modal(options, $('#popup-mpdal'));
-                $("#submit").on('click',function(event){
-                       event.preventDefault();
-                       var regEmail =  $("#popup-email_address").val();
-                        var regPhone = $("#customer_mobile").val();
-                         var regName = $("#firstname").val();
-                          var regZip = $("#zip").val();
+                
+                
+                $("#submit").on('click',function(event) {
+                    event.preventDefault();
+                    var regEmail =  $("#popup-email_address").val();
+                    var regPhone = $("#customer_mobile").val();
+                    var regName = $("#firstname").val();
+                    var regZip = $("#zip").val();
                     jQuery.ajax({
-                    url: '/phpcuong/customer_ajax/register',
-                    // url: "getAjaxUrl()",
-                    data: {
+                        url: '/phpcuong/customer_ajax/register',
+                        // url: "getAjaxUrl()",
+                        data: {
                         customer_mobile:regPhone,
-                       firstname:regName,
+                        firstname:regName,
                         email: regEmail,
                         postcode: regZip
-                       },
-                    type: "POST",
-                    // dataType: "json",
-                    success: function(response){
-            // console.log('Abhi');
-        }
-                       
-                
-                });
+                        },
+                        type: "POST",
+                        // dataType: "json",
+                        success: function(response){
+                        } 
+                    });
                     var value = $("#customer_mobile").val();
-                   var email = $("#popup-email_address").val();
+                    var email = $("#popup-email_address").val();
 
                     $("#popup-mpdal").modal("openModal");
 
+                    $("#popup-mpdal").modal("openModal");
+                    $("#getotp").prop('disabled', true);
+                    $(".otp-edit").on('click',function(){
+                        $("#getotp").prop('disabled', false);
+                    });
+                    $("#getotp").on('change keyup',function(){
+                        var otpNum = $(this).val(); 
+                        if(otpNum.length == 10) {
+                            $(".otp-edit").hide();
+                        }
+                    });
+                    /*timer*/
+                    var timer2 = "2:31";
+                    var interval = setInterval(function() {
+                    var timer = timer2.split(':');
+                    //by parsing integer, I avoid all extra string processing
+                    var minutes = parseInt(timer[0], 10);
+                    var seconds = parseInt(timer[1], 10);
+                    --seconds;
+                    minutes = (seconds < 0) ? --minutes : minutes;
+                    if (minutes < 0) clearInterval(interval);
+                    seconds = (seconds < 0) ? 59 : seconds;
+                    seconds = (seconds < 10) ? '0' + seconds : seconds;
+                    //minutes = (minutes < 10) ?  minutes : minutes;
+                    $('.countdown').html(minutes + ':' + seconds);
+                    timer2 = minutes + ':' + seconds;
+                    }, 1000);
+
                     $('#customer-popup-register').modal('closeModal');
-                 
+
                     $('#otp_mobile').val(value);
                     $('#email').val(email);
                     $('#oldphone').val(value);
-
-                    
                 });
 
             }

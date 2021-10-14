@@ -629,7 +629,113 @@ aside.modal-popup.city-popup {
         }
     }
 }
-
+.modal-popup.otp-popup {
+    width: 400px;
+    margin: 0 auto;
+    .modal-inner-wrap {
+        width: 100%;
+        .modal-content {
+            padding: 0 20px;
+        }
+        .modal-header {
+            padding: 0;
+            border: 0;
+        }
+    }
+}
+.otp-wrapper {
+    h2 {
+        font-size: 20px;
+        font-weight: 500;
+        margin: 15px 0;
+    }
+    .label {
+        font-weight: 500;
+        padding-bottom: 8px;
+        display: inline-block;
+    }
+    #otp_mobile {
+        border: 1px solid #e0e0e0;
+        height: 40px;
+        text-align: center;
+        color: #000;
+        font-weight: 600;
+        font-size: 16px;
+        background: transparent;
+        width:100%;
+    }
+    #send2-otp-verify {
+        text-transform: uppercase;
+    }
+    #set-otp {
+        color: green;
+        text-align: center;
+    }
+    .otp-wrapper {
+        padding-bottom: 10px;
+    }
+    .otp-form {
+        border: 1px solid #e0e0e0;
+        padding: 15px 20px;
+        margin-bottom: 8px;
+    }
+    .links {
+        overflow: hidden;
+        clear: both;
+        text-align: center;
+        padding-top: 6px;
+        .voice-call-otp {
+            margin-left: 45px;
+            &:before {
+                content: '';
+                display: inline-block;
+                background: url(../images/login-homelane.png) no-repeat 0 0;
+                width: 19px;
+                height: 16px;
+                margin-bottom: -2px;
+            }
+        }
+        .resend-otp {
+            margin-right: 35px;
+            position: relative;
+            padding-left: 18px;
+            &:before {
+                content: '\e603';
+                font-family: 'icons-blank-theme';
+                font-size: 30px;
+                position: absolute;
+                line-height: 28px;
+                left: -6px;
+                top: -4px;
+            }
+        }
+        .resend-otp, .voice-call-otp {
+            color: #e71c24;
+        }
+    }
+    #getotp {
+        border: none;
+        display: inline-block;
+        width: 100px;
+        height: auto;
+        font-weight: bold;
+        color: #000;
+        background: transparent;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    #getotp[disabled] {
+        border-bottom: none;
+    }
+    .field.otp {
+        padding-bottom: 15px;
+    }
+    .otp-edit-send {
+        display: none;
+    }
+    .otp-edit {
+        color: #3777B6;
+    }
+}
 /*****-----------------Footer Section---------------*****/
 .page-footer .footer.content {
     margin-top: 0;
@@ -710,7 +816,6 @@ aside.modal-popup.city-popup {
             &:before {
                 content: "";
                 background: url(../images/footer-call-icon.png) no-repeat 0 0;
-                content: "";
                 height: 22px;
                 width: 22px;
                 display: inline-block;
@@ -720,7 +825,6 @@ aside.modal-popup.city-popup {
         a.email:before {
             content: "";
             background: url(../images/footer-email-icon.png) no-repeat 0 0;
-            content: "";
             height: 22px;
             width: 22px;
             display: inline-block;
