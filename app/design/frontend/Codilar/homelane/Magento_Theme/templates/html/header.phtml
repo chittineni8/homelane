@@ -49,6 +49,7 @@ $welcomeMessage = $block->getWelcome();
             if ($('body').hasClass('logged-out')) {
                 console.log('customer loged Out');
                 $('.product-item-details a.action.towishlist').removeAttr("data-post");
+                $('.product-item-details a.action.towishlist').removeAttr("data-action");
                 $('.product-item-details a.action.towishlist').on('click', function(e){
                     e.preventDefault();
                     $('#customer-popup-login').modal('openModal');
