@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    
+
+    <!--WishList API preference End-->
+    <preference for="Codilar\WishlistAPI\Api\WishlistManagementInterface" type="Codilar\WishlistAPI\Model\Api\WishlistManagement"/>
+    <!--Wishlist API preference End-->
+
+
+</config>
+
