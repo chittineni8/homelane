@@ -158,7 +158,7 @@ define([
                     if (el.hasClass('swatch-option-link-layered')) {
                         self.selectSwatchOption(el);
                     }
-
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
                     self.ajaxSubmit(link);
                     e.stopPropagation();
                     e.preventDefault();

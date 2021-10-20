@@ -251,12 +251,17 @@ $('#popup-email_address').on('change', function ()
                     $(".otp-edit").on('click',function(){
                         $("#otp_mobile").prop('disabled', false);
                     });
+                    $(".resend-otp").on('click',function(){
+                        $("#set-otp").hide();
+                        $("#reset-otp").show();
+                    });
                     $("#otp_mobile").on('change keyup',function(){
                         var otpNum = $(this).val(); 
                         if(otpNum.length == 10) {
                             $(".otp-edit").hide();
                         }
                     });
+                    
                     /*timer*/
                     var timer2 = "2:31";
                     var interval = setInterval(function() {
