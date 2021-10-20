@@ -60,7 +60,8 @@
                         complete: function (mobileResult) {
                             $("#user-exist-error").html("");
                             $("#user-exist-error").append(mobileResult.responseJSON);
-                            $(".otp-edit-send").show();
+                            $(".otp-edit-send, #reset-otp").show();
+                            $("#set-otp").hide();
                         }
                     });
                 }
