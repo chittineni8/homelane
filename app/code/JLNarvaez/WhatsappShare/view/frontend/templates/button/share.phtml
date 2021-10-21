@@ -1,0 +1,14 @@
+<?php
+/** @var \JLNarvaez\WhatsappShare\ViewModel\Whatsapp $viewModel */
+$viewModel = $block->getViewModel();
+
+if ($viewModel->isEnabled()):
+?>
+<div class="whatsapp-share-container">
+    <a class="btn btn-default action whatsapp-btn" target="_blank" href="https://wa.me/?text=<?= $viewModel->getWhatsappMessage() ?>">
+        <img class="whatsapp-icon" src="<?php echo $block->getViewFileUrl('JLNarvaez_WhatsappShare::images/whatsapp-icon.png'); ?>" /> <?= __('Share') ?>
+    </a>
+</div>
+<?php
+endif;
+?>
