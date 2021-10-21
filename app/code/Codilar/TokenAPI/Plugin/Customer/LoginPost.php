@@ -236,7 +236,7 @@ class LoginPost
 
 
         } catch (\Exception $e) {
-            $this->loggerResponse->critical($e->getMessage() . ' ' . 'VERIFY PASSWORD CODE API EXCEPTION');
+            $this->loggerResponse->critical($e->getMessage() . ' ' . 'LOGINPOST API EXCEPTION');
         }//end try
 
     }//end aroundExecute()

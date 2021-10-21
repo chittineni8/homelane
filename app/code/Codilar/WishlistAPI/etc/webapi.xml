@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * 
+ * Contributor company: Codilar Technologies
+ * Contributor Author : Abhinav Vinayak
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    
+<route method="POST" url="/V1/homelane/wishlist/items">
+        <service class="Codilar\WishlistAPI\Api\WishlistManagementInterface" method="getWishlistForCustomer"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <route method="POST" url="/V1/homelane/wishlist/delete">
+        <service class="Codilar\WishlistAPI\Api\WishlistManagementInterface" method="deleteWishlistForCustomer"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+
+     <route method="POST" url="/V1/homelane/customer/update">
+        <service class="Codilar\WishlistAPI\Api\WishlistManagementInterface" method="changeCustomerInfo"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    
+</routes>
