@@ -15,7 +15,7 @@
 	</head>
 	<body>
 		<referenceContainer name="alert.urls">
-			<block class="Webkul\MpZipCodeValidator\Block\Product\ViewOnProduct" name="zipcode_form" template="Webkul_MpZipCodeValidator::product/viewonproduct.phtml" before="-" ifconfig="mpzipcode/general/enable" />
+			<block class="Webkul\MpZipCodeValidator\Block\Product\ViewOnProduct" name="zipcode_form" template="Webkul_MpZipCodeValidator::product/viewonproduct.phtml" ifconfig="mpzipcode/general/enable" />
 		</referenceContainer>
 		<referenceContainer name="content">
             <block class="Magento\Captcha\Block\Captcha" name="captcha" after="-">
@@ -41,6 +41,7 @@
                 <argument name="viewModel" xsi:type="object">Webkul\MpZipCodeValidator\ViewModel\View</argument>
             </arguments>
         </referenceBlock>
+        <move element="zipcode_form" destination="product.info.main" after="product.info.price"  />
 
 	</body>
 </page>

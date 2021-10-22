@@ -271,25 +271,35 @@
             buttons: [],
             innerScroll: true
         };
-        var popup = modal(options, $('#modal-video'));
-        $("#play-button").click(function() {
-            $('#modal-video').modal('openModal');
-        });
+        if ($("#modal-video").length != 0) {
+          var popup = modal(options, $('#modal-video'));
+          $("#play-button").click(function() {
+              $('#modal-video').modal('openModal');
+          });
+        }
+        if ($("#modal-video1").length != 0) {
         var popup = modal(options, $('#modal-video1'));
         $("#play-button1").click(function() {
             $('#modal-video1').modal('openModal');
         });
+        }
+        if ($("#modal-video2").length != 0) {
         var popup = modal(options, $('#modal-video2'));
         $("#play-button2").click(function() {
             $('#modal-video2').modal('openModal');
         });
+        }
+        if ($("#modal-video3").length != 0) {
         var popup = modal(options, $('#modal-video3'));
         $("#play-button3").click(function() {
             $('#modal-video3').modal('openModal');
         });
+        }
+        if ($("#modal-video4").length != 0) {
         var popup = modal(options, $('#modal-video4'));
         $("#play-button4").click(function() {
             $('#modal-video4').modal('openModal');
         });
+        }
     });
 </script>

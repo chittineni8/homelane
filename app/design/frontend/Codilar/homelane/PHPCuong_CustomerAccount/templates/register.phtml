@@ -218,9 +218,9 @@ $('#popup-email_address').on('change', function ()
                     innerScroll: true,
                     buttons: []
                 };
-
+                if ($("#popup-mpdal").length != 0 && $("#customer-popup-register").length != 0) {
+                console.log('yyyyyyyyy') 
                 var popup = modal(options, $('#popup-mpdal'));
-                
                 
                 $("#submit").on('click',function(event) {
                     event.preventDefault();
@@ -285,6 +285,7 @@ $('#popup-email_address').on('change', function ()
                     $('#email').val(email);
                     $('#oldphone').val(value);
                 });
+            }
 
             }
         );

@@ -27,14 +27,15 @@ if ($type != 'virtual' && $type != 'downloadable'
     <div class="wk-zcv-zip">
         <div class="wk-zcv-wrapper">
             <div class="wk-zcv-zipcodeform">
-                <form autocomplete="off">
+                <form autocomplete="off" class="zipcode-form">
+                    <label><?= __('Check area availability') ?></label>
                     <input type="text" id="wk-zcv-regex" name="zipcode" 
-                        placeholder="<?= $block->escapeHtml(__('Enter Delivery Zipcode')); ?>" 
-                        class="wk-zcv-zipform0" title="zipcode" 
+                        placeholder="<?= $block->escapeHtml(__('Enter Pincode')); ?>" 
+                        class="wk-zcv-zipform0" title="Pincode" 
                         data-id="<?= $block->escapeHtml($product->getId()); ?>" 
                         seller-data-id="0" value="<?= $block->escapeHtml($postcode) ; ?>" 
                         autocomplete="off" />
-                    <div id="wk-zcv-check0" data-pro-id="<?= $block->escapeHtml($product->getId()); ?>" data-id="0">
+                    <div class="check-code" id="wk-zcv-check0" data-pro-id="<?= $block->escapeHtml($product->getId()); ?>" data-id="0">
                         <span>Check</span>
                     </div>
                 </form>
@@ -50,9 +51,9 @@ if ($type != 'virtual' && $type != 'downloadable'
         <div class="wk-zcv-zipsuccess0"></div>
         
         <div id="wk-zcv-error1" class="message warning" style="display:none"></div>
-        <div id="wk-zcv-zipcodemessage">
+        <!-- <div id="wk-zcv-zipcodemessage">
             <?= $block->escapeHtml($block->getZipcodeMessage()); ?>
-        </div>
+        </div> -->
     </div>
 </div>
 <div class="wk-zcv-login-popup" id="modal-popup">
