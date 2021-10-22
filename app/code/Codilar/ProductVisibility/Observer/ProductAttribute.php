@@ -37,6 +37,8 @@ class ProductAttribute implements ObserverInterface
         $inputarray=[];
         $product = $observer->getEvent()->getProduct();
          $visibility = $product->getProductVisibility();
+         var_dump($visibility);
+         die();
             if (!empty($visibility)) {
             foreach($visibility as $value){
 
@@ -44,7 +46,7 @@ class ProductAttribute implements ObserverInterface
                         $temp = 2;
                        
                  }
-                 elseif($value=='homelane store'){
+                 elseif($value=='homelane_store'){
                     $temp = 3;
                 
                 }
