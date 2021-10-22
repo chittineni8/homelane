@@ -37,8 +37,6 @@ class ProductAttribute implements ObserverInterface
         $inputarray=[];
         $product = $observer->getEvent()->getProduct();
          $visibility = $product->getProductVisibility();
-         var_dump($visibility);
-         die();
             if (!empty($visibility)) {
             foreach($visibility as $value){
 
