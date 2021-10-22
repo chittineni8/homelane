@@ -64,6 +64,7 @@ class Product
         $this->productRepository = $productRepository;
     }
 
+
     /**
      * Check if is disable add to cart
      *
@@ -81,12 +82,33 @@ class Product
             $parentProduct = $this->configurable->getParentIdsByChild($productId);
             if (isset($parentProduct[0])) {
                 $parentId = $parentProduct[0];
-                $productUrl = $this->productRepository->getById($parentId)
-                    ->getProductUrl();
+                $configProductUrl = $this->productRepository->getById($parentId);
+                $simpleProduct = $this->productRepository->getById($productId);
+                $productUrl = $this->getHashUrl($configProductUrl, $simpleProduct);
+//                $productUrl = $configProductUrl->getProductUrl();
                 return $productUrl;
             }
         }
 
         return $result;
+    }
+
+    /**
+     * @param \Magento\Catalog\Model\Product $parentProduct
+     * @param \Magento\Catalog\Model\Product $simpleProduct
+     * @return string Hashed Url
+     */
+    public function getHashUrl($parentProduct, $simpleProduct)
+    {
+        $configType = $parentProduct->getTypeInstance();
+        $attributes = $configType->getConfigurableAttributesAsArray($parentProduct);
+        $options = [];
+        foreach ($attributes as $attribute) {
+            $id = $attribute['attribute_id'];
+            $value = $simpleProduct->getData($attribute['attribute_code']);
+            $options[$id] = $value;
+        }
+        $options = http_build_query($options);
+        return $parentProduct->getProductUrl() . ($options ? '#' . $options : '');
     }
 }
