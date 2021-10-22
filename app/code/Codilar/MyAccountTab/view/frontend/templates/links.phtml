@@ -1,0 +1,18 @@
+<?php
+$blockObj = $block->getCustomer();
+foreach ($blockObj as $item)
+{
+    $name = $item['customerName'];
+    $email = $item['customerEmail'];
+}
+
+?>
+
+
+<ul>
+    <li><?= $name ?></li>
+    <li><?= $email ?></li>
+    <li><a href="<?= $this->getUrl('customer/account') ?>">My Profile</a></li>
+    <li><a href="<?= $this->getUrl('wishlist') ?>">My Wishlist</a></li>
+    <li><a href="<?= $this->getUrl('') ?>">Homelane Care</a></li>
+</ul>
