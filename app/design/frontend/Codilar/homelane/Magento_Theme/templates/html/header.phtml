@@ -41,22 +41,29 @@ $welcomeMessage = $block->getWelcome();
 <?php endif ?>
 <script type="text/javascript">
     require(['jquery','Magento_Ui/js/modal/modal','Magento_Customer/js/model/customer'],function ($,modal) {
+        function openloginmodal() {
+                if ($('body').hasClass('logged-out')) {
+                console.log('customer loged Out');
+                $('.product-item-details .action.towishlist').removeAttr("data-post");
+                $('.product-item-details .action.towishlist').removeAttr("data-action");
+                $('.product-item-details .action.towishlist').on('click', function(e){
+                    e.preventDefault();
+                    $('#customer-popup-login').modal('openModal');
+                });
+                } else {
+                    console.log('customer loged In');
+                }
+            }
         $(document).ready(function() {
             $("li.link.wishlist").click(function(e) {
                 e.preventDefault();
                 $('#customer-popup-login').modal('openModal');
             });
-            if ($('body').hasClass('logged-out')) {
-                console.log('customer loged Out');
-                $('.product-item-details a.action.towishlist').removeAttr("data-post");
-                $('.product-item-details a.action.towishlist').removeAttr("data-action");
-                $('.product-item-details a.action.towishlist').on('click', function(e){
-                    e.preventDefault();
-                    $('#customer-popup-login').modal('openModal');
-                });
-            } else {
-                console.log('customer loged In');
-            }
+            openloginmodal();
+            $("body").bind("ajaxComplete", function(e, xhr, settings){
+                //console.log('ajax loaded...');
+                openloginmodal();
+            });
         });
     });
 </script>
