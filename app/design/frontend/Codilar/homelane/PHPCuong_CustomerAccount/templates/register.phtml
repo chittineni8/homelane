@@ -218,8 +218,7 @@ $('#popup-email_address').on('change', function ()
                     innerScroll: true,
                     buttons: []
                 };
-                if ($("#popup-mpdal").length != 0 && $("#customer-popup-register").length != 0) {
-                console.log('yyyyyyyyy') 
+                if ($("#popup-mpdal").length != 0 && $("#customer-popup-register").length != 0) { 
                 var popup = modal(options, $('#popup-mpdal'));
                 
                 $("#submit").on('click',function(event) {
@@ -251,7 +250,7 @@ $('#popup-email_address').on('change', function ()
                     $(".otp-edit").on('click',function(){
                         $("#otp_mobile").prop('disabled', false);
                     });
-                    $(".resend-otp").on('click',function(){
+                    $(".resend-otp, .otp-edit-send").on('click',function(){
                         $("#set-otp").hide();
                         $("#reset-otp").show();
                     });
@@ -284,6 +283,18 @@ $('#popup-email_address').on('change', function ()
                     $('#otp_mobile').val(value);
                     $('#email').val(email);
                     $('#oldphone').val(value);
+                    /*$("body").bind("ajaxComplete", function(e, xhr, settings){
+                        $('#send2-otp-verify').on('click',function () {
+                            console.log('ajax loaded...');
+                            if ($("#user-exist-error:contains('Error')").length > 0) {
+                                console.log('clicked');
+                                setTimeout(function () {
+                                $('#customer-popup-register').modal('closeModal');
+                                console.log('close');
+                                }, 1000);
+                            }
+                        });
+                    });*/
                 });
             }
 
