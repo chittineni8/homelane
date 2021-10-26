@@ -221,9 +221,7 @@ class UpdatePhone extends Action
             $responseBody = $response->getBody();
             $responseContent = $responseBody->getContents();
             $responseDecodee = json_decode($responseContent, true);
-            // print_r($status);
-            // print_r($responseBody);
-            // print_r($responseContent);
+
             if ($status == 200):
 
                 $this->loggerResponse->addInfo("========================OTP UPDATE MOBILE SUCCESS========================");
