@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "36ff36c1b4157f313a8df27e646697ca",
+    "content-hash": "d3935c612adf13216ac59385105b2e91",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -19618,6 +19618,49 @@
             ],
             "description": "Magento 2 Two Factors Authentication Extension",
             "time": "2021-08-16T10:57:07+00:00"
+        },
+        {
+            "name": "mageworx/module-searchsuiteautocomplete",
+            "version": "2.1.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "reference": "56c65ae482c40411b74a65f97629d16b0e7662ee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/56c65ae482c40411b74a65f97629d16b0e7662ee",
+                "reference": "56c65ae482c40411b74a65f97629d16b0e7662ee",
+                "shasum": ""
+            },
+            "require": {
+                "magento/framework": ">=100.0.0 <104",
+                "magento/module-catalog": ">=100.0.0 <105",
+                "magento/module-search": ">=100.0.0 <102"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "MageWorx\\SearchSuiteAutocomplete\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "MageWorx",
+                    "email": "support@mageworx.com",
+                    "homepage": "https://www.mageworx.com",
+                    "role": "Technical Support"
+                }
+            ],
+            "description": "Search Suite Autocomplete extension by MageWorx for Magento 2",
+            "time": "2020-08-19T07:57:54+00:00"
         },
         {
             "name": "monolog/monolog",
