@@ -55,7 +55,7 @@ class OtpGenerate extends Action
      */
     const OTP_REQUEST_ENDPOINT = 'codilar_customer_api/otp_oauth/otp_endpoint';
 
-/**
+    /**
      * @var Page
      */
     protected $resultPageFactory;
@@ -179,7 +179,7 @@ class OtpGenerate extends Action
     )
     {
         $this->resultJsonFactory = $resultJsonFactory;
-         $this->resultPageFactory = $resultPageFactory;
+        $this->resultPageFactory = $resultPageFactory;
         $this->_customerModel = $customerModel;
         $this->responseFactory = $responseFactory;
         $this->stack = $stack;
@@ -205,80 +205,78 @@ class OtpGenerate extends Action
      */
     public function execute()
     {
-        try{
+        try {
 
 
-         $postOtp = $this->getRequest()->getPostValue();
-          $signup_source = $this->_storeManager->getStore()->getBaseUrl();
+            $postOtp = $this->getRequest()->getPostValue();
+            $signup_source = $this->_storeManager->getStore()->getBaseUrl();
 
-if($postOtp['flag'] == 3):
+            if ($postOtp['flag'] == 3):
 
- $parambody = [
-    'flag' => $postOtp['flag'] , 'email' => $postOtp['email'], 'phone' =>$postOtp['phone'], 'signup_source' => $signup_source , 'type' => $postOtp['type'] , 'otp' => $postOtp['otp']
-     ];
-else:
+                $parambody = [
+                    'flag' => $postOtp['flag'], 'email' => $postOtp['email'], 'phone' => $postOtp['phone'], 'signup_source' => $signup_source, 'type' => $postOtp['type'], 'otp' => $postOtp['otp']
+                ];
+            else:
 
 
-$parambody = [
-    'flag' => $postOtp['flag'] , 'email' => $postOtp['email'], 'phone' =>$postOtp['phone'], 'signup_source' => $signup_source , 'type' => $postOtp['type'] , 'isEditNum' => $postOtp['isEditNum'],'isResendOtpClick' => $postOtp['isResendOtpClick']
-     ];
+                $parambody = [
+                    'flag' => $postOtp['flag'], 'email' => $postOtp['email'], 'phone' => $postOtp['phone'], 'signup_source' => $signup_source, 'type' => $postOtp['type'], 'isEditNum' => $postOtp['isEditNum'], 'isResendOtpClick' => $postOtp['isResendOtpClick']
+                ];
 
-endif;
+            endif;
 
-           list($apiRequestEndpoint, $requestMethod, $params) = $this->prepareParams($parambody);
+            list($apiRequestEndpoint, $requestMethod, $params) = $this->prepareParams($parambody);
             $response = $this->doRequest($apiRequestEndpoint, $requestMethod, $params);
             $status = $response->getStatusCode();
             $responseBody = $response->getBody();
             $responseContent = $responseBody->getContents();
             $responseDecodee = json_decode($responseContent, true);
             $resultJson = $this->resultJsonFactory->create();
-            print_r($status);
-            print_r($responseDecodee);
 
-            if($status == 200):
 
-                if(array_key_exists('otpVerified',$responseDecodee)):
+            if ($status == 200):
 
-                      $verified = $responseDecodee['otpVerified'];
+                if (array_key_exists('otpVerified', $responseDecodee)):
 
-                      if($verified == 'true'):
+                    $verified = $responseDecodee['otpVerified'];
 
-                         $resultJson->setData('Verified');
-                    return $resultJson;
+                    if ($verified == 'true'):
+
+                        $resultJson->setData('Verified');
+                        return $resultJson;
 
                     else:
-                    
-                    $resultJson->setData('Not Verified');
-                    return $resultJson;
 
+                        $resultJson->setData('Not Verified');
+                        return $resultJson;
+
+                    endif;
                 endif;
+
+            elseif ($status == 400):
+
+
+                $this->loggerResponse->addInfo('================================OTP POPUP API ERROR===================');
+                $this->loggerResponse->addInfo(
+                    'Error' . ' ' . $status . ' ' . 'Missing mandatory params or Lead already exists');
+                $this->loggerResponse->addInfo('======================================================================');
+
+            else:
+
+
+                $this->loggerResponse->addInfo('=================OTP POPUP API ERROR===================');
+                $this->loggerResponse->addInfo(
+                    'Error' . ' ' . $status . ' ' . 'Authorization failed or Token
+            not passed. Please refresh the access token'
+                );
+                $this->loggerResponse->addInfo('================================LEADGEN API ERROR===================');
             endif;
 
-        elseif($status == 400):
-
-
-
-            $this->loggerResponse->addInfo('================================OTP POPUP API ERROR===================');
-            $this->loggerResponse->addInfo(
-                'Error'.' '.$status.' '.'Missing mandatory params or Lead already exists');
-            $this->loggerResponse->addInfo('======================================================================');
-
-else:
-
-
-      $this->loggerResponse->addInfo('=================OTP POPUP API ERROR===================');
-            $this->loggerResponse->addInfo(
-                'Error'.' '.$status.' '.'Authorization failed or Token
-            not passed. Please refresh the access token'
-            );
-            $this->loggerResponse->addInfo('================================LEADGEN API ERROR===================');
-endif;
-
-} catch (\Exception $e) {
+        } catch (\Exception $e) {
             $this->loggerResponse->critical($e->getMessage() . ' ' . 'VERIFY OTP API EXCEPTION');
         }//end try
 
-}//end execute()
+    }//end execute()
 
 
     /**

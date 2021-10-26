@@ -1,0 +1,15 @@
+.config-nav .codilar-tabs .admin__page-nav-title::before {
+    content: '';
+    background-image: url("../images/codilar.jpg");
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: 0 0;
+    height: 30px;
+    position: absolute;
+    width: 30px;
+    top: 11px;
+}
+
+.config-nav .codilar-tabs .admin__page-nav-title strong {
+    margin-left: 40px;
+}

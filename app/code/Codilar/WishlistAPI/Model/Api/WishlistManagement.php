@@ -3,6 +3,7 @@
  *
  *
  */
+
 namespace Codilar\WishlistAPI\Model\Api;
 
 use Magento\Catalog\Model\Product;
@@ -27,11 +28,26 @@ use Magento\Store\Model\App\Emulation as AppEmulation;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Customer\Api\AccountManagementInterface;
+use Magento\Framework\App\Request\Http;
+use Magento\Integration\Model\Oauth\Token;
+use Magento\Integration\Model\Oauth\TokenFactory;
+
 /**
  * Defines the implementaiton class of the WishlistManagementInterface
  */
 class WishlistManagement implements WishlistManagementInterface
 {
+
+    /**
+     * @var Http
+     */
+    private $http;
+
+    /**
+     * @var TokenFactory
+     */
+    private $tokenFactory;
+
 
     /**
      * @var CollectionFactory
@@ -97,12 +113,12 @@ class WishlistManagement implements WishlistManagementInterface
     protected $countryfactory;
 
 
-     protected $customerRepository;
+    protected $customerRepository;
 
 
-     protected $jsonFactory;
+    protected $jsonFactory;
 
-     /**
+    /**
      * @var LoggerResponse
      */
     private $loggerResponse;
@@ -114,62 +130,66 @@ class WishlistManagement implements WishlistManagementInterface
     protected $customerAccountManagement;
 
 
-
     protected $customerCollection;
 
 
-     /**
-* Request instance
-*
-* @var \Magento\Framework\App\RequestInterface
-*/
-protected $request;
+    /**
+     * Request instance
+     *
+     * @var \Magento\Framework\App\RequestInterface
+     */
+    protected $request;
 
 
     /**
-     * @param CollectionFactory                  $wishlistCollectionFactory
-     * @param ProductFactory                     $productFactory
-     * @param \Magento\Framework\Math\Random     $mathRandom
-     * @param Customer                           $customer
+     * @param CollectionFactory $wishlistCollectionFactory
+     * @param ProductFactory $productFactory
+     * @param \Magento\Framework\Math\Random $mathRandom
+     * @param Customer $customer
      * @param \Magento\Framework\Stdlib\DateTime $dateTime
-     * @param ProductRepositoryInterface         $productRepository
+     * @param ProductRepositoryInterface $productRepository
      */
     public function __construct(
-        CollectionFactory $wishlistCollectionFactory,
-        WishlistFactory $wishlistFactory,
-        RequestInterface $request,
-        Customer $customer,
-        AppEmulation $appEmulation,
-        CountryFactory $countryfactory,
-        JsonFactory $jsonFactory,
+        CollectionFactory           $wishlistCollectionFactory,
+        WishlistFactory             $wishlistFactory,
+        Http                        $http,
+        TokenFactory                $tokenFactory,
+        RequestInterface            $request,
+        Customer                    $customer,
+        AppEmulation                $appEmulation,
+        CountryFactory              $countryfactory,
+        JsonFactory                 $jsonFactory,
         CustomerRepositoryInterface $customerRepository,
         AccountManagementInterface  $customerAccountManagement,
-        StoreManagerInterface $storemanagerinterface,
-        ProductImageHelper $productImageHelper,
-        CustomerCollection $customerCollection,
-        Product $productload,
-        Logger                $loggerResponse,
-        WishlistFactory $wishlistRepository,
-        ProductRepositoryInterface $productRepository,
-        ItemFactory $itemFactory
-    ) {
+        StoreManagerInterface       $storemanagerinterface,
+        ProductImageHelper          $productImageHelper,
+        CustomerCollection          $customerCollection,
+        Product                     $productload,
+        Logger                      $loggerResponse,
+        WishlistFactory             $wishlistRepository,
+        ProductRepositoryInterface  $productRepository,
+        ItemFactory                 $itemFactory
+    )
+    {
         $this->_wishlistCollectionFactory = $wishlistCollectionFactory;
-        $this->_wishlistRepository        = $wishlistRepository;
-        $this->customerCollection         = $customerCollection;
-        $this->_productRepository         = $productRepository;
-        $this->customerRepository         = $customerRepository;
-        $this->_wishlistFactory           = $wishlistFactory;
-        $this->countryfactory             = $countryfactory;
-        $this->storemanagerinterface      = $storemanagerinterface;
-        $this->_itemFactory               = $itemFactory;
-        $this->_customer                  = $customer;
-        $this->_productload               = $productload;
-        $this->appEmulation               = $appEmulation;
-        $this->productImageHelper         = $productImageHelper;
-        $this->_customer                  = $customer;
-        $this->request                    = $request;
-        $this->jsonFactory                = $jsonFactory;
-        $this->loggerResponse             = $loggerResponse;
+        $this->_wishlistRepository = $wishlistRepository;
+        $this->http = $http;
+        $this->tokenFactory = $tokenFactory;
+        $this->customerCollection = $customerCollection;
+        $this->_productRepository = $productRepository;
+        $this->customerRepository = $customerRepository;
+        $this->_wishlistFactory = $wishlistFactory;
+        $this->countryfactory = $countryfactory;
+        $this->storemanagerinterface = $storemanagerinterface;
+        $this->_itemFactory = $itemFactory;
+        $this->_customer = $customer;
+        $this->_productload = $productload;
+        $this->appEmulation = $appEmulation;
+        $this->productImageHelper = $productImageHelper;
+        $this->_customer = $customer;
+        $this->request = $request;
+        $this->jsonFactory = $jsonFactory;
+        $this->loggerResponse = $loggerResponse;
         $this->customerAccountManagement = $customerAccountManagement;
 
     }//end __construct()
@@ -178,56 +198,66 @@ protected $request;
     /**
      * Get wishlist collection
      *
-     * @deprecated
      * @param      $customerEmail
      * @return     wishlistResponse
+     * @deprecated
      */
     public function getWishlistForCustomer($customerEmail)
     {
-        try{
-       if(empty($customerEmail) || $customerEmail == null){
-           $response = ['result' => ['status' => 400, 'message' => 'Parameters not found']]; 
-            return $response;
-            
-        }
+        try {
+            if (!$authorizationHeader = $this->http->getHeader('Authorization')):
+                $response = ['result' => ['status' => 401, 'message' => 'Token not passed']];
+                return $response;
+
+            endif;
 
 
-        if($this->emailExistOrNot($customerEmail)):
+            if (empty($customerEmail) || $customerEmail == null) {
+                $response = ['result' => ['status' => 400, 'message' => 'Parameters not found']];
+                return $response;
 
-           $response = ['result' => ['status' => 400, 'message' => 'This Email Does Not Exist']]; 
-            return $response;
+            }
 
-        endif;
 
-        $customerId = $this->getCustomerIdByEmail($customerEmail);
-        if (empty($customerId) || !isset($customerId) || $customerId == '') {
-           $this->loggerResponse->addInfo("========================GET WISHLIST DATA ERROR========================");
-        $this->loggerResponse->addInfo('Id required');
-       $this->loggerResponse->addInfo("===================================================================");
-        } else {
-            $collection   = $this->_wishlistCollectionFactory->create()->addCustomerIdFilter($customerId);
-            $baseurl      = $this->storemanagerinterface->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA).'catalog/product';
-            $wishlistData = [];
-            foreach ($collection as $item) {
-                $productInfo = $item->getProduct()->toArray();
-                 $data           = [
-                    'wishlist_item_id' => $item->getWishlistItemId(),
-                    'wishlist_id'      => $item->getWishlistId(),
-                    'product_id'       => $item->getProductId(),
-                    'store_id'         => $item->getStoreId(),
-                    'added_at'         => $item->getAddedAt(),
-                    'description'      => $item->getDescription(),
-                    'qty'              => round($item->getQty()),
-                    'product'          => $productInfo,
-                ];
-                $wishlistData[] = $data;
-            }//end foreach
- $wishlistResponse = ['result' => ['status' => 200, 'message' => 'Success', 'Details' => $wishlistData]]; 
-            return $wishlistResponse;
-        }//end if
+            if ($this->emailExistOrNot($customerEmail)):
 
-    }catch (\Exception $e) {
+                $response = ['result' => ['status' => 400, 'message' => 'This Email Does Not Exist']];
+                return $response;
+
+            endif;
+
+            $customerId = $this->getCustomerIdByEmail($customerEmail);
+            if (empty($customerId) || !isset($customerId) || $customerId == '') {
+                $this->loggerResponse->addInfo("========================GET WISHLIST DATA ERROR========================");
+                $this->loggerResponse->addInfo('Id required');
+                $this->loggerResponse->addInfo("===================================================================");
+            } else {
+                $collection = $this->_wishlistCollectionFactory->create()->addCustomerIdFilter($customerId);
+                $baseurl = $this->storemanagerinterface->getStore()->getBaseUrl();
+                $wishlistData = [];
+                foreach ($collection as $item) {
+                    $productInfo = $item->getProduct()->toArray();
+                    $data = [
+                        'wishlist_item_id' => $item->getWishlistItemId(),
+                        'wishlist_id' => $item->getWishlistId(),
+                        'product_id' => $item->getProductId(),
+                        'product_url' => $baseurl . $this->getWebsiteCodeByStoreId($item->getStoreId()) . '/' . $this->getProductUrl($item->getProductId()),
+                        'store_id' => $item->getStoreId(),
+                        'store_name' => $this->getStoreName($item->getStoreId()),
+                        'added_at' => $item->getAddedAt(),
+                        'description' => $item->getDescription(),
+                        'qty' => round($item->getQty()),
+                        'product' => $productInfo,
+                    ];
+                    $wishlistData[] = $data;
+                }//end foreach
+                $wishlistResponse = ['result' => ['status' => 200, 'message' => 'Success', 'details' => $wishlistData]];
+                return $wishlistResponse;
+            }//end if
+
+        } catch (\Exception $e) {
             $this->loggerResponse->critical($e->getMessage() . ' ' . 'GET WISHLIST DETAILS API  EXCEPTION');
+            return ($e->getMessage());
         }//end try
 
     }//end getWishlistForCustomer()
@@ -241,100 +271,115 @@ protected $request;
      */
     public function deleteWishlistForCustomer($customerEmail, $productId)
     {
-        try{
+        try {
 
-        if(empty($customerEmail) || $customerEmail == null || empty($productId) || $productId == null){
-           $response = ['result' => ['status' => 400, 'message' => 'Parameters not found']]; 
-            return $response;
-            
-        }
-        if($this->emailExistOrNot($customerEmail)):
+            if (!$authorizationHeader = $this->http->getHeader('Authorization')):
+                $response = ['result' => ['status' => 401, 'message' => 'Token not passed']];
+                return $response;
 
-            $response = ['result' => ['status' => 400, 'message' => 'This Email Does Not Exist']]; 
-            return $response;
-
-        endif;
+            endif;
 
 
-        if($this->productExistById($productId)):
+            if (empty($customerEmail) || $customerEmail == null || empty($productId) || $productId == null) {
+                $response = ['result' => ['status' => 400, 'message' => 'Parameters not found']];
+                return $response;
 
-       $customerId = $this->getCustomerIdByEmail($customerEmail);
-            $collection   = $this->_wishlistCollectionFactory->create()->addCustomerIdFilter($customerId);
-            
-            foreach ($collection as $item) {
-                if ($item->getProductId() == $productId) {
-            $item->delete();
-            $collection->save();
-             
-        }
-       
-        $wishlistDeleteResponse = ['result' => ['status' => 200, 'message' => 'Product Deleted Successfully']]; 
-            return $wishlistDeleteResponse;
-             
-    }
-else:
-    $wishlistDeleteResponse = ['result' => ['status' => 400, 'message' => 'Id not found']]; 
-            return $wishlistDeleteResponse;
-       endif;
-    }catch (\Exception $e) {
+            }
+            if ($this->emailExistOrNot($customerEmail)):
+
+                $response = ['result' => ['status' => 400, 'message' => 'This Email Does Not Exist']];
+                return $response;
+
+            endif;
+
+
+            if ($this->productExistById($productId)):
+
+                $customerId = $this->getCustomerIdByEmail($customerEmail);
+                $collection = $this->_wishlistCollectionFactory->create()->addCustomerIdFilter($customerId);
+
+                foreach ($collection as $item) {
+                    if ($item->getProductId() == $productId) {
+                        $item->delete();
+                        $collection->save();
+
+                    }
+
+                    $wishlistDeleteResponse = ['result' => ['status' => 200, 'message' => 'Product Deleted Successfully']];
+                    return $wishlistDeleteResponse;
+
+                }
+            else:
+                $wishlistDeleteResponse = ['result' => ['status' => 400, 'message' => 'Id not found']];
+                return $wishlistDeleteResponse;
+            endif;
+        } catch (\Exception $e) {
             $this->loggerResponse->critical($e->getMessage() . ' ' . 'WISHLIST DELETE ITEMS API EXCEPTION');
+            return ($e->getMessage());
         }//end try
 
     }//end deleteWishlistForCustomer()
 
 
-/**
-     * Update customer data by homelane user id 
+    /**
+     * Update customer data by homelane user id
      *
-     * @param  string  $customerEmail
-     * @param  integer $productIdId
+     * @param string $customerEmail
+     * @param integer $productIdId
      * @return array|boolean
      * @throws \Magento\Framework\Exception\LocalizedException
      */
- public function changeCustomerInfo()
- {
-    try{
-    $params =$this->request->getParams();
-   if($params['customerEmail'] == null || $params['customerName'] == null || $params['phone'] == null):
+    public function changeCustomerInfo()
+    {
+        try {
+            $params = $this->request->getParams();
 
-   $UserResponse = ['result' => ['status' => 400, 'message' => 'Parameters Missing']]; 
-   return $UserResponse;
-   endif;
 
-if($params['user_id']):
+            print_r($params);
 
- $collection= $this->customerCollection->addAttributeToSelect('*')
-                  ->addAttributeToFilter('homelane_user_id',$params['user_id'])
-                  ->load();
-               $c_data=$collection->getData();
-   $c_data[0]['entity_id'];
-   $customerID =  $c_data[0]['entity_id'];
-  
-    $customer = $this->customerRepository->getById($customerID);
-    $customer->setEmail($params['customerEmail']); 
-    $customer->setFirstname($params['customerName']); 
-    $customer->setCustomAttribute('customer_mobile',$params['phone']); 
-    $this->customerRepository->save($customer);
-    $UserResponse = ['result' => ['status' => 200, 'message' => 'Customer Data Updated Successfully']]; 
-            return $UserResponse;
-else:
 
-      $UserResponse = ['result' => ['status' => 400, 'message' => 'User ID Missing']]; 
-            return $UserResponse;
-endif;
+            if ($params['user_id']):
 
-}catch (\Exception $e) {
+                $collection = $this->customerCollection->addAttributeToSelect('*')
+                    ->addAttributeToFilter('homelane_user_id', $params['user_id'])
+                    ->load();
+                $c_data = $collection->getData();
+                $c_data[0]['entity_id'];
+                $customerID = $c_data[0]['entity_id'];
+
+                $customer = $this->customerRepository->getById($customerID);
+                if (array_key_exists('customerEmail', $params)):
+                    $customer->setEmail($params['customerEmail']);
+                endif;
+                if (array_key_exists('customerName', $params)):
+                    $customer->setFirstname($params['customerName']);
+                endif;
+                if (array_key_exists('customer_mobile', $params)):
+                    $customer->setCustomAttribute('customer_mobile', $params['phone']);
+                endif;
+                $this->customerRepository->save($customer);
+                $UserResponse = ['result' => ['status' => 200, 'message' => 'Customer Data Updated Successfully']];
+                return $UserResponse;
+            else:
+
+                $UserResponse = ['result' => ['status' => 400, 'message' => 'User ID Missing']];
+                return $UserResponse;
+            endif;
+
+        } catch (\Exception $e) {
             $this->loggerResponse->critical($e->getMessage() . ' ' . 'Change Customer Info  EXCEPTION');
+            return ($e->getMessage());
         }//end try
- }
+
+    }
 
     /**
      * Helper function that provides full cache image url
      *
-     * @param  Product
+     * @param Product
      * @return string
      */
-    public function getImageUrl($product, string $imageType='')
+    public function getImageUrl($product, string $imageType = '')
     {
         $storeId = $this->storemanagerinterface->getStore()->getId();
         $this->appEmulation->startEnvironmentEmulation($storeId, Area::AREA_FRONTEND, true);
@@ -346,13 +391,19 @@ endif;
     }//end getImageUrl()
 
 
+    /**
+     * @param string $email
+     * @return int|null
+     * @throws LocalizedException
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
     public function getCustomerIdByEmail(string $email)
     {
         $customerId = null;
         try {
             $customerData = $this->customerRepository->get($email);
             $customerId = (int)$customerData->getId();
-        }catch (NoSuchEntityException $noSuchEntityException){
+        } catch (NoSuchEntityException $noSuchEntityException) {
         }
         return $customerId;
     }
@@ -371,13 +422,65 @@ endif;
     }
 
 
-     public function productExistById($productId)
+    /**
+     * @param $productId
+     * @return bool|void
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
+    public function productExistById($productId)
     {
-        if ($this->_productRepository->getById($productId)) 
-        {
-           return true;
+        if ($this->_productRepository->getById($productId)) {
+            return true;
         }
     }
 
+
+    /**
+     * @param int $id
+     * @return string|null
+     */
+    public function getStoreName(int $id): ?string
+    {
+        try {
+            $storeData = $this->storemanagerinterface->getStore($id);
+            $storeName = (string)$storeData->getName();
+        } catch (LocalizedException $localizedException) {
+            $storeName = null;
+            $this->logger->error($localizedException->getMessage());
+        }
+        return $storeName;
+    }
+
+
+    /**
+     * @param $productId
+     * @return string
+     */
+    public function getProductUrl($productId)
+    {
+        $product = $this->_productload->load($productId);
+        return $url = $product->getUrlKey();
+
+    }
+
+    /**
+     * @param int $storeId
+     * @return string|null
+     * @throws LocalizedException
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
+    public function getWebsiteCodeByStoreId(int $storeId): ?string
+    {
+        $websiteCode = null;
+        try {
+            $websiteId = (int)$this->storemanagerinterface->getStore($storeId)->getWebsiteId();
+            $websiteCode = $this->storemanagerinterface->getWebsite($websiteId)->getCode();
+        } catch (NoSuchEntityException $entityException) {
+            //Log the exception
+            //$entityException->getMessage();
+        }
+
+        return $websiteCode;
+    }
 
 }//end class
