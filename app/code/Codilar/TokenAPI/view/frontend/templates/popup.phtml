@@ -22,7 +22,7 @@
         </div>
         <div class="field otp">
             <label for="otp" class="label otp-pass">One Time Password</label>
-            <input type="numer" name="getotpnumber" id="getotp" value="" maxlength="4" autocomplete="off" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"/>
+            <input type="numer" placeholder="Enter OTP" name="getotpnumber" id="getotp" value="" maxlength="4" autocomplete="off" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"/>
         </div>
         <div class="field get-otp">
             <p id="otpExpire">Your OTP will expire in &nbsp;<span class="countdown" style="color:#ff2c00"></span></p>
@@ -60,8 +60,12 @@
                         complete: function (mobileResult) {
                             $("#user-exist-error").html("");
                             $("#user-exist-error").append(mobileResult.responseJSON);
-                            $(".otp-edit-send, #reset-otp").show();
-                            $("#set-otp").hide();
+                            $(".otp-edit-send").show();
+                            if ($('#user-exist-error').is(':empty')){
+                                $(".otp-edit-send").removeClass('disabled');
+                            } else {
+                                $(".otp-edit-send").addClass('disabled');
+                            }
                         }
                     });
                 }
@@ -91,22 +95,14 @@
                         isResendOtpClick: 'no'
                     },
                     type: "POST",
-                    dataType: "json",
-                    complete: function (mobileResult) {
-                        $("#user-exist-error").html("");
-                        $("#user-exist-error").append("Error");
-                    }
+                    dataType: "json"
                 });
                 jQuery.ajax({
                     url: '/user/otp/updatephone',
                     // url: "getAjaxUrl()",
                     data: {altmobile: mobileValue, email: emailID, mobile: mobile},
                     type: "POST",
-                    dataType: "json",
-                    complete: function (mobileResult) {
-                        $("#user-exist-error").html("");
-                        $("#user-exist-error").append("Error");
-                    }
+                    dataType: "json"
                 });
             });
         });
@@ -135,12 +131,7 @@
                         isResendOtpClick: 'no'
                     },
                     type: "POST",
-                    dataType: "json",
-                    complete: function (mobileResult) {
-                        $("#user-exist-error").html("");
-                        $("#user-exist-error").append("Error");
-
-                    }
+                    dataType: "json"
                 });
             });
             $('.voice-call-otp').click(function () {
@@ -161,12 +152,7 @@
                         isResendOtpClick: 'no'
                     },
                     type: "POST",
-                    dataType: "json",
-                    complete: function (mobileResult) {
-                        $("#user-exist-error").html("");
-                        $("#user-exist-error").append("Error");
-                       
-                    }
+                    dataType: "json"
                 });
             });
 
@@ -176,10 +162,9 @@
 
 
 <script type="text/javascript">
-    require(['jquery'], function ($) {
+    require(['jquery','Magento_Ui/js/modal/modal'], function ($,modal) {
         $(document).ready(function () {
-
-            $('#send2-otp-verify').click(function (event) {
+            $('#send2-otp-verify').on('click',function (event) {
                 event.preventDefault();
                 var mobileValue = $("input[name='otp_mobile']").val();
                 var emailID = $('#email').val();
@@ -195,7 +180,14 @@
                         console.log(resultJson);
                         $("#user-exist-error").html("");
                         $("#user-exist-error").append("Error");
-
+                        if ($("#user-exist-error:contains('Error')").length > 0) {
+                            console.log('clicked');
+                            setTimeout(function () {
+                                console.log('close');
+                                $('#popup-mpdal').modal('closeModal');
+                                location.reload();
+                            }, 1000);
+                        }
                     }
                 });
             });
