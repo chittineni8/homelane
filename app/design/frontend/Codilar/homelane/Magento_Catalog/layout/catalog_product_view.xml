@@ -10,9 +10,11 @@
     <body>
     	<move element="page.main.title" destination="product.info.main" before="-"  />
     	<move element="product.info.price" destination="product.info.main" after="product.info"  />
+        <move element="catalog.product.related" destination="content" after="-"/>
 		<referenceBlock name="product.info.addtocart" remove="true"/>
     	<referenceBlock name="product.info.options.wrapper.bottom" remove="true" />
     	<referenceBlock name="product.info.stock.sku" remove="true" />
     	<referenceBlock name="product.info.review" remove="true" />
+        <referenceBlock name="product.info.overview" remove="true" />
     </body>
 </page>

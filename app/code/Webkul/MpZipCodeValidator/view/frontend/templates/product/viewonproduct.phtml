@@ -56,14 +56,6 @@ if ($type != 'virtual' && $type != 'downloadable'
         </div> -->
     </div>
 </div>
-<div class="wk-zcv-login-popup" id="modal-popup">
-    <span class="close-login-popup">x</span>
-    <?= $block->getLayout()
-                                        ->createBlock(\Magento\Customer\Block\Form\Login::class)
-                                        ->setTemplate("Webkul_MpZipCodeValidator::customer/form/login.phtml")
-                                        ->toHtml();
-    ?>
-</div>
 
 <script type="text/x-magento-init">
 {
