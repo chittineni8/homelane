@@ -11,14 +11,14 @@
 <route method="POST" url="/V1/homelane/wishlist/items">
         <service class="Codilar\WishlistAPI\Api\WishlistManagementInterface" method="getWishlistForCustomer"/>
         <resources>
-            <resource ref="anonymous"/>
+            <resource ref="Magento_Catalog:product"/>
         </resources>
     </route>
 
     <route method="POST" url="/V1/homelane/wishlist/delete">
         <service class="Codilar\WishlistAPI\Api\WishlistManagementInterface" method="deleteWishlistForCustomer"/>
         <resources>
-            <resource ref="anonymous"/>
+            <resource ref="Magento_Catalog::product"/>
         </resources>
     </route>
 
@@ -26,7 +26,7 @@
      <route method="POST" url="/V1/homelane/customer/update">
         <service class="Codilar\WishlistAPI\Api\WishlistManagementInterface" method="changeCustomerInfo"/>
         <resources>
-            <resource ref="anonymous"/>
+            <resource ref="Magento_Customer::manage"/>
         </resources>
     </route>
     

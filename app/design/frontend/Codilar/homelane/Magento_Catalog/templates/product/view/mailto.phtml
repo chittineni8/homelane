@@ -8,8 +8,23 @@
 ?>
 <h3 class="share-design">share this design</h3>
 <span class="copy-link">Copy Link</span>
+<span id="copied"></span>
 <?php $_product = $block->getProduct() ?>
 <?php if ($block->canEmailToFriend()) :?>
     <a href="<?= $block->escapeUrl($this->helper(Magento\Catalog\Helper\Product::class)->getEmailToFriendUrl($_product)) ?>"
        class="action mailto friend"><span><?= $block->escapeHtml(__('Mail')) ?></span></a>
 <?php endif; ?>
+
+<script type="text/javascript">
+require(['jquery'],function ($) {
+   var $temp = $("<input>");
+   var $url = $(location).attr('href');
+   $('.copy-link').on('click', function() {
+      $("body").append($temp);
+      $temp.val($url).select();
+      document.execCommand("copy");
+      $temp.remove();
+      $("#copied").text("URL copied!");
+   });
+});
+</script>
