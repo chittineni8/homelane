@@ -44,9 +44,13 @@ $welcomeMessage = $block->getWelcome();
         function openloginmodal() {
                 if ($('body').hasClass('logged-out')) {
                 console.log('customer loged Out');
-                $('.product-item-details .action.towishlist').removeAttr("data-post");
-                $('.product-item-details .action.towishlist').removeAttr("data-action");
-                $('.product-item-details .action.towishlist').on('click', function(e){
+                $('.action.towishlist').removeAttr("data-post");
+                $('.action.towishlist').removeAttr("data-action");
+                $('.action.towishlist').on('click', function(e){
+                    e.preventDefault();
+                    $('#customer-popup-login').modal('openModal');
+                });
+                $(document).on('click', '.logged-out .action.mailto.friend', function (e) {
                     e.preventDefault();
                     $('#customer-popup-login').modal('openModal');
                 });
