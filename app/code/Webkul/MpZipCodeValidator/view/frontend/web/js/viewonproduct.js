@@ -63,11 +63,15 @@ define([
                     });
 
                     $(document).on('click', '[id=wk-zcv-customer-login-link]', function (event) {
-                        $('.wk-zcv-login-popup').show();
+                        $('#customer-popup-login').modal('openModal');
                     });
-                    $('.close-login-popup').click(function (event) {
+                    $(document).on('click', '.logged-out .action.mailto.friend', function (event) {
+                        event.preventDefault();
+                        $('#customer-popup-login').modal('openModal');
+                    });
+                    /*$('.close-login-popup').click(function (event) {
                         $('.wk-zcv-login-popup').hide();
-                    });
+                    });*/
                     $(document).on('click', '[id^=wk-zcv-check]', function (event) {
                         count++;
                         var productId =  $(this).attr('data-pro-id');

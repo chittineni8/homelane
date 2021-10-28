@@ -113,6 +113,20 @@ require(['jquery','slickslider'], function($) {
 		        centerMode: true,centerPadding: '80px',autoplay: true,initialSlide: 1,speed: 1000,cssEase: 'linear',
 		    });
 		}
+		$(".block.related .product-items").not(".slick-initialized").slick({
+	        dots: false,arrows: false,infinite: true,speed: 300,slidesToShow: 4,slidesToScroll: 1,
+	        centerMode: false,centerPadding: '80px',autoplay: true,initialSlide: 1,speed: 1000,cssEase: 'linear',
+	        responsive: [
+                {
+                    breakpoint: 1023,
+                    settings: {slidesToShow: 3,centerMode: true,centerPadding: '80px',}
+                },
+                {
+                breakpoint: 767,
+                    settings: {slidesToShow: 1,centerMode: true,centerPadding: '80px',}
+                }
+            ]
+	    });
 		$(".hp-customer-review-outer ul").not(".slick-initialized").slick({
 		    dots: true,arrows: true,infinite: true,speed: 300,slidesToShow: 1,slidesToScroll: 1,
 		    autoplay: true,initialSlide: 1,speed: 1000,cssEase: 'linear',

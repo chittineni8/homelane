@@ -4,12 +4,15 @@
         <css src="JLNarvaez_WhatsappShare::css/whatsapp.css"/>
     </head>
     <body>
-        <referenceContainer name="product.info.social">
-            <block name="product.whatsapp.share" template="JLNarvaez_WhatsappShare::button/share.phtml" after="product.info.mailto">
+        <container name="product.info.social.second" htmlTag="div" htmlClass="product-social-links-new">
+            <block class="Magento\Catalog\Block\Product\View" name="product.info.mailto" template="Magento_Catalog::product/view/mailto.phtml"/>
+            <block name="product.whatsapp.share" template="JLNarvaez_WhatsappShare::button/share.phtml">
                 <arguments>
                     <argument name="view_model" xsi:type="object">JLNarvaez\WhatsappShare\ViewModel\Whatsapp</argument>
                 </arguments>
             </block>
-        </referenceContainer>
+        </container>
+        <move element="product.info.social.second" destination="product.info.main" after="product.info.social"  />
+        <move element="product.info.mailto" destination="product.info.social.second" before="-"/>
     </body>
 </page>
