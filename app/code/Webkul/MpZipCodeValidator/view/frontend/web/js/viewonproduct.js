@@ -65,10 +65,6 @@ define([
                     $(document).on('click', '[id=wk-zcv-customer-login-link]', function (event) {
                         $('#customer-popup-login').modal('openModal');
                     });
-                    $(document).on('click', '.logged-out .action.mailto.friend', function (event) {
-                        event.preventDefault();
-                        $('#customer-popup-login').modal('openModal');
-                    });
                     /*$('.close-login-popup').click(function (event) {
                         $('.wk-zcv-login-popup').hide();
                     });*/

@@ -21,9 +21,6 @@ body#html-body {
 .stickyy.slideDown header.page-header {
     z-index: 111;
 }
-.stickyy.slideDown div.header.content {
-    margin-bottom: -4px;
-}
 .stickyy.slideDown header.page-header .logo {
     display: none;
 }
@@ -1655,24 +1652,6 @@ body.user-resetpassword-index {
         .field.limiter {
             display: none;
         }
-        .pages {
-            float: none;
-            li.pages-item-previous,li.pages-item-next {
-                vertical-align: middle;
-            }
-            .action {
-                margin-left: 6px;
-                width: 25px;
-                height: 25px;
-                border: 1px solid #4a4a4a;
-                margin-right: 6px;
-                &:before {
-                    font-size: 40px;
-                    margin: -4px 0 0 -8px;
-                    color: #4a4a4a;
-                }
-            }
-        }
     }
     .products.wrapper {
         margin: 0;
@@ -1692,11 +1671,41 @@ body.user-resetpassword-index {
         display: none;
     }
 }
-.toolbar.toolbar-products .pages a.page {
-    color: #4a4a4a;
+.toolbar {
+    .pages {
+        strong.page {
+            color: #E71C24;
+        }
+        a.page {
+            color: #4a4a4a;
+        }
+    }
+    .pages {
+        float: none !important;
+        li.pages-item-previous,li.pages-item-next {
+            vertical-align: middle;
+        }
+        .action {
+            margin-left: 6px;
+            width: 25px;
+            height: 25px;
+            border: 1px solid #4a4a4a;
+            margin-right: 6px;
+            &:before {
+                font-size: 40px;
+                margin: -4px 0 0 -8px;
+                color: #4a4a4a;
+            }
+        }
+    }
 }
-.toolbar.toolbar-products .pages strong.page {
-    color: #E71C24;
+.column.main {
+    .toolbar {
+        display: none;
+        &:last-child {
+            display: block;
+        }
+    }
 }
 .page-products .products .product-items .product-item {
     position: relative;
@@ -2435,29 +2444,50 @@ form#product-sendtofriend-form {
                 }
             }
         }
-        li.login-profile a:before {
-            content: '';
-            display: inline-block;
-            background: url(../images/user-icon.png) no-repeat 0 0;
-            width: 24px;
-            height: 18px;
-            margin-bottom: -5px;
+        li.login-profile {
+            a:before {
+                content: '';
+                display: inline-block;
+                background: url(../images/user-icon.png) no-repeat 0 0;
+                width: 24px;
+                height: 18px;
+                margin-bottom: -5px;
+            }
+            &.active {
+                a:before {
+                    background: url(../images/login-user.png) no-repeat 0 0;
+                }
+            }
         }
-        li.login-wishlist a:before {
-            content: '';
-            display: inline-block;
-            background: url(../images/wishlist.png) no-repeat 0 0;
-            width: 24px;
-            height: 18px;
-            margin-bottom: -5px;
+        li.login-wishlist {
+            a:before {
+                content: '';
+                display: inline-block;
+                background: url(../images/wishlist.png) no-repeat 0 0;
+                width: 24px;
+                height: 18px;
+                margin-bottom: -5px;
+            }
+            &.active {
+                a:before {
+                    background: url(../images/login-wishlist.png) no-repeat 0 0;
+                }
+            }
         }
-        li.login-hl a:before {
-            content: '';
-            display: inline-block;
-            background: url(../images/hl.png) no-repeat 0 0;
-            width: 24px;
-            height: 18px;
-            margin-bottom: -5px;
+        li.login-hl {
+            a:before {
+                content: '';
+                display: inline-block;
+                background: url(../images/hl.png) no-repeat 0 0;
+                width: 24px;
+                height: 18px;
+                margin-bottom: -5px;
+            }
+            &.active {
+                a:before {
+                    background: url(../images/login-homelane.png) no-repeat 0 0;
+                }
+            }
         }
     }
 }
@@ -2465,7 +2495,7 @@ form#product-sendtofriend-form {
     .products-grid {
         .product-items {
             .product-item {
-                width: 31%;
+                width: 31.3%;
                 margin: 0 3% 0 0;
                 &:nth-child(3n+3) {
                     margin-right: 0;
@@ -3024,6 +3054,9 @@ form#product-sendtofriend-form {
     }
     .header.content a.logo {
         padding-left: 30px;
+    }
+    .stickyy.slideDown div.header.content {
+        margin-bottom: -4px;
     }
     .header.content {
         padding: 2px 16px 0;
