@@ -1,0 +1,15 @@
+<div class="additional-attributes-wrapper table-wrapper">
+    <table class="data table additional-attributes" id="product-attribute-specs-table">
+        <tbody>
+        <?php foreach ($block->getAttributeCodes() as $attributeCode):
+            $html = $block->renderAttribute($attributeCode);
+                if (!$html) { continue; }
+        ?>
+<tr>
+    <th class="col label" scope="row"><?= $block->renderAttributeLabel($attributeCode) ?></th>
+    <td class="col data"><?= $html ?></td>
+        </tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+</div>
