@@ -28,6 +28,7 @@ use GuzzleHttp\Middleware;
 use Magento\Framework\Webapi\Rest\Request;
 use Codilar\TokenAPI\Model\Common\Callapi;
 use Magento\Framework\Encryption\EncryptorInterface;
+use Magento\Framework\Session\SessionManagerInterface;
 
 
 class RestrictCustomer
@@ -58,6 +59,12 @@ class RestrictCustomer
      * @var UrlInterface
      */
     protected $urlModel;
+
+
+    /**
+     * @var SessionManagerInterface
+     */
+    protected $sessionManager;
 
     /**
      * @var RedirectFactory
@@ -128,25 +135,27 @@ class RestrictCustomer
      * @param Logger $loggerResponse
      */
     public function __construct(
-        ScopeConfigInterface  $scopeConfig,
-        UrlFactory            $urlFactory,
-        Http                  $request,
-        RedirectFactory       $redirectFactory,
-        ManagerInterface      $messageManager,
-        ClientFactory         $clientFactory,
-        ResponseFactory       $responseFactory,
-        EncryptorInterface    $encryptor,
-        HandlerStack          $stack,
-        Callapi               $callapi,
-        StoreManagerInterface $storeManager,
-        Json                  $json,
-        Logger                $loggerResponse
+        ScopeConfigInterface    $scopeConfig,
+        UrlFactory              $urlFactory,
+        Http                    $request,
+        RedirectFactory         $redirectFactory,
+        SessionManagerInterface $sessionManager,
+        ManagerInterface        $messageManager,
+        ClientFactory           $clientFactory,
+        ResponseFactory         $responseFactory,
+        EncryptorInterface      $encryptor,
+        HandlerStack            $stack,
+        Callapi                 $callapi,
+        StoreManagerInterface   $storeManager,
+        Json                    $json,
+        Logger                  $loggerResponse
     )
     {
         $this->urlModel = $urlFactory->create();
         $this->resultRedirectFactory = $redirectFactory;
         $this->messageManager = $messageManager;
         $this->clientFactory = $clientFactory;
+        $this->sessionManager = $sessionManager;
         $this->request = $request;
         $this->scopeConfig = $scopeConfig;
         $this->responseFactory = $responseFactory;
@@ -176,13 +185,14 @@ class RestrictCustomer
 
             $email = $post['email'];
 
-            $signup_source = $this->_storeManager->getStore()->getBaseUrl();
+            $signup_source = $this->getSessionValue();
 
             $parambody = [
                 'full_name' => $post['firstname'],
                 'email' => $email,
                 'phone_number' => $post['customer_mobile'],
                 'signup_source' => $signup_source,
+                'flow' => 'otp',
                 'pincode' => $post['postcode'],
             ];
 
@@ -192,6 +202,7 @@ class RestrictCustomer
             $responseBody = $response->getBody();
             $responseContent = $responseBody->getContents();
             $responseDecodee = json_decode($responseContent, true);
+
 
             if ($status == 200) {
                 $this->homelanepassword = $responseDecodee['password'];
@@ -334,11 +345,9 @@ class RestrictCustomer
         // collect param data
         $bodyJson = $this->json->serialize($finalBrandData);
         $params['form_params'] = json_decode($bodyJson, true);
-        // print_r(json_decode($bodyJson, true));
-        // $params['body'] = $bodyJson;
+
         $params['debug'] = false;
-        // //        $params['http_errors'] = false;
-        // //        $params['handler'] = $tapMiddleware($stack);
+
         $params['headers'] = [
             'Content-Type' => 'application/x-www-form-urlencoded',
             'Authorization' => 'Bearer' . ' ' . $this->callapi->getToken(),
@@ -365,11 +374,9 @@ class RestrictCustomer
         // collect param data
         $bodyJson = $this->json->serialize($paramsOtp);
         $params['form_params'] = json_decode($bodyJson, true);
-        // print_r(json_decode($bodyJson, true));
-        // $params['body'] = $bodyJson;
+
         $params['debug'] = false;
-        // //        $params['http_errors'] = false;
-        // //        $params['handler'] = $tapMiddleware($stack);
+
         $params['headers'] = [
             'Content-Type' => 'application/x-www-form-urlencoded',
             'Authorization' => 'Bearer' . ' ' . $this->callapi->getToken(),
@@ -507,6 +514,13 @@ class RestrictCustomer
         ];
 
     }//end generateMiddleWare()
+
+
+    public function getSessionValue()
+    {
+        $this->sessionManager->start();
+        return $this->sessionManager->getWebsiteCode();
+    }
 
 
 }//end class

@@ -177,14 +177,9 @@
                     type: "POST",
                     dataType: "json",
                     complete: function (resultJson) {
-                        console.log(resultJson);
-                        $("#user-exist-error").html("");
-                        $("#user-exist-error").append("Error");
-                        if ($("#user-exist-error:contains('Error')").length > 0) {
-                            console.log('clicked');
+                      if (resultJson.responseJSON == 'Verified') {
                             setTimeout(function () {
-                                console.log('close');
-                                $('#popup-mpdal').modal('closeModal');
+                               $('#popup-mpdal').modal('closeModal');
                                 location.reload();
                             }, 1000);
                         }

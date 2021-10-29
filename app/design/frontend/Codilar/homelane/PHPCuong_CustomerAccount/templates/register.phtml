@@ -220,8 +220,8 @@ $('#popup-email_address').on('change', function ()
                 };
                 if ($("#popup-mpdal").length != 0 && $("#customer-popup-register").length != 0) { 
                 var popup = modal(options, $('#popup-mpdal'));
-                
-                $("#submit").on('click',function(event) {
+
+                    $("#submit").on('click',function(event) {
                     event.preventDefault();
                     var regEmail =  $("#popup-email_address").val();
                     var regPhone = $("#customer_mobile").val();

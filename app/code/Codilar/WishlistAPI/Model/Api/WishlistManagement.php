@@ -199,7 +199,7 @@ class WishlistManagement implements WishlistManagementInterface
      * Get wishlist collection
      *
      * @param      $customerEmail
-     * @return     wishlistResponse
+     * @return     $wishlistResponse
      * @deprecated
      */
     public function getWishlistForCustomer($customerEmail)
@@ -234,24 +234,30 @@ class WishlistManagement implements WishlistManagementInterface
             } else {
                 $collection = $this->_wishlistCollectionFactory->create()->addCustomerIdFilter($customerId);
                 $baseurl = $this->storemanagerinterface->getStore()->getBaseUrl();
-                $wishlistData = [];
-                foreach ($collection as $item) {
-                    $productInfo = $item->getProduct()->toArray();
-                    $data = [
-                        'wishlist_item_id' => $item->getWishlistItemId(),
-                        'wishlist_id' => $item->getWishlistId(),
-                        'product_id' => $item->getProductId(),
-                        'product_url' => $baseurl . $this->getWebsiteCodeByStoreId($item->getStoreId()) . '/' . $this->getProductUrl($item->getProductId()),
-                        'store_id' => $item->getStoreId(),
-                        'store_name' => $this->getStoreName($item->getStoreId()),
-                        'added_at' => $item->getAddedAt(),
-                        'description' => $item->getDescription(),
-                        'qty' => round($item->getQty()),
-                        'product' => $productInfo,
-                    ];
-                    $wishlistData[] = $data;
-                }//end foreach
-                $wishlistResponse = ['result' => ['status' => 200, 'message' => 'Success', 'details' => $wishlistData]];
+                if (!empty($collection->getData())):
+                    $wishlistData = [];
+                    foreach ($collection as $item) {
+                        $productInfo = $item->getProduct()->toArray();
+                        $data = [
+                            'wishlist_item_id' => $item->getWishlistItemId(),
+                            'wishlist_id' => $item->getWishlistId(),
+                            'product_id' => $item->getProductId(),
+                            'product_url' => $baseurl . $this->getWebsiteCodeByStoreId($item->getStoreId()) . '/' . $this->getProductUrl($item->getProductId()),
+                            'store_id' => $item->getStoreId(),
+                            'store_name' => $this->getStoreName($item->getStoreId()),
+                            'added_at' => $item->getAddedAt(),
+                            'description' => $item->getDescription(),
+                            'qty' => round($item->getQty()),
+                            'product' => $productInfo,
+                        ];
+                        $wishlistData[] = $data;
+                    }//end foreach
+                    $wishlistResponse = ['result' => ['status' => 200, 'message' => 'Success', 'details' => $wishlistData]];
+                    return $wishlistResponse;
+                else:
+
+                    $wishlistResponse = ['result' => ['status' => 200, 'message' => 'Success', 'details' => '0 Items in Wishlist']];
+                endif;
                 return $wishlistResponse;
             }//end if
 
@@ -297,17 +303,23 @@ class WishlistManagement implements WishlistManagementInterface
 
                 $customerId = $this->getCustomerIdByEmail($customerEmail);
                 $collection = $this->_wishlistCollectionFactory->create()->addCustomerIdFilter($customerId);
+                if (!empty($collection->getData())) {
+                    foreach ($collection as $item) {
+                        if ($item->getProductId() == $productId) {
+                            $item->delete();
+                            $collection->save();
 
-                foreach ($collection as $item) {
-                    if ($item->getProductId() == $productId) {
-                        $item->delete();
-                        $collection->save();
+                        }
+
+                        $wishlistDeleteResponse = ['result' => ['status' => 200, 'message' => 'Product Deleted Successfully']];
+                        return $wishlistDeleteResponse;
 
                     }
 
-                    $wishlistDeleteResponse = ['result' => ['status' => 200, 'message' => 'Product Deleted Successfully']];
-                    return $wishlistDeleteResponse;
+                } else {
 
+                    $wishlistResponse = ['result' => ['status' => 200, 'message' => 'Success', 'details' => '0 Items in Wishlist']];
+                    return $wishlistResponse;
                 }
             else:
                 $wishlistDeleteResponse = ['result' => ['status' => 400, 'message' => 'Id not found']];
@@ -333,37 +345,48 @@ class WishlistManagement implements WishlistManagementInterface
     {
         try {
             $params = $this->request->getParams();
+            if (array_key_exists('user_id', $params)):
+
+                if ($params['user_id']):
+
+                    $collection = $this->customerCollection->addAttributeToSelect('*')
+                        ->addAttributeToFilter('homelane_user_id', $params['user_id'])
+                        ->load();
+
+                    $c_data = $collection->getData();
+                    if (!empty($c_data)) {
+                        $c_data[0]['entity_id'];
+                        $customerID = $c_data[0]['entity_id'];
 
 
-            print_r($params);
+                        $customer = $this->customerRepository->getById($customerID);
+                        if (array_key_exists('customerEmail', $params)):
+                            $customer->setEmail($params['customerEmail']);
+                        endif;
+                        if (array_key_exists('customerName', $params)):
+                            $customer->setFirstname($params['customerName']);
+                        endif;
+                        if (array_key_exists('phone', $params)):
+                            $customer->setCustomAttribute('customer_mobile', $params['phone']);
+                        endif;
+                        $this->customerRepository->save($customer);
+                        $UserResponse = ['result' => ['status' => 200, 'message' => 'Customer Data Updated Successfully']];
+                        return $UserResponse;
 
+                    } else {
+                        $UserResponse = ['result' => ['status' => 401, 'message' => 'The user id that was requested doesnt exist. Please try again']];
+                        return $UserResponse;
 
-            if ($params['user_id']):
+                    }
+                else:
 
-                $collection = $this->customerCollection->addAttributeToSelect('*')
-                    ->addAttributeToFilter('homelane_user_id', $params['user_id'])
-                    ->load();
-                $c_data = $collection->getData();
-                $c_data[0]['entity_id'];
-                $customerID = $c_data[0]['entity_id'];
-
-                $customer = $this->customerRepository->getById($customerID);
-                if (array_key_exists('customerEmail', $params)):
-                    $customer->setEmail($params['customerEmail']);
+                    $UserResponse = ['result' => ['status' => 400, 'message' => 'User ID Missing']];
+                    return $UserResponse;
                 endif;
-                if (array_key_exists('customerName', $params)):
-                    $customer->setFirstname($params['customerName']);
-                endif;
-                if (array_key_exists('customer_mobile', $params)):
-                    $customer->setCustomAttribute('customer_mobile', $params['phone']);
-                endif;
-                $this->customerRepository->save($customer);
-                $UserResponse = ['result' => ['status' => 200, 'message' => 'Customer Data Updated Successfully']];
-                return $UserResponse;
             else:
 
-                $UserResponse = ['result' => ['status' => 400, 'message' => 'User ID Missing']];
-                return $UserResponse;
+                $UserIDResponse = ['result' => ['status' => 400, 'message' => 'User ID is Mandatory']];
+                return $UserIDResponse;
             endif;
 
         } catch (\Exception $e) {

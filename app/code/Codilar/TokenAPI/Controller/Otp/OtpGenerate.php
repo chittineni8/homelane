@@ -233,7 +233,6 @@ class OtpGenerate extends Action
             $responseDecodee = json_decode($responseContent, true);
             $resultJson = $this->resultJsonFactory->create();
 
-
             if ($status == 200):
 
                 if (array_key_exists('otpVerified', $responseDecodee)):
