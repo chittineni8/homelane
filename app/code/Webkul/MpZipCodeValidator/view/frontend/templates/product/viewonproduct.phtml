@@ -29,12 +29,13 @@ if ($type != 'virtual' && $type != 'downloadable'
             <div class="wk-zcv-zipcodeform">
                 <form autocomplete="off" class="zipcode-form">
                     <label><?= __('Check area availability') ?></label>
-                    <input type="text" id="wk-zcv-regex" name="zipcode" 
+                    <input type="numer" maxlength="6" id="wk-zcv-regex" name="zipcode" 
                         placeholder="<?= $block->escapeHtml(__('Enter Pincode')); ?>" 
                         class="wk-zcv-zipform0" title="Pincode" 
                         data-id="<?= $block->escapeHtml($product->getId()); ?>" 
                         seller-data-id="0" value="<?= $block->escapeHtml($postcode) ; ?>" 
-                        autocomplete="off" />
+                        autocomplete="off"
+                        onkeypress="return (event.charCode !=8 &amp;&amp; event.charCode ==0 || (event.charCode >= 48 &amp;&amp; event.charCode <= 57))" />
                     <div class="check-code" id="wk-zcv-check0" data-pro-id="<?= $block->escapeHtml($product->getId()); ?>" data-id="0">
                         <span>Check</span>
                     </div>
@@ -49,6 +50,7 @@ if ($type != 'virtual' && $type != 'downloadable'
         </div>
         <div class="wk-zcv-ziperror0" id="wk-zcv-error"></div>
         <div class="wk-zcv-zipsuccess0"></div>
+        <div class="empty-error" style="display: none;color: #E71C24;font-size: 13px;    font-weight: 400;">Please enter the Pincode.</div>
         
         <div id="wk-zcv-error1" class="message warning" style="display:none"></div>
         <!-- <div id="wk-zcv-zipcodemessage">
@@ -63,5 +65,21 @@ if ($type != 'virtual' && $type != 'downloadable'
     "Webkul_MpZipCodeValidator/js/viewonproduct": <?= /* @noEscape */ $data ?>
     }
 }
+</script>
+<script type="text/javascript">
+require(['jquery'],function ($) {
+    $("#wk-zcv-check0").on('click', function() {
+        if ($('#wk-zcv-regex').val().length > 0) {
+            
+        } else {
+            $('.empty-error').show();
+        }  
+    });
+    $("input#wk-zcv-regex").on('change keyup', function() {
+        if ($(this).val().length > 0) {
+            $('.empty-error').hide();
+        }  
+    });
+});
 </script>
 <?php } ?>

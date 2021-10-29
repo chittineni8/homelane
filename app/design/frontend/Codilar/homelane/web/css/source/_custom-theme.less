@@ -1800,7 +1800,8 @@ div#layered-filter-block-container {
                 color: red;
             }
             &.color {
-                height: 20px;
+                height: 30px;
+                border-radius: 50%;
             }
         }
         .swatch-option.color {
@@ -2058,6 +2059,9 @@ div#layered-filter-block-container {
         .swatch-attribute-label {
             font-weight: 500;
             color: #58595B;
+            &:after {
+                content: " :";
+            }
         }
         .swatch-option {
             background: #F5F5F5;
@@ -2096,11 +2100,25 @@ div#layered-filter-block-container {
             color: #fff;
             text-align: center;
         }
+        div#mp-wk-block {
+            display: none !important;
+        }
+        div#product-options-wrapper select {
+            width: 58%;
+        }
     }
     .product-info-main {
         .product-info-price {
             overflow: hidden;
             clear: both;
+            &:before {
+                content: "Price Estimate:";
+                display: block;
+                color: #58595B;
+                font-size: 14px;
+                font-weight: 500;
+                padding-bottom: 6px;
+            }
         }
         .price-box {
             span.old-price {
@@ -2375,12 +2393,34 @@ form#product-sendtofriend-form {
         }
     }
 }
+.product.info.detailed {
+    .additional-attributes {
+        width: 100%;
+        tbody {
+            display: flex;
+            flex-wrap: wrap;
+            tr {
+                flex: 0 0  33.33%;
+                th {
+                    width: 220px;
+                    &:after {
+                        content: ":";
+                        padding-left: 4px;
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+}
 /*******************Account Pages****************************/
 .account {
     h1.page-title {
         color: #E71C24;
         font-size: 16px;
         font-weight: 700;
+        margin-bottom: 20px;
+        margin-top: 10px;
     }
     .columns {
         border-top: 1px solid #eae7e7;
@@ -3618,8 +3658,17 @@ form#product-sendtofriend-form {
     .catalog-product-view .breadcrumbs {
         display: block;
     }
-    .columns .product-info-main a.action.towishlist {
-        width: 100%;
+    .columns {
+        .product-info-main {
+            a.action.towishlist {
+                width: 100%;
+            }
+            div#product-options-wrapper {
+                select {
+                    width: 100%;
+                }
+            }
+        }
     }
     .columns .product.info.detailed .product.data.items > .item.content {
         padding: 10px 0 20px 0;
