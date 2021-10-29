@@ -1,4 +1,14 @@
+<?php
+$currenturl =$block->getCurrentUrl(); //http://homelane.local/customer/account
+$baseurl = $block->getBaseUrl();      //http://homelane.local/
+?>
+
 <ul class="account-links">
-    <li class="login-hl"><a href="<?= $this->getUrl('') ?>">Homelane Care</a></li>
+<?php 
+        if($currenturl == $baseurl."") { ?>
+            <li class="login-hl current"><a href="<?= $this->getUrl('') ?>">Homelane Care</a></li>
+            <?php }else{?>
+                <li class="login-hl"><a href="<?= $this->getUrl('') ?>">Homelane Care</a></li>
+                <?php } ?>
 </ul>
 
