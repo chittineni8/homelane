@@ -62,7 +62,7 @@
                        name="customer-account-navigation-wish-list-link">
                     <arguments>
                         <argument name="path" xsi:type="string">wishlist</argument>
-                        <argument name="label" xsi:type="string" translate="true">My Wish List</argument>
+                        <argument name="label" xsi:type="string" translate="true">My Wishlist</argument>
                         <argument name="sortOrder" xsi:type="number">210</argument>
                     </arguments>
                 </block>
