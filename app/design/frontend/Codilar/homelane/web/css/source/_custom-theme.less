@@ -1705,14 +1705,17 @@ body.user-resetpassword-index {
         }
     }
 }
-.column.main {
-    .toolbar {
-        display: none;
-        &:last-child {
-            display: block;
+.wishlist-index-index {
+    .column.main {
+        .toolbar {
+            display: none;
+            &:last-child {
+                display: block;
+            }
         }
     }
 }
+
 .page-products .products .product-items .product-item {
     position: relative;
     margin-bottom: 0;
@@ -2123,7 +2126,7 @@ div#layered-filter-block-container {
             overflow: hidden;
             clear: both;
             .price-box:before {
-                content: "Price Estimate:";
+                content: "Price:";
                 display: block;
                 color: #58595B;
                 font-size: 14px;
@@ -2161,7 +2164,7 @@ div#layered-filter-block-container {
                     }
                 }
                 span.price-label {
-                    display: none;
+                    display: none !important;
                 }
             }
             .special-price {
@@ -2195,7 +2198,16 @@ div#layered-filter-block-container {
         }
     }
     div [class^=wk-zcv-zipcookie] {
-        top: 44px;
+        top: unset;
+        border: 1px solid #eae7e7;
+    }
+    span#wk-zcv-customer-login-link a {
+        color: #E71C24;
+    }
+    .columns div [class^=wk-zcv-zipcookie] {
+        bottom: -61px;
+        top: unset;
+        
     }
     .product.info.detailed {
         h2 {
@@ -2453,6 +2465,26 @@ form#product-sendtofriend-form {
         }
     }
 }
+.block-dashboard-info {
+    label.label {
+        display: block;
+        color: #9B9B9B;
+        font-size: 12px;
+        line-height: 16px;
+    }
+    input {
+        border: none;
+        border-bottom: 1px solid #eae7e7;
+        background: transparent;
+        height: 26px;
+        font-size: 14px;
+        width: 100%;
+        padding: 0 0 8px;
+    }
+    .control {
+        margin-bottom: 25px;
+    }
+}
 .account.wishlist-index-index {
     h1.page-title {
         &:before {
@@ -2572,6 +2604,7 @@ form#product-sendtofriend-form {
         background: #F7F7F7;
         padding: 15px 0 15px 20px;
         border-radius: 8px;
+        margin-bottom: 15px;
         a {
             display: block;
             color: #4a4a4a;
