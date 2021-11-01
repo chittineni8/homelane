@@ -9,7 +9,7 @@ if ($block->getCustomerIsLoggedIn()) :
 
     $customerName = $block->getCustomerName();
     $customerEmail = $block->getCustomerEmail();
-
+    $helper = $this->helper(\Webkul\Marketplace\Helper\Data::class);
     ?>
     <li class="login link wishlists" data-bind="scope: 'wishlist'">
         <a href="<?= $this->getUrl('wishlist/') ?>"></a>
@@ -62,6 +62,10 @@ if ($block->getCustomerIsLoggedIn()) :
             <ul class="header links">
                 <li class="login-profile"><a href="<?= $this->getUrl('customer/account') ?>">My Profile</a></li>
                 <li class="login-wishlist"><a href="<?= $this->getUrl('wishlist') ?>">My Wishlist</a></li>
+                <?php $isSeller = $helper->isSeller();
+                if (!empty($isSeller) && $isSeller === '1') : ?>
+                <li class="Vendor-Dashboard"><a href="<?= $this->getUrl('marketplace\account\dashboard') ?>">Vendor Dashboard</a></li>
+                <?php endif; ?>
                 <li class="login-hl"><a href="#">Homelane care</a></li>
             </ul>
             <ul class="bottom">
