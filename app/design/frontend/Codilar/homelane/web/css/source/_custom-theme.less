@@ -515,6 +515,21 @@ li.customer-welcome {
                     height: 18px;
                     margin-bottom: -5px;
                 }
+                li.Vendor-Dashboard {
+                    &:before {
+                        content: "\e606";
+                        font-family: 'icons-blank-theme';
+                        font-size: 22px;
+                        color: #E71C24;
+                        line-height: 20px;
+                        display: inline-block;
+                        margin-left: -2px;
+                        padding-right: 4px;
+                    }
+                    a {
+                        vertical-align: super;
+                    }
+                }
             }
             ul {
                 padding:0;
@@ -1705,14 +1720,17 @@ body.user-resetpassword-index {
         }
     }
 }
-.column.main {
-    .toolbar {
-        display: none;
-        &:last-child {
-            display: block;
+.wishlist-index-index {
+    .column.main {
+        .toolbar {
+            display: none;
+            &:last-child {
+                display: block;
+            }
         }
     }
 }
+
 .page-products .products .product-items .product-item {
     position: relative;
     margin-bottom: 0;
@@ -2123,7 +2141,7 @@ div#layered-filter-block-container {
             overflow: hidden;
             clear: both;
             .price-box:before {
-                content: "Price Estimate:";
+                content: "Price:";
                 display: block;
                 color: #58595B;
                 font-size: 14px;
@@ -2161,7 +2179,7 @@ div#layered-filter-block-container {
                     }
                 }
                 span.price-label {
-                    display: none;
+                    display: none !important;
                 }
             }
             .special-price {
@@ -2195,7 +2213,15 @@ div#layered-filter-block-container {
         }
     }
     div [class^=wk-zcv-zipcookie] {
-        top: 44px;
+        top: unset;
+    }
+    span#wk-zcv-customer-login-link a {
+        color: #E71C24;
+    }
+    .columns div [class^=wk-zcv-zipcookie] {
+        bottom: -61px;
+        top: unset;
+        
     }
     .product.info.detailed {
         h2 {
@@ -2453,6 +2479,26 @@ form#product-sendtofriend-form {
         }
     }
 }
+.block-dashboard-info {
+    label.label {
+        display: block;
+        color: #9B9B9B;
+        font-size: 12px;
+        line-height: 16px;
+    }
+    input {
+        border: none;
+        border-bottom: 1px solid #eae7e7;
+        background: transparent;
+        height: 26px;
+        font-size: 14px;
+        width: 100%;
+        padding: 0 0 8px;
+    }
+    .control {
+        margin-bottom: 25px;
+    }
+}
 .account.wishlist-index-index {
     h1.page-title {
         &:before {
@@ -2572,6 +2618,7 @@ form#product-sendtofriend-form {
         background: #F7F7F7;
         padding: 15px 0 15px 20px;
         border-radius: 8px;
+        margin-bottom: 15px;
         a {
             display: block;
             color: #4a4a4a;
@@ -2646,7 +2693,10 @@ form#product-sendtofriend-form {
         background-color: #fff;
     }
 }
-
+input#sellersearch {
+    height: 40px;
+    padding-left: 15px;
+}
 
 
 /*********************************Media Query*****************************************/
@@ -3822,7 +3872,8 @@ form#product-sendtofriend-form {
                 .product-item {
                     width: 100%;
                     margin: 0;
-                    border-bottom: none;
+                    border: none;
+                    padding-bottom: 0;
                     .product-item-info {
                         width: 100%;
                         .product-image-container {
@@ -3833,6 +3884,9 @@ form#product-sendtofriend-form {
                         .product-item-photo {
                             float: none;
                             margin-right: 0;
+                        }
+                        .product-item-actions {
+                            margin: 10px 0 0;
                         }
                     }
                     strong.product-item-name,.price-box {
@@ -3850,6 +3904,10 @@ form#product-sendtofriend-form {
             .sidebar.sidebar-main {
                 display: none;
             }
+        }
+        h1.page-title {
+            margin-bottom: 0;
+            margin-top: 0;
         }
     }
 }
