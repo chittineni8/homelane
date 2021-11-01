@@ -515,6 +515,21 @@ li.customer-welcome {
                     height: 18px;
                     margin-bottom: -5px;
                 }
+                li.Vendor-Dashboard {
+                    &:before {
+                        content: "\e606";
+                        font-family: 'icons-blank-theme';
+                        font-size: 22px;
+                        color: #E71C24;
+                        line-height: 20px;
+                        display: inline-block;
+                        margin-left: -2px;
+                        padding-right: 4px;
+                    }
+                    a {
+                        vertical-align: super;
+                    }
+                }
             }
             ul {
                 padding:0;
@@ -2199,7 +2214,6 @@ div#layered-filter-block-container {
     }
     div [class^=wk-zcv-zipcookie] {
         top: unset;
-        border: 1px solid #eae7e7;
     }
     span#wk-zcv-customer-login-link a {
         color: #E71C24;
@@ -2679,7 +2693,10 @@ form#product-sendtofriend-form {
         background-color: #fff;
     }
 }
-
+input#sellersearch {
+    height: 40px;
+    padding-left: 15px;
+}
 
 
 /*********************************Media Query*****************************************/
@@ -3855,7 +3872,8 @@ form#product-sendtofriend-form {
                 .product-item {
                     width: 100%;
                     margin: 0;
-                    border-bottom: none;
+                    border: none;
+                    padding-bottom: 0;
                     .product-item-info {
                         width: 100%;
                         .product-image-container {
@@ -3866,6 +3884,9 @@ form#product-sendtofriend-form {
                         .product-item-photo {
                             float: none;
                             margin-right: 0;
+                        }
+                        .product-item-actions {
+                            margin: 10px 0 0;
                         }
                     }
                     strong.product-item-name,.price-box {
@@ -3883,6 +3904,10 @@ form#product-sendtofriend-form {
             .sidebar.sidebar-main {
                 display: none;
             }
+        }
+        h1.page-title {
+            margin-bottom: 0;
+            margin-top: 0;
         }
     }
 }
