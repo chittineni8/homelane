@@ -1,5 +1,8 @@
 <?php
-$product = $block->getProduct();
+$_product = \Magento\Framework\App\ObjectManager::getInstance()
+    ->get(\Magento\Framework\Registry::class)->registry('product');
+$productGroup = $_product->getAttributeText('product_group');
+$brand = $_product->getAttributeText('brand');
 ?>
-<div class="col label"><?php echo $product->getData('product_group'); ?></div>
-
+<div class="col label"><?php if (!empty($productGroup)) : echo $productGroup; endif;?> <?php if (!empty($brand)) : echo $brand; endif;?></div>
+<?php  ?>
