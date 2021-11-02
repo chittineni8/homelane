@@ -8,9 +8,6 @@
 <page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
 
     <body>
-        <referenceContainer name="product.info.main">
-            <block class="Magento\Framework\View\Element\Template" name="product.group" template="Magento_Catalog::product/view/product_group.phtml" after="page.main.title"/>
-        </referenceContainer>
     	<move element="page.main.title" destination="product.info.main" before="-"  />
     	<move element="product.info.price" destination="product.info.main" after="product.info"  />
         <move element="catalog.product.related" destination="content" after="-"/>
