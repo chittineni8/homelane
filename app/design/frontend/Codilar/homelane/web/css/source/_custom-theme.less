@@ -1348,6 +1348,41 @@ form .actions-toolbar>.secondary a {
     font-weight: 700;
     color: #e71c24;
 }
+.block.account-social-login {
+    margin: 0;
+    .actions-toolbar {
+        width: 50px;
+        margin: 0 5px;
+        a {
+            background: transparent;
+            width: auto;
+            padding: 0;
+            .fa {
+                border-right: none;
+                &:before {
+                    display: none;
+                }
+            }
+        }
+        .btn-google .fa-google {
+            background: none;
+        }
+    }
+    .facebook-login a:before {
+        content: "";
+        background: url('@{baseDir}images/fb-icon.png') no-repeat 0 0;
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+    }
+    .google-login a:before {
+        content: "";
+        background: url('@{baseDir}images/google-icon.png') no-repeat 0 0;
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+    }
+}
 .modal-popup.customer-popup header.modal-header {
     padding: 0;
     border: 0;
@@ -1678,12 +1713,12 @@ body.user-resetpassword-index {
         margin: 0;
     }
 }
-.product-item .product-image-container .product-image-photo {
+/*.product-item .product-image-container .product-image-photo {
     transform: scale(1.4);
 }
 .widget .product-item .product-image-container .product-image-photo {
     transform: scale(1.8);
-}
+}*/
 .product-item .swatch-attribute {
     display: none;
 }
@@ -2088,9 +2123,9 @@ div#layered-filter-block-container {
         .swatch-attribute-label {
             font-weight: 500;
             color: #58595B;
-            &:after {
-                content: " :";
-            }
+        }
+        .swatch-attribute-selected-option {
+            display: none;
         }
         .swatch-option {
             background: #F5F5F5;
@@ -2111,7 +2146,8 @@ div#layered-filter-block-container {
                 outline: none;
             }
             &.color {
-                height: 20px;
+                height: 30px;
+                border-radius: 50%;
             }
         }
         .product-addto-links {
@@ -2392,7 +2428,7 @@ form#review-form {
         border-radius: 4px;
     }
 }
-.page-main.page-main-details {
+.page-main.page-main-details,.page-main-description.product-full-width-section {
     display: none;
 }
 form#product-sendtofriend-form {
@@ -2455,6 +2491,9 @@ form#product-sendtofriend-form {
             }
         }
     }
+}
+.swatch-option-tooltip {
+    display: none !important;
 }
 /*******************Account Pages****************************/
 .account {
