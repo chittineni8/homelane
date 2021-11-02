@@ -1357,6 +1357,7 @@ form .actions-toolbar>.secondary a {
             background: transparent;
             width: auto;
             padding: 0;
+            border: none;
             .fa {
                 border-right: none;
                 &:before {
@@ -2118,7 +2119,13 @@ div#layered-filter-block-container {
                 font-size: 24px;
                 font-weight: 400;
                 color: #222222;
+                margin-bottom: 2px;
+                line-height: 26px;
             }
+        }
+        .col.label {
+            color: #9B9B9B;
+            font-size: 13px;
         }
         .swatch-attribute-label {
             font-weight: 500;
@@ -2272,7 +2279,7 @@ div#layered-filter-block-container {
                     background: transparent;
                     border: none;
                     height: auto;
-                    padding: 5px 5px 5px 0;
+                    padding: 5px 10px 5px 0;
                     text-transform: uppercase;
                     font-weight: 400;
                     color: #9B9B9B;
@@ -2293,9 +2300,11 @@ div#layered-filter-block-container {
                 th.col.label {
                     color: #9B9B9B;
                     font-weight: 600;
+                    padding-bottom: 0;
                 }
                 td.col.data {
                     font-weight: 600;
+                    padding-bottom: 0;
                 }
             }
         }
@@ -2320,6 +2329,7 @@ div#layered-filter-block-container {
         color: #58595B;
         font-size: 16px;
         padding: 0 30px 0 30px;
+        cursor: pointer;
     }
     .action.mailto.friend {
         margin-left: 0;
@@ -3837,7 +3847,12 @@ input#sellersearch {
     }
     .columns .product.info.detailed .product.data.items > .item.title.active > .switch {
         font-size: 14px;
-        padding: 5px 10px 5px 0;
+    }
+    .columns .product.info.detailed .product.data.items > .item.title .switch {
+        font-size: 14px;
+    }
+    .product.info.detailed {
+        margin-top: 10px;
     }
     .product.data.items > .item.title {
         float: left;
@@ -3855,6 +3870,7 @@ input#sellersearch {
             padding-left: 0 !important;
             .slick-slide {
                 padding-right: 15px;
+                padding-left: 0;
                 li {
                     .product-item-info {
                         width: 100%;
@@ -3865,15 +3881,18 @@ input#sellersearch {
     }
     .product.media {
         .fotorama__dot {
-            border: 1px solid #fff;
+            border: 1px solid #eae7e7;
             height: 8px;
             width: 8px;
-            opacity: 0.4;
+            opacity: 0.5;
+            top: -22px;
+            background: #fff;
         }
         .fotorama__active .fotorama__dot {
-            background-color: #fff;
-            border-color: #fff;
             opacity: 1;
+        }
+        .fotorama__stage, .fotorama__nav {
+            overflow: visible;
         }
     }
     form#product-sendtofriend-form {
