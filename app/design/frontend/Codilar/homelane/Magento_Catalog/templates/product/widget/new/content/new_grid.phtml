@@ -15,7 +15,10 @@
   $data = $this->getData('category');
   $categoryIds= str_replace("category/","",$data);
   $productCollection =  $block->getProductCollection();
-  $productCollection->addCategoriesFilter(['in' => $categoryIds]);
+  if (!empty($categoryIds)) {
+    $productCollection->addCategoriesFilter(['in' => $categoryIds]);
+  }
+  
 $viewModel = $block->getData("viewModel");
 $categoryUrl = $viewModel->getNewCategory();
 
