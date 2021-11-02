@@ -10,21 +10,23 @@
  *
  * @var $block \Magento\Catalog\Block\Product\Widget\NewWidget
  */
-
 // phpcs:disable Magento2.Files.LineLength.MaxExceeded
 // phpcs:disable Magento2.Templates.ThisInTemplate.FoundThis
-
+  $data = $this->getData('category');
+  $categoryIds= str_replace("category/","",$data);
+  $productCollection =  $block->getProductCollection();
+  $productCollection->addCategoriesFilter(['in' => $categoryIds]);
 $viewModel = $block->getData("viewModel");
 $categoryUrl = $viewModel->getNewCategory();
 
-if ($exist = ($block->getProductCollection() && $block->getProductCollection()->getSize())) {
+if ($exist = ($productCollection && $productCollection->getSize())) {
     $type = 'widget-new-grid';
 
     $mode = 'grid';
 
     $image = 'new_products_content_widget_grid';
     $title = __('New Products');
-    $items = $block->getProductCollection()->getItems();
+    $items = $productCollection->getItems();
 
     $showWishlist = true;
     $showCompare = false;
