@@ -1,8 +1,22 @@
 <?php
-$_product = \Magento\Framework\App\ObjectManager::getInstance()
-    ->get(\Magento\Framework\Registry::class)->registry('product');
-$productGroup = $_product->getAttributeText('product_group');
-$brand = $_product->getAttributeText('brand');
+/** @var Magento\Framework\View\Element\Template $block */
+/** @var Codilar\Catalog\ViewModel\CustomAttributes $viewModel */
+$viewModel = $block->getData('customAttributeVieModel');
+$productId = $viewModel->getCurrentProductId();
+
+$productGroup = $viewModel->getProductGroup($productId);
+$brand = $viewModel->getProductBrand($productId);
 ?>
-<div class="col label"><?php if (!empty($productGroup)) : echo $productGroup; endif;?> <?php if (!empty($brand)) : echo $brand; endif;?></div>
-<?php  ?>
+<div class="col label">
+    <?php
+    if (!empty($productGroup)) :
+        echo $productGroup;
+    endif;
+    if (!empty($productGroup) && !empty($brand)) :
+        echo " • ";
+    endif;
+    if (!empty($brand)) :
+        echo $brand;
+    endif;
+    ?>
+</div>
