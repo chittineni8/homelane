@@ -39,6 +39,7 @@ a.sticky-logo {
     left: 0;
     margin: 0 auto;
     background: #fff;
+    border-bottom: 1px solid #eae7e7;
 }
 div.breadcrumbs {
     margin: 0;
@@ -1350,7 +1351,7 @@ form .actions-toolbar>.secondary a {
 }
 .block.account-social-login {
     margin: 0;
-    .actions-toolbar {
+    div.actions-toolbar {
         width: 50px;
         margin: 0 5px;
         a {
@@ -1988,7 +1989,7 @@ div#layered-filter-block-container {
                 display: none;
             }
         }
-        li.current-category a {
+        li.current-category > a {
             background: #ffc76633;
             color: #000000;
             font-weight: 600;
@@ -2430,6 +2431,9 @@ form#review-form {
         }
     }  
 }
+.catalog-product-view .block.related {
+    border-bottom: 1px solid #eae7e7;
+}
 .fotorama__stage {
     margin-bottom: 6px;
 }
@@ -2490,6 +2494,7 @@ form#product-sendtofriend-form {
             flex-wrap: wrap;
             tr {
                 flex: 0 0  33.33%;
+                padding-right: 10px;
                 th {
                     width: 200px;
                     &:after {
@@ -2746,7 +2751,31 @@ input#sellersearch {
     height: 40px;
     padding-left: 15px;
 }
+/***********************Contact us page***************************/
+.contact-index-index {
+    .page-main > .page-title-wrapper .page-title {
+        margin-top: 15px;
+        font-size: 30px;
+        font-weight: 600;
+    }
+}
 
+form#contact-form  {
+    legend.legend {
+        margin: 0;
+    }
+    .field:before {
+        content: "";
+        width: auto;
+        padding: 0;
+    }
+    .field label.label {
+        text-align: left;
+    }
+    .actions-toolbar {
+        margin: 0;
+    }
+}
 
 /*********************************Media Query*****************************************/
 @media only screen and (min-width: 2500px) {
@@ -3851,8 +3880,16 @@ input#sellersearch {
     .columns .product.info.detailed .product.data.items > .item.title .switch {
         font-size: 14px;
     }
-    .product.info.detailed {
+    .columns .product.info.detailed .product.data.items > .item.content td.col.data:before {
+        color: #9B9B9B;
+        width: 150px;
+    }
+    .columns .product.info.detailed .product.data.items > .item.content#Warranty th.col.label {
+        display: inline-block;
+    }
+    .columns .product.info.detailed {
         margin-top: 10px;
+        margin-bottom: 0;
     }
     .product.data.items > .item.title {
         float: left;
