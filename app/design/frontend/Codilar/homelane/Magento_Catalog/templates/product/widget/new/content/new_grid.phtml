@@ -18,9 +18,10 @@
   if (!empty($categoryIds)) {
     $productCollection->addCategoriesFilter(['in' => $categoryIds]);
   }
-  
+
 $viewModel = $block->getData("viewModel");
 $categoryUrl = $viewModel->getNewCategory();
+$catviewModel = $block->getData("categoryviewmodel");
 
 if ($exist = ($productCollection && $productCollection->getSize())) {
     $type = 'widget-new-grid';
@@ -43,6 +44,20 @@ if ($exist = ($productCollection && $productCollection->getSize())) {
     <div class="block max-container widget block-new-products <?= /* @noEscape */ $mode ?>">
         <div class="block-title">
             <strong role="heading" aria-level="2"><?= $block->escapeHtml(__('New Arrivals')) ?></strong>
+        </div>
+        <div>
+            <form  id="catform"  class="query-form"  action="<?= $catviewModel->getPostUrl() ?>" data-mage-init='{"validation": {}}'  method="$_POST">
+                <div class="control">
+                    <input name="name" value="" placeholder="Enter CategoryName" type="text" class="input-text" title="<?php /* @escapeNotVerified */ echo __('CategoryName') ?>" data-validate="{required:true}">
+                </div>
+                <div class="actions-toolbar">
+                    <div class="primary">
+                        <button type="submit" class="action login primary">
+                            <span><?php /* @escapeNotVerified */ echo __('Submit') ?></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
         <div class="see-all-link"><a href="<?php echo $categoryUrl; ?>">See all</a></div>
         <div class="block-content">
