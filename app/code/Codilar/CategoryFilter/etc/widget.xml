@@ -80,6 +80,16 @@
         </data>
     </block>
 </parameter>
+            <parameter name="seeallcategory" xsi:type="block" visible="true"  sort_order="10">
+ <label translate="true">Select Category For SeeAll</label>
+ <block class="Magento\Catalog\Block\Adminhtml\Category\Widget\Chooser">
+        <data>
+            <item name="button" xsi:type="array">
+                <item name="open" xsi:type="string" translate="true">Select Category ...</item>
+            </item>
+        </data>
+    </block>
+</parameter>
         </parameters>
         <containers>
             <container name="sidebar.main">
