@@ -54,11 +54,21 @@ class CustomerData extends Template
 
     public function getCustomerName()
     {
+        return $this->httpContext->getValue('customer_name');
+    }
+
+    public function getCustomerEmail()
+    {
+        return $this->httpContext->getValue('customer_email');
+    }
+
+    public function customerName()
+    {
         $customer = $this->_customerSession->create();
         return $customer->getCustomer()->getName();
     }
 
-    public function getCustomerEmail()
+    public function customerEmail()
     {
         $customer = $this->_customerSession->create();
         return $customer->getCustomer()->getEmail();
