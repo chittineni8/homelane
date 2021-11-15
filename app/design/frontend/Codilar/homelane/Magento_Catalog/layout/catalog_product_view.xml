@@ -16,5 +16,12 @@
     	<referenceBlock name="product.info.stock.sku" remove="true" />
     	<referenceBlock name="product.info.review" remove="true" />
         <referenceBlock name="product.info.overview" remove="true" />
+        <referenceContainer name="product.info.main">
+            <block class="Magento\Framework\View\Element\Template" name="product.group" template="Magento_Catalog::product/view/product_group.phtml" before="product.info.price">
+                <arguments>
+                    <argument name="customAttributeVieModel" xsi:type="object">Codilar\Catalog\ViewModel\CustomAttributes</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
     </body>
 </page>

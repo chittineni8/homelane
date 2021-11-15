@@ -25,6 +25,10 @@ require(['jquery'],function ($) {
       document.execCommand("copy");
       $temp.remove();
       $("#copied").text("URL copied!");
+      $("#copied").show();
+      setTimeout(function () {
+         $("#copied").hide();
+      }, 3000);
    });
 });
 </script>

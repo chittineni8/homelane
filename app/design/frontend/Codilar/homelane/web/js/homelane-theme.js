@@ -178,7 +178,7 @@ require(['jquery','slickslider'], function($) {
 
 	    /*sign up form*/
 	    $(".customer-account-wrapper .control input[type='text']").on('change keyup', function() {
-		  if ($(this).val().length > 0) {
+		  if ($(this).val().length > 3) {
 		    $(this).parent().addClass('input-has-value');
 		  } else {
 		    $(this).parent().removeClass('input-has-value');
@@ -210,6 +210,17 @@ require(['jquery','slickslider'], function($) {
 				$(this).parent().addClass('input-has-value');
 			} else {
 				$(this).parent().removeClass('input-has-value');
+			}
+		});
+		if( !$('.customer-account-wrapper .control input').val() ) {
+		    console.log('empty filed');
+		    $('button#submit').prop('disabled', true);
+		}
+		$(".customer-account-wrapper .control input").on('change keyup',function () {
+			if ($('.control.input-has-value').length == 4) {
+				$('button#submit').prop('disabled', false);
+			} else {
+				$('button#submit').prop('disabled', true);
 			}
 		});
 		/*end sign up form*/

@@ -19,5 +19,6 @@
         		<argument name="template" xsi:type="string">Magedelight_SMSProfile::account/dashboard/info.phtml</argument>
     		</action>
     	</referenceBlock>
+        <referenceBlock name="customer_account_dashboard_address" remove="true"/>
     </body>
 </page>    

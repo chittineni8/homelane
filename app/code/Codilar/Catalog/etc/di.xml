@@ -3,4 +3,10 @@
     <type name="Magento\Catalog\Block\Product\Widget\NewWidget">
         <plugin name="codilar_new_category_widget" type="Codilar\Catalog\Plugin\Block\Product\Widget\NewWidget"/>
     </type>
+    <type name="Magento\ConfigurableProduct\Block\Product\View\Type\Configurable">
+        <plugin disabled="false" name="Codilar_Catalog_Plugin_Magento_ConfigurableProduct_Block_Product_View_Type_Configurable" sortOrder="10" type="Codilar\Catalog\Plugin\Magento\ConfigurableProduct\Block\Product\View\Type\Configurable"/>
+    </type>
+    <type name="Magento\Swatches\Block\Product\Renderer\Configurable">
+        <plugin disabled="false" name="Codilar_Catalog_Plugin_Magento_Swatches_Block_Product_Renderer_Configurable" sortOrder="10" type="Codilar\Catalog\Plugin\Magento\Swatches\Block\Product\Renderer\Configurable"/>
+    </type>
 </config>

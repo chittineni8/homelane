@@ -8,4 +8,8 @@
     <type name="Magedelight\SMSProfile\Controller\Ajax\Login">
         <plugin name="HomelaneLoginAccountLoginPost" type="Codilar\TokenAPI\Plugin\Customer\LoginPost" sortOrder="0" disabled="false"/>
     </type>
+     <!-- <preference for="Mageplaza\SocialLogin\Controller\Social\Login" type="Codilar\TokenAPI\Controller\Social\Login" /> -->
+      <type name="Mageplaza\SocialLogin\Controller\Social\Login">
+        <plugin name="HomelaneSocialLogin" type="Codilar\TokenAPI\Plugin\Social\Login" sortOrder="0" disabled="false"/>
+    </type>
 </config>
