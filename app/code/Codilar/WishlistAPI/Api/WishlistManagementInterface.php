@@ -22,10 +22,10 @@ interface WishlistManagementInterface
      *
      * @param string $customerEmail
      * @param int $productId
+     * @param int $storeId
      * @return array
-     *
      */
-    public function deleteWishlistForCustomer($customerEmail,$productId);
+    public function deleteWishlistForCustomer($customerEmail,$productId,$storeId);
 
 
     /**

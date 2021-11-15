@@ -62,6 +62,13 @@ class CustomerData extends Template
         return $this->httpContext->getValue('customer_email');
     }
 
+     public function getCustomerId()
+    {
+        return $this->httpContext->getValue('customer_id');
+    }
+
+
+
     public function customerName()
     {
         $customer = $this->_customerSession->create();
@@ -73,4 +80,5 @@ class CustomerData extends Template
         $customer = $this->_customerSession->create();
         return $customer->getCustomer()->getEmail();
     }
+
 }

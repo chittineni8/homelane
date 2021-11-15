@@ -166,13 +166,11 @@ class WishlistManagement implements WishlistManagementInterface
         CustomerCollection          $customerCollection,
         Product                     $productload,
         Logger                      $loggerResponse,
-        WishlistFactory             $wishlistRepository,
         ProductRepositoryInterface  $productRepository,
         ItemFactory                 $itemFactory
     )
     {
         $this->_wishlistCollectionFactory = $wishlistCollectionFactory;
-        $this->_wishlistRepository = $wishlistRepository;
         $this->http = $http;
         $this->tokenFactory = $tokenFactory;
         $this->customerCollection = $customerCollection;
@@ -275,7 +273,7 @@ class WishlistManagement implements WishlistManagementInterface
      * @return array|boolean
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function deleteWishlistForCustomer($customerEmail, $productId)
+    public function deleteWishlistForCustomer($customerEmail, $productId, $storeId)
     {
         try {
 
@@ -286,7 +284,7 @@ class WishlistManagement implements WishlistManagementInterface
             endif;
 
 
-            if (empty($customerEmail) || $customerEmail == null || empty($productId) || $productId == null) {
+            if (empty($customerEmail) || $customerEmail == null || empty($productId) || $productId == null || $storeId == null) {
                 $response = ['result' => ['status' => 400, 'message' => 'Parameters not found']];
                 return $response;
 
@@ -302,7 +300,7 @@ class WishlistManagement implements WishlistManagementInterface
             if ($this->productExistById($productId)):
 
                 $customerId = $this->getCustomerIdByEmail($customerEmail);
-                $collection = $this->_wishlistCollectionFactory->create()->addCustomerIdFilter($customerId);
+                $collection = $this->_wishlistCollectionFactory->create()->addCustomerIdFilter($customerId)->addFieldToFilter('store_id', $storeId);
                 if (!empty($collection->getData())) {
                     foreach ($collection as $item) {
                         if ($item->getProductId() == $productId) {
@@ -345,7 +343,8 @@ class WishlistManagement implements WishlistManagementInterface
     {
         try {
             $params = $this->request->getParams();
-            if (array_key_exists('user_id', $params)):
+
+           if (array_key_exists('user_id', $params)):
 
                 if ($params['user_id']):
 
