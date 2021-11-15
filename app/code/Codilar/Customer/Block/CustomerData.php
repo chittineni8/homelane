@@ -47,4 +47,9 @@ class CustomerData extends Template
     {
         return $this->httpContext->getValue('customer_email');
     }
+     public function getCustomerId()
+    {
+        return $this->httpContext->getValue('customer_id');
+    }
+
 }
