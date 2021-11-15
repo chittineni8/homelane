@@ -1,0 +1,22 @@
+{
+  "name": "codilar/wishlist-highlighter",
+  "version": "1.0.0",
+  "description": "wishlist heart tells which product is still in customers' wish list",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*",
+    "magento/module-catalog": "104.0.*",
+    "magento/module-wishlist": "101.2.*"
+  },
+  "license": [
+    "Proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Codilar\\WishlistHighlighter\\": ""
+    }
+  }
+}

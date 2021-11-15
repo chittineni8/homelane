@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<body>
+    <referenceBlock name="category.products.list">
+        <action method="setTemplate">
+            <argument name="template" xsi:type="string">Codilar_WishlistHighlighter::product/list.phtml</argument>
+            <!-- <argument
+                name="wishlistHeart" xsi:type="object">Codilar\WishlistHighlighter\ViewModel\Wishlist</argument> -->
+        </action>
+    </referenceBlock>
+</body>
+</page>
