@@ -14,6 +14,7 @@ use Magento\Framework\View\Element\Template;
 
 class CustomerData extends Template
 {
+    protected $_customerSession;
     /**
      * @var Context
      */
@@ -25,12 +26,25 @@ class CustomerData extends Template
      * @param array $data
      */
     public function __construct(
-        Template\Context $context,
-        Context $httpContext,
-        array $data = []
-    ) {
+        \Magento\Framework\App\Request\Http               $request,
+        \Magento\Customer\Api\CustomerRepositoryInterface $customerRepository,
+        \Magento\Customer\Model\SessionFactory            $customerSession,
+        Template\Context                                  $context,
+        Context                                           $httpContext,
+        array                                             $data = []
+    )
+    {
+        $this->request = $request;
+        $this->customerRepository = $customerRepository;
+        $this->_customerSession = $customerSession;
         $this->httpContext = $httpContext;
         parent::__construct($context, $data);
+    }
+
+    public function getCustomerId()
+    {
+        $customer = $this->_customerSession->create();
+        return $customer->getCustomer()->getId();
     }
 
     public function getCustomerIsLoggedIn(): bool
@@ -47,9 +61,24 @@ class CustomerData extends Template
     {
         return $this->httpContext->getValue('customer_email');
     }
+
      public function getCustomerId()
     {
         return $this->httpContext->getValue('customer_id');
+    }
+
+
+
+    public function customerName()
+    {
+        $customer = $this->_customerSession->create();
+        return $customer->getCustomer()->getName();
+    }
+
+    public function customerEmail()
+    {
+        $customer = $this->_customerSession->create();
+        return $customer->getCustomer()->getEmail();
     }
 
 }

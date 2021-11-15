@@ -7,9 +7,13 @@
 /** @var Codilar\Customer\Block\CustomerData $block*/
 if ($block->getCustomerIsLoggedIn()) :
 
-    $customerName = $block->getCustomerName();
-    $customerEmail = $block->getCustomerEmail();
+
+    $customerName = $block->customerName();
+    $customerEmail = $block->customerEmail();
+
+
     $helper = $this->helper(\Webkul\Marketplace\Helper\Data::class);
+
     ?>
     <li class="login link wishlists" data-bind="scope: 'wishlist'">
         <a href="<?= $this->getUrl('wishlist/') ?>"></a>
