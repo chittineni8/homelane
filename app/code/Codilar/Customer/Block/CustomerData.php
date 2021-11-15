@@ -41,11 +41,6 @@ class CustomerData extends Template
         parent::__construct($context, $data);
     }
 
-    public function getCustomerId()
-    {
-        $customer = $this->_customerSession->create();
-        return $customer->getCustomer()->getId();
-    }
 
     public function getCustomerIsLoggedIn(): bool
     {
