@@ -303,11 +303,17 @@ class WishlistManagement implements WishlistManagementInterface
                 $collection = $this->_wishlistCollectionFactory->create()->addCustomerIdFilter($customerId)->addFieldToFilter('store_id', $storeId);
                 if (!empty($collection->getData())) {
                     foreach ($collection as $item) {
-                        if ($item->getProductId() == $productId) {
+
+
+                        $pids []= $item->getProductId();
+                    }
+                        if (in_array($productId,$pids))
+                        { 
+
                             $item->delete();
                             $collection->save();
 
-                        }
+                        
 
                         $wishlistDeleteResponse = ['result' => ['status' => 200, 'message' => 'Product Deleted Successfully']];
                         return $wishlistDeleteResponse;
