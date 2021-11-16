@@ -21,9 +21,9 @@ $_productCollection = $block->getLoadedProductCollection();
 /** @var \Magento\Catalog\Helper\Output $_helper */
 $_helper = $block->getData('outputHelper');
 $blockObj = $block->getLayout()->createBlock('Codilar\WishlistHighlighter\Block\Product\ListProduct');
-$abc = $blockObj->getWishlistByCustomerId();
-if(!empty($abc)):
-foreach ($abc as $value) {
+$wishlistCollection = $blockObj->getWishlistByCustomerId();
+if(!empty($wishlistCollection)):
+foreach ($wishlistCollection as $value) {
 $ids[] = $value['product_id'];
 }
 else:
