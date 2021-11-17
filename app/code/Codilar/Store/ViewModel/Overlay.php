@@ -197,7 +197,6 @@ class Overlay implements ArgumentInterface
     public function getStoreDetail(): array
     {
         $stores = $this->storeManager->getWebsites();
-
         foreach ($stores as $store) {
             $storeDetails[] = [
                 "storeName" => $store->getName(),
@@ -209,6 +208,8 @@ class Overlay implements ArgumentInterface
                     $store->getId()
                 )];
         }
+        $websiteNameForSort = array_column($storeDetails, 'storeName');
+        array_multisort($websiteNameForSort, SORT_ASC, $storeDetails);
         return $storeDetails;
     }
 
