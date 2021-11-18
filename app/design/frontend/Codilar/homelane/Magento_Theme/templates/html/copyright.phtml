@@ -23,7 +23,7 @@
     </div>
 </div>
 <div id="stop" class="scrollTop">
-    <span><a href="">Top</a></span>
+    <span></span>
   </div>
   <script>
  require(['jquery'], function($){ 
@@ -41,7 +41,7 @@ $(document).ready(function() {
     var topPos = $(this).scrollTop();
 
     // if user scrolls down - show scroll to top button
-    if (topPos > 100) {
+    if (topPos > 300) {
       $(scrollTop).css("opacity", "1");
 
     } else {

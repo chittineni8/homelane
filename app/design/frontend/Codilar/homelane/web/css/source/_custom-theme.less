@@ -373,21 +373,12 @@ ul.header.links {
     a.customer-login-link {
         font-size: 0;
         text-decoration: none;
-        &:before {
-            content: "Login / ";
-            font-size: 12px;
-            line-height: 38px;
-            vertical-align: text-bottom;
-            font-family: 'Lato', sans-serif;
-            font-weight: 400;
-            color: #4A4A4A;
-        }
     }
     a.customer-register-link {
         font-size: 0;
         text-decoration: none;
         &:before {
-            content: "Register";
+            content: "Login / Register";
             font-size: 12px;
             margin-left: -5px;
             line-height: 38px;
@@ -850,6 +841,27 @@ aside.modal-popup.city-popup {
     margin-top: 0;
     border-top: none;
     padding-top: 0;
+    position: relative;
+}
+div#stop {
+    width: 35px;
+    height: 35px;
+    background: red;
+    border-radius: 50%;
+    color: #fff;
+    position: absolute;
+    right: 40px;
+    bottom: 214px;
+    cursor: pointer;
+    span:before {
+        content: "\e626";
+        font-family: 'icons-blank-theme';
+        font-weight: 700;
+        text-align: center;
+        display: block;
+        line-height: 34px;
+        transform: rotate(180deg);
+    }
 }
 .footer-link-section {
     display: flex;
@@ -2709,6 +2721,7 @@ form#product-sendtofriend-form {
                 }
                 .product-item-info {
                     width: 100%;
+                    position: relative;
                     .product-image-wrapper {
                         border-radius: 8px;
                     }
@@ -2720,14 +2733,31 @@ form#product-sendtofriend-form {
                     margin: 10px 0 15px;
                     a.action {
                         font-family: 'Lato';
-                        background: #fff;
+                        background: transparent;
                         color: #E71C24;
-                        border: 1px solid #E71C24;
+                        border: none;
                         border-radius: 4px;
                         font-weight: 500;
-                        padding: 4px 10px;
+                        padding: 0;
                         text-decoration: none;
+                        position: absolute;
+                        text-decoration: none;
+                        top: 0;
+                        right: 0;
+                        z-index: 1;
+                        &:before {
+                            content: "\e616";
+                            font-family: 'icons-blank-theme';
+                            font-size: 30px;
+                            font-weight: 500;
+                        }
+                        span {
+                            font-size: 0;
+                        }
                     }
+                }
+                a.action.edit {
+                    display: none;
                 }
             }
         }
@@ -2776,6 +2806,24 @@ form#contact-form  {
         margin: 0;
     }
 }
+/**************************CMS Pages********************************/
+table.table.table-bordered tr td, table.table.table-bordered tr th {
+    border: 1px solid #b7b7b7 !important;
+}
+table.table.table-bordered {
+    thead {
+        th {
+            background: #434343;
+            color: #f99d1c;
+        }
+    }
+    tr {
+        th, td {
+            border: 1px solid #b7b7b7 !important;
+        }
+    }
+}
+
 
 /*********************************Media Query*****************************************/
 @media only screen and (min-width: 2500px) {
@@ -2982,7 +3030,7 @@ form#contact-form  {
             text-align: center;
         }
     }
-    .hp-customer-review-outer {
+    .hp-customer-review-outer, .catalog-product-view .block.related {
         .slick-next {
             right: 0;
             &:before {
@@ -3006,9 +3054,20 @@ form#contact-form  {
             }
         }
         .slick-prev,.slick-next {
+            background: transparent;
+        }
+    }
+    .hp-customer-review-outer {
+        .slick-prev,.slick-next {
             top: 42%;
         }
     }
+    .catalog-product-view .block.related {
+        .slick-prev,.slick-next {
+            top: 35%;
+        }
+    }
+    
     /****************PLP Page Design*********************/
     .page-products .products-grid .product-items .product-item {
         width: calc((100% - 4%) /3);

@@ -114,7 +114,7 @@ require(['jquery','slickslider'], function($) {
 		    });
 		}
 		$(".block.related .product-items").not(".slick-initialized").slick({
-	        dots: false,arrows: false,infinite: true,speed: 300,slidesToShow: 4,slidesToScroll: 1,
+	        dots: false,arrows: true,infinite: true,speed: 300,slidesToShow: 4,slidesToScroll: 1,
 	        centerMode: false,centerPadding: '80px',autoplay: true,initialSlide: 1,speed: 1000,cssEase: 'linear',
 	        responsive: [
                 {
