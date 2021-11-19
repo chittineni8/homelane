@@ -1,19 +1,19 @@
-<form class="query-form" action="<?= $block->getPostUrl() ?>" data-mage-init='{"validation": {}}'  method="$_POST">
+<form class="query-form" data-mage-init='{"validation": {}}'>
     <h2> Got questions? We’re happy to help out.</h2>
     <fieldset>
             <div class="field required">
                 <div class="control">
-                    <input name="name" value="" placeholder="Enter your name" type="text" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your name') ?>" data-validate="{required:true}">
+                    <input name="name" id='name' value="" placeholder="Enter your name" type="text" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your name') ?>" data-validate="{required:true}">
                 </div>
             </div>
             <div class="field required">
                 <div class="control">
-                    <input name="email" value="" placeholder="Enter your email" type="email" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your email') ?>" data-validate="{required:true}">
+                    <input name="email" id='email' value="" placeholder="Enter your email" type="email" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your email') ?>" data-validate="{required:true}">
                 </div>
             </div>
             <div class="field required">
                 <div class="control phoneno">
-                    <input name="phoneno" value="" placeholder=" Enter your mobile number" type="number" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your mobile number') ?>" data-validate="{required:true}">
+                    <input name="phoneno" id='phoneno' value="" placeholder=" Enter your mobile number" type="number" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your mobile number') ?>" data-validate="{required:true}">
                 </div>
             </div>
         <div class="field required">
@@ -27,12 +27,12 @@
         </div>
             <div class="field required">
                 <div class="control pincode">
-                    <input name="pincode" value="" placeholder="Enter your residence pincode" type="number" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your residence pincode') ?>" data-validate="{required:true}">
+                    <input name="pincode" id="pincode" value="" placeholder="Enter your residence pincode" type="number" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your residence pincode') ?>" data-validate="{required:true}">
                 </div>
             </div>
             <div class="actions-toolbar">
                 <div class="primary">
-                    <button type="submit" class="action login primary" name="send" id="send2-login">
+                    <button type="submit" class="action login primary" name="send" id="submit-query">
                         <span><?php /* @escapeNotVerified */ echo __('Submit') ?></span>
                     </button>
                 </div>
@@ -40,7 +40,54 @@
             </div>
     </fieldset>
 </form>
+        <div id="query-popup" >
+        <h2>Thanks for sharing your details. Our team will reachout to you shortly!</h2>
+</div>
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                buttons: [{
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
 
+            var popup = modal(options, $('#query-popup'));
+            $('#submit-query').on('click',function (event) {
+                event.preventDefault();
+                var name = $("#name").val();
+                var emailID = $('#email').val();
+                var phoneno = $('#phoneno').val();
+                var  whatsapp = $('#whatsapp').val();
+                var pincode = $('#pincode').val();
+                jQuery.ajax({
+                    
+                    url: "<?php echo $block->getBaseUrl().'query/query/save'?>",
+                    // url: "getAjaxUrl()",
+                    data: {name: name,phone: phoneno, email: emailID, whatsapp: whatsapp, pincode: pincode},
+                    type: "POST",
+                    dataType: "json",
+                    success: function() {
+                               $('#submit-popup').modal('openModal');
+                    
+                    }
+                });
+                $("#query-popup").modal("openModal");
 
+            });
 
-
+        }
+    );
+</script>
