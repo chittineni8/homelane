@@ -129,7 +129,9 @@ define([
                     submitFilterAction(link);
                     e.stopPropagation();
                     e.preventDefault();
+                    
                 })
+                $("html, body").animate({ scrollTop: 0 }, "slow");
             });
 
             var currentElements = this.element.find('.filter-current a, .filter-actions a');
