@@ -113,6 +113,10 @@
                 <div class="primary">
                     <button type="submit" name="submit" id="submit" class="action submit primary" title="<?php /* @escapeNotVerified */ echo __('Sign Up') ?>"><span><?php /* @escapeNotVerified */ echo __('Sign Up') ?></span></button>
                 </div>
+                <div class="or-another-selection">
+                    <p><?php echo __('or login via'); ?></p>
+                    <?php echo $this->getLayout()->createBlock("Mageplaza\SocialLogin\Block\Popup\Social")->setTemplate("Mageplaza_SocialLogin::form/social.phtml")->toHtml() ?>
+                </div>
                 <div class="secondary">
                     <span><?php /* @escapeNotVerified */ echo __("Already have an account?") ?></span>
                     <a class="action remind" href="<?php /* @escapeNotVerified */ echo $block->getBackUrl() ?>" id="customer-popup-sign-in"><span><?php /* @escapeNotVerified */ echo __('Log In') ?></span></a>
@@ -293,6 +297,26 @@ $('#popup-email_address').on('change', function ()
 
             }
         );
+    </script>
+    <script>
+    require(['jquery','intlTelInput'], function($) {
+        if(!$('input#customer_mobile').length <= 0) {
+        // Vanilla Javascript
+        var input = document.querySelector("input#customer_mobile");
+        window.intlTelInput(input,({
+          // options here
+        }));
+
+        $(document).ready(function() {
+            $('.iti__flag-container').click(function() { 
+              var countryCode = $('.iti__selected-flag').attr('title');
+              var countryCode = countryCode.replace(/[^0-9]/g,'')
+              $('input#customer_mobile').val("");
+              $('input#customer_mobile').val("+"+countryCode+" "+ $('input#customer_mobile').val());
+           });
+        });
+        }
+    });
     </script>
 
 

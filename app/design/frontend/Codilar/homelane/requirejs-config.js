@@ -7,15 +7,18 @@ var config = {
 	map: {
         '*': {
             'homelanetheme': 'js/homelane-theme',
-            'slickslider': 'js/slick.min'
+            'slickslider': 'js/slick.min',
+            'intlTelInput': 'js/intlTelInput'
         }
     },
     deps: [
         'homelanetheme',
-        'slickslider'
+        'slickslider',
+        'intlTelInput'
     ],
     shim: {
         'homelanetheme': ['jquery'],
-        'slickslider': ['jquery']
+        'slickslider': ['jquery'],
+        'intlTelInput': ['jquery']
     }
 };

@@ -508,6 +508,7 @@ li.customer-welcome {
                     margin-bottom: -5px;
                 }
                 li.Vendor-Dashboard {
+                    padding: 7.5px 20px;
                     &:before {
                         content: "\e606";
                         font-family: 'icons-blank-theme';
@@ -519,7 +520,8 @@ li.customer-welcome {
                         padding-right: 4px;
                     }
                     a {
-                        vertical-align: super;
+                        vertical-align: top;
+                        line-height: 21px;
                     }
                 }
             }
@@ -672,6 +674,7 @@ aside.modal-popup.city-popup {
             color: #E71C24;
             font-size: 16px;
             font-weight: 600;
+            text-align: center;
         }
     }
     .box-store-content {
@@ -849,10 +852,11 @@ div#stop {
     background: red;
     border-radius: 50%;
     color: #fff;
-    position: absolute;
-    right: 40px;
-    bottom: 214px;
+    position: fixed;
+    right: 72px;
+    bottom: 54px;
     cursor: pointer;
+    opacity: 0;
     span:before {
         content: "\e626";
         font-family: 'icons-blank-theme';
@@ -1484,6 +1488,24 @@ form#customer-popup-form-register {
     fieldset.fieldset.create.info {
         margin-bottom: 0;
     }
+    input#customer_mobile {
+        padding-left: 45px;
+        font-size: 14px;
+    }
+}
+.customer-account-wrapper {
+    .iti {
+        width: 100%;
+    }
+    .iti__selected-flag {
+        padding: 0 6px 0 0;
+    }
+    .iti__flag-container {
+        width: 100%;
+    }
+    .iti__country-list {
+        width: 100%;
+    }
 }
 h2.account-heading {
     margin: 0 0 15px;
@@ -1577,6 +1599,10 @@ h2.account-heading {
     &:before {
         font-size: 38px;
     }
+}
+ol.product-items li.wishlist-active .actions-secondary a.action.towishlist::before {
+    content: "\e600";
+    color: red;
 }
 .block.widget .product-item-info {
     position: relative;
@@ -2735,25 +2761,12 @@ form#product-sendtofriend-form {
                         font-family: 'Lato';
                         background: transparent;
                         color: #E71C24;
-                        border: none;
+                        border: 1px solid #E71C24;
                         border-radius: 4px;
                         font-weight: 500;
-                        padding: 0;
+                        padding: 8px 10px;
                         text-decoration: none;
-                        position: absolute;
-                        text-decoration: none;
-                        top: 0;
-                        right: 0;
-                        z-index: 1;
-                        &:before {
-                            content: "\e616";
-                            font-family: 'icons-blank-theme';
-                            font-size: 30px;
-                            font-weight: 500;
-                        }
-                        span {
-                            font-size: 0;
-                        }
+                        display: inline-block;
                     }
                 }
                 a.action.edit {
@@ -2807,6 +2820,9 @@ form#contact-form  {
     }
 }
 /**************************CMS Pages********************************/
+.cms-page-view .column.main * {
+    color: #000;
+}
 table.table.table-bordered tr td, table.table.table-bordered tr th {
     border: 1px solid #b7b7b7 !important;
 }
@@ -3311,6 +3327,7 @@ table.table.table-bordered {
     }
     .sections.nav-sections .logo-img {
         padding: 0 0 0 12px;
+        max-width: 60%;
     }
     .nav-sections-item-content {
         margin-top: 0;
@@ -3474,6 +3491,8 @@ table.table.table-bordered {
                 display: inline-block;
                 padding: 5px 14px;
                 border-radius: 4px;
+                text-decoration: none;
+                cursor: pointer;
             }
         }
         .mob-store-switcher {
@@ -4062,6 +4081,9 @@ table.table.table-bordered {
         h1.page-title {
             margin-bottom: 0;
             margin-top: 0;
+        }
+        .message.info {
+            margin: 15px 0 10px;
         }
     }
 }
