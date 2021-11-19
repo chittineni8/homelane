@@ -26,6 +26,7 @@ class Save extends Action
     }
     public function execute()
     {
+     
         $params = $this->getRequest()->getParams();
         $query = $this->query->setData($params);
         try {
@@ -33,9 +34,9 @@ class Save extends Action
             $this->queryResourceModel->save($query);
             // created custom event:- form_submit_event
             $this->_eventManager->dispatch('form_submit_event',['query'=>$params]);
-            $this->messageManager->addSuccessMessage(__("Your Query added Successfully,We will reach You Soon !!!"));
+           // $this->messageManager->addSuccessMessage(__("Your Query added Successfully,We will reach You Soon !!!"));
         } catch (\Exception $e) {
-            $this->messageManager->addErrorMessage(__("Something went wrong"));
+            //$this->messageManager->addErrorMessage(__("Something went wrong"));
         }
 
         $redirect = $this->resultRedirectFactory->create();
