@@ -305,20 +305,15 @@ class WishlistManagement implements WishlistManagementInterface
                     foreach ($collection as $item) {
 
 
-                        $pids []= $item->getProductId();
-                    }
-                        if (in_array($productId,$pids))
-                        { 
-
+                        if ($item->getProductId() == $productId) {
                             $item->delete();
                             $collection->save();
 
-                        
-
-                        $wishlistDeleteResponse = ['result' => ['status' => 200, 'message' => 'Product Deleted Successfully']];
-                        return $wishlistDeleteResponse;
-
+                            $wishlistDeleteResponse = ['result' => ['status' => 200, 'message' => 'Product Deleted Successfully']];
+                            return $wishlistDeleteResponse;
+                        }
                     }
+                        
 
                 } else {
 
@@ -350,7 +345,7 @@ class WishlistManagement implements WishlistManagementInterface
         try {
             $params = $this->request->getParams();
 
-           if (array_key_exists('user_id', $params)):
+            if (array_key_exists('user_id', $params)):
 
                 if ($params['user_id']):
 
