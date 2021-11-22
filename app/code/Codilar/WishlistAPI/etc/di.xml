@@ -7,6 +7,9 @@
     <preference for="Codilar\WishlistAPI\Api\WishlistManagementInterface" type="Codilar\WishlistAPI\Model\Api\WishlistManagement"/>
     <!--Wishlist API preference End-->
 
+    <preference for="Magento\ConfigurableProduct\Helper\Product\Options\Loader"
+                type="Codilar\WishlistAPI\Helper\Product\Options\Loader"/>
+
 
 </config>
 
