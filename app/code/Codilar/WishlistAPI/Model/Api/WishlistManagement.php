@@ -1,6 +1,9 @@
 <?php
 /**
- *
+ * @package   Codilar\WishlistAPI
+ * @author    Abhinav Vinayak <abhinav.v@codilar.com>
+ * @copyright © 2021 Codilar
+ * @license   See LICENSE file for license details.
  *
  */
 
@@ -143,11 +146,23 @@ class WishlistManagement implements WishlistManagementInterface
 
     /**
      * @param CollectionFactory $wishlistCollectionFactory
-     * @param ProductFactory $productFactory
-     * @param \Magento\Framework\Math\Random $mathRandom
+     * @param WishlistFactory $wishlistFactory
+     * @param Http $http
+     * @param TokenFactory $tokenFactory
+     * @param RequestInterface $request
      * @param Customer $customer
-     * @param \Magento\Framework\Stdlib\DateTime $dateTime
+     * @param AppEmulation $appEmulation
+     * @param CountryFactory $countryfactory
+     * @param JsonFactory $jsonFactory
+     * @param CustomerRepositoryInterface $customerRepository
+     * @param AccountManagementInterface $customerAccountManagement
+     * @param StoreManagerInterface $storemanagerinterface
+     * @param ProductImageHelper $productImageHelper
+     * @param CustomerCollection $customerCollection
+     * @param Product $productload
+     * @param Logger $loggerResponse
      * @param ProductRepositoryInterface $productRepository
+     * @param ItemFactory $itemFactory
      */
     public function __construct(
         CollectionFactory           $wishlistCollectionFactory,
@@ -313,7 +328,7 @@ class WishlistManagement implements WishlistManagementInterface
                             return $wishlistDeleteResponse;
                         }
                     }
-                        
+
 
                 } else {
 
