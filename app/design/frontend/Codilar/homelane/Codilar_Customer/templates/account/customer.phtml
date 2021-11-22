@@ -64,16 +64,16 @@ if ($block->getCustomerIsLoggedIn()) :
                 </li>
             </ul>
             <ul class="header links">
-                <li class="login-profile"><a href="<?= $this->getUrl('customer/account') ?>">My Profile</a></li>
-                <li class="login-wishlist"><a href="<?= $this->getUrl('wishlist') ?>">My Wishlist</a></li>
+                <li class="login-profile"><a href="<?= $this->getUrl('customer/account') ?>"><?php echo __('My Profile'); ?></a></li>
+                <li class="login-wishlist"><a href="<?= $this->getUrl('wishlist') ?>"><?php echo __('My Wishlist'); ?></a></li>
                 <?php $isSeller = $helper->isSeller();
                 if (!empty($isSeller) && $isSeller === '1') : ?>
-                <li class="Vendor-Dashboard"><a href="<?= $this->getUrl('marketplace\account\dashboard') ?>">Vendor Dashboard</a></li>
+                <li class="Vendor-Dashboard"><a href="<?= $this->getUrl('marketplace\account\dashboard') ?>"><?php echo __('Vendor Dashboard'); ?></a></li>
                 <?php endif; ?>
-                <li class="login-hl"><a href="#">Homelane care</a></li>
+                <li class="login-hl"><a href="care"><?php echo __('Homelane care'); ?></a></li>
             </ul>
             <ul class="bottom">
-                <li><a href="<?= $this->getUrl('customer/account/logout') ?>">Logout</a></li>
+                <li><a href="<?= $this->getUrl('customer/account/logout') ?>"><?php echo __('Logout'); ?></a></li>
             </ul>
         </div>
         <?php //endif; ?>
