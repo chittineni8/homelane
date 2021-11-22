@@ -114,6 +114,7 @@ $("#forgotPassword").click(function(){
     var emailVal = $("#email-login").val();
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     if ( emailVal.length <= 0 || !regex.test(emailVal) ) {
+        $("#email-error").show();
         $("#email-error").html(""); 
         $("#email-error").append('Please enter your valid email address'); 
     } else {
@@ -129,6 +130,7 @@ $("#forgotPassword").click(function(){
 
                     if(result.responseJSON == "User does not exist. Please enter a registered email address.")
                     {
+                    $(".forgot-password-error").show();
                     $(".forgot-password-success").html(""); 
                     $(".forgot-password-error").html(""); 
                     $(".forgot-password-error").append(result.responseJSON);
@@ -137,7 +139,7 @@ $("#forgotPassword").click(function(){
                     $(".forgot-password-error").html(""); 
                     $(".forgot-password-success").html(""); 
                     $(".forgot-password-success").append(result.responseJSON);
-                           $('#forgotPassword').hide(); 
+                    $('#forgotPassword').hide(); 
                   }
                  
             }
@@ -147,7 +149,14 @@ $("#forgotPassword").click(function(){
   });
     $("#email-login").on('change keyup',function () {
         $('#forgotPassword').show();
+        $(".forgot-password-error").hide();
         //$(".forgot-password-error").hide();
+        var emailVal = $("#email-login").val();
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if ( emailVal.length <= 0 || !regex.test(emailVal) ) { 
+        } else {
+            $("#email-error").hide();
+        }
     });
 });
 });
