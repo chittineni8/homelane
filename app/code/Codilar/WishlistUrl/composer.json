@@ -1,0 +1,22 @@
+{
+    "name": "codilar/wishlist-url",
+    "version": "1.0.0",
+    "description": "Purpose of this module is to  redirect to configurable product if user clicks on simple product and to hide the success message after deleting the product from wishlist",
+    "type": "magento2-module",
+    "require": {
+        "magento/framework": "*",
+        "magento/module-wishlist": "101.2.*",
+        "mageplaza/module-better-wishlist": "4.0.*"
+    },
+    "license": [
+        "Proprietary"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Codilar\\WishlistUrl\\": ""
+        }
+    }
+}

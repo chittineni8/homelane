@@ -60,7 +60,7 @@
         <div class="field field-name-customer_mobile <?php if ($required) {
             echo 'required';
         } ?>">
-           <!--  <label class="label" for="telephone"><span>Customer Mobile</span></label> -->
+         
             <div class="control">
                 <input type="numer" maxlength="10" id="customer_mobile" data-validate='{"required":true}' placeholder="Phone Number" name="customer_mobile" value="" title="customer_mobile"
                 onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"  class="input-text <?php if ($required) {
@@ -68,14 +68,6 @@
                        } ?> <?php echo $validateClass; ?>" <?php if ($required) {
                     echo 'data-validate="{required:true}"';
                 } ?> autocomplete="off" aria-required="true" type="text" data-mage-init='{"validation":{}}'>
-
-                <div class="profile-notice-phone">
-                    <span><?php echo $smsProfileHelper->getPhoneNote(); ?></span>
-                </div>
-
-                <button class="send_otp action primary" style="display: none;margin-top: 15px;"
-                        type="button"><?php echo __('Generate OTP'); ?></button>
-                <span class="otp_generatenote">&nbsp;</span>
             </div>
             <div id="mobileresponse"></div>
         </div>

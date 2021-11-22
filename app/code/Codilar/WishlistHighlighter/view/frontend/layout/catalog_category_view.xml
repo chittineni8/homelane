@@ -4,8 +4,6 @@
     <referenceBlock name="category.products.list">
         <action method="setTemplate">
             <argument name="template" xsi:type="string">Codilar_WishlistHighlighter::product/list.phtml</argument>
-            <!-- <argument
-                name="wishlistHeart" xsi:type="object">Codilar\WishlistHighlighter\ViewModel\Wishlist</argument> -->
         </action>
     </referenceBlock>
 </body>

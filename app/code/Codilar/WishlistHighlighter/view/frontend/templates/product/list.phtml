@@ -20,15 +20,6 @@ use Magento\Framework\App\Action\Action;
 $_productCollection = $block->getLoadedProductCollection();
 /** @var \Magento\Catalog\Helper\Output $_helper */
 $_helper = $block->getData('outputHelper');
-$blockObj = $block->getLayout()->createBlock('Codilar\WishlistHighlighter\Block\Product\ListProduct');
-$wishlistCollection = $blockObj->getWishlistByCustomerId();
-if(!empty($wishlistCollection)):
-foreach ($wishlistCollection as $value) {
-$ids[] = $value['product_id'];
-}
-else:
-    $ids[]=null;
-endif;
 ?>
 <?php if (!$_productCollection->count()): ?>
     <div class="message info empty">
@@ -61,9 +52,7 @@ endif;
             <?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
             <?php foreach ($_productCollection as $_product): ?>
 
-                <li class="item product product-item <?php if (in_array($_product->getId(), $ids)) {
-                    echo "wishlist-active";
-                } ?>">
+                <li class="item product product-item" id="product-id-<?php echo $_product->getId(); ?>">
 
 
                     <div class="product-item-info"
@@ -198,5 +187,26 @@ endif;
         }
     }
 
+
+
     </script>
 <?php endif; ?>
+<script>
+    require(['jquery'], function ($) {
+        jQuery.ajax({
+            url: '<?php echo $this->getUrl('wishlisted/index/wishlistheart') ?>',
+            method: 'get',
+            dataType: 'json',
+            success: function (data) {
+
+                var wislistAddesCheckData = data;
+                var itemLenth = wislistAddesCheckData.items.length;
+                for (i = 0; i < itemLenth; i++) {
+                    var wislistAddedProductId = wislistAddesCheckData.items[i].product_id;
+
+                    $("#product-id-" + wislistAddedProductId).addClass('wishlist-active');
+                }
+            }
+        });
+    });
+</script>
