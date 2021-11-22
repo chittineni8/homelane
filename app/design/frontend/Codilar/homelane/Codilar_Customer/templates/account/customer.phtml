@@ -70,7 +70,7 @@ if ($block->getCustomerIsLoggedIn()) :
                 if (!empty($isSeller) && $isSeller === '1') : ?>
                 <li class="Vendor-Dashboard"><a href="<?= $this->getUrl('marketplace\account\dashboard') ?>"><?php echo __('Vendor Dashboard'); ?></a></li>
                 <?php endif; ?>
-                <li class="login-hl"><a href="care"><?php echo __('Homelane care'); ?></a></li>
+                <li class="login-hl"><a href="<?= $this->getUrl('care') ?>"><?php echo __('Homelane care'); ?></a></li>
             </ul>
             <ul class="bottom">
                 <li><a href="<?= $this->getUrl('customer/account/logout') ?>"><?php echo __('Logout'); ?></a></li>

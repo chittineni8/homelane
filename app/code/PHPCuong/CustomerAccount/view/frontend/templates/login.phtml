@@ -146,6 +146,9 @@ $("#forgotPassword").click(function(){
               
             });
 }
+    $("#email-login").on('change keyup',function () {
+        $(".forgot-password-success").hide();
+    });
   });
     $("#email-login").on('change keyup',function () {
         $('#forgotPassword').show();
