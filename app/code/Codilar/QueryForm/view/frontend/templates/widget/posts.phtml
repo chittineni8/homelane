@@ -18,7 +18,7 @@
             </div>
         <div class="field required">
             <div class="control">
-                <input name="whatsapp" value="No" type="hidden" checked>
+                <input name="whatsapp" id="whatsapp" value="No" type="hidden" checked>
                 <input name="whatsapp" id="whatsapp" value="Yes"   type="checkbox" class="input-text checkbox" title="<?php /* @escapeNotVerified */ echo __('You can reach me on WhatsApp') ?>">
                 <label for="whatsapp" class="label whatsapp-lable">
                     You can reach me on Whatsapp
@@ -81,12 +81,14 @@
                     data: {name: name,phoneno: phoneno, email: emailID, whatsapp: whatsapp, pincode: pincode},
                     type: "POST",
                     dataType: "json",
-                    success: function() {
-                               $('#submit-popup').modal('openModal');
+                    success: function(resultJson) {
+                        if (resultJson == 'success') {
+                            $("#query-popup").modal("openModal");
+                        } 
                     
                     }
                 });
-                $("#query-popup").modal("openModal");
+               // $("#query-popup").modal("openModal");
 
             });
 
