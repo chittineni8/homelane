@@ -136,6 +136,7 @@ $("#forgotPassword").click(function(){
                     $(".forgot-password-error").append(result.responseJSON);
 
                   }else{
+                    $(".forgot-password-success").show();
                     $(".forgot-password-error").html(""); 
                     $(".forgot-password-success").html(""); 
                     $(".forgot-password-success").append(result.responseJSON);
@@ -146,14 +147,13 @@ $("#forgotPassword").click(function(){
               
             });
 }
-    $("#email-login").on('change keyup',function () {
-        $(".forgot-password-success").hide();
-    });
   });
+
+    
     $("#email-login").on('change keyup',function () {
         $('#forgotPassword').show();
         $(".forgot-password-error").hide();
-        //$(".forgot-password-error").hide();
+        $(".forgot-password-success").hide();
         var emailVal = $("#email-login").val();
         var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         if ( emailVal.length <= 0 || !regex.test(emailVal) ) { 
