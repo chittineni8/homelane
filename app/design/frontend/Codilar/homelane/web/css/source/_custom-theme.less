@@ -1016,6 +1016,27 @@ form.query-form.validate-form .control.input-has-value::after {
 .page-bottom {
     overflow: hidden;
 }
+.query-form-success.modal-popup {
+    .modal-inner-wrap {
+        width: 45%;
+    }
+    .modal-content {
+        padding-bottom: 0;
+    }
+    div#query-popup h2 {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .modal-footer {
+        border-top: none;
+        padding: 10px 40px 20px;
+    }
+    button {
+        background: #E71C24;
+        border-color: #E71C24;
+        color: #fff;
+    }
+}
 form.query-form {
     width: 395px;
     margin: 0 auto;
@@ -3158,8 +3179,28 @@ table.table.table-bordered {
     .page-layout-1column div.product-info-main {
         width: 41%;
     }
+    img.pagebuilder-mobile-only {
+        display: none;
+    }
 }
 
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    #moving-tabs li.on .content {
+        width: 100%;
+    }
+    .max-container[data-content-type="row"] {
+        padding: 0 20px;
+    }
+    .hp-customer-review-outer {
+        padding: 0 0;
+        .slick-list {
+            margin: 0 55px;
+        }
+        .home-page-customer-review-content {
+            align-items: center;
+        }
+    }
+}
 
 @media only screen and (max-width: 767px) {
     body:not(.cms-index-index) {
@@ -3764,6 +3805,10 @@ table.table.table-bordered {
         min-height: unset;
         margin: 0 auto;
     }
+    aside.modal-popup.video-popup {
+        top: 40px;
+        transform: translate(0, 50%);
+    }
     aside.modal-popup.video-popup._inner-scroll div.modal-inner-wrap iframe{
         height: 250px;
     }
@@ -3771,7 +3816,16 @@ table.table.table-bordered {
         left: 0;
         bottom: unset;
     }
-
+    aside.modal-popup.query-form-success {
+        top: 80px;
+        left: 0;
+        right: 0;
+        .modal-inner-wrap {
+            width: 90%;
+            min-height: auto !important;
+            margin: 0 auto;
+        }
+    }
     /***************************Category Landing Page*******************************/
     .category-grid {
         .image-box {

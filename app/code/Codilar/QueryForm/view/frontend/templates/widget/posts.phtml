@@ -13,7 +13,7 @@
             </div>
             <div class="field required">
                 <div class="control phoneno">
-                    <input name="phoneno" id='phoneno' value="" placeholder=" Enter your mobile number" type="number" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your mobile number') ?>" data-validate="{required:true}">
+                    <input name="phoneno" id='phoneno' value="" placeholder=" Enter your mobile number" type="numer" maxlength="10" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your mobile number') ?>" data-validate="{required:true}" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
                 </div>
             </div>
         <div class="field required">
@@ -27,7 +27,7 @@
         </div>
             <div class="field required">
                 <div class="control pincode">
-                    <input name="pincode" id="pincode" value="" placeholder="Enter your residence pincode" type="number" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your residence pincode') ?>" data-validate="{required:true}">
+                    <input name="pincode" id="pincode" value="" placeholder="Enter your residence pincode" type="numer" maxlength="6" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your residence pincode') ?>" data-validate="{required:true}" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
                 </div>
             </div>
             <div class="actions-toolbar">
@@ -41,7 +41,7 @@
     </fieldset>
 </form>
         <div id="query-popup" >
-        <h2>Thanks for sharing your details. Our team will reachout to you shortly!</h2>
+        <h2>Thanks for sharing your details. Our team will reach out to you shortly!</h2>
 </div>
 <script>
     require(
@@ -55,9 +55,11 @@
         ) {
             var options = {
                 type: 'popup',
+                modalClass: 'query-form-success',
                 responsive: true,
                 innerScroll: true,
                 buttons: [{
+                    text: 'Ok',
                     click: function () {
                         this.closeModal();
                     }
