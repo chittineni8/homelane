@@ -148,7 +148,7 @@ require(['jquery','slickslider'], function($) {
 				$(this).parent().removeClass('input-has-value');
 			}
 		});
-		$("form.query-form .control.phoneno input[type='number']").on('change keyup',function () { 
+		$("form.query-form .control.phoneno input[type='numer']").on('change keyup',function () { 
 			var mobNum = $(this).val();   
 			if(mobNum.length == 10) {
 				$(this).parent().addClass('input-has-value');
@@ -156,12 +156,22 @@ require(['jquery','slickslider'], function($) {
 				$(this).parent().removeClass('input-has-value');
 			}
 		});
-		$("form.query-form .control.pincode input[type='number']").on('change keyup',function () { 
+		$("form.query-form .control.pincode input[type='numer']").on('change keyup',function () { 
 			var mobNum = $(this).val();   
 			if(mobNum.length == 6) {
 				$(this).parent().addClass('input-has-value');
 			} else {
 				$(this).parent().removeClass('input-has-value');
+			}
+		});
+		if( !$('.customer-account-wrapper .control input').val() ) {
+		    $('button#submit-query').prop('disabled', true);
+		}
+		$("form.query-form .control input").on('change keyup',function () {
+			if ($('.control.input-has-value').length == 4) {
+				$('button#submit-query').prop('disabled', false);
+			} else {
+				$('button#submit-query').prop('disabled', true);
 			}
 		});
 		$("ol.filter-list").each(function () {
@@ -213,7 +223,6 @@ require(['jquery','slickslider'], function($) {
 			}
 		});
 		if( !$('.customer-account-wrapper .control input').val() ) {
-		    console.log('empty filed');
 		    $('button#submit').prop('disabled', true);
 		}
 		$(".customer-account-wrapper .control input").on('change keyup',function () {
