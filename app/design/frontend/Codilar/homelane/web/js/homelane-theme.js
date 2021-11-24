@@ -140,7 +140,7 @@ require(['jquery','slickslider'], function($) {
 				$(this).parent().removeClass('input-has-value');
 			}
 		});
-		$("form.query-form .control.phoneno input[type='numer']").on('change keyup',function () { 
+		$("form.query-form .control.phoneno input[type='number']").on('change keyup',function () { 
 			var mobNum = $(this).val();   
 			if(mobNum.length == 10) {
 				$(this).parent().addClass('input-has-value');
@@ -148,7 +148,7 @@ require(['jquery','slickslider'], function($) {
 				$(this).parent().removeClass('input-has-value');
 			}
 		});
-		$("form.query-form .control.pincode input[type='numer']").on('change keyup',function () { 
+		$("form.query-form .control.pincode input[type='number']").on('change keyup',function () { 
 			var mobNum = $(this).val();   
 			if(mobNum.length == 6) {
 				$(this).parent().addClass('input-has-value');

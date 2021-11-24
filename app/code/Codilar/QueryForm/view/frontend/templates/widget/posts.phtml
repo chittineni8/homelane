@@ -13,13 +13,13 @@
             </div>
             <div class="field required">
                 <div class="control phoneno">
-                    <input name="phoneno" id='phoneno' value="" placeholder=" Enter your mobile number" type="numer" maxlength="10" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your mobile number') ?>" data-validate="{required:true}" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                    <input name="phoneno" id='phoneno' value="" placeholder=" Enter your mobile number" type="number" maxlength="10" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your mobile number') ?>" data-validate="{required:true}" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                 </div>
             </div>
         <div class="field required">
             <div class="control">
-                <input name="whatsapp" id="whatsapp" value="No" type="hidden" checked>
-                <input name="whatsapp" id="whatsapp" value="Yes"   type="checkbox" class="input-text checkbox" title="<?php /* @escapeNotVerified */ echo __('You can reach me on WhatsApp') ?>">
+                <input name="whatsapp" class="whatsapp" id="whatsapp1" value="No" type="hidden" checked>
+                <input name="whatsapp" class="whatsapp" id="whatsapp" value="Yes"   type="checkbox" class="input-text checkbox" title="<?php /* @escapeNotVerified */ echo __('You can reach me on WhatsApp') ?>">
                 <label for="whatsapp" class="label whatsapp-lable">
                     You can reach me on Whatsapp
                 </label>
@@ -27,7 +27,7 @@
         </div>
             <div class="field required">
                 <div class="control pincode">
-                    <input name="pincode" id="pincode" value="" placeholder="Enter your residence pincode" type="numer" maxlength="6" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your residence pincode') ?>" data-validate="{required:true}" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                    <input name="pincode" id="pincode" value="" placeholder="Enter your residence pincode" type="number" maxlength="6" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your residence pincode') ?>" data-validate="{required:true}" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                 </div>
             </div>
             <div class="actions-toolbar">
@@ -72,7 +72,7 @@
                 var name = $("#name").val();
                 var emailID = $('#email').val();
                 var phoneno = $('#phoneno').val();
-                var  whatsapp = $('#whatsapp').val();
+                var  whatsapp = $('.whatsapp').val();
                 var pincode = $('#pincode').val();
                 jQuery.ajax({
                     
@@ -84,14 +84,13 @@
                     success: function(resultJson) {
                         if (resultJson == 'success') {
                             $("#query-popup").modal("openModal");
-                        } 
-                    
+                            $("form.query-form .control").removeClass("input-has-value");
+                            document.getElementById("query-form").reset();
+                            $('button#submit-query').prop('disabled', true);
+                        }
                     }
 
                 });
-                document.getElementById("query-form").reset(); 
-               // $("#query-popup").modal("openModal");
-
             });
 
         }
