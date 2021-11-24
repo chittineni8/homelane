@@ -295,10 +295,12 @@ div.header.content .minicart-wrapper {
 }
 .header.content {
     #switcher-store {
-        display: flex;
+        display: inline-flex;
         position: relative;
         cursor: pointer;
-        padding-top: 2px;
+        padding-top: 0;
+        padding-right: 25px;
+        top: 4px;
         strong.label.switcher-label {
             display: none;
         }
@@ -339,6 +341,12 @@ div.header.content .minicart-wrapper {
             display: none;
         }
     }
+}
+.logged-out ul.header.links #switcher-store + li {
+    font-size: 0;
+}
+.logged-out .header.content #switcher-store {
+    top: -8px;
 }
 ul.header.links {
     padding: 0;
@@ -403,7 +411,7 @@ ul.header.links {
     }
     li.customer-welcome{
         position: relative;
-        top: -2px;
+        top: -1px;
     }
     li.login.link.wishlists {
         display: inline-block;
@@ -2579,7 +2587,8 @@ form#product-sendtofriend-form {
                 flex: 0 0  33.33%;
                 padding-right: 10px;
                 th {
-                    width: 200px;
+                    width: auto;
+                    padding-right: 12px;
                     &:after {
                         content: ":";
                         padding-left: 4px;
@@ -2909,9 +2918,6 @@ table.table.table-bordered {
     }
 }
 @media only screen and (min-width: 1680px) {
-    .header.content #switcher-store {
-        right: -90px;
-    }
     .category-grid .image-box div.image-box-first {
         width: 48.6%;
     }
@@ -2951,6 +2957,16 @@ table.table.table-bordered {
     form.query-form fieldset:before, form.query-form fieldset:after {
         background-size: 100%;
         width: 501px;
+    }
+}
+@media only screen and (min-width: 1025px) and (max-width: 1250px) {
+    body .header .block.block-search {
+        width: 360px;
+    }
+}
+@media only screen and (min-width: 1025px) and (max-width: 1139px) {
+    div.block-search .action.search {
+        left: 20px;
     }
 }
 @media only screen and (min-width: 1140px) {
@@ -3370,7 +3386,7 @@ table.table.table-bordered {
     }
     .block.block-customer-login,form#customer-popup-form-register {
         width: 100%;
-        padding: 35px 25px 0;
+        padding: 35px 25px 50px;
     }
     .right-img-box {
         display: none;
@@ -3385,6 +3401,9 @@ table.table.table-bordered {
         .modal-inner-wrap {
             border-radius: 0;
         }
+    }
+    .call-popup .search-section {
+        width: 100%;
     }
     /************mobile design header*************/
     .sections .navigation .level0>.level-top {
@@ -3856,7 +3875,7 @@ table.table.table-bordered {
         }
     }
     .hl-heading {
-        padding-left: 10px;
+        padding-left: 0;
     }
     .category-grid .image-box {
         display: block;

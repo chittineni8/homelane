@@ -62,8 +62,9 @@
         } ?>">
          
             <div class="control">
-                <input type="numer" maxlength="10" id="customer_mobile" data-validate='{"required":true}' placeholder="Phone Number" name="customer_mobile" value="" title="customer_mobile"
-                onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"  class="input-text <?php if ($required) {
+                <input type="number" maxlength="10" id="customer_mobile" data-validate='{"required":true}' placeholder="Phone Number" name="customer_mobile" value="" title="customer_mobile"
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                class="input-text <?php if ($required) {
                            echo 'required-entry ';
                        } ?> <?php echo $validateClass; ?>" <?php if ($required) {
                     echo 'data-validate="{required:true}"';
@@ -93,10 +94,10 @@
           <div class="field required">
                 <!-- <label for="postcode" class="label"><span><?php /* @escapeNotVerified */ echo __('Postcode') ?></span></label> -->
                 <div class="control">
-                    <input type="numer" maxlength="6" name="postcode" placeholder="Current residence PIN code"
+                    <input type="number" maxlength="6" name="postcode" placeholder="Current residence PIN code"
                            value="<?= $block->escapeHtmlAttr($block->getFormData()->getPostcode()) ?>"
                            title="<?php /* @escapeNotVerified */ echo __('Postcode') ?>" id="zip"
-                           onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                           oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                            class="input-text validate-zip-international <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('postcode')) ?>" data-validate='{"required":true}'>
                 </div>
             </div>
