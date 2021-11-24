@@ -1,4 +1,4 @@
-<form class="query-form" data-mage-init='{"validation": {}}'>
+<form class="query-form" id="query-form" data-mage-init='{"validation": {}}'>
     <h2> Got questions? We’re happy to help out.</h2>
     <fieldset>
             <div class="field required">
@@ -87,7 +87,9 @@
                         } 
                     
                     }
+
                 });
+                document.getElementById("query-form").reset(); 
                // $("#query-popup").modal("openModal");
 
             });

@@ -54,8 +54,13 @@ Class Category implements ArgumentInterface
 
      public function getCategoryUrl($categoryId)
      {
-                $category = $this->categoryRepository->get($categoryId, $this->_storeManager->getStore()->getId());
-               return $category->getUrl();
+        if(empty($categoryId)){
+              
+            $categoryId = 8;
+        }
+        $category = $this->categoryRepository->get($categoryId, $this->_storeManager->getStore()->getId());
+
+        return $category->getUrl();
 
       }
 }      
