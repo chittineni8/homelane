@@ -35,3 +35,14 @@ $logoHeight = $logoSizeResolver !== null && $logoSizeResolver->getHeight()
 <a class="sticky-logo" href="<?= $block->escapeUrl($block->getUrl('')) ?>">
 	<img src='<?php echo $this->getViewFileUrl('images/sticky_Store_logo-03.png'); ?>' alt="sticky logo" width="180" />
 </a>
+<script type="text/javascript">
+    require(['jquery'],function ($) {
+        var selectcity = $('div#switcher-store').clone();
+        if($('ul.header.links').find('.customer-register-link').length <= 0) {
+            $("body").addClass("logged-in");
+        } else {
+            $("body").addClass("logged-out");
+            $(".minicart-wrapper + ul.header.links").prepend(selectcity);
+        }
+    });
+</script>
