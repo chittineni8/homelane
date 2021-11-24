@@ -43,22 +43,25 @@ class Save extends Action
       
 
           $flag = $this->queryResourceModel->save($query);  
+       
          $saveddata = $this->collection->getLastItem();
 
         if ($params['name'] == $saveddata['name'] && $params['email'] == $saveddata['email'] && 
         $params['phoneno'] == $saveddata['phoneno'] && $params['whatsapp'] == $saveddata['whatsapp'] && 
         $params['pincode'] == $saveddata['pincode']) {
+            
+                // created custom event:- form_submit_event
+                $this->_eventManager->dispatch('form_submit_event',['query'=>$params]);
          
             return $resultJson->setData([
                 'success'
+                
             ]);
         }else {
             return $resultJson->setData([
                 'not-saved'
             ]);
         }
-                  // created custom event:- form_submit_event
-            $this->_eventManager->dispatch('form_submit_event',['query'=>$params]);
            // $this->messageManager->addSuccessMessage(__("Your Query added Successfully,We will reach You Soon !!!"));
         } catch (\Exception $e) {
             $this->messageManager->addErrorMessage(__("Something went wrong"));
