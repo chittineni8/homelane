@@ -43,6 +43,9 @@
         <div id="query-popup" >
         <h2>Thanks for sharing your details. Our team will reach out to you shortly!</h2>
 </div>
+<div id="query-popup-error" >
+        <h2>Something went Wrong, Try Again!</h2>
+</div>
 <script>
     require(
         [
@@ -65,8 +68,21 @@
                     }
                 }]
             };
+            var erroroptions = {
+                type: 'popup',
+                modalClass: 'query-form-error',
+                responsive: true,
+                innerScroll: true,
+                buttons: [{
+                    text: 'Ok',
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
 
             var popup = modal(options, $('#query-popup'));
+            var popuperror = modal(erroroptions, $('#query-popup-error'));
             $('#submit-query').on('click',function (event) {
                 event.preventDefault();
                 var name = $("#name").val();
@@ -77,7 +93,6 @@
                 jQuery.ajax({
                     
                     url: "<?php echo $block->getBaseUrl().'query/query/save'?>",
-                    // url: "getAjaxUrl()",
                     data: {name: name,phoneno: phoneno, email: emailID, whatsapp: whatsapp, pincode: pincode},
                     type: "POST",
                     dataType: "json",
@@ -87,6 +102,9 @@
                             $("form.query-form .control").removeClass("input-has-value");
                             document.getElementById("query-form").reset();
                             $('button#submit-query').prop('disabled', true);
+                        }
+                        else{
+                            $("#query-popup-error").modal("openModal");
                         }
                     }
 
