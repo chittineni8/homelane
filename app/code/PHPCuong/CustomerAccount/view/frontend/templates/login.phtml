@@ -165,6 +165,9 @@ $("#forgotPassword").click(function(){
             $("#email-error").hide();
         }
     });
+    $("input#pass-login").on('change keyup',function () {
+        $('div#pass-login-error').hide();
+    });
 });
 });
 </script>

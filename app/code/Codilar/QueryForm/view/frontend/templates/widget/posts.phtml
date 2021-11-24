@@ -18,8 +18,8 @@
             </div>
         <div class="field required">
             <div class="control">
-                <input name="whatsapp" id="whatsapp" value="No" type="hidden" checked>
-                <input name="whatsapp" id="whatsapp" value="Yes"   type="checkbox" class="input-text checkbox" title="<?php /* @escapeNotVerified */ echo __('You can reach me on WhatsApp') ?>">
+                <input name="whatsapp" class="whatsapp" id="whatsapp1" value="No" type="hidden" checked>
+                <input name="whatsapp" class="whatsapp" id="whatsapp" value="Yes"   type="checkbox" class="input-text checkbox" title="<?php /* @escapeNotVerified */ echo __('You can reach me on WhatsApp') ?>">
                 <label for="whatsapp" class="label whatsapp-lable">
                     You can reach me on Whatsapp
                 </label>
@@ -72,7 +72,7 @@
                 var name = $("#name").val();
                 var emailID = $('#email').val();
                 var phoneno = $('#phoneno').val();
-                var  whatsapp = $('#whatsapp').val();
+                var  whatsapp = $('.whatsapp').val();
                 var pincode = $('#pincode').val();
                 jQuery.ajax({
                     
@@ -84,14 +84,13 @@
                     success: function(resultJson) {
                         if (resultJson == 'success') {
                             $("#query-popup").modal("openModal");
-                        } 
-                    
+                            $("form.query-form .control").removeClass("input-has-value");
+                            document.getElementById("query-form").reset();
+                            $('button#submit-query').prop('disabled', true);
+                        }
                     }
 
                 });
-                document.getElementById("query-form").reset(); 
-               // $("#query-popup").modal("openModal");
-
             });
 
         }
