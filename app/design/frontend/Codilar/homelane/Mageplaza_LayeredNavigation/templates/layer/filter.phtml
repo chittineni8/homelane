@@ -67,7 +67,7 @@ require(['jquery'], function($) {
                 if (!!$('.sidebar.sidebar-main').length) { // make sure "#sticky" element exists
                 var el = $('.sidebar.sidebar-main');
                 var stickyTop = $('.sidebar.sidebar-main').offset().top; // returns number
-                var footerTop = $('.page-bottom').offset().top; // returns number
+                var footerTop = $('.page-footer').offset().top; // returns number
                 var stickyHeight = $('.sidebar.sidebar-main').height();
                 var limit = footerTop - stickyHeight - 20;
                 $(window).scroll(function(){ // scroll event
