@@ -62,6 +62,7 @@
         } ?>">
          
             <div class="control">
+                <input name="country-code" type="tel" id="country-code" value="" type="hidden">
                 <input type="number" maxlength="10" id="customer_mobile" data-validate='{"required":true}' placeholder="Phone Number" name="customer_mobile" value="" title="customer_mobile"
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                 class="input-text <?php if ($required) {
@@ -191,6 +192,31 @@ $('#popup-email_address').on('change', function ()
 
 
 <script>
+require(['jquery','intlTelInput'], function($) {
+    if(!$('input#country-code').length <= 0) {
+        // Vanilla Javascript
+        var input = document.querySelector("input#country-code");
+        window.intlTelInput(input,({
+        // options here
+        }));
+
+        $(document).ready(function() {
+            var ccode = $('.iti__selected-dial-code').text();
+            console.log(ccode);
+            $('.iti__flag-container').click(function() { 
+            var selected_ccode = $('.iti__selected-dial-code').text();
+            console.log(selected_ccode);
+            var countryCode = $('.iti__selected-flag').attr('title');
+            var countryCode = countryCode.replace(/[^0-9]/g,'')
+            $('input#country-code').val("");
+            $('input#country-code').val("+"+countryCode+" "+ $('input#country-code').val());
+            });
+        });
+    }
+});
+</script>
+
+<script>
         require(
             [
                 'jquery',
@@ -217,6 +243,8 @@ $('#popup-email_address').on('change', function ()
                     var regPhone = $("#customer_mobile").val();
                     var regName = $("#firstname").val();
                     var regZip = $("#zip").val();
+                    var selected_ccode = $('.iti__selected-dial-code').text();
+                    console.log('selected country code' + selected_ccode);
                     jQuery.ajax({
                         url: '/phpcuong/customer_ajax/register',
                         // url: "getAjaxUrl()",
@@ -233,8 +261,9 @@ $('#popup-email_address').on('change', function ()
                     });
                     var value = $("#customer_mobile").val();
                     var email = $("#popup-email_address").val();
-
-                    $("#popup-mpdal").modal("openModal");
+                    if (selected_ccode == +91) {
+                        $("#popup-mpdal").modal("openModal");
+                    }
                     
                     $("#otp_mobile").prop('disabled', true);
                     $(".otp-edit").on('click',function(){
@@ -290,26 +319,6 @@ $('#popup-email_address').on('change', function ()
 
             }
         );
-    </script>
-    <script>
-    require(['jquery','intlTelInput'], function($) {
-        if(!$('input#customer_mobile').length <= 0) {
-        // Vanilla Javascript
-        var input = document.querySelector("input#customer_mobile");
-        window.intlTelInput(input,({
-          // options here
-        }));
-
-        $(document).ready(function() {
-            $('.iti__flag-container').click(function() { 
-              var countryCode = $('.iti__selected-flag').attr('title');
-              var countryCode = countryCode.replace(/[^0-9]/g,'')
-              $('input#customer_mobile').val("");
-              $('input#customer_mobile').val("+"+countryCode+" "+ $('input#customer_mobile').val());
-           });
-        });
-        }
-    });
     </script>
 
 
