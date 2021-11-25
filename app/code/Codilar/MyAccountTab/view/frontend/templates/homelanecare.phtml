@@ -6,9 +6,9 @@ $baseurl = $block->getBaseUrl();      //http://homelane.local/
 <ul class="account-links">
 <?php 
         if($currenturl == $baseurl."") { ?>
-            <li class="login-hl current"><a href="<?= $this->getUrl('') ?>">Homelane Care</a></li>
+            <li class="login-hl current"><a href="<?= $this->getUrl('care') ?>">Homelane Care</a></li>
             <?php }else{?>
-                <li class="login-hl"><a href="<?= $this->getUrl('') ?>">Homelane Care</a></li>
+                <li class="login-hl"><a href="<?= $this->getUrl('care') ?>">Homelane Care</a></li>
                 <?php } ?>
 </ul>
 
