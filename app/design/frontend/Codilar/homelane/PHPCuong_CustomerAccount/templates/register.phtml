@@ -85,7 +85,7 @@
             </fieldset>
             <fieldset class="fieldset create account" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
                 <!-- <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Sign-in Information') ?></span></legend><br> -->
-                <div class="field required">
+                <div class="field required cust-email-address">
                     <!-- <label for="popup-email_address" class="label"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span></label> -->
                     <div class="control">
                         <input type="email" name="email" placeholder="Email" autocomplete="email" id="popup-email_address" value="" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" class="input-text" data-validate="{required:true, 'validate-email':true}">
@@ -156,7 +156,12 @@ $('#customer_mobile').on('change', function ()
                 complete: function(mobileResult) {
                     $("#mobileresponse").html(""); 
                     $("#mobileresponse").append(mobileResult.responseJSON);
-            
+                    if ($('#mobileresponse').is(':empty')){
+                        console.log('empty');
+                    } else {
+                        $('button#submit').prop('disabled', true);
+                        $('.field.field-name-customer_mobile .control').removeClass('input-has-value');
+                    }
               }
             });
 });
@@ -180,6 +185,12 @@ $('#popup-email_address').on('change', function ()
                 complete: function(resultJson) {
                     $("#emailresponse").html(""); 
                     $("#emailresponse").append(resultJson.responseJSON);
+                    if ($('#emailresponse').is(':empty')){
+                        console.log('empty');
+                    } else {
+                        $('button#submit').prop('disabled', true);
+                        $('.cust-email-address .control').removeClass('input-has-value');
+                    }
                 }
               
             });
