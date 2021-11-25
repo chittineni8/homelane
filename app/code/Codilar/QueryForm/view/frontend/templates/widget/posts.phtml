@@ -96,6 +96,7 @@
                     data: {name: name,phoneno: phoneno, email: emailID, whatsapp: whatsapp, pincode: pincode},
                     type: "POST",
                     dataType: "json",
+                    showLoader: true,
                     success: function(resultJson) {
                         if (resultJson == 'success') {
                             $("#query-popup").modal("openModal");

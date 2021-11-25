@@ -74,12 +74,12 @@
             </image>
             <image id="product_page_image_large" type="image"/>
             <image id="product_page_image_medium" type="image">
-                <width>1410</width>
-                <height>1060</height>
+                <width>1150</width>
+                <height>1150</height>
             </image>
             <image id="product_page_image_small" type="thumbnail">
-                <width>118</width>
-                <height>82</height>
+                <width>110</width>
+                <height>110</height>
             </image>
             <image id="product_swatch_image_large" type="image"/>
             <image id="product_swatch_image_medium" type="image">
@@ -91,12 +91,12 @@
                 <height>110</height>
             </image>
             <image id="product_page_main_image" type="image">
-                <width>1410</width>
-                <height>1060</height>
+                <width>950</width>
+                <height>950</height>
             </image>
             <image id="product_page_main_image_default" type="image">
-                <width>1410</width>
-                <height>1060</height>
+                <width>950</width>
+                <height>950</height>
             </image>
             <image id="product_page_more_views" type="thumbnail">
                 <width>90</width>
