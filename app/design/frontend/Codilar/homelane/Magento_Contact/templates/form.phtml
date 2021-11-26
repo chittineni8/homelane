@@ -57,8 +57,9 @@ $viewModel = $block->getViewModel();
                        class="input-text"
                        type="number" maxlength = "10"
                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                       data-validate="{required:true}"/>
-                       <!-- <div class="tel-error" style="display:none;color: #E71C24;font-size: 1.2rem;">Please enter your valid mobile number</div> -->
+                       data-validate="{required:true}"
+                       onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                       />
             </div>
         </div>
         <div class="field comment required">

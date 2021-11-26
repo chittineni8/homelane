@@ -197,12 +197,21 @@ require(['jquery','slickslider'], function($) {
 		});
 		$(".customer-account-wrapper .control #customer_mobile").on('change keyup blur',function () {
 			$(this).parent().find('div.mage-error').hide(); 
-			var mobNum = $(this).val();
-			console.log('hghg');  
+			var mobNum = $(this).val(); 
 			if(mobNum.length == 10) {
 				$(this).parent().addClass('input-has-value');
+				$('#mob-error-msg').hide();
 			} else {
 				$(this).parent().removeClass('input-has-value');
+
+			}
+		});
+		$(".customer-account-wrapper .control #customer_mobile").on('change focusout',function () {
+			var mobNum = $(this).val(); 
+			if(mobNum.length == 10) {
+				$('#mob-error-msg').hide();
+			} else {
+				$('#mob-error-msg').show();
 			}
 		});
 		$(".customer-account-wrapper .control .validate-zip-international").on('change keyup',function () {
