@@ -744,7 +744,7 @@ aside.modal-popup.city-popup {
             }
         }
     }
-    div#city-error-msg {
+    div.city-error-msg {
         display: none;
         color: #E71C24;
         font-size: 14px;
@@ -1820,22 +1820,15 @@ body.user-resetpassword-index {
     .sidebar.sidebar-main.sticky {
         background: #fff;
         width: 21%;
-        overflow-y: auto;
-        height: 100%;
+        overflow: auto;
         scrollbar-width: none;
         padding-bottom: 40px;
-        position: fixed;
-        top: 0;
+        position: sticky;
+        top: 60px;
         &::-webkit-scrollbar {
             display: none;
         }
     }
-    .sidebar.sidebar-main.slideup {
-        transform: translate(0, -1000px);
-    }
-}
-.stickyy.slideDown .sidebar.sidebar-main.sticky {
-    top: 60px;
 }
 .page-products {
     .toolbar-products {

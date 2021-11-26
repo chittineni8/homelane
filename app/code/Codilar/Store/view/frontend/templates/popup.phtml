@@ -44,7 +44,6 @@ if (isset($gets['query'])) {
         <h3 class="title">
             <span><?php echo __('Please select your city') ?></span>
         </h3>
-        <div id="city-error-msg">No result found</div>
     </div>
     <div class="box-store-content">
         <ul id="searchable-content">
@@ -90,6 +89,7 @@ if (isset($gets['query'])) {
         <?php
         } ?>
         </ul>
+        <div class="city-error-msg">Result not found</div>
     </div>
 </div>
 
@@ -99,18 +99,31 @@ if (isset($gets['query'])) {
         input = document.getElementById("city-search");
         filter = input.value.toUpperCase();
         ul = document.getElementById("searchable-content");
-        showerror = document.getElementById("city-error-msg");
         li = ul.getElementsByTagName("li");
         for (i = 0; i < li.length; i++) {
             a = li[i].getElementsByTagName("a")[0];
             txtValue = a.textContent || a.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
                 li[i].style.display = "";
-                showerror.style.display = "none"
+                li[i].className = "present";
             } else {
                 li[i].style.display = "none";
-                showerror.style.display = "block"
+                li[i].classList.remove = "present";
+                li[i].className = "hide";
             }
         }
     }
+</script>
+<script type="text/javascript">
+    require(['jquery'], function($) {
+        $('#city-search').on('change keyup', function() {
+            var checkactivecity = $('li.present').length;
+            console.log(checkactivecity);
+            if (checkactivecity == 0) {
+                $('.city-error-msg').show();
+            } else {
+                $('.city-error-msg').hide();
+            }
+        });
+    });
 </script>
