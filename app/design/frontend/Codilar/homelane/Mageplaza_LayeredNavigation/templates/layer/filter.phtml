@@ -59,33 +59,3 @@ $filterModel = $this->helper(\Mageplaza\LayeredNavigation\Helper\Data::class)->g
     <?php endforeach ?>
 </ol>
 <label class="more">See All</label>
-<script type="text/javascript">
-require(['jquery'], function($) {
-    jQuery(document).ready(function(){
-        if ($(window).width() > 768) {
-            jQuery(function() {
-                var sidebarheight = $('.sidebar.sidebar-main').height();
-                if (!!$('.sidebar.sidebar-main').length) { // make sure "#sticky" element exists
-                    var el = $('.sidebar.sidebar-main');
-                    var stickyTop = $('.sidebar.sidebar-main').offset().top; // returns number
-                    var footerTop = $('.page-bottom').offset().top; // returns number
-                    var stickyHeight = $('.sidebar.sidebar-main').height();
-                    $(window).scroll(function(){ // scroll event
-                        var windowTop = $(window).scrollTop(); // returns number
-                        if ($(this).scrollTop() > 200) {
-                            el.addClass('sticky');
-                        } else {
-                            el.removeClass('sticky');
-                        }
-                        if (stickyTop < windowTop){
-                         el.css({height: sidebarheight})
-                        } else {
-                         //el.css({height: 'auto'})
-                        }     
-                    });
-                }
-            });
-        };  
-    });
-});
-</script>
