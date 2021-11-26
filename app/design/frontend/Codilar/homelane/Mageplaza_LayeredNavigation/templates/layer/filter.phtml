@@ -64,34 +64,25 @@ require(['jquery'], function($) {
     jQuery(document).ready(function(){
         if ($(window).width() > 768) {
             jQuery(function() {
+                var sidebarheight = $('.sidebar.sidebar-main').height();
                 if (!!$('.sidebar.sidebar-main').length) { // make sure "#sticky" element exists
-                var el = $('.sidebar.sidebar-main');
-                var stickyTop = $('.sidebar.sidebar-main').offset().top; // returns number
-                var footerTop = $('.page-bottom').offset().top; // returns number
-                var stickyHeight = $('.sidebar.sidebar-main').height();
-                var limit = footerTop - stickyHeight - 20;
-                $(window).scroll(function(){ // scroll event
-                var windowTop = $(window).scrollTop(); // returns number
-
-                if (stickyTop < windowTop){
-                 //el.css({ position: 'fixed', top: 70 });
-                 el.addClass('sticky');
-                 el.removeClass('slideup');
-                }
-                else {
-                 //el.css({position:'static',animation: 'slide-up 0.7s'});
-                 el.removeClass('sticky');
-                 el.removeClass('slideup');
-                }
-
-                if (limit < windowTop) {
-                var diff = limit - windowTop;
-
-                //el.css('position','static');
-                el.addClass('slideup');
-                //el.removeClass('sticky');
-                }     
-                });
+                    var el = $('.sidebar.sidebar-main');
+                    var stickyTop = $('.sidebar.sidebar-main').offset().top; // returns number
+                    var footerTop = $('.page-bottom').offset().top; // returns number
+                    var stickyHeight = $('.sidebar.sidebar-main').height();
+                    $(window).scroll(function(){ // scroll event
+                        var windowTop = $(window).scrollTop(); // returns number
+                        if ($(this).scrollTop() > 200) {
+                            el.addClass('sticky');
+                        } else {
+                            el.removeClass('sticky');
+                        }
+                        if (stickyTop < windowTop){
+                         el.css({height: sidebarheight})
+                        } else {
+                         //el.css({height: 'auto'})
+                        }     
+                    });
                 }
             });
         };  

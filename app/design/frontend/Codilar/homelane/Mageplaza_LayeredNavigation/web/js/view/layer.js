@@ -186,6 +186,7 @@ define([
                     e.stopPropagation();
                     e.preventDefault();
                     self.ajaxSubmit(link);
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
                 });
 
                 var checkbox = el.siblings(self.options.checkboxEl);
@@ -193,7 +194,7 @@ define([
                     e.stopPropagation();
                     self.ajaxSubmit(link);
                 });
-                
+
             });
             $("#layered-filter-block").on("click","span.close-filter", function(){
                 $('div#layered-filter-block').removeClass("active");

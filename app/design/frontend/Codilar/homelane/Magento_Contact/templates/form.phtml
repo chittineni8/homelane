@@ -100,6 +100,19 @@ $viewModel = $block->getViewModel();
 <script>
 require(['jquery'], function($) {
     $(document).ready(function() {
+        if ($("form#contact-form input[type='text']").val().length > 3) {
+            $("form#contact-form input[type='text").parent().addClass('input-has-value');
+        } else {
+            $("form#contact-form input[type='text").parent().removeClass('input-has-value');
+        }
+        var inputvalues = $("form#contact-form input#email").val();    
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;    
+        if(regex.test(inputvalues)) {
+            $("form#contact-form input#email").parent().addClass('input-has-value');
+        } else {
+            $("form#contact-form input#email").parent().removeClass('input-has-value');
+        }
+        $('form#contact-form button').prop('disabled', true);
         $("form#contact-form input[type='text']").on('change keyup', function() {
           if ($(this).val().length > 3) {
             $(this).parent().addClass('input-has-value');
@@ -133,10 +146,7 @@ require(['jquery'], function($) {
                 $(this).parent().removeClass('input-has-value');
             }
         });
-        if( !$('form#contact-form .control input').val() ) {
-            $('form#contact-form button').prop('disabled', true);
-        }
-        $("form#contact-form  .control input").on('change keyup',function () {
+        $("form#contact-form  .control input, form#contact-form textarea#comment").on('change keyup',function () {
             if ($('.control.input-has-value').length == 4) {
                 $('form#contact-form button').prop('disabled', false);
             } else {
