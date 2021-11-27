@@ -73,7 +73,7 @@
                 onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" />
             </div>
             <div id="mobileresponse"></div>
-            <div id="mob-error-msg">Please enter your phone number</div>
+            <div id="mob-error-msg">Please enter a valid phone number</div>
         </div>
 
 
@@ -149,25 +149,29 @@ $(document).ready(function()
 $('#customer_mobile').on('change keyup', function () 
  {
    var mobileValue = jQuery("input[name='customer_mobile']").val();
-   
-    jQuery.ajax({
-                url: '/user/customer/index',
-                // url: "getAjaxUrl()",
-                data: {mobile:mobileValue},
-                type: "POST",
-                dataType: "json",
-                complete: function(mobileResult) {
-                    $("#mobileresponse").html(""); 
-                    $("#mobileresponse").append(mobileResult.responseJSON);
-                    if ($('#mobileresponse').is(':empty')){
-                        //console.log('empty');
-                    } else {
-                        $('button#submit').prop('disabled', true);
-                        $('.field.field-name-customer_mobile .control').removeClass('input-has-value');
-                        $('#mob-error-msg').hide();
-                    }
-              }
-            });
+   if(mobileValue.length == 10) {
+        jQuery.ajax({
+            url: '/user/customer/index',
+            // url: "getAjaxUrl()",
+            data: {mobile:mobileValue},
+            type: "POST",
+            dataType: "json",
+            complete: function(mobileResult) {
+                $("#mobileresponse").html("");
+                $("#mobileresponse").show();
+                $("#mobileresponse").append(mobileResult.responseJSON);
+                if ($('#mobileresponse').is(':empty')){
+                    //console.log('empty');
+                } else {
+                    $('button#submit').prop('disabled', true);
+                    $('.field.field-name-customer_mobile .control').removeClass('input-has-value');
+                    $('#mob-error-msg').hide();
+                }
+          }
+        });
+    } else {
+        $("#mobileresponse").hide();
+    }
 });
 });
 });
