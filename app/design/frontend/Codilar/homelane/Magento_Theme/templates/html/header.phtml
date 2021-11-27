@@ -43,7 +43,7 @@ $welcomeMessage = $block->getWelcome();
     require(['jquery','Magento_Ui/js/modal/modal'],function ($,modal) {
         function openloginmodal() {
                 if ($('body').hasClass('logged-out')) {
-                console.log('customer loged Out');
+                //console.log('customer loged Out');
                 $('.action.towishlist').removeAttr("data-post");
                 $('.action.towishlist').removeAttr("data-action");
                 $('.action.towishlist').on('click', function(e){
@@ -55,7 +55,7 @@ $welcomeMessage = $block->getWelcome();
                     $('#customer-popup-login').modal('openModal');
                 });
                 } else {
-                    console.log('customer loged In');
+                    //console.log('customer loged In');
                 }
             }
         $(document).ready(function() {
