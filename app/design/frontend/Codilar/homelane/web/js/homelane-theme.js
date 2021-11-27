@@ -1,12 +1,12 @@
 require(['jquery','slickslider'], function($) {
 	$(document).ready( function() {
 		$(window).scroll(function () {
-            if ($(this).scrollTop() > 200) {
+            if ($(this).scrollTop() > 120) {
                 $('body').addClass('stickyy');
             } else {
                 $('body').removeClass('stickyy');
             }
-            if ($(this).scrollTop() > 201) {
+            if ($(this).scrollTop() > 121) {
                 $('body').addClass('slideDown');
             } else {
                 $('body').removeClass('slideDown');
