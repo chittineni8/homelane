@@ -778,7 +778,7 @@ aside.modal-popup.city-popup {
         height: 40px;
         text-align: center;
         color: #000;
-        font-weight: 600;
+        font-weight: 500;
         font-size: 16px;
         background: transparent;
         width:100%;
@@ -793,6 +793,17 @@ aside.modal-popup.city-popup {
     span.otp-edit-send.disabled {
         color: #bfcadc;
         pointer-events: none;
+    }
+    .wrong-otp {
+        display: none;
+        color: #e71c24;
+        text-align: center;
+        margin: 0;
+        padding-top: 10px;
+        font-size: 12px;
+    }
+    span.otp-edit-send.active {
+        color: #3777B6;
     }
     .otp-form {
         border: 1px solid #e0e0e0;
@@ -842,7 +853,7 @@ aside.modal-popup.city-popup {
     #otp_mobile {
         border: none;
         display: inline-block;
-        width: 100px;
+        width: 90px;
         height: auto;
         font-weight: bold;
         color: #000;
@@ -854,6 +865,7 @@ aside.modal-popup.city-popup {
     }
     .field.otp {
         padding-bottom: 15px;
+        padding-top: 7px;
     }
     .otp-edit-send {
         display: none;
@@ -1824,6 +1836,7 @@ body.user-resetpassword-index {
         padding-bottom: 40px;
         position: sticky;
         top: 60px;
+        z-index: 1;
         &::-webkit-scrollbar {
             display: none;
         }
@@ -1955,7 +1968,7 @@ body.user-resetpassword-index {
                 .price-wrapper {
                     .price {
                         color: #E71C24;
-                        font-size: 13px;
+                        font-size: 14px;
                     }
                 }
             }
@@ -3118,6 +3131,14 @@ table.table.table-bordered {
     }
 }
 @media only screen and (min-width: 768px) {
+    body[data-mage-init] .minicart-wrapper + ul.header.links {
+        min-width: 210px;
+        text-align: right;
+    }
+    /*body[data-mage-init] .minicart-wrapper + ul.header.links ul.header.links.bottom {
+        min-width: 160px;
+        text-align: right;
+    }*/
     .cms-home main#maincontent {
         padding: 0;
     }
@@ -3501,7 +3522,7 @@ table.table.table-bordered {
         }
         .action-close {
             &:before {
-                background: url(../images/pop-up-close.png) no-repeat 0 0;
+                background: url(../images/pop-up-close1.png) no-repeat 0 0;
                 width: 100%;
                 height: 62px;
                 content: "";
