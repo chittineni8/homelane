@@ -1,1 +1,18 @@
-<li><a href="javascript:void(0);" id="idqrphIv4V" class="customer-register-link">Create an Account</a></li>
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * @var $block \Magento\Framework\View\Element\Html\Link
+ */
+?>
+<?php if (!$block->getIsDisabled()) : ?>
+<li>
+    <a href="javascript:void(0);" class="customer-register-link">
+        <?php if ($title = $block->getTitle()) : ?> title="<?= $block->escapeHtmlAttr(__($title)) ?>"<?php endif;?>>
+        <?= $block->escapeHtml(__($block->getLabel())) ?>cghgh
+    </a>
+</li>
+<?php endif; ?>
