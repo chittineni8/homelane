@@ -2019,10 +2019,12 @@ div#layered-filter-block-container {
             &.color {
                 height: 30px;
                 border-radius: 50%;
+                padding: 10px 10px 10px 10px;
+                outline: unset;
+                &.selected {
+                    border: 2px solid #E71C24;
+                }
             }
-        }
-        .swatch-option.color {
-            padding: 10px 10px 10px 10px;
         }
         .filter-options-content {
         margin-left: 2px;
@@ -3131,10 +3133,7 @@ table.table.table-bordered {
     }
 }
 @media only screen and (min-width: 768px) {
-    body[data-mage-init] .minicart-wrapper + ul.header.links {
-        min-width: 210px;
-        text-align: right;
-    }
+
     /*body[data-mage-init] .minicart-wrapper + ul.header.links ul.header.links.bottom {
         min-width: 160px;
         text-align: right;
@@ -4177,7 +4176,7 @@ table.table.table-bordered {
             margin: 0 auto;
             border-top-left-radius: 8px;
             border-top-right-radius: 8px;
-            padding: 20px 15px;
+            padding: 0 15px 20px;
             overflow-y: scroll;
             height: 50%;
             opacity: 1;
@@ -4210,10 +4209,16 @@ table.table.table-bordered {
                     display: block;
                     padding-bottom: 15px;
                     margin-bottom: 20px;
+                    position: sticky;
+                    top: 0;
+                    background: #fff;
+                    z-index: 11;
+                    height: 48px;
+                    line-height: 48px;
                     span.close-filter:before {
                             position: absolute;
-                            right: 7px;
-                            top: 5px;
+                            right: 2px;
+                            top: 2px;
                             font-family: 'icons-blank-theme';
                             content: '\e616';
                             font-size: 36px;

@@ -145,7 +145,7 @@ define([
                         submitFilterAction(link);
                     } else location.href = link;
                 })
-                $("html, body").animate({ scrollTop: 0 }, "slow");
+                
             });
 
             var currentElements = this.element.find('.filter-current a, .filter-actions a');
@@ -186,7 +186,7 @@ define([
                     e.stopPropagation();
                     e.preventDefault();
                     self.ajaxSubmit(link);
-                    $("html, body").animate({ scrollTop: 0 }, "slow");
+                    $("html, body").animate({ scrollTop: 0 }, "fast");
                 });
 
                 var checkbox = el.siblings(self.options.checkboxEl);

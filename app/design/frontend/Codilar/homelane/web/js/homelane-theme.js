@@ -123,6 +123,15 @@ require(['jquery','slickslider'], function($) {
 		    dots: true,arrows: true,infinite: true,speed: 300,slidesToShow: 1,slidesToScroll: 1,
 		    autoplay: true,initialSlide: 1,speed: 1000,cssEase: 'linear',
 		});
+		
+		$('#layer-product-list').find('.pages a').click(function(){
+			$("html, body").animate({ scrollTop: 0 }, "fast");
+		});
+		$("body").bind("ajaxComplete", function(e, xhr, settings) {
+			$('#layer-product-list').find('.pages a').click(function(){
+				$("html, body").animate({ scrollTop: 0 }, "fast");
+			});
+		});
 
 		$("form.query-form .control input[type='text']").on('change keyup', function() {
 		  if ($(this).val().length > 0) {
