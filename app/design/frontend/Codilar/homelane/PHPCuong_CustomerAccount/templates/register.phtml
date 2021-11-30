@@ -211,7 +211,20 @@ $('#popup-email_address').on('change keyup', function ()
 
 
 <script>
-require(['jquery','intlTelInput'], function($) {
+require([
+    'jquery',
+    'Magento_Ui/js/modal/modal',
+    'intlTelInput'
+], function($, modal) {
+     var options = {
+            type: 'popup',
+            modalClass: 'otp-popup',
+            responsive: true,
+            innerScroll: true,
+            buttons: []
+        },
+        flag = 0,
+        interval = 0;
     if(!$('input#country-code').length <= 0) {
         // Vanilla Javascript
         var input = document.querySelector("input#country-code");
@@ -232,113 +245,112 @@ require(['jquery','intlTelInput'], function($) {
             });
         });
     }
-});
-</script>
 
-<script>
-        require(
-            [
-                'jquery',
-                'Magento_Ui/js/modal/modal'
-            ],
 
-            function(
-                $,
-                modal
-            ) {
-                var options = {
-                    type: 'popup',
-                    modalClass: 'otp-popup',
-                    responsive: true,
-                    innerScroll: true,
-                    buttons: []
-                };
-                if ($("#popup-mpdal").length != 0 && $("#customer-popup-register").length != 0) { 
-                var popup = modal(options, $('#popup-mpdal'));
+    if ($("#popup-mpdal").length != 0 && $("#customer-popup-register").length != 0) { 
+        var popup = modal(options, $('#popup-mpdal'));
 
-                    $("#submit").on('click',function(event) {
-                    event.preventDefault();
-                    var regEmail =  $("#popup-email_address").val();
-                    var regPhone = $("#customer_mobile").val();
-                    var regName = $("#firstname").val();
-                    var regZip = $("#zip").val();
-                    var selected_ccode = $('.iti__selected-dial-code').text();
-                    console.log('selected country code' + selected_ccode);
-                    jQuery.ajax({
-                        url: '/phpcuong/customer_ajax/register',
-                        // url: "getAjaxUrl()",
-                        data: {
-                        customer_mobile:regPhone,
-                        firstname:regName,
-                        email: regEmail,
-                        postcode: regZip
-                        },
-                        type: "POST",
-                        // dataType: "json",
-                        success: function(response){
-                        } 
-                    });
-                    var value = $("#customer_mobile").val();
-                    var email = $("#popup-email_address").val();
-                    if (selected_ccode == +91) {
-                        $("#popup-mpdal").modal("openModal");
-                    }
-                    
-                    $("#otp_mobile").prop('disabled', true);
-                    $(".otp-edit").on('click',function(){
-                        $("#otp_mobile").prop('disabled', false);
-                    });
-                    $(".resend-otp, .otp-edit-send").on('click',function(){
-                        $("#set-otp").hide();
-                        $("#reset-otp").show();
-                    });
-                    $("#otp_mobile").on('change keyup',function(){
-                        var otpNum = $(this).val(); 
-                        if(otpNum.length == 10) {
-                            $(".otp-edit").hide();
-                        }
-                    });
-                    
-                    /*timer*/
-                    var timer2 = "2:31";
-                    var interval = setInterval(function() {
-                    var timer = timer2.split(':');
-                    //by parsing integer, I avoid all extra string processing
-                    var minutes = parseInt(timer[0], 10);
-                    var seconds = parseInt(timer[1], 10);
-                    --seconds;
-                    minutes = (seconds < 0) ? --minutes : minutes;
-                    if (minutes < 0) clearInterval(interval);
-                    seconds = (seconds < 0) ? 59 : seconds;
-                    seconds = (seconds < 10) ? '0' + seconds : seconds;
-                    //minutes = (minutes < 10) ?  minutes : minutes;
-                    $('.countdown').html(minutes + ':' + seconds);
-                    timer2 = minutes + ':' + seconds;
-                    }, 1000);
+            $("#submit").on('click',function(event) {
+            event.preventDefault();
+            var regEmail =  $("#popup-email_address").val();
+            var regPhone = $("#customer_mobile").val();
+            var regName = $("#firstname").val();
+            var regZip = $("#zip").val();
+            var selected_ccode = $('.iti__selected-dial-code').text();
+            console.log('selected country code' + selected_ccode);
+            jQuery.ajax({
+                url: '/phpcuong/customer_ajax/register',
+                // url: "getAjaxUrl()",
+                data: {
+                customer_mobile:regPhone,
+                firstname:regName,
+                email: regEmail,
+                postcode: regZip
+                },
+                type: "POST",
+                // dataType: "json",
+                success: function(response){
+                } 
+            });
+            var value = $("#customer_mobile").val();
+            var email = $("#popup-email_address").val();
+            if (selected_ccode == +91) {
+                $("#popup-mpdal").modal("openModal");
+            }
+            
+            $("#otp_mobile").prop('disabled', true);
+            $(".otp-edit").on('click',function(){
+                $("#otp_mobile").prop('disabled', false);
+            });
+            $(".resend-otp, .otp-edit-send").on('click',function(){
+                $("#set-otp").hide();
+                $("#reset-otp").show();
+            });
+            $("#otp_mobile").on('change keyup',function(){
+                var otpNum = $(this).val(); 
+                if(otpNum.length == 10) {
+                    $(".otp-edit").hide();
+                }
+            });
+            
+            /*timer*/
+            callOtpTimer();
 
-                    $('#customer-popup-register').modal('closeModal');
+            $('#customer-popup-register').modal('closeModal');
 
-                    $('#otp_mobile').val(value);
-                    $('#email').val(email);
-                    $('#oldphone').val(value);
-                    /*$("body").bind("ajaxComplete", function(e, xhr, settings){
-                        $('#send2-otp-verify').on('click',function () {
-                            console.log('ajax loaded...');
-                            if ($("#user-exist-error:contains('Error')").length > 0) {
-                                console.log('clicked');
-                                setTimeout(function () {
-                                $('#customer-popup-register').modal('closeModal');
-                                console.log('close');
-                                }, 1000);
-                            }
-                        });
-                    });*/
+            $('#otp_mobile').val(value);
+            $('#email').val(email);
+            $('#oldphone').val(value);
+        });
+    }
+
+    function callOtpTimer() {
+        var minute = 2;
+        var sec = 59;
+        flag++;
+        if (flag > 3) {
+            clearInterval(interval);
+                                    // 3rd loop end after
+            document.getElementById("timer").innerHTML = "Finished";
+                                 
+        } else {
+            interval = setInterval(function () {
+                document.getElementById("timer").innerHTML = minute + " : " + (sec < 10 ? '0' + sec: sec);
+                sec--;
+                if (sec == -1) {
+                    if (minute == 0) {
+                        clearInterval(interval);
+                        callOtpTimer();
+                        // 2nd & 3rd loop end
+
+                var mobileValue = $("input[name='otp_mobile']").val();
+                var emailID = $('#email').val();
+                var flag = 2;
+
+                jQuery.ajax({
+                    url: '/user/otp/otpgenerate',
+                    // url: "getAjaxUrl()",
+                    data: {
+                        phone: mobileValue,
+                        flag: flag,
+                        email: emailID,
+                        type: 'text',
+                        isEditNum: '',
+                        isResendOtpClick: 'yes'
+                    },
+                    type: "POST",
+                    dataType: "json"
                 });
-            }
+                    }
+                    sec = 59;
+                    minute --;
+                }
+            }, 1000);
+        }   
+    }
 
-            }
-        );
-    </script>
+});
+</script>   
 
 
 
