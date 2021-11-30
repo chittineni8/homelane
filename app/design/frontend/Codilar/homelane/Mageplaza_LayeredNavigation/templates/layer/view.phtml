@@ -110,27 +110,30 @@ if ($block->canShowBlock()) : ?>
 <?php endif; ?>
 <script type="text/javascript">
 require(['jquery'], function($) {
-    jQuery(document).ready(function(){
+    $(document).ready(function(){
         if ($(window).width() > 768) {
-            jQuery(function() {
+            $(function() {
                 var sidebarheight = $('.sidebar.sidebar-main').height();
                 if (!!$('.sidebar.sidebar-main').length) { // make sure "#sticky" element exists
                     var el = $('.sidebar.sidebar-main');
-                    var stickyTop = $('.sidebar.sidebar-main').offset().top; // returns number
+                    var stickyTop = $('.sidebar.sidebar-main').offset().top - 55; // returns number
                     var footerTop = $('.page-bottom').offset().top; // returns number
                     var stickyHeight = $('.sidebar.sidebar-main').height();
                     $(window).scroll(function(){ // scroll event
                         var windowTop = $(window).scrollTop(); // returns number
                         if ($(this).scrollTop() > 1) {
                             el.addClass('sticky');
+                            let stickyHeader = $('.page-header').height();
+                            el.css({height: `calc(100vh - ${stickyHeader}px)`});
                         } else {
                             el.removeClass('sticky');
                         }
-                        if (stickyTop < windowTop){
-                         el.css({height: sidebarheight})
+                        /*if (stickyTop < windowTop){
+                        let stickyHeader = $('.page-header').height();
+                         el.css({height: `calc(100vh - ${stickyHeader}px)`});
                         } else {
                          //el.css({height: 'auto'})
-                        }     
+                        }*/     
                     });
                 }
             });
