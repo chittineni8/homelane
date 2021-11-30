@@ -23,9 +23,10 @@
         </div>
         <div class="field otp">
             <label for="otp" class="label otp-pass">One Time Password</label>
-            <input type="numer" placeholder="Enter OTP" name="getotpnumber" id="getotp" value="" maxlength="4"
-                   autocomplete="off"
-                   onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"/>
+
+            <input type="numer" placeholder="Enter OTP" name="getotpnumber" id="getotp" value="" maxlength="4" autocomplete="off" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"/>
+            <p class="wrong-otp">Wrong or Expired OTP! Use resend to send OTP</p>
+
         </div>
         <div class="field get-otp">
             <p id="otpExpire">Your OTP will expire in &nbsp;<span id="timer"><span></p>
@@ -44,7 +45,7 @@
         </div>
     </form>
     <p id="set-otp">we have sent the otp to your number, please verify</p>
-    <p id="reset-otp" style="display:none">we have reset the otp and sent to your number, please verify</p>
+    <p id="reset-otp" style="display:none">we have resent the otp to your number, please verify</p>
     <p id="user-exist-error"></p>
 </div>
 
@@ -63,8 +64,9 @@
                         complete: function (mobileResult) {
                             $("#user-exist-error").html("");
                             $("#user-exist-error").append(mobileResult.responseJSON);
-                            $(".otp-edit-send").show();
-                            if ($('#user-exist-error').is(':empty')) {
+                            $(".otp-edit-send").addClass('active');
+                            if ($('#user-exist-error').is(':empty')){
+
                                 $(".otp-edit-send").removeClass('disabled');
                             } else {
                                 $(".otp-edit-send").addClass('disabled');
@@ -72,6 +74,12 @@
                         }
                     });
                 }
+            });
+            $('span.otp-edit').on('click', function () {
+                $(".otp-edit-send").show();
+                $(this).hide();
+                $('span.resend-otp').hide();
+                $('span.voice-call-otp').hide();
             });
         });
     });
@@ -85,6 +93,10 @@
                 var mobileValue = $("input[name='otp_mobile']").val();
                 var emailID = $('#email').val();
                 var flag = 1;
+                $(this).hide();
+                $('span.otp-edit').show();
+                $('span.resend-otp').show();
+                $('span.voice-call-otp').show();
 
                 jQuery.ajax({
                     url: '/user/otp/otpgenerate',
@@ -185,6 +197,9 @@
                                 $('#popup-mpdal').modal('closeModal');
                                 location.reload();
                             }, 1000);
+                            $('.wrong-otp').hide();
+                        } else {
+                            $('.wrong-otp').show();
                         }
                     }
                 });

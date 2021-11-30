@@ -1,12 +1,12 @@
 require(['jquery','slickslider'], function($) {
 	$(document).ready( function() {
 		$(window).scroll(function () {
-            if ($(this).scrollTop() > 200) {
+            if ($(this).scrollTop() > 0) {
                 $('body').addClass('stickyy');
             } else {
                 $('body').removeClass('stickyy');
             }
-            if ($(this).scrollTop() > 201) {
+            if ($(this).scrollTop() > 1) {
                 $('body').addClass('slideDown');
             } else {
                 $('body').removeClass('slideDown');
@@ -123,6 +123,15 @@ require(['jquery','slickslider'], function($) {
 		    dots: true,arrows: true,infinite: true,speed: 300,slidesToShow: 1,slidesToScroll: 1,
 		    autoplay: true,initialSlide: 1,speed: 1000,cssEase: 'linear',
 		});
+		
+		$('#layer-product-list').find('.pages a').click(function(){
+			$("html, body").animate({ scrollTop: 0 }, "fast");
+		});
+		$("body").bind("ajaxComplete", function(e, xhr, settings) {
+			$('#layer-product-list').find('.pages a').click(function(){
+				$("html, body").animate({ scrollTop: 0 }, "fast");
+			});
+		});
 
 		$("form.query-form .control input[type='text']").on('change keyup', function() {
 		  if ($(this).val().length > 0) {
@@ -197,12 +206,21 @@ require(['jquery','slickslider'], function($) {
 		});
 		$(".customer-account-wrapper .control #customer_mobile").on('change keyup blur',function () {
 			$(this).parent().find('div.mage-error').hide(); 
-			var mobNum = $(this).val();
-			console.log('hghg');  
+			var mobNum = $(this).val(); 
 			if(mobNum.length == 10) {
 				$(this).parent().addClass('input-has-value');
+				$('#mob-error-msg').hide();
 			} else {
 				$(this).parent().removeClass('input-has-value');
+
+			}
+		});
+		$(".customer-account-wrapper .control #customer_mobile").on('change focusout',function () {
+			var mobNum = $(this).val(); 
+			if(mobNum.length == 10) {
+				$('#mob-error-msg').hide();
+			} else {
+				$('#mob-error-msg').show();
 			}
 		});
 		$(".customer-account-wrapper .control .validate-zip-international").on('change keyup',function () {

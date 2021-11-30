@@ -69,9 +69,11 @@
                            echo 'required-entry ';
                        } ?> <?php echo $validateClass; ?>" <?php if ($required) {
                     echo 'data-validate="{required:true}"';
-                } ?> autocomplete="off" aria-required="true" type="text" data-mage-init='{"validation":{}}'>
+                } ?> autocomplete="off" aria-required="true" type="text" data-mage-init='{"validation":{}}'
+                onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" />
             </div>
             <div id="mobileresponse"></div>
+            <div id="mob-error-msg">Please enter a valid phone number</div>
         </div>
 
 
@@ -99,7 +101,8 @@
                            value="<?= $block->escapeHtmlAttr($block->getFormData()->getPostcode()) ?>"
                            title="<?php /* @escapeNotVerified */ echo __('Postcode') ?>" id="zip"
                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                           class="input-text validate-zip-international <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('postcode')) ?>" data-validate='{"required":true}'>
+                           class="input-text validate-zip-international <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('postcode')) ?>" data-validate='{"required":true}'
+                           onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" />
                 </div>
             </div>
             </fieldset>
@@ -143,27 +146,32 @@
 require(['jquery'], function($){
 $(document).ready(function()
 {
-$('#customer_mobile').on('change', function () 
+$('#customer_mobile').on('change keyup', function () 
  {
    var mobileValue = jQuery("input[name='customer_mobile']").val();
-   
-    jQuery.ajax({
-                url: '/user/customer/index',
-                // url: "getAjaxUrl()",
-                data: {mobile:mobileValue},
-                type: "POST",
-                dataType: "json",
-                complete: function(mobileResult) {
-                    $("#mobileresponse").html(""); 
-                    $("#mobileresponse").append(mobileResult.responseJSON);
-                    if ($('#mobileresponse').is(':empty')){
-                        console.log('empty');
-                    } else {
-                        $('button#submit').prop('disabled', true);
-                        $('.field.field-name-customer_mobile .control').removeClass('input-has-value');
-                    }
-              }
-            });
+   if(mobileValue.length == 10) {
+        jQuery.ajax({
+            url: '/user/customer/index',
+            // url: "getAjaxUrl()",
+            data: {mobile:mobileValue},
+            type: "POST",
+            dataType: "json",
+            complete: function(mobileResult) {
+                $("#mobileresponse").html("");
+                $("#mobileresponse").show();
+                $("#mobileresponse").append(mobileResult.responseJSON);
+                if ($('#mobileresponse').is(':empty')){
+                    //console.log('empty');
+                } else {
+                    $('button#submit').prop('disabled', true);
+                    $('.field.field-name-customer_mobile .control').removeClass('input-has-value');
+                    $('#mob-error-msg').hide();
+                }
+          }
+        });
+    } else {
+        $("#mobileresponse").hide();
+    }
 });
 });
 });
@@ -173,7 +181,7 @@ $('#customer_mobile').on('change', function ()
 require(['jquery'], function($){
 $(document).ready(function()
 { 
-$('#popup-email_address').on('change', function () 
+$('#popup-email_address').on('change keyup', function () 
  {
     var emailValue = $("#popup-email_address").val();
    jQuery.ajax({
@@ -186,7 +194,7 @@ $('#popup-email_address').on('change', function ()
                     $("#emailresponse").html(""); 
                     $("#emailresponse").append(resultJson.responseJSON);
                     if ($('#emailresponse').is(':empty')){
-                        console.log('empty');
+                        //console.log('empty');
                     } else {
                         $('button#submit').prop('disabled', true);
                         $('.cust-email-address .control').removeClass('input-has-value');
