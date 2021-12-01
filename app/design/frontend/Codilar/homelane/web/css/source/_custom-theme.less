@@ -18,6 +18,9 @@ body#html-body {
     box-sizing: border-box;
 }
 /*****-----------------Header Section---------------*****/
+/*body[data-mage-init] .sections.nav-sections, body[data-mage-init] ul.header.links , body[data-mage-init] .block.block-search {
+    visibility: hidden;
+}*/
 .stickyy.slideDown header.page-header .logo {
     display: none;
 }
@@ -4112,6 +4115,12 @@ table.table.table-bordered {
     }
     div#layered-filter-block-container {
         border-top: none;
+    }
+    body[data-mage-init]  .toolbar-sorter.sorter {
+        visibility: hidden;
+    }
+     div.toolbar-sorter.sorter {
+        visibility: visible;
     }
     .filter-options {
         .filter-options-content {
