@@ -145,7 +145,6 @@ define([
                         submitFilterAction(link);
                     } else location.href = link;
                 })
-                
             });
 
             var currentElements = this.element.find('.filter-current a, .filter-actions a');
@@ -186,7 +185,7 @@ define([
                     e.stopPropagation();
                     e.preventDefault();
                     self.ajaxSubmit(link);
-                    $("html, body").animate({ scrollTop: 0 }, "fast");
+            $("html, body").animate({ scrollTop: 0 }, "fast");
                 });
 
                 var checkbox = el.siblings(self.options.checkboxEl);
@@ -194,18 +193,18 @@ define([
                     e.stopPropagation();
                     self.ajaxSubmit(link);
                 });
-
             });
-            $("#layered-filter-block").on("click","span.close-filter", function(){
+
+        $("#layered-filter-block").on("click","span.close-filter", function(){
                 $('div#layered-filter-block').removeClass("active");
                 $('.block.filter .filter-title > strong').attr("aria-expanded","false");
                 $('.block.filter .filter-title > strong').attr("aria-selected","false");
                 $('body').removeClass("filter-active");
-            });
-            var breadcrumbsclone = $('.breadcrumbs').clone();
-            $('.filter-breadcrumbs .content').html(breadcrumbsclone);
+                });
+                var breadcrumbsclone = $('.breadcrumbs').clone();
+                $('.filter-breadcrumbs .content').html(breadcrumbsclone);
 
-            
+
             var swatchElements = this.element.find('.swatch-attribute');
             swatchElements.each(function (index) {
                 var el = $(this);
@@ -303,7 +302,7 @@ define([
         initWishlistCompare: function () {
             var isAjax = this.options.isAjax;
             var isCustomerLoggedIn = this.options.isCustomerLoggedIn,
-                elClass = 'a.action.tocompare' + (isCustomerLoggedIn ? ',a.action.towishlist' : '');
+                elClass = 'a.action.tocompare';
             $(elClass).each(function () {
                 var el = $(this);
                 $(el).bind('click', function (e) {
