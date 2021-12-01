@@ -126,9 +126,13 @@ require(['jquery','slickslider'], function($) {
 		
 		$('#layer-product-list').find('.pages a').click(function(){
 			$("html, body").animate({ scrollTop: 0 }, "fast");
+
 		});
 		$("body").bind("ajaxComplete", function(e, xhr, settings) {
 			$('#layer-product-list').find('.pages a').click(function(){
+				$("html, body").animate({ scrollTop: 0 }, "fast");
+			});
+			$('a.mp-wishlist-delete').on('click', function(){
 				$("html, body").animate({ scrollTop: 0 }, "fast");
 			});
 		});

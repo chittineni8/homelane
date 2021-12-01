@@ -273,6 +273,7 @@ define(
                         } else {
                             modal(options, addToWishlistModal).openModal();
                         }
+                        $(this).parents('li.item').addClass('wishlist-active');
                     });
                 },
                 getCustomizableData: function (element) {
