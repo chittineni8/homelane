@@ -35,11 +35,13 @@ class ListProduct extends Template
         StoreManagerInterface                $storemanagerinterface,
         \Magento\Customer\Model\Session      $customer,
         \Codilar\Customer\Block\CustomerData $customerdata,
+        \Magento\Framework\Registry $registry,
         \Magento\Wishlist\Model\Wishlist     $wishlist
     )
     {
         $this->customer = $customer;
         $this->customerdata = $customerdata;
+         $this->registry = $registry;
         $this->wishlist = $wishlist;
         $this->_wishlistCollectionFactory = $wishlistCollectionFactory;
         $this->storemanagerinterface = $storemanagerinterface;
@@ -73,6 +75,7 @@ class ListProduct extends Template
         }//end foreach
         return $wishlistData;
     }
+
 
 
 }
