@@ -53,7 +53,7 @@ if ($exist = ($productCollection && $productCollection->getSize())) {
             <div class="products-<?= /* @noEscape */ $mode ?> <?= /* @noEscape */ $mode ?>">
                 <ol class="product-items <?= /* @noEscape */ $type ?>">
                     <?php foreach ($items as $_item) :?>
-                    <li class="product-item">
+                    <li class="product-item" id="newproduct-id-<?php echo $_item->getId(); ?>">
                         <div class="product-item-info">
                             <a href="<?= $block->escapeUrl($block->getProductUrl($_item)) ?>"
                                class="product-item-photo">
@@ -146,3 +146,25 @@ if ($exist = ($productCollection && $productCollection->getSize())) {
         </div>
     </div>
 <?php endif;?>
+
+
+
+<script>
+    require(['jquery'],function ($) {
+        jQuery.ajax({
+            url: '<?php echo $this->getUrl('wishlisted/index/wishlistheart') ?>',
+            method: 'get',
+            dataType: 'json',
+            success: function (data) {
+
+                var wislistAddesCheckData = data;
+                var itemLenth = wislistAddesCheckData.items.length;
+                for (i = 0; i < itemLenth; i++) {
+                    var wislistAddedProductId = wislistAddesCheckData.items[i].product_id;
+
+                    $("#newproduct-id-" + wislistAddedProductId).addClass('wishlist-active');
+                }
+            }
+        });
+    });
+</script>
