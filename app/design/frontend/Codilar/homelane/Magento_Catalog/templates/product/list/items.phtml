@@ -331,3 +331,23 @@ $_item = null;
             </script>
         <?php endif;?>
         <?php endif;?>
+
+        <script>
+    require(['jquery'], function ($) {
+        jQuery.ajax({
+            url: '<?php echo $this->getUrl('wishlisted/index/wishlistheart') ?>',
+            method: 'get',
+            dataType: 'json',
+            success: function (data) {
+
+                var wislistAddesCheckData = data;
+                var itemLenth = wislistAddesCheckData.items.length;
+                for (i = 0; i < itemLenth; i++) {
+                    var wislistAddedProductId = wislistAddesCheckData.items[i].product_id;
+
+                    $("#product-item_" + wislistAddedProductId).addClass('wishlist-active');
+                }
+            }
+        });
+    });
+</script>
