@@ -219,13 +219,13 @@ location /mumbai/ {
     include        fastcgi_params;
 }
 
-location /bangalore/ {
-    try_files /bangalore/index.php /index.php $uri =404;
+location /delhi/ {
+    try_files /delhi/index.php /index.php $uri =404;
     fastcgi_pass   fastcgi_backend;
     fastcgi_buffers 1024 4k;
 
     fastcgi_param  MAGE_RUN_TYPE "website";
-    fastcgi_param  MAGE_RUN_CODE "bangalore";
+    fastcgi_param  MAGE_RUN_CODE "delhi";
 
     fastcgi_read_timeout 600s;
     fastcgi_connect_timeout 600s;

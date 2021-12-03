@@ -35,7 +35,7 @@ HTML;
 //echo "<pre>";print_r($_SERVER);echo "</pre>";
 //echo 33;die;
 $params = $_SERVER;
-$params[\Magento\Store\Model\StoreManager::PARAM_RUN_CODE] = 'bangalore';
+$params[\Magento\Store\Model\StoreManager::PARAM_RUN_CODE] = 'delhi';
 $params[\Magento\Store\Model\StoreManager::PARAM_RUN_TYPE] = 'website';
 
 $bootstrap = \Magento\Framework\App\Bootstrap::create(BP, $params);
