@@ -281,6 +281,11 @@ require([
             $("#otp_mobile").prop('disabled', true);
             $(".otp-edit").on('click',function(){
                 $("#otp_mobile").prop('disabled', false);
+                $(".otp-edit-send").removeClass('active');
+            });
+            $(".otp-edit-send").on('click',function(){
+                $("#otp_mobile").prop('disabled', true);
+                resetCallOtpTimer();
             });
             $(".resend-otp, .otp-edit-send").on('click',function(){
                 $("#set-otp").hide();
@@ -310,7 +315,7 @@ require([
         flag++;
         if (flag > 3) {
             clearInterval(interval);
-                                    // 3rd loop end after
+            // 3rd loop end after
             document.getElementById("timer").innerHTML = "Finished";
                                  
         } else {
@@ -323,30 +328,47 @@ require([
                         callOtpTimer();
                         // 2nd & 3rd loop end
 
-                var mobileValue = $("input[name='otp_mobile']").val();
-                var emailID = $('#email').val();
-                var flag = 2;
+                        var mobileValue = $("input[name='otp_mobile']").val();
+                        var emailID = $('#email').val();
+                        var flag = 2;
 
-                jQuery.ajax({
-                    url: '/user/otp/otpgenerate',
-                    // url: "getAjaxUrl()",
-                    data: {
-                        phone: mobileValue,
-                        flag: flag,
-                        email: emailID,
-                        type: 'text',
-                        isEditNum: '',
-                        isResendOtpClick: 'yes'
-                    },
-                    type: "POST",
-                    dataType: "json"
-                });
+                        jQuery.ajax({
+                            url: '/user/otp/otpgenerate',
+                            // url: "getAjaxUrl()",
+                            data: {
+                                phone: mobileValue,
+                                flag: flag,
+                                email: emailID,
+                                type: 'text',
+                                isEditNum: '',
+                                isResendOtpClick: 'yes'
+                            },
+                            type: "POST",
+                            dataType: "json"
+                        });
                     }
                     sec = 59;
                     minute --;
                 }
             }, 1000);
-        }   
+        }  
+    }
+    function resetCallOtpTimer() {
+        var minute = 2;
+        var sec = 59;
+        interval = setInterval(function () {
+            document.getElementById("timer").innerHTML = minute + " : " + (sec < 10 ? '0' + sec: sec);
+            sec--;
+            if (sec == -1) {
+                if (minute == 0) {
+                    clearInterval(interval);
+                    resetCallOtpTimer();
+                    // 2nd & 3rd loop end
+                }
+                sec = 59;
+                minute --;
+            }
+        }, 1000);
     }
 
 });
