@@ -204,6 +204,12 @@
                     }
                 });
             });
+            $('input#getotp').on('change keyup', function () {
+                var getotpNum = $(this).val(); 
+                if(getotpNum.length == 4) {
+                    $('.wrong-otp').hide();
+                }
+            });
         });
     });
 </script>

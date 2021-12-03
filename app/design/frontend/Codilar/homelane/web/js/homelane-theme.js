@@ -27,15 +27,17 @@ require(['jquery','slickslider'], function($) {
                 }
             }
         });
-        if ($(window).width() < 768) {
-           	var storeclone = $('div#switcher-store div#switcher-store-trigger').clone();
-  			$('.mob-store-switcher').html(storeclone);
-  			var sortbarclone = $('.toolbar-sorter.sorter').clone();
-  			$('.filter-sortbar').html(sortbarclone);
-  			var username = $('.customer-menu ul.top').clone();
+        if ($(window).width() < 1026) {
+        	var username = $('.customer-menu ul.top').clone();
   			$('.user-details-login').html(username);
   			var loginuserdetail = $('div.customer-menu').clone();
   			$('.login-user-details').html(loginuserdetail);
+  			var storeclone = $('ul.header.links.bottom div#switcher-store div#switcher-store-trigger').clone();
+  			$('.mob-store-switcher').html(storeclone);
+        }
+        if ($(window).width() < 768) {
+  			var sortbarclone = $('.toolbar-sorter.sorter').clone();
+  			$('.filter-sortbar').html(sortbarclone);
 
   			$("span.close-filter").click(function () {
 		      $('div#layered-filter-block').toggleClass("active");
