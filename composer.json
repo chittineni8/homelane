@@ -18,8 +18,8 @@
         "mageplaza/layered-navigation-m2": "4.1.1",
         "mageplaza/magento-2-social-login": "^4.1",
         "mageplaza/module-better-wishlist": "^4.0",
+        "mageplaza/module-search": "^4.0",
         "mageplaza/module-smtp": "^4.5",
-        "mageworx/module-searchsuiteautocomplete": "^2.1",
         "smile/module-product-label": "^1.1",
         "swissup/module-easytabs": "^1.9",
         "twilio/sdk": "^6.28"
