@@ -12,7 +12,7 @@ define([
     'use strict';
 
     mediaCheck({
-        media: '(min-width: 1025px)',
+        media: '(min-width: 1140px)',
 
         /**
          * Switch to Desktop Version.

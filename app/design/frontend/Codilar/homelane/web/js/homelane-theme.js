@@ -27,13 +27,19 @@ require(['jquery','slickslider'], function($) {
                 }
             }
         });
-        if ($(window).width() < 1026) {
+        if ($(window).width() < 1141) {
         	var username = $('.customer-menu ul.top').clone();
   			$('.user-details-login').html(username);
   			var loginuserdetail = $('div.customer-menu').clone();
   			$('.login-user-details').html(loginuserdetail);
   			var storeclone = $('ul.header.links.bottom div#switcher-store div#switcher-store-trigger').clone();
   			$('.mob-store-switcher').html(storeclone);
+  			$(".sections.nav-sections a.customer-login-link").on('click',function () {
+  				$('html').removeClass('nav-before-open nav-open')
+  			});
+  			$(".sections.nav-sections div#switcher-store-trigger").on('click',function () {
+  				$('html').removeClass('nav-before-open nav-open')
+  			});
         }
         if ($(window).width() < 768) {
   			var sortbarclone = $('.toolbar-sorter.sorter').clone();
