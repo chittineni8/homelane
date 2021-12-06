@@ -122,7 +122,7 @@ $("#forgotPassword").click(function(){
 
     var emailVal = $("#email-login").val();
     jQuery.ajax({
-                url: '/user/forgetpassword/index',
+                url: '<?php echo $block->getBaseUrl().'user/forgetpassword/index'?>',
                 // url: "getAjaxUrl()",
                 data: {email:emailVal},
                 type: "POST",
