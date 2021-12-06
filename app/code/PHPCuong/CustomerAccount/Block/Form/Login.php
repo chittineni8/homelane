@@ -23,6 +23,12 @@ namespace PHPCuong\CustomerAccount\Block\Form;
 
 class Login extends \Magento\Framework\View\Element\Template
 {
+
+    /**
+     * @var \Magento\Store\Model\StoreManagerInterface
+     */
+    protected $storeManager;
+    
     /**
      * @var \Magento\Customer\Model\Session
      */
@@ -52,12 +58,14 @@ class Login extends \Magento\Framework\View\Element\Template
         \Magento\Customer\Model\Session $customerSession,
         \Magento\Framework\App\Http\Context $httpContext,
         \Magento\Customer\Model\Registration $registration,
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
         array $data = []
     ) {
         parent::__construct($context, $data);
         $this->customerSession = $customerSession;
         $this->httpContext = $httpContext;
         $this->registration = $registration;
+        $this->storeManager = $storeManager;
     }
 
     /**
@@ -111,5 +119,11 @@ class Login extends \Magento\Framework\View\Element\Template
     public function getCustomerRegistrationUrl()
     {
         return $this->getUrl('customer/account/create');
+    }
+
+
+     public function getBaseUrl()
+    {
+        return  $storeUrl = $this->storeManager->getStore()->getBaseUrl();
     }
 }
