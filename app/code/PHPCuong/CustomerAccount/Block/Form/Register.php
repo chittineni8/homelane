@@ -26,6 +26,11 @@ use Magento\Customer\Model\AccountManagement;
 class Register extends \Magento\Directory\Block\Data
 {
     /**
+     * @var \Magento\Store\Model\StoreManagerInterface
+     */
+    protected $storeManager;
+
+    /**
      * @var \Magento\Customer\Model\Session
      */
     protected $customerSession;
@@ -68,6 +73,7 @@ class Register extends \Magento\Directory\Block\Data
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Directory\Helper\Data $directoryHelper,
         \Magento\Framework\Json\EncoderInterface $jsonEncoder,
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\App\Cache\Type\Config $configCacheType,
         \Magento\Directory\Model\ResourceModel\Region\CollectionFactory $regionCollectionFactory,
         \Magento\Directory\Model\ResourceModel\Country\CollectionFactory $countryCollectionFactory,
@@ -82,6 +88,7 @@ class Register extends \Magento\Directory\Block\Data
         $this->customerSession = $customerSession;
         $this->httpContext = $httpContext;
         $this->registration = $registration;
+        $this->storeManager = $storeManager;
         parent::__construct(
             $context,
             $directoryHelper,
@@ -184,5 +191,10 @@ class Register extends \Magento\Directory\Block\Data
     public function customerIsAlreadyLoggedIn()
     {
         return (bool)$this->httpContext->getValue(\Magento\Customer\Model\Context::CONTEXT_AUTH);
+    }
+
+    public function getBaseUrl()
+    {
+        return  $storeUrl = $this->storeManager->getStore()->getBaseUrl();
     }
 }

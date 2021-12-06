@@ -170,9 +170,10 @@ class Index extends Action
                 $responseBody = $mobileData->getBody();
                 $responseContent = $responseBody->getContents();
                 $responseMobile = json_decode($responseContent, true);
-
+             
+             if (array_key_exists('user_exists',$responseMobile)):
                 $userExist = $responseMobile['user_exists'];
-                if ($userExist) :
+                // if ($userExist) :
                     $userEmail = $responseMobile['email'];
 
                     $hiddenEmail = $this->hideEmailAddress($userEmail);
@@ -200,8 +201,9 @@ class Index extends Action
                 $responseContent = $responseBody->getContents();
                 $responseEmail = json_decode($responseContent, true);
 
-                $emailuserExist = $responseEmail['user_exists'];
-                if ($emailuserExist) :
+                if (array_key_exists('user_exists',$responseEmail)):
+                    $emailuserExist = $responseEmail['user_exists'];
+                // if ($emailuserExist) :
                     $resultJson->setData('User Exists. Please login or use a different email');
                     return $resultJson;
                 else :

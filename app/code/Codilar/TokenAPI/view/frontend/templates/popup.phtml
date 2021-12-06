@@ -1,3 +1,4 @@
+<?php $blockObj= $block->getLayout()->createBlock('Codilar\TokenAPI\Block\ResetPassword');?>
 <div class="otp-wrapper">
     <h2>Verify your number</h2>
     <form class="otp-form">
@@ -56,7 +57,7 @@
                 var mobileValue = $("input[name='otp_mobile']").val();
                 if (mobileValue.length == 10) {
                     jQuery.ajax({
-                        url: '/user/customer/index',
+                        url: '<?php echo $blockObj->getBaseUrl().'user/customer/index'?>',
                         // url: "getAjaxUrl()",
                         data: {mobile: mobileValue},
                         type: "POST",
@@ -99,7 +100,7 @@
                 $('span.voice-call-otp').show();
 
                 jQuery.ajax({
-                    url: '/user/otp/otpgenerate',
+                    url: '<?php echo $blockObj->getBaseUrl().'user/otp/otpgenerate'?>',
                     // url: "getAjaxUrl()",
                     data: {
                         phone: mobileValue,
@@ -113,7 +114,7 @@
                     dataType: "json"
                 });
                 jQuery.ajax({
-                    url: '/user/otp/updatephone',
+                    url: '<?php echo $blockObj->getBaseUrl().'user/otp/updatephone'?>',
                     // url: "getAjaxUrl()",
                     data: {altmobile: mobileValue, email: emailID, mobile: mobile},
                     type: "POST",
@@ -135,7 +136,7 @@
                 var flag = 2;
 
                 jQuery.ajax({
-                    url: '/user/otp/otpgenerate',
+                    url: '<?php echo $blockObj->getBaseUrl().'user/otp/otpgenerate'?>',
                     // url: "getAjaxUrl()",
                     data: {
                         phone: mobileValue,
@@ -156,7 +157,7 @@
                 var flag = 2;
 
                 jQuery.ajax({
-                    url: '/user/otp/otpgenerate',
+                    url: '<?php echo $blockObj->getBaseUrl().'user/otp/otpgenerate'?>',
                     // url: "getAjaxUrl()",
                     data: {
                         phone: mobileValue,
@@ -186,7 +187,7 @@
                 var flag = 3;
                 var otp = $('#getotp').val();
                 jQuery.ajax({
-                    url: '/user/otp/otpgenerate',
+                    url: '<?php echo $blockObj->getBaseUrl().'user/otp/otpgenerate'?>',
                     // url: "getAjaxUrl()",
                     data: {phone: mobileValue, flag: flag, email: emailID, type: 'text', otp: otp},
                     type: "POST",

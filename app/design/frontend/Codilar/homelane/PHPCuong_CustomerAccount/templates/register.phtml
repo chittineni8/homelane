@@ -20,8 +20,8 @@
  */
  /** @var \PHPCuong\CustomerAccount\Block\Form\Register $block */
 
-
 ?>
+
 
 <?php if (!$block->customerIsAlreadyLoggedIn() && $block->getRegistration()->isAllowed()): ?>
     <style>
@@ -151,7 +151,7 @@ $('#customer_mobile').on('change keyup', function ()
    var mobileValue = jQuery("input[name='customer_mobile']").val();
    if(mobileValue.length == 10) {
         jQuery.ajax({
-            url: '/user/customer/index',
+            url: '<?php echo $block->getBaseUrl().'user/customer/index'?>',
             // url: "getAjaxUrl()",
             data: {mobile:mobileValue},
             type: "POST",
@@ -185,7 +185,7 @@ $('#popup-email_address').on('change keyup', function ()
  {
     var emailValue = $("#popup-email_address").val();
    jQuery.ajax({
-                url: '/user/customer/index',
+                url: '<?php echo $block->getBaseUrl().'user/customer/index'?>',
                 // url: "getAjaxUrl()",
                 data: {email:emailValue},
                 type: "POST",
@@ -259,7 +259,7 @@ require([
             var selected_ccode = $('.iti__selected-dial-code').text();
             console.log('selected country code' + selected_ccode);
             jQuery.ajax({
-                url: '/phpcuong/customer_ajax/register',
+                url: '<?php echo $block->getBaseUrl().'phpcuong/customer_ajax/register'?>',
                 // url: "getAjaxUrl()",
                 data: {
                 customer_mobile:regPhone,
@@ -333,7 +333,7 @@ require([
                         var flag = 2;
 
                         jQuery.ajax({
-                            url: '/user/otp/otpgenerate',
+                            url: '<?php echo $block->getBaseUrl().'user/otp/otpgenerate'?>',
                             // url: "getAjaxUrl()",
                             data: {
                                 phone: mobileValue,
