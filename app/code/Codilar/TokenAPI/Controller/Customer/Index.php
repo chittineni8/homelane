@@ -173,7 +173,7 @@ class Index extends Action
              
              if (array_key_exists('user_exists',$responseMobile)):
                 $userExist = $responseMobile['user_exists'];
-                // if ($userExist) :
+                if ($userExist) :
                     $userEmail = $responseMobile['email'];
 
                     $hiddenEmail = $this->hideEmailAddress($userEmail);
@@ -187,6 +187,7 @@ class Index extends Action
                 else :
                     return $mobileResult;
                 endif;
+            endif;
             endif;
 
             $resultJson = $this->resultJsonFactory->create();
@@ -203,12 +204,13 @@ class Index extends Action
 
                 if (array_key_exists('user_exists',$responseEmail)):
                     $emailuserExist = $responseEmail['user_exists'];
-                // if ($emailuserExist) :
+                if ($emailuserExist) :
                     $resultJson->setData('User Exists. Please login or use a different email');
                     return $resultJson;
                 else :
                     return $resultJson;
                 endif;
+            endif;
             endif;
         } catch (\Exception $e) {
             $this->loggerResponse->critical($e->getMessage() . ' ' . 'UserExist API Exception');
