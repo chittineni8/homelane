@@ -285,7 +285,7 @@ require([
             });
             $(".otp-edit-send").on('click',function(){
                 $("#otp_mobile").prop('disabled', true);
-                resetCallOtpTimer();
+                //resetCallOtpTimer();
             });
             $(".resend-otp, .otp-edit-send").on('click',function(){
                 $("#set-otp").hide();
@@ -353,7 +353,7 @@ require([
             }, 1000);
         }  
     }
-    function resetCallOtpTimer() {
+    /*function resetCallOtpTimer() {
         var minute = 2;
         var sec = 59;
         interval = setInterval(function () {
@@ -369,7 +369,7 @@ require([
                 minute --;
             }
         }, 1000);
-    }
+    }*/
 
 });
 </script>   
