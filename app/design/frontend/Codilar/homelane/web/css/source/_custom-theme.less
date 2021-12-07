@@ -2040,6 +2040,7 @@ div#layered-filter-block-container {
             color: #9B9B9B;
             font-size: 12px;
             font-weight: 300;
+            display: none;
         }
     }
     .filter-current {
@@ -3095,9 +3096,14 @@ table.table.table-bordered {
         width: 501px;
     }
 }
-@media only screen and (min-width: 1025px) and (max-width: 1250px) {
+@media only screen and (min-width: 1181px) and (max-width: 1350px) {
     body .header .block.block-search {
         width: 360px;
+    }
+}
+@media only screen and (min-width: 1141px) and (max-width: 1180px) {
+    body .header .block.block-search {
+        width: 320px;
     }
 }
 @media only screen and (min-width: 1025px) and (max-width: 1139px) {
@@ -3321,6 +3327,45 @@ table.table.table-bordered {
             a.action.towishlist {
                 width: 100%;
             }
+        }
+    }
+    aside.modal-popup.video-popup {
+        .modal-inner-wrap {
+            width: 80%;
+            -webkit-transform: translateY(0);
+            transform: translateY(50%);
+        }
+    }
+    .iti .iti__flag.iti__in {
+        background-position: -2422px 0px;
+    }
+    .header.content {
+        .sections.nav-sections {
+            li.link.authorization-link {
+                display: block;
+            }
+        }
+    }
+    .footer-four-up-box {
+        .pagebuilder-column {
+            p {
+                font-size: 12px;
+                padding: 0 8px;
+                br {
+                    display: none;
+                }
+            }
+            h2 {
+                font-size: 14px;
+            }
+        }
+    }
+    .product-social-links-new {
+        .action.mailto.friend {
+            padding-right: 15px;
+        }
+        span.copy-link {
+            padding: 0 15px 0 0;
         }
     }
 }
@@ -3995,7 +4040,7 @@ table.table.table-bordered {
         }
     }
     .max-container.hp-customer-review {
-        margin-top: 60px;
+        margin-top: 20px;
         padding: 0 16px;
     } 
     .hp-customer-review-outer {
