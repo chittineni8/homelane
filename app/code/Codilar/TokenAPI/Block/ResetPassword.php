@@ -11,10 +11,13 @@ class ResetPassword extends \Magento\Framework\View\Element\Template
     protected $storeManager;
 
  public function __construct(
-        StoreManagerInterface $storeManager
+        StoreManagerInterface $storeManager,
+         \Magento\Framework\View\Element\Template\Context $context,
+         array $data = []
   )
     
     {   $this->storeManager = $storeManager;
+        parent::__construct($context, $data);
 
 
     }//end __construct()
