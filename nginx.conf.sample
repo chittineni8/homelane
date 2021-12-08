@@ -206,7 +206,8 @@ location /errors/ {
 location /mumbai/ {
     try_files /mumbai/index.php /index.php $uri =404;
     fastcgi_pass   fastcgi_backend;
-    fastcgi_buffers 1024 4k;
+    fastcgi_buffers 16 16k;
+    fastcgi_buffer_size 32k;
 
     fastcgi_param  MAGE_RUN_TYPE "website";
     fastcgi_param  MAGE_RUN_CODE "mumbai";
@@ -222,7 +223,8 @@ location /mumbai/ {
 location /delhi/ {
     try_files /delhi/index.php /index.php $uri =404;
     fastcgi_pass   fastcgi_backend;
-    fastcgi_buffers 1024 4k;
+    fastcgi_buffers 16 16k;
+    fastcgi_buffer_size 32k;
 
     fastcgi_param  MAGE_RUN_TYPE "website";
     fastcgi_param  MAGE_RUN_CODE "delhi";
@@ -238,7 +240,8 @@ location /delhi/ {
 location /kolkata/ {
     try_files /kolkata/index.php /index.php $uri =404;
     fastcgi_pass   fastcgi_backend;
-    fastcgi_buffers 1024 4k;
+    fastcgi_buffers 16 16k;
+    fastcgi_buffer_size 32k;
 
     fastcgi_param  MAGE_RUN_TYPE "website";
     fastcgi_param  MAGE_RUN_CODE "kolkata";
@@ -254,7 +257,8 @@ location /kolkata/ {
 location /chennai/ {
     try_files /chennai/index.php /index.php $uri =404;
     fastcgi_pass   fastcgi_backend;
-    fastcgi_buffers 1024 4k;
+    fastcgi_buffers 16 16k;
+    fastcgi_buffer_size 32k;
 
     fastcgi_param  MAGE_RUN_TYPE "website";
     fastcgi_param  MAGE_RUN_CODE "chennai";
@@ -271,7 +275,8 @@ location /chennai/ {
 location /ahmedabad/ {
     try_files /ahmedabad/index.php /index.php $uri =404;
     fastcgi_pass   fastcgi_backend;
-    fastcgi_buffers 1024 4k;
+    fastcgi_buffers 16 16k;
+    fastcgi_buffer_size 32k;
 
     fastcgi_param  MAGE_RUN_TYPE "website";
     fastcgi_param  MAGE_RUN_CODE "ahmedabad";
@@ -287,7 +292,8 @@ location /ahmedabad/ {
 location /coimbatore/ {
     try_files /coimbatore/index.php /index.php $uri =404;
     fastcgi_pass   fastcgi_backend;
-    fastcgi_buffers 1024 4k;
+    fastcgi_buffers 16 16k;
+    fastcgi_buffer_size 32k;
 
     fastcgi_param  MAGE_RUN_TYPE "website";
     fastcgi_param  MAGE_RUN_CODE "coimbatore";
@@ -303,7 +309,8 @@ location /coimbatore/ {
 location /hyderabad/ {
     try_files /hyderabad/index.php /index.php $uri =404;
     fastcgi_pass   fastcgi_backend;
-    fastcgi_buffers 1024 4k;
+    fastcgi_buffers 16 16k;
+    fastcgi_buffer_size 32k;
 
     fastcgi_param  MAGE_RUN_TYPE "website";
     fastcgi_param  MAGE_RUN_CODE "hyderabad";
@@ -319,7 +326,8 @@ location /hyderabad/ {
 location /indore/ {
     try_files /indore/index.php /index.php $uri =404;
     fastcgi_pass   fastcgi_backend;
-    fastcgi_buffers 1024 4k;
+    fastcgi_buffers 16 16k;
+    fastcgi_buffer_size 32k;
 
     fastcgi_param  MAGE_RUN_TYPE "website";
     fastcgi_param  MAGE_RUN_CODE "indore";
@@ -335,7 +343,8 @@ location /indore/ {
 location /lucknow/ {
     try_files /lucknow/index.php /index.php $uri =404;
     fastcgi_pass   fastcgi_backend;
-    fastcgi_buffers 1024 4k;
+    fastcgi_buffers 16 16k;
+    fastcgi_buffer_size 32k;
 
     fastcgi_param  MAGE_RUN_TYPE "website";
     fastcgi_param  MAGE_RUN_CODE "lucknow";
@@ -351,7 +360,8 @@ location /lucknow/ {
 location /mangalore/ {
     try_files /mangalore/index.php /index.php $uri =404;
     fastcgi_pass   fastcgi_backend;
-    fastcgi_buffers 1024 4k;
+    fastcgi_buffers 16 16k;
+    fastcgi_buffer_size 32k;
 
     fastcgi_param  MAGE_RUN_TYPE "website";
     fastcgi_param  MAGE_RUN_CODE "mangalore";
@@ -367,7 +377,8 @@ location /mangalore/ {
 location /mysore/ {
     try_files /mysore/index.php /index.php $uri =404;
     fastcgi_pass   fastcgi_backend;
-    fastcgi_buffers 1024 4k;
+    fastcgi_buffers 16 16k;
+    fastcgi_buffer_size 32k;
 
     fastcgi_param  MAGE_RUN_TYPE "website";
     fastcgi_param  MAGE_RUN_CODE "mysore";
@@ -383,7 +394,8 @@ location /mysore/ {
 location /pune/ {
     try_files /pune/index.php /index.php $uri =404;
     fastcgi_pass   fastcgi_backend;
-    fastcgi_buffers 1024 4k;
+    fastcgi_buffers 16 16k;
+    fastcgi_buffer_size 32k;
 
     fastcgi_param  MAGE_RUN_TYPE "website";
     fastcgi_param  MAGE_RUN_CODE "pune";
@@ -399,7 +411,8 @@ location /pune/ {
 location /ranchi/ {
     try_files /ranchi/index.php /index.php $uri =404;
     fastcgi_pass   fastcgi_backend;
-    fastcgi_buffers 1024 4k;
+    fastcgi_buffers 16 16k;
+    fastcgi_buffer_size 32k;
 
     fastcgi_param  MAGE_RUN_TYPE "website";
     fastcgi_param  MAGE_RUN_CODE "ranchi";
@@ -415,7 +428,8 @@ location /ranchi/ {
 location /surat/ {
     try_files /surat/index.php /index.php $uri =404;
     fastcgi_pass   fastcgi_backend;
-    fastcgi_buffers 1024 4k;
+    fastcgi_buffers 16 16k;
+    fastcgi_buffer_size 32k;
 
     fastcgi_param  MAGE_RUN_TYPE "website";
     fastcgi_param  MAGE_RUN_CODE "surat";
@@ -431,7 +445,8 @@ location /surat/ {
 location /visakhapatnam/ {
     try_files /visakhapatnam/index.php /index.php $uri =404;
     fastcgi_pass   fastcgi_backend;
-    fastcgi_buffers 1024 4k;
+    fastcgi_buffers 16 16k;
+    fastcgi_buffer_size 32k;
 
     fastcgi_param  MAGE_RUN_TYPE "website";
     fastcgi_param  MAGE_RUN_CODE "visakhapatnam";
