@@ -61,8 +61,8 @@ define([
                 return false;
             });
             $('body').on('click', '.customer-login-link', function() {
-                $(self.options.login).modal('closeModal');
-                $(self.options.register).modal('openModal');
+                $(self.options.login).modal('openModal');
+                $(self.options.register).modal('closeModal');
                 self._setStyleCss();
                 return false;
             });
@@ -70,8 +70,8 @@ define([
 
             // Show the registration form in a popup when clicking on the create an account text
             $('body').on('click', '.customer-register-link, '+self.options.nextRegister, function() {
-                $(self.options.login).modal('closeModal');
-                $(self.options.register).modal('openModal');
+                $(self.options.login).modal('openModal');
+                $(self.options.register).modal('closeModal');
                 self._setStyleCss(self.options.innerWidth);
                 return false;
             });

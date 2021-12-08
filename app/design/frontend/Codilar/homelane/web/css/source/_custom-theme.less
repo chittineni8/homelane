@@ -394,7 +394,7 @@ ul.header.links {
         font-size: 0;
         text-decoration: none;
         &:before {
-            content: "Login / Register";
+            content: "Login";
             font-size: 12px;
             margin-left: -5px;
             line-height: 38px;
@@ -1531,6 +1531,9 @@ form .actions-toolbar>.secondary a {
         color: #E71C24;
         font-size: 12px;
     }
+}
+.customer-account-wrapper form .secondary {
+    display: none;
 }
 .customer-account-wrapper {
     display:flex;
@@ -3305,7 +3308,7 @@ table.table.table-bordered {
             padding: 8px 0;
         }
     }
-    .page-layout-2columns-left.catalog-category-view , .catalogsearch-result-index.column.main  {
+    .page-layout-2columns-left.catalog-category-view , .catalogsearch-result-index  {
         div.column.main {
             border-left: 1px solid #eae7e7;
             padding-top: 20px;
@@ -3315,6 +3318,17 @@ table.table.table-bordered {
             width: 30%;
             padding-right: 0;
             transition: transform ease 2500ms;
+        }
+    }
+    .wishlist-index-index {
+        .products-grid {
+            .product-items {
+                .product-item {
+                    .product-item-actions a.action {
+                        font-size: 13px;
+                    }
+                }
+            }
         }
     }
     .page-wrapper {
@@ -3339,11 +3353,15 @@ table.table.table-bordered {
     .iti .iti__flag.iti__in {
         background-position: -2422px 0px;
     }
-    .header.content {
-        .sections.nav-sections {
-            li.link.authorization-link {
-                display: block;
-            }
+    .sections.nav-sections {
+        li.link.authorization-link {
+            display: block;
+        }
+    }
+    .myprofile-customtab {
+        .user-profile {
+            padding: 15px 5px 15px 5px;
+            text-align: center;
         }
     }
     .footer-four-up-box {
