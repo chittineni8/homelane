@@ -255,6 +255,5 @@ require(['jquery','slickslider'], function($) {
 			}
 		});
 		/*end sign up form*/
-
 	});
 });
