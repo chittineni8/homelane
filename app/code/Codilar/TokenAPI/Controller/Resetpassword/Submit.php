@@ -233,9 +233,9 @@ class Submit extends Action
                 $this->loggerResponse->addInfo("========================PASSWORD RECOVERY API SUCCESS========================");
                 $this->loggerResponse->addInfo("Password Reset Successfully for email:".' '.$email);
                 $this->loggerResponse->addInfo("============================================================");
-                $this->messageManager->addSuccessMessage(
-                        'Password Reset Successfully'
-                    );
+                // $this->messageManager->addSuccessMessage(
+                //         'Password Reset Successfully'
+                //     );
                     $resultRedirect->setUrl($this->_redirect->getRefererUrl());
                     return $resultRedirect;
                 }
