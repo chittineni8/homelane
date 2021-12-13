@@ -216,7 +216,7 @@ require(['jquery','slickslider'], function($) {
 				$(this).parent().removeClass('input-has-value');
 			}
 		});
-		$(".customer-account-wrapper .control #customer_mobile").on('change keyup blur',function () {
+		$(".customer-account-wrapper .control #customer_mobile").on('change keyup',function () {
 			$(this).parent().find('div.mage-error').hide(); 
 			var mobNum = $(this).val(); 
 			if(mobNum.length == 10) {
@@ -255,6 +255,5 @@ require(['jquery','slickslider'], function($) {
 			}
 		});
 		/*end sign up form*/
-
 	});
 });
