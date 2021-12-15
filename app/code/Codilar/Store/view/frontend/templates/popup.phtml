@@ -62,7 +62,7 @@ if (isset($gets['query'])) {
             }
             foreach ($parsedWebCode as $webCode) {
                 $code = $webCode['path']; ?>
-                <a href="<?php echo $webUrl . '' . $parsedUrl . '' . $queryParam; ?>">
+                <a class="city-url" href="<?php echo $webUrl . '' . $parsedUrl . '' . $queryParam; ?>" data-storeurl="<?php echo  $webUrl ?>">
                 <?php
                     if ($websiteName == $storeName) {
                         if ($highlightedImageUrl): ?>
@@ -118,7 +118,6 @@ if (isset($gets['query'])) {
     require(['jquery'], function($) {
         $('#city-search').on('change keyup', function() {
             var checkactivecity = $('li.present').length;
-            console.log(checkactivecity);
             if (checkactivecity == 0) {
                 $('.city-error-msg').show();
             } else {
