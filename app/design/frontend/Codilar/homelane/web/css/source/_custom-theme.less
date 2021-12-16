@@ -137,6 +137,10 @@ div.header.content .minicart-wrapper {
             &:nth-child(even) {
                 background: #F5F5F5;
             }
+            .amount {
+                top: 50%;
+                transform: translateY(-50%);
+            }
         }
     }
 }
@@ -913,8 +917,8 @@ div#stop {
     border-radius: 50%;
     color: #fff;
     position: fixed;
-    right: 72px;
-    bottom: 54px;
+    right: 35px;
+    bottom: 35px;
     cursor: pointer;
     opacity: 0;
     z-index: 11;
@@ -1200,8 +1204,8 @@ form.query-form {
 .hp-category-block {
     h2 {
         color: #e71c24;
-        font-weight: 700;
-        font-size: 28px;
+        font-weight: 800;
+        font-size: 24px;
     }
     a.pagebuilder-button-link {
         color: #4a4a4a;
@@ -1300,7 +1304,7 @@ form.query-form {
     padding: 0 15px;
     h2 {
         text-align: center;
-        font-size: 28px;
+        font-size: 24px;
         font-weight: 800;
         color: #E71C24;
         margin-bottom: 40px;
@@ -1692,8 +1696,8 @@ h2.account-heading {
 }
 .page-wrapper .column.main .block .block-title strong {
     color: #E71C24;
-    font-size: 28px;
-    font-weight: 700;
+    font-size: 24px;
+    font-weight: 800;
 }
 .page-wrapper .block.widget .block-title {
     margin: 15px 0 20px;
@@ -2294,8 +2298,8 @@ div#layered-filter-block-container {
 }
 .hl-heading {
     color: #E71C24;
-    font-size: 28px;
-    font-weight: 700;
+    font-size: 24px;
+    font-weight: 800;
 }
 .category-grid {
     margin: 60px auto;
@@ -3293,9 +3297,10 @@ table.table.table-bordered {
     }
     .contact-index-index {
         .page-main > .page-title-wrapper .page-title {
-            max-width: 640px;
+            width: 50%;
             margin: 20px auto 30px;
             display: block;
+            min-width: 600px;
         }
         .column:not(.sidebar-additional) {
             .form.contact {
@@ -3422,9 +3427,24 @@ table.table.table-bordered {
             .column.main {
                 width: 100%;
                 border-left: none;
+                padding-left: 0;
             }
             .sidebar.sidebar-main {
                 display: none;
+            }
+        }
+    }
+    .city-popup {
+        .modal-content {
+            padding: 0 2rem;
+        }
+    }
+    .call-popup {
+        div.box-store-content {
+            ul {
+                li {
+                    padding: 0 2px;
+                }
             }
         }
     }
@@ -4138,6 +4158,7 @@ table.table.table-bordered {
             .left-sec {
                 flex: 1 0 100%;
                 padding: 10px 10px 0px;
+                background: transparent;
                 .cimage {
                     display: none;
                 }
@@ -4146,6 +4167,11 @@ table.table.table-bordered {
                     padding: 2px 0;
                     font-size: 13px;
                     color: #9B9B9B;
+                    margin: 4px 5px 0 0;
+                }
+                .description {
+                    margin-top: 8px;
+                    line-height: 20px;
                 }
             }
         }

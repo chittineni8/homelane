@@ -128,8 +128,8 @@ require(['jquery','slickslider'], function($) {
             ]
 	    });
 		$(".hp-customer-review-outer ul").not(".slick-initialized").slick({
-		    dots: true,arrows: true,infinite: true,speed: 300,slidesToShow: 1,slidesToScroll: 1,
-		    autoplay: true,initialSlide: 1,speed: 1000,cssEase: 'linear',
+		    dots: true,arrows: true,infinite: true,slidesToShow: 1,slidesToScroll: 1,
+		    autoplay: true,initialSlide: 1,speed: 2500,cssEase: 'linear',
 		});
 		
 		$('#layer-product-list').find('.pages a').click(function(){
