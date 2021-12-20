@@ -2,14 +2,15 @@
 /*global alert*/
 define([
     'jquery',
-    'mage/utils/wrapper'
+    'mage/utils/wrapper',
+    'loader'
 ], function ($, wrapper) {
     'use strict';
-
+    $(".product-info-main a.action.towishlist").trigger('processStart');
     return function(targetModule){
-
+        //alert('hhhh');
         $('h1 span').attr("data-dynamic", "name");
-
+        $(".product-info-main a.action.towishlist").trigger('processStop');
         var updatePrice = targetModule.prototype._UpdatePrice;
         targetModule.prototype.dynamic = {};
 
@@ -35,7 +36,7 @@ define([
                     }
 
                     for(var i = 0; i<this.options.jsonConfig.attributes.length;i++){
-                        console.log('div.product-info-main .product-options-wrapper .swatch-attribute.' + this.options.jsonConfig.attributes[i].code);
+                        //console.log('div.product-info-main .product-options-wrapper .swatch-attribute.' + this.options.jsonConfig.attributes[i].code);
                         if (!$('div.product-info-main .product-options-wrapper .swatch-attribute.' + this.options.jsonConfig.attributes[i].code).attr('data-option-selected')){
                             allSelected = false;
                         }
