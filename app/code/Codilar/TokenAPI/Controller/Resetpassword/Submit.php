@@ -203,7 +203,7 @@ class Submit extends Action
         try {
             $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
             $PostValue = $this->getRequest()->getParams();
-
+            $baseurl =$this->_storeManager->getStore()->getBaseUrl();
 
             $parambody = [
                 'password' => $PostValue['password'], 'code' => $PostValue['code']
@@ -236,7 +236,7 @@ class Submit extends Action
                 $this->messageManager->addSuccessMessage(
                         'Password Reset Successfully'
                     );
-                    $resultRedirect->setUrl($this->_redirect->getRefererUrl());
+                    $resultRedirect->setUrl($baseurl);
                     return $resultRedirect;
                 }
               }catch (\Exception $e) {
