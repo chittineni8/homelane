@@ -3,6 +3,11 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+
+/**
+ * @var $block
+ */
+
 ?>
 <?php
 /**
@@ -156,8 +161,10 @@ if ($exist = ($productCollection && $productCollection->getSize())) {
 
 
 <script>
-    require(['jquery'],function ($) {
-        jQuery.ajax({
+    require([
+        'jquery'
+    ], function ($) {
+        $.ajax({
             url: '<?php echo $this->getUrl('wishlisted/index/wishlistheart') ?>',
             method: 'get',
             dataType: 'json',
@@ -165,11 +172,12 @@ if ($exist = ($productCollection && $productCollection->getSize())) {
 
                 var wislistAddesCheckData = data;
                 var itemLenth = wislistAddesCheckData.items.length;
+                var wishList = JSON.stringify({'items': wislistAddesCheckData.items});
                 for (i = 0; i < itemLenth; i++) {
                     var wislistAddedProductId = wislistAddesCheckData.items[i].product_id;
-
                     $("#newproduct-id-" + wislistAddedProductId).addClass('wishlist-active');
                 }
+                localStorage.setItem('wishlist-active-list', wishList);
             }
         });
     });
