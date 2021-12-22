@@ -4,4 +4,6 @@
     <type name="Magento\Framework\App\Action\AbstractAction">
         <plugin name="customer-session-data-to-context" type="Codilar\Customer\Plugin\CustomerSessionContext" sortOrder="15"/>
     </type>
+      <preference for="Magento\Customer\Controller\Account\Logout" type="Codilar\Customer\Controller\Account\Logout" />
 </config>
+  
