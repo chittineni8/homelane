@@ -28,13 +28,13 @@ if (isset($gets['query'])) {
             <img src='<?php echo $this->getViewFileUrl('images/city-popup-image.png'); ?>' alt="city popup image">
         </div>
         <div class="search-section">
-            <h2><?php echo __('Hi There! looking for new furniture?') ?></h2>
+            <h2><?php echo __('Hi there! Looking for new interiors?') ?></h2>
             <div class="control">
                 <input id="city-search"
                        type="text"
                        name=""
                        value=""
-                       placeholder="<?php echo __('Search your city here') ?>"
+                       placeholder="<?php echo __('Type city name to search') ?>"
                        class="input-text"
                        maxlength="" onkeyup="citySearchFunction()" />
             </div>
@@ -62,7 +62,7 @@ if (isset($gets['query'])) {
             }
             foreach ($parsedWebCode as $webCode) {
                 $code = $webCode['path']; ?>
-                <a href="<?php echo $webUrl . '' . $parsedUrl . '' . $queryParam; ?>">
+                <a class="city-url" href="<?php echo $webUrl . '' . $parsedUrl . '' . $queryParam; ?>" data-storeurl="<?php echo  $webUrl ?>">
                 <?php
                     if ($websiteName == $storeName) {
                         if ($highlightedImageUrl): ?>
@@ -118,7 +118,6 @@ if (isset($gets['query'])) {
     require(['jquery'], function($) {
         $('#city-search').on('change keyup', function() {
             var checkactivecity = $('li.present').length;
-            console.log(checkactivecity);
             if (checkactivecity == 0) {
                 $('.city-error-msg').show();
             } else {

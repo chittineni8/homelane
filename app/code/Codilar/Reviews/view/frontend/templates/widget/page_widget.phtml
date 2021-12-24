@@ -41,7 +41,9 @@
       <div class="image">
           <img src="<?php echo $block->getMediaUrl() . $block->getData('wop_image'); ?>"/>
       </div>
-      <span class="play-button" id="play-button"></span>
+      <?php if(!empty($block->getData('video1'))) { ?>
+        <span class="play-button" id="play-button"></span>
+      <?php } ?>
       <div id="modal-video">
       <div class="video-link">
         <iframe class="close-iframe" src="<?php echo $block->getData('video1').'?enablejsapi=1'; ?>" width="100%" height="500" frameborder="0" allowfullscreen="allowfullscreen">

@@ -14,7 +14,6 @@
     <a href="<?= $block->escapeUrl($this->helper(Magento\Catalog\Helper\Product::class)->getEmailToFriendUrl($_product)) ?>"
        class="action mailto friend"><span><?= $block->escapeHtml(__('Mail')) ?></span></a>
 <?php endif; ?>
-
 <script type="text/javascript">
 require(['jquery'],function ($) {
    var $temp = $("<input>");
@@ -29,6 +28,18 @@ require(['jquery'],function ($) {
       setTimeout(function () {
          $("#copied").hide();
       }, 3000);
+   });
+   $(window).load(function () {
+      function SimpleProductAddToWishlist() {
+         if($('#product-options-wrapper').find('.swatch-option.selected').length >= 1) {
+            var selected_swatch = $(".swatch-option.selected");
+            selected_swatch.click();
+            selected_swatch.click();
+         }
+      }
+      $(".product-info-main a.action.towishlist").one('mouseover', function(){
+         SimpleProductAddToWishlist();
+      });
    });
 });
 </script>
