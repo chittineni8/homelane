@@ -32,9 +32,9 @@ $logoHeight = $logoSizeResolver !== null && $logoSizeResolver->getHeight()
             <?= $logoHeight ? 'height="' . $block->escapeHtmlAttr($logoHeight) . '"' : '' ?>
     />
 </a>
-<a class="sticky-logo" href="<?= $block->escapeUrl($block->getUrl('')) ?>">
+<!-- <a class="sticky-logo" href="<?= $block->escapeUrl($block->getUrl('')) ?>">
 	<img src='<?php echo $this->getViewFileUrl('images/sticky_Store_logo-03.png'); ?>' alt="sticky logo" width="180" />
-</a>
+</a> -->
 <script type="text/javascript">
     require(['jquery'],function ($) {
         var selectcity = $('div#switcher-store').clone();
@@ -42,7 +42,6 @@ $logoHeight = $logoSizeResolver !== null && $logoSizeResolver->getHeight()
             $("body").addClass("logged-in");
         } else {
             $("body").addClass("logged-out");
-            //$(".minicart-wrapper + ul.header.links").prepend(selectcity);
         }
         if ($(window).width() > 767) {
             if($('ul.header.links').find('.customer-register-link').length <= 0) {

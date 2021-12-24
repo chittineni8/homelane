@@ -83,7 +83,15 @@ require(['jquery','slickslider'], function($) {
 				inputBox.focusout();
 				isOpen = false;
 			}
-		});  
+		});
+		$(document).on("click", function(){
+	        var $trigger = $("form#search_mini_form");
+	        if($trigger !== event.target && !$trigger.has(event.target).length){
+	            searchBox.removeClass('searchbox-open');
+				inputBox.focusout();
+				isOpen = false;
+	        }            
+	    });  
 		submitIcon.mouseup(function(){
 			return false;
 		});
@@ -145,48 +153,56 @@ require(['jquery','slickslider'], function($) {
 			});
 		});
 
-		$("form.query-form .control input[type='text']").on('change keyup', function() {
-		  if ($(this).val().length > 0) {
+		$("form.query-form .control input[type='text']").on('change keyup focusout', function() {
+		  if ($(this).val().length > 3) {
 		    $(this).parent().addClass('input-has-value');
+		    $(this).next().hide();
 		  } else {
 		    $(this).parent().removeClass('input-has-value');
+		    $(this).next().show();
 		  }  
 		});
-		$("form.query-form .control input[type='email']").on('change keyup',function () {    
+		$("form.query-form .control input[type='email']").on('change keyup focusout',function () {    
 			var inputvalues = $(this).val();    
 			var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;    
 			if(regex.test(inputvalues)) {    
    				$(this).parent().addClass('input-has-value');
+   				$(this).next().hide();
 			} else {
 				$(this).parent().removeClass('input-has-value');
+				$(this).next().show();
 			}
 		});
-		$("form.query-form .control.phoneno input[type='number']").on('change keyup',function () { 
+		$("form.query-form .control.phoneno input[type='number']").on('change keyup focusout',function () { 
 			var mobNum = $(this).val();   
 			if(mobNum.length == 10) {
 				$(this).parent().addClass('input-has-value');
+				$(this).next().hide();
 			} else {
 				$(this).parent().removeClass('input-has-value');
+				$(this).next().show();
 			}
 		});
-		$("form.query-form .control.pincode input[type='number']").on('change keyup',function () { 
+		$("form.query-form .control.pincode input[type='number']").on('change keyup focusout',function () { 
 			var mobNum = $(this).val();   
 			if(mobNum.length == 6) {
 				$(this).parent().addClass('input-has-value');
+				$(this).next().hide();
 			} else {
 				$(this).parent().removeClass('input-has-value');
+				$(this).next().show();
 			}
 		});
-		if( !$('.customer-account-wrapper .control input').val() ) {
+		/*if( !$('.customer-account-wrapper .control input').val() ) {
 		    $('button#submit-query').prop('disabled', true);
-		}
-		$("form.query-form .control input").on('change keyup',function () {
+		}*/
+		/*$("form.query-form .control input").on('change keyup',function () {
 			if ($('.control.input-has-value').length == 4) {
 				$('button#submit-query').prop('disabled', false);
 			} else {
 				$('button#submit-query').prop('disabled', true);
 			}
-		});
+		});*/
 		$("ol.filter-list").each(function () {
 	      var liCount = $(this).children("li").length;
 	      if (liCount > 5) {
