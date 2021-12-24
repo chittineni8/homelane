@@ -2498,8 +2498,9 @@ div#layered-filter-block-container {
         }
         [class^=wk-zcv-loader] {
             position: absolute;
-            left: 48px;
-            bottom: 2px;
+            left: 145px;
+            bottom: -4px;
+            background-size: 22px 22px;
         }
     }
     div [class^=wk-zcv-zipcookie] {
@@ -3259,6 +3260,9 @@ table.table.table-bordered {
         .slick-prev,.slick-next {
             top: 42%;
         }
+        .delimiter {
+            display: none;
+        }
     }
     .catalog-product-view .block.related {
         .slick-prev,.slick-next {
@@ -3581,6 +3585,9 @@ table.table.table-bordered {
 }
 
 @media only screen and (max-width: 1140px) {
+rs-module-wrap {
+    left: 0 !important;
+}
 /************mobile design header*************/
     .sections .navigation .level0>.level-top {
         text-transform: capitalize;
@@ -4030,11 +4037,24 @@ table.table.table-bordered {
     .modal-popup.modal-slide .modal-inner-wrap[class] {
         background-color: #fff;
     }
-    aside.modal-popup.city-popup {
+    aside.modal-popup.city-popup._inner-scroll {
         left: 0;
         .modal-inner-wrap {
             width: 100%;
             border-radius: 0;
+        }
+        div.modal-inner-wrap {
+            height: 100%;
+        }
+        header.modal-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            left: 0;
+            right: 0;
+        }
+        .modal-content {
+            margin-top: 70px;
         }
     }
     .call-popup {
@@ -4197,6 +4217,12 @@ table.table.table-bordered {
                     line-height: 20px;
                 }
             }
+        }
+        .delimiter {
+            display: inline-block;
+            padding-right: 4px;
+            color: #9B9B9B;
+            font-weight: bold;
         }
     }
     .page-wrapper {
@@ -4674,6 +4700,11 @@ table.table.table-bordered {
         }
         header.modal-header {
             padding: 80px 0 0;
+        }
+    }
+    aside.modal-popup.city-popup._inner-scroll {
+        div.modal-content {
+            margin-top: 110px;
         }
     }
 }
