@@ -19,6 +19,7 @@ body#html-body {
 }
 .message.global.noscript, .message.global.cookie {
     background: #fff;
+    z-index: 111;
     .action.primary {
         background: #E71C24;
         border: 1px solid #E71C24;
@@ -1861,7 +1862,7 @@ body.user-resetpassword-index {
         scrollbar-width: none;
         padding-bottom: 40px;
         position: sticky;
-        top: 60px;
+        top: 80px;
         z-index: 1;
         &::-webkit-scrollbar {
             display: none;
@@ -3587,6 +3588,10 @@ table.table.table-bordered {
 @media only screen and (max-width: 1140px) {
 rs-module-wrap {
     left: 0 !important;
+}
+.nav-before-open header.page-header {
+    z-index: unset;
+    position: static;
 }
 /************mobile design header*************/
     .sections .navigation .level0>.level-top {
