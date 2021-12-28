@@ -117,12 +117,12 @@ require(['jquery','slickslider'], function($) {
         }
 		if ($(window).width() < 768) {
 			$(".hp-category-block .pagebuilder-column-group, .category-grid .image-box").not(".slick-initialized").slick({
-		        dots: false,arrows: true,infinite: true,speed: 300,slidesToShow: 1,slidesToScroll: 1,
-		        centerMode: true,centerPadding: '80px',autoplay: true,initialSlide: 1,speed: 1000,cssEase: 'linear',
+		        dots: false,arrows: true,infinite: true,slidesToShow: 1,slidesToScroll: 1,
+		        centerMode: true,centerPadding: '80px',autoplay: true,speed: 1000,cssEase: 'linear',
 		    });
 		}
 		$(".block.related .product-items").not(".slick-initialized").slick({
-	        dots: false,arrows: true,infinite: true,speed: 300,slidesToShow: 4,slidesToScroll: 1,
+	        dots: false,arrows: true,infinite: true,slidesToShow: 4,slidesToScroll: 1,
 	        centerMode: false,centerPadding: '80px',autoplay: true,initialSlide: 1,speed: 1000,cssEase: 'linear',
 	        responsive: [
                 {
