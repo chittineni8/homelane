@@ -4,20 +4,20 @@
             <div class="field required">
                 <div class="control">
                     <input name="name" id='name' value="" placeholder="Enter your name" type="text" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your name') ?>" data-validate="{required:true}">
-                    <div class="qf-error">Please add your fullname</div>
+                    <div class="qf-error">Please enter your name</div>
                 </div>
             </div>
             <div class="field required">
                 <div class="control">
                     <input name="email" id='email' value="" placeholder="Enter your email" type="email" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your email') ?>" data-validate="{required:true}">
-                    <div class="qf-error">Please add your email address</div>
+                    <div class="qf-error">Please enter your valid email address</div>
                 </div>
             </div>
             <div class="field required">
                 <div class="control phoneno">
                     <input name="phoneno" id='phoneno' value="" placeholder=" Enter your mobile number" type="number" maxlength="10" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your mobile number') ?>" data-validate="{required:true}" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                     onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" />
-                    <div class="qf-error">Please add your mobile number</div>
+                    <div class="qf-error">Please enter your valid mobile number</div>
                 </div>
             </div>
         <div class="field required">
@@ -33,7 +33,7 @@
                 <div class="control pincode">
                     <input name="pincode" id="pincode" value="" placeholder="Enter your residence pincode" type="number" maxlength="6" class="input-text" title="<?php /* @escapeNotVerified */ echo __('Enter your residence pincode') ?>" data-validate="{required:true}" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                     onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" />
-                    <div class="qf-error">Please add your pincode number</div>
+                    <div class="qf-error">Please enter your valid pincode number</div>
                 </div>
             </div>
             <div class="actions-toolbar">

@@ -19,6 +19,7 @@ body#html-body {
 }
 .message.global.noscript, .message.global.cookie {
     background: #fff;
+    z-index: 111;
     .action.primary {
         background: #E71C24;
         border: 1px solid #E71C24;
@@ -362,7 +363,7 @@ div.header.content .minicart-wrapper {
         }
     }
 }
-.logged-out ul.header.links #switcher-store + li {
+ul.header.links #switcher-store + li {
     font-size: 0;
 }
 .logged-out .header.content #switcher-store {
@@ -1861,7 +1862,7 @@ body.user-resetpassword-index {
         scrollbar-width: none;
         padding-bottom: 40px;
         position: sticky;
-        top: 60px;
+        top: 80px;
         z-index: 1;
         &::-webkit-scrollbar {
             display: none;
@@ -2498,8 +2499,9 @@ div#layered-filter-block-container {
         }
         [class^=wk-zcv-loader] {
             position: absolute;
-            left: 48px;
-            bottom: 2px;
+            left: 145px;
+            bottom: -4px;
+            background-size: 22px 22px;
         }
     }
     div [class^=wk-zcv-zipcookie] {
@@ -3259,6 +3261,9 @@ table.table.table-bordered {
         .slick-prev,.slick-next {
             top: 42%;
         }
+        .delimiter {
+            display: none;
+        }
     }
     .catalog-product-view .block.related {
         .slick-prev,.slick-next {
@@ -3581,6 +3586,13 @@ table.table.table-bordered {
 }
 
 @media only screen and (max-width: 1140px) {
+rs-module-wrap {
+    left: 0 !important;
+}
+.nav-before-open header.page-header {
+    z-index: unset;
+    position: static;
+}
 /************mobile design header*************/
     .sections .navigation .level0>.level-top {
         text-transform: capitalize;
@@ -4030,11 +4042,24 @@ table.table.table-bordered {
     .modal-popup.modal-slide .modal-inner-wrap[class] {
         background-color: #fff;
     }
-    aside.modal-popup.city-popup {
+    aside.modal-popup.city-popup._inner-scroll {
         left: 0;
         .modal-inner-wrap {
             width: 100%;
             border-radius: 0;
+        }
+        div.modal-inner-wrap {
+            height: 100%;
+        }
+        header.modal-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            left: 0;
+            right: 0;
+        }
+        .modal-content {
+            margin-top: 70px;
         }
     }
     .call-popup {
@@ -4052,6 +4077,11 @@ table.table.table-bordered {
                         margin: 0 auto;
                     }
                 }
+            }
+        }
+        .search-section {
+            input#city-search {
+                height: 35px;
             }
         }
     }
@@ -4197,6 +4227,12 @@ table.table.table-bordered {
                     line-height: 20px;
                 }
             }
+        }
+        .delimiter {
+            display: inline-block;
+            padding-right: 4px;
+            color: #9B9B9B;
+            font-weight: bold;
         }
     }
     .page-wrapper {
@@ -4399,6 +4435,18 @@ table.table.table-bordered {
             padding: 8px 15px 8px 10px;
             strong {
                 font-size: 14px;
+            }
+            &.active {
+                color: #E71C24;
+                position: relative;
+                strong:after {
+                    font-family: 'icons-blank-theme';
+                    content: '\e610';
+                    font-size: 18px;
+                    position: absolute;
+                    right: -2px;
+                    top: 7px;
+                }
             }
         }
         .block-content.filter-content {
@@ -4676,6 +4724,11 @@ table.table.table-bordered {
             padding: 80px 0 0;
         }
     }
+    aside.modal-popup.city-popup._inner-scroll {
+        div.modal-content {
+            margin-top: 110px;
+        }
+    }
 }
 @media only screen and (max-width: 380px) {
     .block.block-search.searchbox-open {
@@ -4683,8 +4736,11 @@ table.table.table-bordered {
     }
 }
 @media only screen and (max-width: 360px) {
-    .block.block-search {
+    div.block.block-search {
         right: 45px;
+    }
+    aside.modal-popup.city-popup._inner-scroll .modal-content {
+        padding: 0 1rem;
     }
 }
 

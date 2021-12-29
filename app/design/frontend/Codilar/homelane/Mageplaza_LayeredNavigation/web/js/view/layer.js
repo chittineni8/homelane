@@ -185,7 +185,7 @@ define([
                     e.stopPropagation();
                     e.preventDefault();
                     self.ajaxSubmit(link);
-            $("html, body").animate({ scrollTop: 0 }, "fast");
+                    $("html, body").animate({ scrollTop: 0 }, "fast");
                 });
 
                 var checkbox = el.siblings(self.options.checkboxEl);
@@ -194,12 +194,17 @@ define([
                     self.ajaxSubmit(link);
                 });
             });
+            if($('.block-content.filter-content .filter-current').length <= 0) {
+                    $('.block.filter .filter-title').removeClass("active");
+                } else {
+                    $('.block.filter .filter-title').addClass("active");
+                }
 
-        $("#layered-filter-block").on("click","span.close-filter", function(){
-                $('div#layered-filter-block').removeClass("active");
-                $('.block.filter .filter-title > strong').attr("aria-expanded","false");
-                $('.block.filter .filter-title > strong').attr("aria-selected","false");
-                $('body').removeClass("filter-active");
+                $("#layered-filter-block").on("click","span.close-filter", function(){
+                    $('div#layered-filter-block').removeClass("active");
+                    $('.block.filter .filter-title > strong').attr("aria-expanded","false");
+                    $('.block.filter .filter-title > strong').attr("aria-selected","false");
+                    $('body').removeClass("filter-active");
                 });
                 var breadcrumbsclone = $('.breadcrumbs').clone();
                 $('.filter-breadcrumbs .content').html(breadcrumbsclone);

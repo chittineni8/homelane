@@ -13,7 +13,7 @@ $groupCss = $block->getGroupCss();
 ?>
 <?php if ($detailedInfoGroup = $block->getGroupChildNames($group)):?>
     <div class="sections <?= $block->escapeHtmlAttr($groupCss) ?>">
-        <div class="logo-img"><img src='<?php echo $this->getViewFileUrl('images/sticky_Store_logo-03.png'); ?>' alt="logo"></div>
+        <div class="logo-img"><a href="<?= $this->getUrl('') ?>"><img src='<?php echo $this->getViewFileUrl('images/sticky_Store_logo-03.png'); ?>' alt="logo"></a></div>
         <li class="link authorization-link" data-label="or">
             <a class="customer-login-link"><?= $escaper->escapeHtml(__('Login')) ?></a>
         </li>
