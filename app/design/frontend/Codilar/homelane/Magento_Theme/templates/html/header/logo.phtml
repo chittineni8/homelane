@@ -37,17 +37,23 @@ $logoHeight = $logoSizeResolver !== null && $logoSizeResolver->getHeight()
 </a> -->
 <script type="text/javascript">
     require(['jquery'],function ($) {
-        var selectcity = $('div#switcher-store').clone();
-        if($('ul.header.links').find('.customer-register-link').length <= 0) {
-            $("body").addClass("logged-in");
-        } else {
-            $("body").addClass("logged-out");
-        }
-        if ($(window).width() > 767) {
+        console.log('loading...');
+        $("body").addClass("loading");
+        $(window).load(function (){
+            console.log('window loaded...');
+            var selectcity = $('div#switcher-store').clone();
             if($('ul.header.links').find('.customer-register-link').length <= 0) {
+                $("body").addClass("logged-in");
             } else {
-                $(".minicart-wrapper + ul.header.links").prepend(selectcity);
+                $("body").addClass("logged-out");
             }
-        }
+            if ($(window).width() > 767) {
+                if($('ul.header.links').find('.customer-register-link').length <= 0) {
+                } else {
+                    $(".minicart-wrapper + ul.header.links").prepend(selectcity);
+                }
+            }
+            $("body").removeClass("loading");
+        });
     });
 </script>

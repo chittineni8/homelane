@@ -20,15 +20,15 @@ require(
         let website_code = $.cookie("website_code");
         console.log(website_code);
         if (website_code == null){
-            popupModel.modal('openModal');
-        }
-        $("div#switcher-store-trigger").click(function() {
-            popupModel.modal('openModal');
-        });
+                popupModel.modal('openModal');
+            }
         $("ul#searchable-content li").on('click', function() {
             var current_store_url = $(this).find('.city-url').attr('data-storeurl');
             //alert(current_store_url)
             $.cookie('website_code', current_store_url);
+        });
+        $("div#switcher-store-trigger").on('click',function() {
+            popupModel.modal('openModal');
         });
     }
 );
