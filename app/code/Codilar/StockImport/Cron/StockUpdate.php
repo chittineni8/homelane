@@ -63,7 +63,6 @@ class StockUpdate
 
             if($this->product->getIdBySku($data[0])) 
 		   	{
-	          // $productRepository = $this->productRepository->create();
 	          //Load product by SKU
          	  $product = $this->productRepository->get($data[0]); 
          	  $id=$product->getId();

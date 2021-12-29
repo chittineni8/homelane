@@ -237,6 +237,7 @@ class Submit extends Action
                         'Password Reset Successfully'
                     );
                     $resultRedirect->setUrl($baseurl);
+
                     return $resultRedirect;
                 }
               }catch (\Exception $e) {
