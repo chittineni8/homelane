@@ -20,6 +20,7 @@
         "mageplaza/module-better-wishlist": "^4.0",
         "mageplaza/module-search": "^4.0",
         "mageplaza/module-smtp": "^4.5",
+        "magepow/lazyload": "^1.0",
         "smile/module-product-label": "^1.1",
         "swissup/module-easytabs": "^1.9",
         "twilio/sdk": "^6.28"
