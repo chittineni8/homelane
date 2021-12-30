@@ -1373,6 +1373,7 @@ form.query-form {
                 font-size: 16px;
                 color: #222222;
                 margin-top: 15px;
+                padding-bottom: 10px;
             }
         }
         .right-sec {
@@ -1714,6 +1715,9 @@ h2.account-heading {
                 top: 5px;
             }
         }
+    }
+    .see-all-link.unassigned {
+        display: none;
     }
 }
 .page-wrapper .block.widget .products-grid .product-items {
@@ -2081,6 +2085,10 @@ div#layered-filter-block-container {
                 &.selected {
                     border: 2px solid #E71C24;
                 }
+            }
+            &.selected {
+                outline: none;
+                border-color: #e71c24;
             }
         }
         .filter-options-content {
@@ -3205,6 +3213,18 @@ table.table.table-bordered {
     .nav-sections .mob-store-switcher {
         display: none;
     }
+    .hp-customer-review-outer {
+        .right-sec {
+            .image {
+                width: 100%;
+                height: 100%;
+                img {
+                    display: block;
+                    height: 100%;
+                }
+            }
+        }
+    }
     .footer-info {
         padding: 0 4%;
     }
@@ -3289,7 +3309,7 @@ table.table.table-bordered {
     }
     .hp-customer-review-outer {
         .slick-prev,.slick-next {
-            top: 42%;
+            top: 50%;
         }
         .delimiter {
             display: none;

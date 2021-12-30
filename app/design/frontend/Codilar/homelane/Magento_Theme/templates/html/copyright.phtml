@@ -68,3 +68,22 @@ require(['jquery'], function($){
   });*/
  });
 </script>
+<script type="text/javascript">
+    require(['jquery','Magento_Ui/js/modal/modal'],function ($,modal) {
+        const popup = {
+            type: 'popup',
+            modalClass: 'modal-popup city-popup',
+            responsive: true,
+            innerScroll: true,
+            clickableOverlay: true,
+            buttons: []
+        };
+        var popupModel = $('.call-popup').modal(popup);
+        $(window).load(function (){
+          console.log('popuploaded');
+          $("div#switcher-store-trigger").on('click',function() {
+              popupModel.modal('openModal');
+          });
+        });
+    });
+</script>

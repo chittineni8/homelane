@@ -84,7 +84,7 @@ require(['jquery','slickslider'], function($) {
 				isOpen = false;
 			}
 		});
-		$(document).on("click", function(){
+		$(document).on("click", function(event){
 	        var $trigger = $("form#search_mini_form");
 	        if($trigger !== event.target && !$trigger.has(event.target).length){
 	            searchBox.removeClass('searchbox-open');

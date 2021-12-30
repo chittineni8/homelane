@@ -4,10 +4,7 @@ require(
         'jquery/jquery.cookie',
         'Magento_Ui/js/modal/modal'
     ],
-    function (
-        $,
-        modal
-    ) {
+    function ($,modal) {
         const popup = {
             type: 'popup',
             modalClass: 'modal-popup city-popup',
@@ -16,8 +13,8 @@ require(
             clickableOverlay: true,
             buttons: []
         };
-        let popupModel = $('.call-popup').modal(popup);
-        let website_code = $.cookie("website_code");
+        var popupModel = $('.call-popup').modal(popup);
+        var website_code = $.cookie("website_code");
         console.log(website_code);
         if (website_code == null){
                 popupModel.modal('openModal');
@@ -30,5 +27,4 @@ require(
         $("div#switcher-store-trigger").on('click',function() {
             popupModel.modal('openModal');
         });
-    }
-);
+    });
