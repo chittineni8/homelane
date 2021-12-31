@@ -48,9 +48,10 @@ $logoHeight = $logoSizeResolver !== null && $logoSizeResolver->getHeight()
             var selectcity = $('div#switcher-store').clone();
             if($('ul.header.links').find('.customer-register-link').length <= 0) {
                 $("body").addClass("logged-in");
+                $("body").removeClass("logged-out");
             } else {
                 $("body").addClass("logged-out");
-                $("body").addClass("logged-outt");
+                $("body").removeClass("logged-in");
             }
             if ($(window).width() > 767) {
                 if($('ul.header.links').find('.customer-register-link').length <= 0) {

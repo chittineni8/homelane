@@ -26,7 +26,7 @@
     <span></span>
   </div>
 <script type="text/javascript">
-require(['jquery'], function($){ 
+require(['jquery'], function($) {
   $(document).ready(function() {
     // declare variable
     var scrollTop = $(".scrollTop");
@@ -48,27 +48,10 @@ require(['jquery'], function($){
         return false;
     }); // click() scroll top EMD
   });
-/*  $(window).load(function (){
-    var selectcityy = $('div#switcher-store').clone();
-    if($('ul.header.links').find('.customer-register-link').length <= 0) {
-    $("body").addClass("logged-in");
-    $("body").removeClass("logged-out");
-    } else {
-    $("body").addClass("logged-out");
-    $("body").removeClass("logged-in");
-    }
-    if ($(window).width() > 767) {
-      if($('.minicart-wrapper + ul.header.links').find('div#switcher-store').length <= 0) {
-        if($('ul.header.links').find('.customer-register-link').length <= 0) {
-          } else {
-            $(".minicart-wrapper + ul.header.links").prepend(selectcityy);
-          }
-      }
-    }
-  });*/
  });
 </script>
 <script type="text/javascript">
+  // this code for citystore popup.sometime click event not working due to varnish
     require(['jquery','Magento_Ui/js/modal/modal'],function ($,modal) {
         const popup = {
             type: 'popup',
