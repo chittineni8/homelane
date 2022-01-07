@@ -302,9 +302,9 @@ define(
                         viewId   = parentEl.attr('id');
 
                     categoryTableEl.find('li').removeClass('primary');
-                    categoryTableEl.find('.action-dropdown-menu-link').removeClass('primary').css({'background-color': 'white', 'color' : '#d6522d'});
+                    categoryTableEl.find('.action-dropdown-menu-link').removeClass('primary');
                     parentEl.addClass('primary');
-                    parentEl.find('.action-dropdown-menu-link').addClass('primary').css({'background-color':'#d6522d', 'color' : 'white'});
+                    parentEl.find('.action-dropdown-menu-link').addClass('primary');
                     $('#mp-wishlist-category-id').val(viewId);
 
                     if (parentEl.hasClass('un-remove-able')) {
@@ -333,23 +333,12 @@ define(
                     );
                 },
                 toolbarObs: function(){
-                    var self = this,
-                        ajaxUrl = '', page = 0;
+                    var self = this;
 
                     bodyEl.on('click', '.toolbar.wishlist-toolbar .pages .pages-items a', function (e) {
                             e.stopPropagation();
                             e.preventDefault();
-                            ajaxUrl = $(this).attr('href');
-                            if (ajaxUrl.indexOf('?fromCategory') !== -1) {
-                                page = ajaxUrl.substr(ajaxUrl.indexOf('&'));
-                                page = page.replace('&','?');
-                                ajaxUrl = ajaxUrl.substr(0, ajaxUrl.indexOf('/wishlist/index'));
-                                ajaxUrl += '/mpwishlist/customer/wishlist/' + page;
-                            }
-                            if(ajaxUrl.indexOf('wishlist/?p') && ajaxUrl.indexOf('mpwishlist') == -1) {
-                                ajaxUrl = ajaxUrl.replace('wishlist', 'mpwishlist/customer/wishlist');
-                            }
-                            self.ajaxLoadWishlist(ajaxUrl,self.getActiveCatId());
+                            self.ajaxLoadWishlist($(this).attr('href'),self.getActiveCatId());
                         }
                     );
                     bodyEl.on('change', '.toolbar.wishlist-toolbar .limiter select', function (e) {
@@ -361,8 +350,7 @@ define(
                 },
                 ajaxLoadWishlist: function(url,categoryId) {
                     var self = this;
-                    var params = new URLSearchParams(url);
-                    var param = params.values();
+
                     $.ajax(
                         {
                             url: url,

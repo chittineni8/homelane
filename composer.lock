@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a3fb2891ac6d915f145f20f7b3a0607",
+    "content-hash": "34c69ef23287bba28c9710508992bd94",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -295,26 +295,73 @@
             "time": "2020-04-20T17:47:06+00:00"
         },
         {
-            "name": "aws/aws-sdk-php",
-            "version": "3.191.8",
+            "name": "aws/aws-crt-php",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "949feb83cc0db46f07b12aa3128d47be3b9cca63"
+                "reference": "3942776a8c99209908ee0b287746263725685732"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/949feb83cc0db46f07b12aa3128d47be3b9cca63",
-                "reference": "949feb83cc0db46f07b12aa3128d47be3b9cca63",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/3942776a8c99209908ee0b287746263725685732",
+                "reference": "3942776a8c99209908ee0b287746263725685732",
                 "shasum": ""
             },
             "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35|^5.4.3"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "AWS SDK Common Runtime Team",
+                    "email": "aws-sdk-common-runtime@amazon.com"
+                }
+            ],
+            "description": "AWS Common Runtime for PHP",
+            "homepage": "http://aws.amazon.com/sdkforphp",
+            "keywords": [
+                "amazon",
+                "aws",
+                "crt",
+                "sdk"
+            ],
+            "time": "2021-09-03T22:57:30+00:00"
+        },
+        {
+            "name": "aws/aws-sdk-php",
+            "version": "3.208.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "reference": "acc9e8f88f568e03e00c2a57c27b550740e6c493"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/acc9e8f88f568e03e00c2a57c27b550740e6c493",
+                "reference": "acc9e8f88f568e03e00c2a57c27b550740e6c493",
+                "shasum": ""
+            },
+            "require": {
+                "aws/aws-crt-php": "^1.0.2",
                 "ext-json": "*",
                 "ext-pcre": "*",
                 "ext-simplexml": "*",
                 "guzzlehttp/guzzle": "^5.3.3|^6.2.1|^7.0",
                 "guzzlehttp/promises": "^1.4.0",
-                "guzzlehttp/psr7": "^1.7.0",
+                "guzzlehttp/psr7": "^1.7.0|^2.0",
                 "mtdowling/jmespath.php": "^2.6",
                 "php": ">=5.5"
             },
@@ -377,7 +424,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2021-08-31T18:18:02+00:00"
+            "time": "2022-01-04T19:15:39+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -430,16 +477,16 @@
         },
         {
             "name": "beberlei/assert",
-            "version": "v3.3.1",
+            "version": "v3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "5e721d7e937ca3ba2cdec1e1adf195f9e5188372"
+                "reference": "cb70015c04be1baee6f5f5c953703347c0ac1655"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/5e721d7e937ca3ba2cdec1e1adf195f9e5188372",
-                "reference": "5e721d7e937ca3ba2cdec1e1adf195f9e5188372",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/cb70015c04be1baee6f5f5c953703347c0ac1655",
+                "reference": "cb70015c04be1baee6f5f5c953703347c0ac1655",
                 "shasum": ""
             },
             "require": {
@@ -489,7 +536,7 @@
                 "assertion",
                 "validation"
             ],
-            "time": "2021-04-18T20:11:03+00:00"
+            "time": "2021-12-16T21:41:27+00:00"
         },
         {
             "name": "braintree/braintree_php",
@@ -907,16 +954,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "1.10.23",
+            "version": "1.10.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "eb3bae3d3de2e4abd94fa56fbe18355aba0b47ae"
+                "reference": "6dea608377dc5409895d4cfd987947bc0abe154a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/eb3bae3d3de2e4abd94fa56fbe18355aba0b47ae",
-                "reference": "eb3bae3d3de2e4abd94fa56fbe18355aba0b47ae",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/6dea608377dc5409895d4cfd987947bc0abe154a",
+                "reference": "6dea608377dc5409895d4cfd987947bc0abe154a",
                 "shasum": ""
             },
             "require": {
@@ -997,7 +1044,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-10-05T07:44:27+00:00"
+            "time": "2021-12-09T19:06:33+00:00"
         },
         {
             "name": "composer/semver",
@@ -1238,6 +1285,37 @@
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
             "time": "2017-02-14T19:40:03+00:00"
+        },
+        {
+            "name": "creativestyle/magesuite-magepack",
+            "version": "v1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "reference": "42aedccb861d01fc0554782348cc08f8ebf22332"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/42aedccb861d01fc0554782348cc08f8ebf22332",
+                "reference": "42aedccb861d01fc0554782348cc08f8ebf22332",
+                "shasum": ""
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "MageSuite\\Magepack\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0"
+            ],
+            "description": "Module responsible for handling advanced JavaScript bundling.",
+            "homepage": "https://creativestyle.de",
+            "time": "2020-10-19T13:11:34+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -1787,16 +1865,16 @@
         },
         {
             "name": "ezimuel/ringphp",
-            "version": "1.1.2",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "0b78f89d8e0bb9e380046c31adfa40347e9f663b"
+                "reference": "92b8161404ab1ad84059ebed41d9f757e897ce74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/0b78f89d8e0bb9e380046c31adfa40347e9f663b",
-                "reference": "0b78f89d8e0bb9e380046c31adfa40347e9f663b",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/92b8161404ab1ad84059ebed41d9f757e897ce74",
+                "reference": "92b8161404ab1ad84059ebed41d9f757e897ce74",
                 "shasum": ""
             },
             "require": {
@@ -1804,9 +1882,12 @@
                 "php": ">=5.4.0",
                 "react/promise": "~2.0"
             },
+            "replace": {
+                "guzzlehttp/ringphp": "self.version"
+            },
             "require-dev": {
                 "ext-curl": "*",
-                "phpunit/phpunit": "~4.0"
+                "phpunit/phpunit": "~9.0"
             },
             "suggest": {
                 "ext-curl": "Guzzle will use specific adapters if cURL is present"
@@ -1834,7 +1915,7 @@
                 }
             ],
             "description": "Fork of guzzle/RingPHP (abandoned) to be used with elasticsearch-php",
-            "time": "2020-02-14T23:51:21+00:00"
+            "time": "2021-11-16T11:51:30+00:00"
         },
         {
             "name": "facebook/graph-sdk",
@@ -1896,24 +1977,24 @@
         },
         {
             "name": "fgrosse/phpasn1",
-            "version": "v2.3.0",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "20299033c35f4300eb656e7e8e88cf52d1d6694e"
+                "reference": "eef488991d53e58e60c9554b09b1201ca5ba9296"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/20299033c35f4300eb656e7e8e88cf52d1d6694e",
-                "reference": "20299033c35f4300eb656e7e8e88cf52d1d6694e",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/eef488991d53e58e60c9554b09b1201ca5ba9296",
+                "reference": "eef488991d53e58e60c9554b09b1201ca5ba9296",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.0.0"
+                "php": "~7.1.0 || ~7.2.0 || ~7.3.0 || ~7.4.0 || ~8.0.0 || ~8.1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~6.3",
-                "satooshi/php-coveralls": "~2.0"
+                "php-coveralls/php-coveralls": "~2.0",
+                "phpunit/phpunit": "^6.3 || ^7.0 || ^8.0"
             },
             "suggest": {
                 "ext-bcmath": "BCmath is the fallback extension for big integer calculations",
@@ -1963,7 +2044,7 @@
                 "x509",
                 "x690"
             ],
-            "time": "2021-04-24T19:01:55+00:00"
+            "time": "2021-12-11T12:41:06+00:00"
         },
         {
             "name": "google/recaptcha",
@@ -2543,43 +2624,6 @@
             "license": [
                 "Apache-2.0"
             ],
-            "authors": [
-                {
-                    "name": "Joe Constant",
-                    "email": "joe.constant@klarna.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Dario Kassler",
-                    "email": "dario.kassler@klarna.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Kenny Gilles",
-                    "email": "kenny.gilles@klarna.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Markus Simon",
-                    "email": "markus.simon2@klarna.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Fei Chen",
-                    "email": "fei.chen@klarna.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Jason Grim",
-                    "email": "jason.grim@klarna.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Christian Jung",
-                    "email": "christian.jung@klarna.com",
-                    "role": "Developer"
-                }
-            ],
             "description": "Klarna Core Magento 2 Extension"
         },
         {
@@ -2624,43 +2668,6 @@
             "license": [
                 "Apache-2.0"
             ],
-            "authors": [
-                {
-                    "name": "Joe Constant",
-                    "email": "joe.constant@klarna.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Dario Kassler",
-                    "email": "dario.kassler@klarna.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Kenny Gilles",
-                    "email": "kenny.gilles@klarna.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Markus Simon",
-                    "email": "markus.simon2@klarna.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Fei Chen",
-                    "email": "fei.chen@klarna.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Jason Grim",
-                    "email": "jason.grim@klarna.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Christian Jung",
-                    "email": "christian.jung@klarna.com",
-                    "role": "Developer"
-                }
-            ],
             "description": "Klarna Payments Magento 2 Extension"
         },
         {
@@ -2698,18 +2705,6 @@
             },
             "license": [
                 "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Dario Kassler",
-                    "email": "dario.kassler@klarna.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Markus Simon",
-                    "email": "markus.simon2@klarna.com",
-                    "role": "Developer"
-                }
             ],
             "description": "Klarna KpGraphQl Magento 2 Extension"
         },
@@ -2751,18 +2746,6 @@
             "license": [
                 "Apache-2.0"
             ],
-            "authors": [
-                {
-                    "name": "Joe Constant",
-                    "email": "joe.constant@klarna.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Markus Simon",
-                    "email": "markus.simon2@klarna.com",
-                    "role": "Developer"
-                }
-            ],
             "description": "Klarna OnSite Messaging Magento 2 Extension"
         },
         {
@@ -2799,38 +2782,6 @@
             },
             "license": [
                 "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Joe Constant",
-                    "email": "joe.constant@klarna.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Dario Kassler",
-                    "email": "dario.kassler@klarna.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Kenny Gilles",
-                    "email": "kenny.gilles@klarna.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Markus Simon",
-                    "email": "markus.simon2@klarna.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Fei Chen",
-                    "email": "fei.chen@klarna.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Jason Grim",
-                    "email": "jason.grim@klarna.com",
-                    "role": "Developer"
-                }
             ],
             "description": "Klarna Order Management Magento 2 Extension"
         },
@@ -3019,16 +2970,16 @@
         },
         {
             "name": "laminas/laminas-crypt",
-            "version": "3.5.1",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "026fe31aa5c9d68679267e5473d64d96f4576020"
+                "reference": "ad2c29c289a4bc837b37a7650f5178edda0fc548"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/026fe31aa5c9d68679267e5473d64d96f4576020",
-                "reference": "026fe31aa5c9d68679267e5473d64d96f4576020",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/ad2c29c289a4bc837b37a7650f5178edda0fc548",
+                "reference": "ad2c29c289a4bc837b37a7650f5178edda0fc548",
                 "shasum": ""
             },
             "require": {
@@ -3036,11 +2987,10 @@
                 "ext-mbstring": "*",
                 "laminas/laminas-math": "^3.4",
                 "laminas/laminas-stdlib": "^3.6",
-                "laminas/laminas-zendframework-bridge": "^1.0",
                 "php": "^7.3 || ~8.0.0 || ~8.1.0"
             },
-            "replace": {
-                "zendframework/zend-crypt": "^3.3.1"
+            "conflict": {
+                "zendframework/zend-crypt": "*"
             },
             "require-dev": {
                 "laminas/laminas-coding-standard": "~1.0.0",
@@ -3071,7 +3021,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-11-28T16:04:24+00:00"
+            "time": "2021-12-06T01:25:27+00:00"
         },
         {
             "name": "laminas/laminas-db",
@@ -3138,26 +3088,30 @@
         },
         {
             "name": "laminas/laminas-dependency-plugin",
-            "version": "2.1.2",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "c5b4bf87729d6f38c73ca8ed22a5d62ec641d075"
+                "reference": "73cfb63ddca9d6bfedad5e0a038f6d55063975a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/c5b4bf87729d6f38c73ca8ed22a5d62ec641d075",
-                "reference": "c5b4bf87729d6f38c73ca8ed22a5d62ec641d075",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/73cfb63ddca9d6bfedad5e0a038f6d55063975a3",
+                "reference": "73cfb63ddca9d6bfedad5e0a038f6d55063975a3",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^1.1 || ^2.0",
-                "php": "^7.3 || ~8.0.0"
+                "php": "^7.3 || ~8.0.0 || ~8.1.0"
             },
             "require-dev": {
                 "composer/composer": "^1.9 || ^2.0",
-                "mikey179/vfsstream": "^1.6",
-                "roave/security-advisories": "dev-master"
+                "laminas/laminas-coding-standard": "^2.2.1",
+                "mikey179/vfsstream": "^1.6.10@alpha",
+                "phpunit/phpunit": "^9.5.5",
+                "psalm/plugin-phpunit": "^0.15.1",
+                "roave/security-advisories": "dev-master",
+                "vimeo/psalm": "^4.5"
             },
             "type": "composer-plugin",
             "extra": {
@@ -3179,44 +3133,41 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-02-15T16:44:31+00:00"
+            "time": "2021-09-08T17:51:35+00:00"
         },
         {
             "name": "laminas/laminas-di",
-            "version": "3.2.2",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "ed38ab3b066c0a1f1b087e0a664caadf1d4f8f04"
+                "reference": "83330af17fc2511231e805a3586d51883a452094"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/ed38ab3b066c0a1f1b087e0a664caadf1d4f8f04",
-                "reference": "ed38ab3b066c0a1f1b087e0a664caadf1d4f8f04",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/83330af17fc2511231e805a3586d51883a452094",
+                "reference": "83330af17fc2511231e805a3586d51883a452094",
                 "shasum": ""
             },
             "require": {
-                "laminas/laminas-stdlib": "^3.3",
-                "laminas/laminas-zendframework-bridge": "^0.4.5 || ^1.0",
-                "php": "^7.3 || ~8.0.0",
-                "psr/container": "^1.0",
-                "psr/log": "^1.0"
+                "laminas/laminas-stdlib": "^3.6",
+                "php": "^7.3 || ~8.0.0 || ~8.1.0",
+                "psr/container": "^1.1.1",
+                "psr/log": "^1.1.4"
             },
             "conflict": {
                 "laminas/laminas-servicemanager-di": "*",
-                "phpspec/prophecy": "<1.9.0"
-            },
-            "replace": {
-                "zendframework/zend-di": "^3.1.2"
+                "phpspec/prophecy": "<1.9.0",
+                "zendframework/zend-di": "*"
             },
             "require-dev": {
                 "container-interop/container-interop": "^1.2.0",
-                "laminas/laminas-coding-standard": "^2",
-                "laminas/laminas-servicemanager": "^3.4",
-                "mikey179/vfsstream": "^1.6.7",
+                "laminas/laminas-coding-standard": "~2.3.0",
+                "laminas/laminas-servicemanager": "^3.7",
+                "mikey179/vfsstream": "^1.6.10@alpha",
                 "phpspec/prophecy-phpunit": "^2.0",
                 "phpstan/phpstan": "^0.12.64",
-                "phpunit/phpunit": "^9.3"
+                "phpunit/phpunit": "^9.5.5"
             },
             "suggest": {
                 "laminas/laminas-servicemanager": "An IoC container without auto wiring capabilities"
@@ -3250,7 +3201,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-04-13T19:22:31+00:00"
+            "time": "2021-09-21T15:41:36+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
@@ -3439,40 +3390,37 @@
         },
         {
             "name": "laminas/laminas-filter",
-            "version": "2.11.1",
+            "version": "2.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "671724e163aa75c210e94d12b77a0f3f8240d4b2"
+                "reference": "79e8baa62035397044087907e89034726b3056a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/671724e163aa75c210e94d12b77a0f3f8240d4b2",
-                "reference": "671724e163aa75c210e94d12b77a0f3f8240d4b2",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/79e8baa62035397044087907e89034726b3056a0",
+                "reference": "79e8baa62035397044087907e89034726b3056a0",
                 "shasum": ""
             },
             "require": {
-                "laminas/laminas-stdlib": "^3.3",
-                "laminas/laminas-zendframework-bridge": "^1.0",
-                "php": "^7.3 || ~8.0.0"
+                "laminas/laminas-stdlib": "^3.6.1",
+                "php": "^7.4 || ~8.0.0 || ~8.1.0"
             },
             "conflict": {
-                "laminas/laminas-validator": "<2.10.1"
-            },
-            "replace": {
-                "zendframework/zend-filter": "^2.9.2"
+                "laminas/laminas-validator": "<2.10.1",
+                "zendframework/zend-filter": "*"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~1.0.0",
-                "laminas/laminas-crypt": "^3.2.1",
-                "laminas/laminas-servicemanager": "^3.3",
-                "laminas/laminas-uri": "^2.6",
-                "pear/archive_tar": "^1.4.3",
-                "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.3",
-                "psalm/plugin-phpunit": "^0.15.1",
-                "psr/http-factory": "^1.0",
-                "vimeo/psalm": "^4.6"
+                "laminas/laminas-coding-standard": "^2.3.0",
+                "laminas/laminas-crypt": "^3.5.1",
+                "laminas/laminas-servicemanager": "^3.7.0",
+                "laminas/laminas-uri": "^2.9.1",
+                "pear/archive_tar": "^1.4.14",
+                "phpspec/prophecy-phpunit": "^2.0.1",
+                "phpunit/phpunit": "^9.5.10",
+                "psalm/plugin-phpunit": "^0.15.2",
+                "psr/http-factory": "^1.0.1",
+                "vimeo/psalm": "^4.13.1"
             },
             "suggest": {
                 "laminas/laminas-crypt": "Laminas\\Crypt component, for encryption filters",
@@ -3509,7 +3457,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-05-24T18:29:02+00:00"
+            "time": "2021-12-23T12:46:20+00:00"
         },
         {
             "name": "laminas/laminas-http",
@@ -3571,48 +3519,47 @@
         },
         {
             "name": "laminas/laminas-i18n",
-            "version": "2.11.2",
+            "version": "2.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "78adb53ebf6c0bc63f92273fd7809dabc554f786"
+                "reference": "b3a55d05818ed37ed18e76c103727e95e32cf591"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/78adb53ebf6c0bc63f92273fd7809dabc554f786",
-                "reference": "78adb53ebf6c0bc63f92273fd7809dabc554f786",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/b3a55d05818ed37ed18e76c103727e95e32cf591",
+                "reference": "b3a55d05818ed37ed18e76c103727e95e32cf591",
                 "shasum": ""
             },
             "require": {
                 "ext-intl": "*",
                 "laminas/laminas-stdlib": "^2.7 || ^3.0",
-                "laminas/laminas-zendframework-bridge": "^1.0",
-                "php": "^7.3 || ~8.0.0"
+                "php": "^7.3 || ~8.0.0 || ~8.1.0"
             },
             "conflict": {
-                "phpspec/prophecy": "<1.9.0"
-            },
-            "replace": {
-                "zendframework/zend-i18n": "^2.10.1"
+                "phpspec/prophecy": "<1.9.0",
+                "zendframework/zend-i18n": "*"
             },
             "require-dev": {
-                "laminas/laminas-cache": "^2.6.1",
+                "laminas/laminas-cache": "^3.1.2",
+                "laminas/laminas-cache-storage-adapter-memory": "^2.0.0",
+                "laminas/laminas-cache-storage-deprecated-factory": "^1.0.0",
                 "laminas/laminas-coding-standard": "~1.0.0",
-                "laminas/laminas-config": "^2.6",
-                "laminas/laminas-eventmanager": "^2.6.2 || ^3.0",
-                "laminas/laminas-filter": "^2.6.1",
-                "laminas/laminas-servicemanager": "^3.2.1",
-                "laminas/laminas-validator": "^2.6",
-                "laminas/laminas-view": "^2.6.3",
+                "laminas/laminas-config": "^3.4.0",
+                "laminas/laminas-eventmanager": "^3.4.0",
+                "laminas/laminas-filter": "^2.10.0",
+                "laminas/laminas-servicemanager": "^3.7.0",
+                "laminas/laminas-validator": "^2.14.0",
+                "laminas/laminas-view": "^2.12.0",
                 "phpunit/phpunit": "^9.3"
             },
             "suggest": {
-                "laminas/laminas-cache": "Laminas\\Cache component",
-                "laminas/laminas-config": "Laminas\\Config component",
+                "laminas/laminas-cache": "You should install this package to cache the translations",
+                "laminas/laminas-config": "You should install this package to use the INI translation format",
                 "laminas/laminas-eventmanager": "You should install this package to use the events in the translator",
                 "laminas/laminas-filter": "You should install this package to use the provided filters",
-                "laminas/laminas-i18n-resources": "Translation resources",
-                "laminas/laminas-servicemanager": "Laminas\\ServiceManager component",
+                "laminas/laminas-i18n-resources": "This package provides validator and captcha translations",
+                "laminas/laminas-servicemanager": "You should install this package to use the translator",
                 "laminas/laminas-validator": "You should install this package to use the provided validators",
                 "laminas/laminas-view": "You should install this package to use the provided view helpers"
             },
@@ -3644,7 +3591,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-08-20T08:23:04+00:00"
+            "time": "2021-12-06T00:44:40+00:00"
         },
         {
             "name": "laminas/laminas-json",
@@ -3821,25 +3768,24 @@
         },
         {
             "name": "laminas/laminas-math",
-            "version": "3.4.0",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "79f6453a47a5774cf3736c5c66cb4818486681da"
+                "reference": "146d8187ab247ae152e811a6704a953d43537381"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/79f6453a47a5774cf3736c5c66cb4818486681da",
-                "reference": "79f6453a47a5774cf3736c5c66cb4818486681da",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/146d8187ab247ae152e811a6704a953d43537381",
+                "reference": "146d8187ab247ae152e811a6704a953d43537381",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
-                "laminas/laminas-zendframework-bridge": "^1.0",
                 "php": "^7.3 || ~8.0.0 || ~8.1.0"
             },
-            "replace": {
-                "zendframework/zend-math": "^3.2.0"
+            "conflict": {
+                "zendframework/zend-math": "*"
             },
             "require-dev": {
                 "laminas/laminas-coding-standard": "~1.0.0",
@@ -3877,7 +3823,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-10-09T15:15:23+00:00"
+            "time": "2021-12-06T02:02:07+00:00"
         },
         {
             "name": "laminas/laminas-mime",
@@ -4134,30 +4080,30 @@
         },
         {
             "name": "laminas/laminas-server",
-            "version": "2.10.0",
+            "version": "2.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "e1fd6853223feed7a00555144d661e0a914124cd"
+                "reference": "7582832d56c5488dee4d4753bf3bf2d5f3dc5906"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/e1fd6853223feed7a00555144d661e0a914124cd",
-                "reference": "e1fd6853223feed7a00555144d661e0a914124cd",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/7582832d56c5488dee4d4753bf3bf2d5f3dc5906",
+                "reference": "7582832d56c5488dee4d4753bf3bf2d5f3dc5906",
                 "shasum": ""
             },
             "require": {
                 "laminas/laminas-code": "^3.5.1 || ^4.0.0",
                 "laminas/laminas-stdlib": "^3.3.1",
                 "laminas/laminas-zendframework-bridge": "^1.2.0",
-                "php": "^7.3 || ~8.0.0"
+                "php": "^7.3 || ~8.0.0 || ~8.1.0"
             },
             "replace": {
                 "zendframework/zend-server": "^2.8.1"
             },
             "require-dev": {
                 "laminas/laminas-coding-standard": "~1.0.0",
-                "phpunit/phpunit": "^9.5.4",
+                "phpunit/phpunit": "^9.5.5",
                 "psalm/plugin-phpunit": "^0.15.1",
                 "vimeo/psalm": "^4.6.4"
             },
@@ -4183,7 +4129,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-04-16T11:56:04+00:00"
+            "time": "2021-10-08T07:49:59+00:00"
         },
         {
             "name": "laminas/laminas-servicemanager",
@@ -4269,12 +4215,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "9777ec3690ceedc4bce2ed13af7af4ca4ee3088f"
+                "reference": "fc538bba5196e3b5937ae7db3c713fc7c0829881"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/9777ec3690ceedc4bce2ed13af7af4ca4ee3088f",
-                "reference": "9777ec3690ceedc4bce2ed13af7af4ca4ee3088f",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/fc538bba5196e3b5937ae7db3c713fc7c0829881",
+                "reference": "fc538bba5196e3b5937ae7db3c713fc7c0829881",
                 "shasum": ""
             },
             "require": {
@@ -4399,16 +4345,16 @@
         },
         {
             "name": "laminas/laminas-stdlib",
-            "version": "3.6.1",
+            "version": "3.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "db581851a092246ad99e12d4fddf105184924c71"
+                "reference": "830a36d93aeaf06e540e90ec031babb3c6eafadb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/db581851a092246ad99e12d4fddf105184924c71",
-                "reference": "db581851a092246ad99e12d4fddf105184924c71",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/830a36d93aeaf06e540e90ec031babb3c6eafadb",
+                "reference": "830a36d93aeaf06e540e90ec031babb3c6eafadb",
                 "shasum": ""
             },
             "require": {
@@ -4446,34 +4392,32 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-11-10T11:33:52+00:00"
+            "time": "2021-12-29T14:33:01+00:00"
         },
         {
             "name": "laminas/laminas-text",
-            "version": "2.8.1",
+            "version": "2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "d696fa1fb3880b9b8f02c08be58685013b421608"
+                "reference": "8879e75d03e09b0d6787e6680cfa255afd4645a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/d696fa1fb3880b9b8f02c08be58685013b421608",
-                "reference": "d696fa1fb3880b9b8f02c08be58685013b421608",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/8879e75d03e09b0d6787e6680cfa255afd4645a7",
+                "reference": "8879e75d03e09b0d6787e6680cfa255afd4645a7",
                 "shasum": ""
             },
             "require": {
                 "laminas/laminas-servicemanager": "^3.4",
-                "laminas/laminas-stdlib": "^3.1",
-                "laminas/laminas-zendframework-bridge": "^1.0",
-                "php": "^7.3 || ~8.0.0"
+                "laminas/laminas-stdlib": "^3.6",
+                "php": "^7.3 || ~8.0.0 || ~8.1.0"
             },
-            "replace": {
-                "zendframework/zend-text": "^2.7.1"
+            "conflict": {
+                "zendframework/zend-text": "*"
             },
             "require-dev": {
                 "laminas/laminas-coding-standard": "~1.0.0",
-                "laminas/laminas-config": "^3.4",
                 "phpunit/phpunit": "^9.3"
             },
             "type": "library",
@@ -4498,7 +4442,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-02-17T21:24:58+00:00"
+            "time": "2021-09-02T16:50:53+00:00"
         },
         {
             "name": "laminas/laminas-uri",
@@ -4734,16 +4678,16 @@
         },
         {
             "name": "laminas/laminas-zendframework-bridge",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "bf180a382393e7db5c1e8d0f2ec0c4af9c724baf"
+                "reference": "88bf037259869891afce6504cacc4f8a07b24d0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/bf180a382393e7db5c1e8d0f2ec0c4af9c724baf",
-                "reference": "bf180a382393e7db5c1e8d0f2ec0c4af9c724baf",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/88bf037259869891afce6504cacc4f8a07b24d0f",
+                "reference": "88bf037259869891afce6504cacc4f8a07b24d0f",
                 "shasum": ""
             },
             "require": {
@@ -4786,20 +4730,20 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-09-03T17:53:30+00:00"
+            "time": "2021-12-21T14:34:37+00:00"
         },
         {
             "name": "league/flysystem",
-            "version": "2.2.3",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "811bdc2d52a07eafbb6cb68a7b368b0668b362c8"
+                "reference": "4a6f9f7d7b97c938f2fd25aeb9ff9a6a34c79f2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/811bdc2d52a07eafbb6cb68a7b368b0668b362c8",
-                "reference": "811bdc2d52a07eafbb6cb68a7b368b0668b362c8",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/4a6f9f7d7b97c938f2fd25aeb9ff9a6a34c79f2f",
+                "reference": "4a6f9f7d7b97c938f2fd25aeb9ff9a6a34c79f2f",
                 "shasum": ""
             },
             "require": {
@@ -4816,7 +4760,7 @@
                 "aws/aws-sdk-php": "^3.132.4",
                 "composer/semver": "^3.0",
                 "ext-fileinfo": "*",
-                "friendsofphp/php-cs-fixer": "^2.16",
+                "friendsofphp/php-cs-fixer": "^3.2",
                 "google/cloud-storage": "^1.23",
                 "phpseclib/phpseclib": "^2.0",
                 "phpstan/phpstan": "^0.12.26",
@@ -4867,7 +4811,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-18T19:59:31+00:00"
+            "time": "2022-01-04T17:09:29+00:00"
         },
         {
             "name": "league/flysystem-aws-s3-v3",
@@ -4976,16 +4920,16 @@
         },
         {
             "name": "league/mime-type-detection",
-            "version": "1.7.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "3b9dff8aaf7323590c1d2e443db701eb1f9aa0d3"
+                "reference": "aa70e813a6ad3d1558fc927863d47309b4c23e69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/3b9dff8aaf7323590c1d2e443db701eb1f9aa0d3",
-                "reference": "3b9dff8aaf7323590c1d2e443db701eb1f9aa0d3",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/aa70e813a6ad3d1558fc927863d47309b4c23e69",
+                "reference": "aa70e813a6ad3d1558fc927863d47309b4c23e69",
                 "shasum": ""
             },
             "require": {
@@ -4993,7 +4937,7 @@
                 "php": "^7.2 || ^8.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.18",
+                "friendsofphp/php-cs-fixer": "^3.2",
                 "phpstan/phpstan": "^0.12.68",
                 "phpunit/phpunit": "^8.5.8 || ^9.3"
             },
@@ -5024,7 +4968,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-18T20:58:21+00:00"
+            "time": "2021-11-21T11:48:40+00:00"
         },
         {
             "name": "magento/adobe-ims",
@@ -16057,12 +16001,6 @@
             "license": [
                 "OSL-3.0"
             ],
-            "authors": [
-                {
-                    "name": "Riccardo Tempesta",
-                    "email": "riccardo.tempesta@magespecialist.it"
-                }
-            ],
             "description": "Google reCAPTCHA integration for Magento2"
         },
         {
@@ -17264,12 +17202,6 @@
             "license": [
                 "OSL-3.0",
                 "AFL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Kalpesh Mehta",
-                    "email": "k@lpe.sh"
-                }
             ],
             "description": "Security.txt file for Magento 2 websites"
         },
@@ -19343,12 +19275,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "05241f28dfcba2b51b11e2d750e296316ebbe518"
+                "reference": "647490bbcaf7fc4891c58f47b825eb99d19c377a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/05241f28dfcba2b51b11e2d750e296316ebbe518",
-                "reference": "05241f28dfcba2b51b11e2d750e296316ebbe518",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/647490bbcaf7fc4891c58f47b825eb99d19c377a",
+                "reference": "647490bbcaf7fc4891c58f47b825eb99d19c377a",
                 "shasum": ""
             },
             "require": {
@@ -19379,16 +19311,16 @@
         },
         {
             "name": "mageplaza/magento-2-social-login",
-            "version": "4.1.2",
+            "version": "4.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "c61ace88987e3c38b0961f90a499f1dd0232aaed"
+                "reference": "aaa30bb5b3c07953dc7dba6a91336ab4a91303a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/c61ace88987e3c38b0961f90a499f1dd0232aaed",
-                "reference": "c61ace88987e3c38b0961f90a499f1dd0232aaed",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/aaa30bb5b3c07953dc7dba6a91336ab4a91303a6",
+                "reference": "aaa30bb5b3c07953dc7dba6a91336ab4a91303a6",
                 "shasum": ""
             },
             "require": {
@@ -19443,7 +19375,7 @@
                 "social proof",
                 "twitter"
             ],
-            "time": "2021-08-13T09:24:49+00:00"
+            "time": "2021-12-29T03:26:55+00:00"
         },
         {
             "name": "mageplaza/module-ajax-layered-navigation",
@@ -19488,16 +19420,16 @@
         },
         {
             "name": "mageplaza/module-better-wishlist",
-            "version": "4.0.2",
+            "version": "4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "f73543ac4e1def05f1a70bcd1525c8a157a1ad09"
+                "reference": "42aedccb861d01fc0554782348cc08f8ebf22332"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/f73543ac4e1def05f1a70bcd1525c8a157a1ad09",
-                "reference": "f73543ac4e1def05f1a70bcd1525c8a157a1ad09",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/42aedccb861d01fc0554782348cc08f8ebf22332",
+                "reference": "42aedccb861d01fc0554782348cc08f8ebf22332",
                 "shasum": ""
             },
             "require": {
@@ -19524,7 +19456,7 @@
                 }
             ],
             "description": "Magento 2 Better Wishlist Extension",
-            "time": "2021-08-10T06:53:39+00:00"
+            "time": "2021-11-17T01:09:11+00:00"
         },
         {
             "name": "mageplaza/module-core",
@@ -19608,16 +19540,16 @@
         },
         {
             "name": "mageplaza/module-search",
-            "version": "4.0.3",
+            "version": "4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "2391482cd003dfdc36b679b27e9f5326bd656acd"
+                "reference": "42aedccb861d01fc0554782348cc08f8ebf22332"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/2391482cd003dfdc36b679b27e9f5326bd656acd",
-                "reference": "2391482cd003dfdc36b679b27e9f5326bd656acd",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/42aedccb861d01fc0554782348cc08f8ebf22332",
+                "reference": "42aedccb861d01fc0554782348cc08f8ebf22332",
                 "shasum": ""
             },
             "require": {
@@ -19644,20 +19576,20 @@
                 }
             ],
             "description": "Magento 2 Search extension",
-            "time": "2021-10-27T02:33:52+00:00"
+            "time": "2021-12-28T10:15:02+00:00"
         },
         {
             "name": "mageplaza/module-smtp",
-            "version": "4.5.3",
+            "version": "4.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "dc960a912984efb74d0a90222870c72c87f10c91"
+                "reference": "6043fcabc815a8d79819abfc26a5d8a18643ab4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/dc960a912984efb74d0a90222870c72c87f10c91",
-                "reference": "dc960a912984efb74d0a90222870c72c87f10c91",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/6043fcabc815a8d79819abfc26a5d8a18643ab4c",
+                "reference": "6043fcabc815a8d79819abfc26a5d8a18643ab4c",
                 "shasum": ""
             },
             "require": {
@@ -19705,7 +19637,7 @@
                 "web push notification",
                 "whatsapp"
             ],
-            "time": "2021-08-15T02:39:31+00:00"
+            "time": "2021-12-28T10:00:15+00:00"
         },
         {
             "name": "mageplaza/module-two-factor-authentication",
@@ -19755,12 +19687,12 @@
             "version": "1.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/magepow/magento-2-core.git",
+                "url": "https://github.com/2tvenom/CBOREncode.git",
                 "reference": "c722af0e9c3298a4c152d68b91f4234a75a7007b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/magepow/magento-2-core/zipball/c722af0e9c3298a4c152d68b91f4234a75a7007b",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/c722af0e9c3298a4c152d68b91f4234a75a7007b",
                 "reference": "c722af0e9c3298a4c152d68b91f4234a75a7007b",
                 "shasum": ""
             },
@@ -19795,12 +19727,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "a6156aef942a4e4de0add34a73d066a9458cefc6"
+                "reference": "6483453812d1eab6f256b75af9f9895e38f9e79b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/a6156aef942a4e4de0add34a73d066a9458cefc6",
-                "reference": "a6156aef942a4e4de0add34a73d066a9458cefc6",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/6483453812d1eab6f256b75af9f9895e38f9e79b",
+                "reference": "6483453812d1eab6f256b75af9f9895e38f9e79b",
                 "shasum": ""
             },
             "require": {
@@ -20580,20 +20512,20 @@
         },
         {
             "name": "phpgt/cssxpath",
-            "version": "v1.1.3",
+            "version": "v1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "64813864ab00e52cbde2cd517d6c6235b7f9ac69"
+                "reference": "7f073ba346c49a339a7b2cda9ccfdb1994c5d271"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/64813864ab00e52cbde2cd517d6c6235b7f9ac69",
-                "reference": "64813864ab00e52cbde2cd517d6c6235b7f9ac69",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/7f073ba346c49a339a7b2cda9ccfdb1994c5d271",
+                "reference": "7f073ba346c49a339a7b2cda9ccfdb1994c5d271",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4"
+                "php": ">=7.3"
             },
             "require-dev": {
                 "ext-dom": "*",
@@ -20622,11 +20554,11 @@
             "description": "Convert CSS selectors to XPath queries.",
             "funding": [
                 {
-                    "url": "https://github.com/phpgt",
+                    "url": "https://github.com/sponsors/PhpGt",
                     "type": "github"
                 }
             ],
-            "time": "2021-01-28T13:27:01+00:00"
+            "time": "2021-11-13T15:40:44+00:00"
         },
         {
             "name": "phpgt/dom",
@@ -20760,16 +20692,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "2.0.33",
+            "version": "2.0.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "fb53b7889497ec7c1362c94e61d8127ac67ea094"
+                "reference": "4e16cf3f5f927a7d3f5317820af795c0366c0420"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/fb53b7889497ec7c1362c94e61d8127ac67ea094",
-                "reference": "fb53b7889497ec7c1362c94e61d8127ac67ea094",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/4e16cf3f5f927a7d3f5317820af795c0366c0420",
+                "reference": "4e16cf3f5f927a7d3f5317820af795c0366c0420",
                 "shasum": ""
             },
             "require": {
@@ -20861,7 +20793,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-16T04:20:12+00:00"
+            "time": "2021-11-28T23:30:39+00:00"
         },
         {
             "name": "psr/container",
@@ -21464,16 +21396,16 @@
         },
         {
             "name": "seld/phar-utils",
-            "version": "1.1.2",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "749042a2315705d2dfbbc59234dd9ceb22bf3ff0"
+                "reference": "9f3452c93ff423469c0d56450431562ca423dcee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/749042a2315705d2dfbbc59234dd9ceb22bf3ff0",
-                "reference": "749042a2315705d2dfbbc59234dd9ceb22bf3ff0",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/9f3452c93ff423469c0d56450431562ca423dcee",
+                "reference": "9f3452c93ff423469c0d56450431562ca423dcee",
                 "shasum": ""
             },
             "require": {
@@ -21504,20 +21436,20 @@
             "keywords": [
                 "phar"
             ],
-            "time": "2021-08-19T21:01:38+00:00"
+            "time": "2021-12-10T11:20:11+00:00"
         },
         {
             "name": "sinergi/browser-detector",
-            "version": "6.1.3",
+            "version": "6.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "16cad9cafdd5bde8cc03d9ad4cc826988a67401e"
+                "reference": "4927f7c2bedc48b68f183bd420aa3549c59e133b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/16cad9cafdd5bde8cc03d9ad4cc826988a67401e",
-                "reference": "16cad9cafdd5bde8cc03d9ad4cc826988a67401e",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/4927f7c2bedc48b68f183bd420aa3549c59e133b",
+                "reference": "4927f7c2bedc48b68f183bd420aa3549c59e133b",
                 "shasum": ""
             },
             "require": {
@@ -21553,7 +21485,7 @@
                 "operating system",
                 "os"
             ],
-            "time": "2020-10-29T15:55:28+00:00"
+            "time": "2021-09-23T13:51:44+00:00"
         },
         {
             "name": "smile/module-product-label",
@@ -21561,12 +21493,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "56c65ae482c40411b74a65f97629d16b0e7662ee"
+                "reference": "e95e78b668771688302bed5a6bcb4d1680dae2a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/56c65ae482c40411b74a65f97629d16b0e7662ee",
-                "reference": "56c65ae482c40411b74a65f97629d16b0e7662ee",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/e95e78b668771688302bed5a6bcb4d1680dae2a6",
+                "reference": "e95e78b668771688302bed5a6bcb4d1680dae2a6",
                 "shasum": ""
             },
             "require": {
@@ -21865,16 +21797,16 @@
         },
         {
             "name": "swissup/module-core",
-            "version": "1.12.6",
+            "version": "1.12.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "cd8bd5daadf5b0c5b7fbd0024c2bf59f48165220"
+                "reference": "0bed8e4456229418da1b6ae341c9333fc4473417"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/cd8bd5daadf5b0c5b7fbd0024c2bf59f48165220",
-                "reference": "cd8bd5daadf5b0c5b7fbd0024c2bf59f48165220",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/0bed8e4456229418da1b6ae341c9333fc4473417",
+                "reference": "0bed8e4456229418da1b6ae341c9333fc4473417",
                 "shasum": ""
             },
             "type": "magento2-module",
@@ -21891,27 +21823,27 @@
             ],
             "description": "Swissup core module. It's purpose is to add Swissup menu and config entries",
             "support": {
-                "source": "https://github.com/swissup/module-core/tree/1.12.6",
+                "source": "https://github.com/swissup/module-core/tree/1.12.7",
                 "issues": "https://github.com/swissup/module-core/issues"
             },
-            "time": "2021-09-27T13:10:04+00:00"
+            "time": "2021-10-27T08:38:57+00:00"
         },
         {
             "name": "swissup/module-easytabs",
-            "version": "1.9.15",
+            "version": "1.9.17",
             "source": {
                 "type": "git",
                 "url": "git@github.com:swissup/module-ajaxpro.git",
-                "reference": "b45f393bd3005b88c1720cbb3c5e631033941f62"
+                "reference": "79cd7b7a1cee24a300fcd8991ef1acf2e3a41b5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swissup/module-ajaxpro/zipball/b45f393bd3005b88c1720cbb3c5e631033941f62",
-                "reference": "b45f393bd3005b88c1720cbb3c5e631033941f62",
+                "url": "https://api.github.com/repos/swissup/module-ajaxpro/zipball/79cd7b7a1cee24a300fcd8991ef1acf2e3a41b5e",
+                "reference": "79cd7b7a1cee24a300fcd8991ef1acf2e3a41b5e",
                 "shasum": ""
             },
             "require": {
-                "swissup/module-core": "^1.12.5"
+                "swissup/module-core": "^1.12.7"
             },
             "type": "magento2-module",
             "extra": {
@@ -21952,23 +21884,23 @@
                 "tabs"
             ],
             "support": {
-                "source": "https://github.com/swissup/module-easytabs/tree/1.9.15",
+                "source": "https://github.com/swissup/module-easytabs/tree/1.9.17",
                 "issues": "https://github.com/swissup/module-easytabs/issues"
             },
-            "time": "2021-09-27T12:39:45+00:00"
+            "time": "2021-11-18T07:52:58+00:00"
         },
         {
             "name": "symfony/config",
-            "version": "v5.4.0",
+            "version": "v5.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "e39cf688c80fd79ab0a6a2d05a9facac9b2d534b"
+                "reference": "2e082dae50da563c639119b7b52347a2a3db4ba5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/e39cf688c80fd79ab0a6a2d05a9facac9b2d534b",
-                "reference": "e39cf688c80fd79ab0a6a2d05a9facac9b2d534b",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/2e082dae50da563c639119b7b52347a2a3db4ba5",
+                "reference": "2e082dae50da563c639119b7b52347a2a3db4ba5",
                 "shasum": ""
             },
             "require": {
@@ -22031,20 +21963,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-28T15:25:38+00:00"
+            "time": "2021-12-15T11:06:13+00:00"
         },
         {
             "name": "symfony/console",
-            "version": "v4.4.34",
+            "version": "v4.4.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "329b3a75cc6b16d435ba1b1a41df54a53382a3f0"
+                "reference": "621379b62bb19af213b569b60013200b11dd576f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/329b3a75cc6b16d435ba1b1a41df54a53382a3f0",
-                "reference": "329b3a75cc6b16d435ba1b1a41df54a53382a3f0",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/621379b62bb19af213b569b60013200b11dd576f",
+                "reference": "621379b62bb19af213b569b60013200b11dd576f",
                 "shasum": ""
             },
             "require": {
@@ -22118,20 +22050,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-04T12:23:33+00:00"
+            "time": "2021-12-15T10:33:10+00:00"
         },
         {
             "name": "symfony/css-selector",
-            "version": "v5.3.4",
+            "version": "v5.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "7fb120adc7f600a59027775b224c13a33530dd90"
+                "reference": "cfcbee910e159df402603502fe387e8b677c22fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/7fb120adc7f600a59027775b224c13a33530dd90",
-                "reference": "7fb120adc7f600a59027775b224c13a33530dd90",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/cfcbee910e159df402603502fe387e8b677c22fd",
+                "reference": "cfcbee910e159df402603502fe387e8b677c22fd",
                 "shasum": ""
             },
             "require": {
@@ -22181,20 +22113,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-07-21T12:38:00+00:00"
+            "time": "2021-12-16T21:58:21+00:00"
         },
         {
             "name": "symfony/debug",
-            "version": "v4.4.31",
+            "version": "v4.4.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "43ede438d4cb52cd589ae5dc070e9323866ba8e0"
+                "reference": "346e1507eeb3f566dcc7a116fefaa407ee84691b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/43ede438d4cb52cd589ae5dc070e9323866ba8e0",
-                "reference": "43ede438d4cb52cd589ae5dc070e9323866ba8e0",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/346e1507eeb3f566dcc7a116fefaa407ee84691b",
+                "reference": "346e1507eeb3f566dcc7a116fefaa407ee84691b",
                 "shasum": ""
             },
             "require": {
@@ -22246,20 +22178,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-09-24T13:30:14+00:00"
+            "time": "2021-11-29T08:40:48+00:00"
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v5.4.0",
+            "version": "v5.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "69c398723857bb19fdea78496cedea0f756decab"
+                "reference": "ba94559be9738d77cd29e24b5d81cf3b89b7d628"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/69c398723857bb19fdea78496cedea0f756decab",
-                "reference": "69c398723857bb19fdea78496cedea0f756decab",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/ba94559be9738d77cd29e24b5d81cf3b89b7d628",
+                "reference": "ba94559be9738d77cd29e24b5d81cf3b89b7d628",
                 "shasum": ""
             },
             "require": {
@@ -22332,7 +22264,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-29T15:30:56+00:00"
+            "time": "2021-12-29T10:10:35+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -22400,16 +22332,16 @@
         },
         {
             "name": "symfony/error-handler",
-            "version": "v4.4.34",
+            "version": "v4.4.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "17785c374645def1e884d8ec49976c156c61db4d"
+                "reference": "1fa841189eae3d59c7a29c3751fd9ed8ab65ca5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/17785c374645def1e884d8ec49976c156c61db4d",
-                "reference": "17785c374645def1e884d8ec49976c156c61db4d",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/1fa841189eae3d59c7a29c3751fd9ed8ab65ca5c",
+                "reference": "1fa841189eae3d59c7a29c3751fd9ed8ab65ca5c",
                 "shasum": ""
             },
             "require": {
@@ -22461,7 +22393,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-12T14:57:39+00:00"
+            "time": "2021-12-01T13:25:30+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -22683,20 +22615,21 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v5.3.7",
+            "version": "v5.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "a10000ada1e600d109a6c7632e9ac42e8bf2fb93"
+                "reference": "e77046c252be48c48a40816187ed527703c8f76c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/a10000ada1e600d109a6c7632e9ac42e8bf2fb93",
-                "reference": "a10000ada1e600d109a6c7632e9ac42e8bf2fb93",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/e77046c252be48c48a40816187ed527703c8f76c",
+                "reference": "e77046c252be48c48a40816187ed527703c8f76c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
+                "symfony/deprecation-contracts": "^2.1|^3",
                 "symfony/polyfill-php80": "^1.16"
             },
             "type": "library",
@@ -22738,7 +22671,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-04T21:20:46+00:00"
+            "time": "2021-12-15T11:06:13+00:00"
         },
         {
             "name": "symfony/http-client-contracts",
@@ -22817,16 +22750,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v5.4.0",
+            "version": "v5.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "5ef86ac7927d2de08dc1e26eb91325f9ccbe6309"
+                "reference": "ce952af52877eaf3eab5d0c08cc0ea865ed37313"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/5ef86ac7927d2de08dc1e26eb91325f9ccbe6309",
-                "reference": "5ef86ac7927d2de08dc1e26eb91325f9ccbe6309",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/ce952af52877eaf3eab5d0c08cc0ea865ed37313",
+                "reference": "ce952af52877eaf3eab5d0c08cc0ea865ed37313",
                 "shasum": ""
             },
             "require": {
@@ -22883,20 +22816,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-28T15:25:38+00:00"
+            "time": "2021-12-28T17:15:56+00:00"
         },
         {
             "name": "symfony/http-kernel",
-            "version": "v4.4.35",
+            "version": "v4.4.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "fb793f1381c34b79a43596a532a6a49bd729c9db"
+                "reference": "dfb65dcad12ef433d45ad1c97f632cd52c7faa68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/fb793f1381c34b79a43596a532a6a49bd729c9db",
-                "reference": "fb793f1381c34b79a43596a532a6a49bd729c9db",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/dfb65dcad12ef433d45ad1c97f632cd52c7faa68",
+                "reference": "dfb65dcad12ef433d45ad1c97f632cd52c7faa68",
                 "shasum": ""
             },
             "require": {
@@ -22984,25 +22917,25 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-24T08:40:10+00:00"
+            "time": "2021-12-29T12:48:41+00:00"
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v5.3.7",
+            "version": "v5.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "4b78e55b179003a42523a362cc0e8327f7a69b5e"
+                "reference": "b0fb78576487af19c500aaddb269fd36701d4847"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/4b78e55b179003a42523a362cc0e8327f7a69b5e",
-                "reference": "4b78e55b179003a42523a362cc0e8327f7a69b5e",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/b0fb78576487af19c500aaddb269fd36701d4847",
+                "reference": "b0fb78576487af19c500aaddb269fd36701d4847",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
-                "symfony/deprecation-contracts": "^2.1",
+                "symfony/deprecation-contracts": "^2.1|^3",
                 "symfony/polyfill-php73": "~1.0",
                 "symfony/polyfill-php80": "^1.16"
             },
@@ -23050,7 +22983,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-04T21:20:46+00:00"
+            "time": "2021-11-23T10:19:22+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -23755,16 +23688,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v4.4.35",
+            "version": "v4.4.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "c2098705326addae6e6742151dfade47ac71da1b"
+                "reference": "a35d6b8f82e2272504f23a267de49b8717ca0028"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/c2098705326addae6e6742151dfade47ac71da1b",
-                "reference": "c2098705326addae6e6742151dfade47ac71da1b",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/a35d6b8f82e2272504f23a267de49b8717ca0028",
+                "reference": "a35d6b8f82e2272504f23a267de49b8717ca0028",
                 "shasum": ""
             },
             "require": {
@@ -23810,30 +23743,30 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-22T22:36:24+00:00"
+            "time": "2021-12-19T16:27:15+00:00"
         },
         {
             "name": "symfony/property-access",
-            "version": "v5.3.7",
+            "version": "v5.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "a4bbf09b8f3e2d2c89cc2c8b3d6682bf4c3d5589"
+                "reference": "133c62a1be8a868134c4cced928568568d6b26f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/a4bbf09b8f3e2d2c89cc2c8b3d6682bf4c3d5589",
-                "reference": "a4bbf09b8f3e2d2c89cc2c8b3d6682bf4c3d5589",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/133c62a1be8a868134c4cced928568568d6b26f8",
+                "reference": "133c62a1be8a868134c4cced928568568d6b26f8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
-                "symfony/deprecation-contracts": "^2.1",
+                "symfony/deprecation-contracts": "^2.1|^3",
                 "symfony/polyfill-php80": "^1.16",
-                "symfony/property-info": "^5.2"
+                "symfony/property-info": "^5.2|^6.0"
             },
             "require-dev": {
-                "symfony/cache": "^4.4|^5.0"
+                "symfony/cache": "^4.4|^5.0|^6.0"
             },
             "suggest": {
                 "psr/cache-implementation": "To cache access methods."
@@ -23888,27 +23821,27 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-09T12:23:10+00:00"
+            "time": "2021-12-11T16:33:38+00:00"
         },
         {
             "name": "symfony/property-info",
-            "version": "v5.3.7",
+            "version": "v5.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "7202b6c93a07df5df83eb58e3757dffb77fc5d90"
+                "reference": "a32f813896ffb3b4710fca5af5b05bef600cf4f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/7202b6c93a07df5df83eb58e3757dffb77fc5d90",
-                "reference": "7202b6c93a07df5df83eb58e3757dffb77fc5d90",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/a32f813896ffb3b4710fca5af5b05bef600cf4f0",
+                "reference": "a32f813896ffb3b4710fca5af5b05bef600cf4f0",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
-                "symfony/deprecation-contracts": "^2.1",
+                "symfony/deprecation-contracts": "^2.1|^3",
                 "symfony/polyfill-php80": "^1.16",
-                "symfony/string": "^5.1"
+                "symfony/string": "^5.1|^6.0"
             },
             "conflict": {
                 "phpdocumentor/reflection-docblock": "<3.2.2",
@@ -23918,9 +23851,10 @@
             "require-dev": {
                 "doctrine/annotations": "^1.10.4",
                 "phpdocumentor/reflection-docblock": "^3.0|^4.0|^5.0",
-                "symfony/cache": "^4.4|^5.0",
-                "symfony/dependency-injection": "^4.4|^5.0",
-                "symfony/serializer": "^4.4|^5.0"
+                "phpstan/phpdoc-parser": "^1.0",
+                "symfony/cache": "^4.4|^5.0|^6.0",
+                "symfony/dependency-injection": "^4.4|^5.0|^6.0",
+                "symfony/serializer": "^4.4|^5.0|^6.0"
             },
             "suggest": {
                 "phpdocumentor/reflection-docblock": "To use the PHPDoc",
@@ -23975,7 +23909,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-23T12:57:24+00:00"
+            "time": "2021-12-26T13:30:54+00:00"
         },
         {
             "name": "symfony/service-contracts",
@@ -24059,16 +23993,16 @@
         },
         {
             "name": "symfony/string",
-            "version": "v5.3.7",
+            "version": "v5.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "8d224396e28d30f81969f083a58763b8b9ceb0a5"
+                "reference": "e6a5d5ecf6589c5247d18e0e74e30b11dfd51a3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/8d224396e28d30f81969f083a58763b8b9ceb0a5",
-                "reference": "8d224396e28d30f81969f083a58763b8b9ceb0a5",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/e6a5d5ecf6589c5247d18e0e74e30b11dfd51a3d",
+                "reference": "e6a5d5ecf6589c5247d18e0e74e30b11dfd51a3d",
                 "shasum": ""
             },
             "require": {
@@ -24079,11 +24013,14 @@
                 "symfony/polyfill-mbstring": "~1.0",
                 "symfony/polyfill-php80": "~1.15"
             },
+            "conflict": {
+                "symfony/translation-contracts": ">=3.0"
+            },
             "require-dev": {
-                "symfony/error-handler": "^4.4|^5.0",
-                "symfony/http-client": "^4.4|^5.0",
+                "symfony/error-handler": "^4.4|^5.0|^6.0",
+                "symfony/http-client": "^4.4|^5.0|^6.0",
                 "symfony/translation-contracts": "^1.1|^2",
-                "symfony/var-exporter": "^4.4|^5.0"
+                "symfony/var-exporter": "^4.4|^5.0|^6.0"
             },
             "type": "library",
             "autoload": {
@@ -24135,20 +24072,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-26T08:00:08+00:00"
+            "time": "2021-12-16T21:52:00+00:00"
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v5.4.0",
+            "version": "v5.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "89ab66eaef230c9cd1992de2e9a1b26652b127b9"
+                "reference": "1b56c32c3679002b3a42384a580e16e2600f41c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/89ab66eaef230c9cd1992de2e9a1b26652b127b9",
-                "reference": "89ab66eaef230c9cd1992de2e9a1b26652b127b9",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/1b56c32c3679002b3a42384a580e16e2600f41c1",
+                "reference": "1b56c32c3679002b3a42384a580e16e2600f41c1",
                 "shasum": ""
             },
             "require": {
@@ -24221,7 +24158,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-29T15:30:56+00:00"
+            "time": "2021-12-29T10:10:35+00:00"
         },
         {
             "name": "tedivm/jshrink",
@@ -24570,16 +24507,16 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "6.28.2",
+            "version": "6.32.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "42aedccb861d01fc0554782348cc08f8ebf22332"
+                "reference": "d4a5ad22e761a14c5e355debb88a6f17640b247c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/42aedccb861d01fc0554782348cc08f8ebf22332",
-                "reference": "42aedccb861d01fc0554782348cc08f8ebf22332",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/d4a5ad22e761a14c5e355debb88a6f17640b247c",
+                "reference": "d4a5ad22e761a14c5e355debb88a6f17640b247c",
                 "shasum": ""
             },
             "require": {
@@ -24616,7 +24553,7 @@
                 "sms",
                 "twilio"
             ],
-            "time": "2021-09-08T19:54:49+00:00"
+            "time": "2021-12-15T20:48:09+00:00"
         },
         {
             "name": "vertexinc/module-address-validation",
@@ -24893,14 +24830,6 @@
             "license": [
                 "proprietary"
             ],
-            "authors": [
-                {
-                    "name": "Mediotype",
-                    "email": "diveinto@mediotype.com",
-                    "homepage": "http://www.mediotype.com/",
-                    "role": "Development Company"
-                }
-            ],
             "description": "Vertex Tax Links for Magento 2",
             "homepage": "http://go.vertexsmb.com/magento_cbe",
             "keywords": [
@@ -24910,7 +24839,7 @@
         },
         {
             "name": "vertexinc/sdk",
-            "version": "1.2.7",
+            "version": "1.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
@@ -25486,16 +25415,16 @@
         },
         {
             "name": "allure-framework/allure-php-api",
-            "version": "1.3.1",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/allure-framework/allure-php-api.git",
-                "reference": "f64b69afeff472c564a4e2379efb2b69c430ec5a"
+                "reference": "50507f482d490f114054f2281cca487db47fa2bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/allure-framework/allure-php-api/zipball/f64b69afeff472c564a4e2379efb2b69c430ec5a",
-                "reference": "f64b69afeff472c564a4e2379efb2b69c430ec5a",
+                "url": "https://api.github.com/repos/allure-framework/allure-php-api/zipball/50507f482d490f114054f2281cca487db47fa2bd",
+                "reference": "50507f482d490f114054f2281cca487db47fa2bd",
                 "shasum": ""
             },
             "require": {
@@ -25527,7 +25456,7 @@
                     "role": "Developer"
                 }
             ],
-            "description": "PHP API for Allure adapter",
+            "description": "Allure PHP commons",
             "homepage": "http://allure.qatools.ru/",
             "keywords": [
                 "allure",
@@ -25535,20 +25464,20 @@
                 "php",
                 "report"
             ],
-            "time": "2021-03-26T14:32:27+00:00"
+            "time": "2021-11-15T13:15:20+00:00"
         },
         {
             "name": "allure-framework/allure-phpunit",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/allure-framework/allure-phpunit.git",
-                "reference": "56c65ae482c40411b74a65f97629d16b0e7662ee"
+                "reference": "5584e7e4d7a232bbf7dd92d0cabf143147f72e9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/allure-framework/allure-phpunit/zipball/56c65ae482c40411b74a65f97629d16b0e7662ee",
-                "reference": "56c65ae482c40411b74a65f97629d16b0e7662ee",
+                "url": "https://api.github.com/repos/allure-framework/allure-phpunit/zipball/5584e7e4d7a232bbf7dd92d0cabf143147f72e9e",
+                "reference": "5584e7e4d7a232bbf7dd92d0cabf143147f72e9e",
                 "shasum": ""
             },
             "require": {
@@ -25588,29 +25517,28 @@
                 "steps",
                 "testing"
             ],
-            "time": "2021-03-26T15:43:03+00:00"
+            "time": "2021-09-14T10:06:07+00:00"
         },
         {
             "name": "behat/gherkin",
-            "version": "v4.8.0",
+            "version": "v4.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Gherkin.git",
-                "reference": "2391482cd003dfdc36b679b27e9f5326bd656acd"
+                "reference": "0bc8d1e30e96183e4f36db9dc79caead300beff4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/2391482cd003dfdc36b679b27e9f5326bd656acd",
-                "reference": "2391482cd003dfdc36b679b27e9f5326bd656acd",
+                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/0bc8d1e30e96183e4f36db9dc79caead300beff4",
+                "reference": "0bc8d1e30e96183e4f36db9dc79caead300beff4",
                 "shasum": ""
             },
             "require": {
                 "php": "~7.2|~8.0"
             },
             "require-dev": {
-                "cucumber/cucumber": "dev-gherkin-16.0.0",
+                "cucumber/cucumber": "dev-gherkin-22.0.0",
                 "phpunit/phpunit": "~8|~9",
-                "symfony/phpunit-bridge": "~3|~4|~5",
                 "symfony/yaml": "~3|~4|~5"
             },
             "suggest": {
@@ -25619,7 +25547,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.4-dev"
+                    "dev-master": "4.x-dev"
                 }
             },
             "autoload": {
@@ -25648,27 +25576,27 @@
                 "gherkin",
                 "parser"
             ],
-            "time": "2021-02-04T12:44:21+00:00"
+            "time": "2021-10-12T13:05:09+00:00"
         },
         {
             "name": "codeception/codeception",
-            "version": "4.1.22",
+            "version": "4.1.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "9777ec3690ceedc4bce2ed13af7af4ca4ee3088f"
+                "reference": "2d9a11e6f487e3bcc17e22b7552fb6a10cec5c7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/9777ec3690ceedc4bce2ed13af7af4ca4ee3088f",
-                "reference": "9777ec3690ceedc4bce2ed13af7af4ca4ee3088f",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/2d9a11e6f487e3bcc17e22b7552fb6a10cec5c7c",
+                "reference": "2d9a11e6f487e3bcc17e22b7552fb6a10cec5c7c",
                 "shasum": ""
             },
             "require": {
                 "behat/gherkin": "^4.4.0",
-                "codeception/lib-asserts": "^1.0",
+                "codeception/lib-asserts": "^1.0 | 2.0.*@dev",
                 "codeception/phpunit-wrapper": ">6.0.15 <6.1.0 | ^6.6.1 | ^7.7.1 | ^8.1.1 | ^9.0",
-                "codeception/stub": "^2.0 | ^3.0",
+                "codeception/stub": "^2.0 | ^3.0 | ^4.0",
                 "ext-curl": "*",
                 "ext-json": "*",
                 "ext-mbstring": "*",
@@ -25681,11 +25609,11 @@
                 "symfony/yaml": ">=2.7 <6.0"
             },
             "require-dev": {
-                "codeception/module-asserts": "1.*@dev",
-                "codeception/module-cli": "1.*@dev",
-                "codeception/module-db": "1.*@dev",
-                "codeception/module-filesystem": "1.*@dev",
-                "codeception/module-phpbrowser": "1.*@dev",
+                "codeception/module-asserts": "^1.0 | 2.0.*@dev",
+                "codeception/module-cli": "^1.0 | 2.0.*@dev",
+                "codeception/module-db": "^1.0 | 2.0.*@dev",
+                "codeception/module-filesystem": "^1.0 | 2.0.*@dev",
+                "codeception/module-phpbrowser": "^1.0 | 2.0.*@dev",
                 "codeception/specify": "~0.3",
                 "codeception/util-universalframework": "*@dev",
                 "monolog/monolog": "~1.8",
@@ -25711,7 +25639,10 @@
                 "psr-4": {
                     "Codeception\\": "src/Codeception",
                     "Codeception\\Extension\\": "ext"
-                }
+                },
+                "files": [
+                    "functions.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -25739,7 +25670,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2021-08-06T17:15:34+00:00"
+            "time": "2021-12-22T06:40:46+00:00"
         },
         {
             "name": "codeception/lib-asserts",
@@ -25886,16 +25817,16 @@
         },
         {
             "name": "codeception/module-webdriver",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/module-webdriver.git",
-                "reference": "0b043cedebdb62d6706d9823f1c17bd0f26d831d"
+                "reference": "baa18b7bf70aa024012f967b5ce5021e1faa9151"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-webdriver/zipball/0b043cedebdb62d6706d9823f1c17bd0f26d831d",
-                "reference": "0b043cedebdb62d6706d9823f1c17bd0f26d831d",
+                "url": "https://api.github.com/repos/Codeception/module-webdriver/zipball/baa18b7bf70aa024012f967b5ce5021e1faa9151",
+                "reference": "baa18b7bf70aa024012f967b5ce5021e1faa9151",
                 "shasum": ""
             },
             "require": {
@@ -25934,7 +25865,7 @@
                 "browser-testing",
                 "codeception"
             ],
-            "time": "2021-08-22T07:21:13+00:00"
+            "time": "2021-09-02T12:01:02+00:00"
         },
         {
             "name": "codeception/phpunit-wrapper",
@@ -25983,20 +25914,24 @@
         },
         {
             "name": "codeception/stub",
-            "version": "3.7.0",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Stub.git",
-                "reference": "468dd5fe659f131fc997f5196aad87512f9b1304"
+                "reference": "4c9cf3e19bd5f064e08e7f3ba6be651c218dc6ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Stub/zipball/468dd5fe659f131fc997f5196aad87512f9b1304",
-                "reference": "468dd5fe659f131fc997f5196aad87512f9b1304",
+                "url": "https://api.github.com/repos/Codeception/Stub/zipball/4c9cf3e19bd5f064e08e7f3ba6be651c218dc6ae",
+                "reference": "4c9cf3e19bd5f064e08e7f3ba6be651c218dc6ae",
                 "shasum": ""
             },
             "require": {
+                "php": "^7.4 | ^8.0",
                 "phpunit/phpunit": "^8.4 | ^9.0"
+            },
+            "require-dev": {
+                "consolidation/robo": "^3.0"
             },
             "type": "library",
             "autoload": {
@@ -26009,7 +25944,7 @@
                 "MIT"
             ],
             "description": "Flexible Stub wrapper for PHPUnit's Mock Builder",
-            "time": "2020-07-03T15:54:43+00:00"
+            "time": "2021-12-07T14:39:17+00:00"
         },
         {
             "name": "csharpru/vault-php",
@@ -27044,16 +26979,16 @@
         },
         {
             "name": "jms/metadata",
-            "version": "2.5.1",
+            "version": "2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/metadata.git",
-                "reference": "a995e6cef6d6f56a6226e1616a519630e2ef0aeb"
+                "reference": "c3a3214354b5a765a19875f7b7c5ebcd94e462e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/metadata/zipball/a995e6cef6d6f56a6226e1616a519630e2ef0aeb",
-                "reference": "a995e6cef6d6f56a6226e1616a519630e2ef0aeb",
+                "url": "https://api.github.com/repos/schmittjoh/metadata/zipball/c3a3214354b5a765a19875f7b7c5ebcd94e462e5",
+                "reference": "c3a3214354b5a765a19875f7b7c5ebcd94e462e5",
                 "shasum": ""
             },
             "require": {
@@ -27100,29 +27035,29 @@
                 "xml",
                 "yaml"
             ],
-            "time": "2021-08-04T19:32:08+00:00"
+            "time": "2021-11-22T12:27:42+00:00"
         },
         {
             "name": "jms/serializer",
-            "version": "3.14.0",
+            "version": "3.17.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/serializer.git",
-                "reference": "bf371f55d8137fec4ff096bd45ff19e2db02ac4c"
+                "reference": "190f64b051795d447ec755acbfdb1bff330a6707"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/bf371f55d8137fec4ff096bd45ff19e2db02ac4c",
-                "reference": "bf371f55d8137fec4ff096bd45ff19e2db02ac4c",
+                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/190f64b051795d447ec755acbfdb1bff330a6707",
+                "reference": "190f64b051795d447ec755acbfdb1bff330a6707",
                 "shasum": ""
             },
             "require": {
-                "doctrine/annotations": "^1.10.4",
+                "doctrine/annotations": "^1.13",
                 "doctrine/instantiator": "^1.0.3",
                 "doctrine/lexer": "^1.1",
-                "jms/metadata": "^2.0",
+                "jms/metadata": "^2.6",
                 "php": "^7.2||^8.0",
-                "phpstan/phpdoc-parser": "^0.4 || ^0.5"
+                "phpstan/phpdoc-parser": "^0.4 || ^0.5 || ^1.0"
             },
             "require-dev": {
                 "doctrine/coding-standard": "^8.1",
@@ -27132,16 +27067,17 @@
                 "ext-pdo_sqlite": "*",
                 "jackalope/jackalope-doctrine-dbal": "^1.1.5",
                 "ocramius/proxy-manager": "^1.0|^2.0",
-                "phpstan/phpstan": "^0.12.65",
-                "phpunit/phpunit": "^8.0||^9.0",
+                "phpbench/phpbench": "^1.0",
+                "phpstan/phpstan": "^1.0.2",
+                "phpunit/phpunit": "^8.5.21||^9.0",
                 "psr/container": "^1.0",
-                "symfony/dependency-injection": "^3.0|^4.0|^5.0",
-                "symfony/expression-language": "^3.0|^4.0|^5.0",
-                "symfony/filesystem": "^3.0|^4.0|^5.0",
-                "symfony/form": "^3.0|^4.0|^5.0",
-                "symfony/translation": "^3.0|^4.0|^5.0",
-                "symfony/validator": "^3.1.9|^4.0|^5.0",
-                "symfony/yaml": "^3.3|^4.0|^5.0",
+                "symfony/dependency-injection": "^3.0|^4.0|^5.0|^6.0",
+                "symfony/expression-language": "^3.2|^4.0|^5.0|^6.0",
+                "symfony/filesystem": "^3.0|^4.0|^5.0|^6.0",
+                "symfony/form": "^3.0|^4.0|^5.0|^6.0",
+                "symfony/translation": "^3.0|^4.0|^5.0|^6.0",
+                "symfony/validator": "^3.1.9|^4.0|^5.0|^6.0",
+                "symfony/yaml": "^3.3|^4.0|^5.0|^6.0",
                 "twig/twig": "~1.34|~2.4|^3.0"
             },
             "suggest": {
@@ -27152,7 +27088,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.14-dev"
+                    "dev-master": "3.x-dev"
                 }
             },
             "autoload": {
@@ -27189,7 +27125,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-08-06T12:10:02+00:00"
+            "time": "2021-12-28T20:59:55+00:00"
         },
         {
             "name": "lusitanian/oauth",
@@ -27391,16 +27327,16 @@
         },
         {
             "name": "mustache/mustache",
-            "version": "v2.13.0",
+            "version": "v2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/mustache.php.git",
-                "reference": "e95c5a008c23d3151d59ea72484d4f72049ab7f4"
+                "reference": "4e2724dd40ae9499a55e7db7df82665be0ab7e34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/mustache.php/zipball/e95c5a008c23d3151d59ea72484d4f72049ab7f4",
-                "reference": "e95c5a008c23d3151d59ea72484d4f72049ab7f4",
+                "url": "https://api.github.com/repos/bobthecow/mustache.php/zipball/4e2724dd40ae9499a55e7db7df82665be0ab7e34",
+                "reference": "4e2724dd40ae9499a55e7db7df82665be0ab7e34",
                 "shasum": ""
             },
             "require": {
@@ -27433,7 +27369,7 @@
                 "mustache",
                 "templating"
             ],
-            "time": "2019-11-23T21:40:31+00:00"
+            "time": "2021-12-14T14:42:17+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -27863,16 +27799,16 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "5.2.2",
+            "version": "5.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "069a785b2141f5bcf49f3e353548dc1cce6df556"
+                "reference": "622548b623e81ca6d78b721c5e029f4ce664f170"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/069a785b2141f5bcf49f3e353548dc1cce6df556",
-                "reference": "069a785b2141f5bcf49f3e353548dc1cce6df556",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/622548b623e81ca6d78b721c5e029f4ce664f170",
+                "reference": "622548b623e81ca6d78b721c5e029f4ce664f170",
                 "shasum": ""
             },
             "require": {
@@ -27883,7 +27819,8 @@
                 "webmozart/assert": "^1.9.1"
             },
             "require-dev": {
-                "mockery/mockery": "~1.3.2"
+                "mockery/mockery": "~1.3.2",
+                "psalm/phar": "^4.8"
             },
             "type": "library",
             "extra": {
@@ -27911,20 +27848,20 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2020-09-03T19:13:55+00:00"
+            "time": "2021-10-19T17:43:47+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "1.4.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "6a467b8989322d92aa1c8bf2bebcc6e5c2ba55c0"
+                "reference": "93ebd0014cab80c4ea9f5e297ea48672f1b87706"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/6a467b8989322d92aa1c8bf2bebcc6e5c2ba55c0",
-                "reference": "6a467b8989322d92aa1c8bf2bebcc6e5c2ba55c0",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/93ebd0014cab80c4ea9f5e297ea48672f1b87706",
+                "reference": "93ebd0014cab80c4ea9f5e297ea48672f1b87706",
                 "shasum": ""
             },
             "require": {
@@ -27932,7 +27869,8 @@
                 "phpdocumentor/reflection-common": "^2.0"
             },
             "require-dev": {
-                "ext-tokenizer": "*"
+                "ext-tokenizer": "*",
+                "psalm/phar": "^4.8"
             },
             "type": "library",
             "extra": {
@@ -27956,7 +27894,7 @@
                 }
             ],
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
-            "time": "2020-09-17T18:55:26+00:00"
+            "time": "2022-01-04T19:58:01+00:00"
         },
         {
             "name": "phpmd/phpmd",
@@ -28038,33 +27976,33 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.13.0",
+            "version": "v1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "be1996ed8adc35c3fd795488a653f4b518be70ea"
+                "reference": "bbcd7380b0ebf3961ee21409db7b38bc31d69a13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/be1996ed8adc35c3fd795488a653f4b518be70ea",
-                "reference": "be1996ed8adc35c3fd795488a653f4b518be70ea",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/bbcd7380b0ebf3961ee21409db7b38bc31d69a13",
+                "reference": "bbcd7380b0ebf3961ee21409db7b38bc31d69a13",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.2",
-                "php": "^7.2 || ~8.0, <8.1",
+                "php": "^7.2 || ~8.0, <8.2",
                 "phpdocumentor/reflection-docblock": "^5.2",
                 "sebastian/comparator": "^3.0 || ^4.0",
                 "sebastian/recursion-context": "^3.0 || ^4.0"
             },
             "require-dev": {
-                "phpspec/phpspec": "^6.0",
+                "phpspec/phpspec": "^6.0 || ^7.0",
                 "phpunit/phpunit": "^8.0 || ^9.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.11.x-dev"
+                    "dev-master": "1.x-dev"
                 }
             },
             "autoload": {
@@ -28097,20 +28035,20 @@
                 "spy",
                 "stub"
             ],
-            "time": "2021-03-17T13:42:18+00:00"
+            "time": "2021-12-08T12:19:24+00:00"
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "0.5.6",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "fac86158ffc7392e49636f77e63684c026df43b8"
+                "reference": "dbc093d7af60eff5cd575d2ed761b15ed40bd08e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/fac86158ffc7392e49636f77e63684c026df43b8",
-                "reference": "fac86158ffc7392e49636f77e63684c026df43b8",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/dbc093d7af60eff5cd575d2ed761b15ed40bd08e",
+                "reference": "dbc093d7af60eff5cd575d2ed761b15ed40bd08e",
                 "shasum": ""
             },
             "require": {
@@ -28119,15 +28057,15 @@
             "require-dev": {
                 "php-parallel-lint/php-parallel-lint": "^1.2",
                 "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan": "^0.12.87",
-                "phpstan/phpstan-strict-rules": "^0.12.5",
+                "phpstan/phpstan": "^1.0",
+                "phpstan/phpstan-strict-rules": "^1.0",
                 "phpunit/phpunit": "^9.5",
                 "symfony/process": "^5.2"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.5-dev"
+                    "dev-master": "1.0-dev"
                 }
             },
             "autoload": {
@@ -28142,20 +28080,20 @@
                 "MIT"
             ],
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
-            "time": "2021-08-31T08:08:22+00:00"
+            "time": "2021-09-16T20:46:02+00:00"
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.96",
+            "version": "0.12.99",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "a98bdc51318f20fcae8c953d266f81a70254917f"
+                "reference": "b4d40f1d759942f523be267a1bab6884f46ca3f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/a98bdc51318f20fcae8c953d266f81a70254917f",
-                "reference": "a98bdc51318f20fcae8c953d266f81a70254917f",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/b4d40f1d759942f523be267a1bab6884f46ca3f7",
+                "reference": "b4d40f1d759942f523be267a1bab6884f46ca3f7",
                 "shasum": ""
             },
             "require": {
@@ -28202,7 +28140,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-21T11:55:13+00:00"
+            "time": "2021-09-12T20:09:55+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -28276,16 +28214,16 @@
         },
         {
             "name": "phpunit/php-file-iterator",
-            "version": "3.0.5",
+            "version": "3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
-                "reference": "aa4be8575f26070b100fccb67faabb28f21f66f8"
+                "reference": "cf1c2e7c203ac650e352f4cc675a7021e7d1b3cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/aa4be8575f26070b100fccb67faabb28f21f66f8",
-                "reference": "aa4be8575f26070b100fccb67faabb28f21f66f8",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/cf1c2e7c203ac650e352f4cc675a7021e7d1b3cf",
+                "reference": "cf1c2e7c203ac650e352f4cc675a7021e7d1b3cf",
                 "shasum": ""
             },
             "require": {
@@ -28328,7 +28266,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-28T05:57:25+00:00"
+            "time": "2021-12-02T12:48:52+00:00"
         },
         {
             "name": "phpunit/php-invoker",
@@ -28656,11 +28594,6 @@
         {
             "name": "psr/cache",
             "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/cache.git",
-                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8"
-            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/php-fig/cache/zipball/d11b50ad223250cf17b86e38383413f5a6764bf8",
@@ -29047,16 +28980,16 @@
         },
         {
             "name": "sebastian/exporter",
-            "version": "4.0.3",
+            "version": "4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/exporter.git",
-                "reference": "d89cc98761b8cb5a1a235a6b703ae50d34080e65"
+                "reference": "65e8b7db476c5dd267e65eea9cab77584d3cfff9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/d89cc98761b8cb5a1a235a6b703ae50d34080e65",
-                "reference": "d89cc98761b8cb5a1a235a6b703ae50d34080e65",
+                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/65e8b7db476c5dd267e65eea9cab77584d3cfff9",
+                "reference": "65e8b7db476c5dd267e65eea9cab77584d3cfff9",
                 "shasum": ""
             },
             "require": {
@@ -29105,7 +29038,7 @@
                 }
             ],
             "description": "Provides the functionality to export PHP variables for visualization",
-            "homepage": "http://www.github.com/sebastianbergmann/exporter",
+            "homepage": "https://www.github.com/sebastianbergmann/exporter",
             "keywords": [
                 "export",
                 "exporter"
@@ -29116,7 +29049,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-28T05:24:23+00:00"
+            "time": "2021-11-11T14:18:36+00:00"
         },
         {
             "name": "sebastian/global-state",
@@ -29597,21 +29530,21 @@
         },
         {
             "name": "symfony/mime",
-            "version": "v5.3.7",
+            "version": "v5.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mime.git",
-                "reference": "ae887cb3b044658676129f5e97aeb7e9eb69c2d8"
+                "reference": "1bfd938cf9562822c05c4d00e8f92134d3c8e42d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mime/zipball/ae887cb3b044658676129f5e97aeb7e9eb69c2d8",
-                "reference": "ae887cb3b044658676129f5e97aeb7e9eb69c2d8",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/1bfd938cf9562822c05c4d00e8f92134d3c8e42d",
+                "reference": "1bfd938cf9562822c05c4d00e8f92134d3c8e42d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
-                "symfony/deprecation-contracts": "^2.1",
+                "symfony/deprecation-contracts": "^2.1|^3",
                 "symfony/polyfill-intl-idn": "^1.10",
                 "symfony/polyfill-mbstring": "^1.0",
                 "symfony/polyfill-php80": "^1.16"
@@ -29625,10 +29558,10 @@
             "require-dev": {
                 "egulias/email-validator": "^2.1.10|^3.1",
                 "phpdocumentor/reflection-docblock": "^3.0|^4.0|^5.0",
-                "symfony/dependency-injection": "^4.4|^5.0",
-                "symfony/property-access": "^4.4|^5.1",
-                "symfony/property-info": "^4.4|^5.1",
-                "symfony/serializer": "^5.2"
+                "symfony/dependency-injection": "^4.4|^5.0|^6.0",
+                "symfony/property-access": "^4.4|^5.1|^6.0",
+                "symfony/property-info": "^4.4|^5.1|^6.0",
+                "symfony/serializer": "^5.2|^6.0"
             },
             "type": "library",
             "autoload": {
@@ -29673,7 +29606,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-20T11:40:01+00:00"
+            "time": "2021-12-28T17:15:56+00:00"
         },
         {
             "name": "symfony/polyfill-php70",
@@ -29742,21 +29675,21 @@
         },
         {
             "name": "symfony/stopwatch",
-            "version": "v5.3.4",
+            "version": "v5.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stopwatch.git",
-                "reference": "b24c6a92c6db316fee69e38c80591e080e41536c"
+                "reference": "208ef96122bfed82a8f3a61458a07113a08bdcfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/b24c6a92c6db316fee69e38c80591e080e41536c",
-                "reference": "b24c6a92c6db316fee69e38c80591e080e41536c",
+                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/208ef96122bfed82a8f3a61458a07113a08bdcfe",
+                "reference": "208ef96122bfed82a8f3a61458a07113a08bdcfe",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
-                "symfony/service-contracts": "^1.0|^2"
+                "symfony/service-contracts": "^1|^2|^3"
             },
             "type": "library",
             "autoload": {
@@ -29797,20 +29730,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-07-10T08:58:57+00:00"
+            "time": "2021-11-23T10:19:22+00:00"
         },
         {
             "name": "symfony/yaml",
-            "version": "v5.3.6",
+            "version": "v5.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "4500fe63dc9c6ffc32d3b1cb0448c329f9c814b7"
+                "reference": "dc07a318dae6e1af2be51d85f161263e0b6ca03d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/4500fe63dc9c6ffc32d3b1cb0448c329f9c814b7",
-                "reference": "4500fe63dc9c6ffc32d3b1cb0448c329f9c814b7",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/dc07a318dae6e1af2be51d85f161263e0b6ca03d",
+                "reference": "dc07a318dae6e1af2be51d85f161263e0b6ca03d",
                 "shasum": ""
             },
             "require": {
@@ -29869,7 +29802,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-07-29T06:20:01+00:00"
+            "time": "2021-11-28T15:23:54+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -29919,16 +29852,16 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v2.6.7",
+            "version": "v2.6.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "b786088918a884258c9e3e27405c6a4cf2ee246e"
+                "reference": "2e93cc98e2e8e869f8d9cfa61bb3a99ba4fc4141"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/b786088918a884258c9e3e27405c6a4cf2ee246e",
-                "reference": "b786088918a884258c9e3e27405c6a4cf2ee246e",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/2e93cc98e2e8e869f8d9cfa61bb3a99ba4fc4141",
+                "reference": "2e93cc98e2e8e869f8d9cfa61bb3a99ba4fc4141",
                 "shasum": ""
             },
             "require": {
@@ -29938,7 +29871,7 @@
             "require-dev": {
                 "ext-filter": "*",
                 "ext-pcre": "*",
-                "phpunit/phpunit": "^4.8.36 || ^5.7.27 || ^6.5.14 || ^7.5.20"
+                "phpunit/phpunit": "^4.8.36 || ^5.7.27 || ^6.5.14 || ^7.5.20 || ^8.5.21"
             },
             "suggest": {
                 "ext-filter": "Required to use the boolean validator.",
@@ -29962,13 +29895,13 @@
             "authors": [
                 {
                     "name": "Graham Campbell",
-                    "email": "graham@alt-three.com",
-                    "homepage": "https://gjcampbell.co.uk/"
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
                 },
                 {
                     "name": "Vance Lucas",
                     "email": "vance@vancelucas.com",
-                    "homepage": "https://vancelucas.com/"
+                    "homepage": "https://github.com/vlucas"
                 }
             ],
             "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
@@ -29987,7 +29920,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-20T14:39:13+00:00"
+            "time": "2021-12-12T22:59:22+00:00"
         },
         {
             "name": "weew/helpers-array",
