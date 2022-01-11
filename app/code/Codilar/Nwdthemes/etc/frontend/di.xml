@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Nwdthemes\Revslider\Model\Revslider\RevSliderOutput" type="Codilar\Nwdthemes\Model\Revslider\RevSliderOutput" />
+    <preference for="Nwdthemes\Revslider\Model\Revslider\RevSliderFunctions" type="Codilar\Nwdthemes\Model\Revslider\RevSliderFunctions" />
+    <preference for="Nwdthemes\Revslider\Model\Revslider\Admin\RevSliderAdmin" type="Codilar\Nwdthemes\Model\Revslider\Admin\RevSliderAdmin" />
+    <preference for="Nwdthemes\Revslider\Model\Revslider\Admin\Includes\RevSliderSliderExportHtml" type="Codilar\Nwdthemes\Model\Revslider\Admin\Includes\RevSliderSliderExportHtml" />
+
+</config>
+
