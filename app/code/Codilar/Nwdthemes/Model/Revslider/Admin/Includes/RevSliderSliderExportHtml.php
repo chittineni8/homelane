@@ -14,6 +14,7 @@ use \Nwdthemes\Revslider\Model\Revslider\Front\RevSliderFront;
 use \Nwdthemes\Revslider\Model\Revslider\RevSliderGlobals;
 use \Nwdthemes\Revslider\Model\Revslider\RevSliderOutput;
 use \Nwdthemes\Revslider\Model\Revslider\RevSliderSlider;
+use \Nwdthemes\Revslider\Model\Revslider\Admin\Includes\RevSliderSliderExport;
 
 class RevSliderSliderExportHtml extends RevSliderSliderExport {
 

@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Nwdthemes\Revslider\Model\Revslider\RevSliderOutput">
-        <plugin name="" type="Codilar\Customer\Plugin\CustomerSessionContext" sortOrder="15"/>
-    </type>
     <preference for="Nwdthemes\Revslider\Model\Revslider\RevSliderOutput" type="Codilar\Nwdthemes\Model\Revslider\RevSliderOutput" />
     <preference for="Nwdthemes\Revslider\Model\Revslider\RevSliderFunctions" type="Codilar\Nwdthemes\Model\Revslider\RevSliderFunctions" />
     <preference for="Nwdthemes\Revslider\Model\Revslider\Admin\RevSliderAdmin" type="Codilar\Nwdthemes\Model\Revslider\Admin\RevSliderAdmin" />
