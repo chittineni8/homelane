@@ -260,7 +260,7 @@ class WishlistManagement implements WishlistManagementInterface
                             'subcategory_type' => $this->_productRepository->getById($item->getProductId())->getAttributeText('subcategory_type'),
                             'product_url' => $baseurl . $this->getWebsiteCodeByStoreId($item->getStoreId()) . '/' . $this->getProductUrl($item->getProductId()),
                             'store_id' => $item->getStoreId(),
-                            'store_name' => $this->getStoreName($item->getStoreId()),
+                            'store_name' => $this->getWebsiteCodeByStoreId($item->getStoreId()),
                             'added_at' => $item->getAddedAt(),
                             'description' => $item->getDescription(),
                             'qty' => round($item->getQty()),
