@@ -34,6 +34,7 @@ use Magento\Customer\Api\AccountManagementInterface;
 use Magento\Framework\App\Request\Http;
 use Magento\Integration\Model\Oauth\Token;
 use Magento\Integration\Model\Oauth\TokenFactory;
+use Codilar\WishlistAPI\Helper\Product\Options\Loader;
 
 /**
  * Defines the implementaiton class of the WishlistManagementInterface
@@ -144,6 +145,9 @@ class WishlistManagement implements WishlistManagementInterface
     protected $request;
 
 
+    protected $loader;
+
+
     /**
      * @param CollectionFactory $wishlistCollectionFactory
      * @param WishlistFactory $wishlistFactory
@@ -182,7 +186,8 @@ class WishlistManagement implements WishlistManagementInterface
         Product                     $productload,
         Logger                      $loggerResponse,
         ProductRepositoryInterface  $productRepository,
-        ItemFactory                 $itemFactory
+        ItemFactory                 $itemFactory,
+        Loader                      $loader
     )
     {
         $this->_wishlistCollectionFactory = $wishlistCollectionFactory;
@@ -204,6 +209,7 @@ class WishlistManagement implements WishlistManagementInterface
         $this->jsonFactory = $jsonFactory;
         $this->loggerResponse = $loggerResponse;
         $this->customerAccountManagement = $customerAccountManagement;
+        $this->loader = $loader;
 
     }//end __construct()
 
@@ -264,6 +270,7 @@ class WishlistManagement implements WishlistManagementInterface
                             'added_at' => $item->getAddedAt(),
                             'description' => $item->getDescription(),
                             'qty' => round($item->getQty()),
+                            'discount' => $this->loader->getDiscountPercent($item->getProductId()),
                             'product' => $productInfo,
                         ];
                         $wishlistData[] = $data;

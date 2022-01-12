@@ -12,6 +12,7 @@ use Magento\ConfigurableProduct\Api\Data\OptionInterface;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\ConfigurableProduct\Api\Data\OptionValueInterfaceFactory;
 use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
+use Magento\Catalog\Model\ProductFactory;
 
 /**
  * Class Loader
@@ -29,6 +30,11 @@ class Loader extends \Magento\ConfigurableProduct\Helper\Product\Options\Loader
      */
     private $extensionAttributesJoinProcessor;
 
+     /**
+     * @var ProductRepository
+     */
+    protected $productFactory;
+
     /**
      * Loader constructor.
      * @param OptionValueInterfaceFactory $optionValueFactory
@@ -36,10 +42,12 @@ class Loader extends \Magento\ConfigurableProduct\Helper\Product\Options\Loader
      */
     public function __construct(
         OptionValueInterfaceFactory $optionValueFactory,
-        JoinProcessorInterface $extensionAttributesJoinProcessor
+        JoinProcessorInterface $extensionAttributesJoinProcessor,
+        ProductFactory $productFactory
     ) {
         $this->optionValueFactory = $optionValueFactory;
         $this->extensionAttributesJoinProcessor = $extensionAttributesJoinProcessor;
+        $this->productFactory = $productFactory;
     }
 
     /**
@@ -74,5 +82,22 @@ class Loader extends \Magento\ConfigurableProduct\Helper\Product\Options\Loader
         }
 
         return $options;
+    }
+
+
+    public function getDiscountPercent($id){
+        $product = $this->productFactory->create();
+        $productPrice = $product->load($id)->getPrice();
+        $productFinalPrice = $product->load($id)->getFinalPrice();
+
+        if($productFinalPrice < $productPrice): 
+         $_Percent = 100 - round(($productFinalPrice / $productPrice)*100); 
+         return $_Percent . '%'; 
+        
+        else:
+        return null;
+       endif;
+
+
     }
 }
