@@ -301,7 +301,7 @@ $_item = null;
                                             <?php endif; ?>
 
                                             <?php if ($showAddTo):?>
-                                                <div class="secondary-addto-links actions-secondary"
+                                                <div class="secondary-addto-links actions-secondary actions-secondary-related-block"
                                                      data-role="add-to-links">
                                                     <?php if ($addToBlock = $block->getChildBlock('addto')):?>
                                                         <?= $addToBlock->setProduct($_item)->getChildHtml() ?>

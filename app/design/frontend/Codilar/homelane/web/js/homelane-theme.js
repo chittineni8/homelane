@@ -131,7 +131,7 @@ require(['jquery','slickslider'], function($) {
                 },
                 {
                 breakpoint: 767,
-                    settings: {slidesToShow: 1,centerMode: true,centerPadding: '80px',}
+                    settings: {arrows: false,slidesToShow: 1,centerMode: true,centerPadding: '80px',}
                 }
             ]
 	    });
