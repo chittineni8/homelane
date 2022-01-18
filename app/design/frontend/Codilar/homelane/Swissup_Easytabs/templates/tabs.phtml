@@ -7,7 +7,6 @@
     }
 ?>
 <div class="product info detailed">
-    <h2><?= __('About this product') ?></h2>
     <div class="product data items <?= $block->getTabsLayout() ?>"
          data-mage-init='{"Swissup_Easytabs/js/tabs": <?= $block->getInitOptions() ?>}'
          id="swissup-easy-tabs"
@@ -44,9 +43,35 @@
                 </a>
             <?php endif ?>
             </div>
-            <div class="data item content" id="<?= /* @escapeNotVerified */ $alias; ?>" data-role="content">
-                <?= /* @escapeNotVerified */ $_tab['is_ajax'] ? '' : $_tab['child_html'] ?>
+            <div class="data item content content-prof-description" id="<?= /* @escapeNotVerified */ $alias; ?>" data-role="content">
+                <div class="description-content show-more-height">
+                    <?= /* @escapeNotVerified */ $_tab['is_ajax'] ? '' : $_tab['child_html'] ?>
+                </div>    
+                <div class="show-more">
+                   
+                </div>
             </div>
         <?php endforeach; ?>
     </div>
 </div>
+<script>
+    require(['jquery'], function ($) {
+        $(document).ready(function() {
+            $( ".product.data").find('.data').each(function() {
+                var heightContainer = $(this).find('.description-content').height();                
+                if(heightContainer > 180){
+                    $(this).find('.description-content').parent('.content').addClass('more-content-block');
+                }
+            });
+
+            $(".show-more").click(function () {
+                $(this).parent('.content-prof-description').find('.description-content').toggleClass("show-more-height");
+            });
+
+            setTimeout(function(){
+                $('#tab-label-Warranty').click();
+            }, 5000);
+
+        });
+    });
+</script>
