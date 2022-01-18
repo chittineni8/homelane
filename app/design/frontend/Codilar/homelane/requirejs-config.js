@@ -8,7 +8,8 @@ var config = {
         '*': {
             'homelanetheme': 'js/homelane-theme',
             'slickslider': 'js/slick.min',
-            'intlTelInput': 'js/intlTelInput'
+            'intlTelInput': 'js/intlTelInput',
+            'popupWindow':  'mage/popup-window'
         }
     },
     deps: [
