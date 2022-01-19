@@ -15,21 +15,21 @@ $currentUrl = $block->escapeUrl($this->getUrl('*/*/*', ['_current' => true, '_us
         <div class="media-content">
             <a class="twitter"
             href="#"
-            data-mage-init='{"popupWindow": {"windowURL":"<?php echo $this->getUrl('http://twitter.com/home/?status=')?>","windowName":"orderitems","width":500,"height":400,"top":0,"left":0,"resizable":1,"scrollbars":1}}'
+            data-mage-init='{"popupWindow": {"windowURL":"<?php echo $this->getUrl('http://twitter.com/home/?status='.$currentUrl)?>","windowName":"orderitems","width":500,"height":400,"top":0,"left":0,"resizable":1,"scrollbars":1}}'
             >
             </a>
         </div>
         <div class="media-content">
             <a class="instagram"
             href="#"
-            data-mage-init='{"popupWindow": {"windowURL":"<?php echo $this->getUrl('https://www.instagram.com/?url=')?>","windowName":"orderitems","width":500,"height":400,"top":0,"left":0,"resizable":1,"scrollbars":1}}'
+            data-mage-init='{"popupWindow": {"windowURL":"<?php echo $this->getUrl('https://www.instagram.com/?url='.$currentUrl)?>","windowName":"orderitems","width":500,"height":400,"top":0,"left":0,"resizable":1,"scrollbars":1}}'
             ></a>
         </div>
         <div class="media-content">
             <a class="whats-app"
             href="#"
             data-action="share/whatsapp/share"
-            data-mage-init='{"popupWindow": {"windowURL":"<?php echo $this->getUrl('https://wa.me/whatsappphonenumber/?text=')?>","windowName":"orderitems","width":500,"height":400,"top":0,"left":0,"resizable":1,"scrollbars":1}}'
+            data-mage-init='{"popupWindow": {"windowURL":"<?php echo $this->getUrl('https://wa.me/whatsappphonenumber/?text='.$currentUrl)?>","windowName":"orderitems","width":500,"height":400,"top":0,"left":0,"resizable":1,"scrollbars":1}}'
             ></a>
         </div>
     </div>
