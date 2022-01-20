@@ -100,9 +100,7 @@ class Topmenu extends \Magento\Theme\Block\Html\Topmenu
         }
 
         $store = $this->_storeManager->getStore();
-        $mediaBaseUrl = $store->getBaseUrl(
-            \Magento\Framework\UrlInterface::URL_TYPE_MEDIA
-        );
+        $BaseUrl = $store->getBaseUrl();
 
         $catNodeArr = explode('-', $childObj->getId());
         $catId = end($catNodeArr);
@@ -114,11 +112,7 @@ class Topmenu extends \Magento\Theme\Block\Html\Topmenu
             ->setPageSize(1);
 
         if ($collection->getSize() && $collection->getFirstItem()->getImageIcon()) {
-            $catImageIconUrl = $mediaBaseUrl
-                . ltrim(\Magento\Catalog\Model\Category\FileInfo::ENTITY_MEDIA_PATH, '/')
-                . '/'
-                . $collection->getFirstItem()->getImageIcon();
-
+            $catImageIconUrl = rtrim($BaseUrl,"/"). $collection->getFirstItem()->getImageIcon();
             return '<span class="cat-imageicon"><img src="'.$catImageIconUrl.'"></span>';
         }
     }
