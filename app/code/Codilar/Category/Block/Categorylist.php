@@ -92,6 +92,18 @@ class Categorylist extends \Magento\Framework\View\Element\Template {
     }
 
     /**
+     * Get category product count
+     *
+     * @return int|mixed
+     */
+    public function getProductCollectionCount($categoryId)
+    {
+        $count = 0;
+         $category = $this->_categoryFactory->create()->load($categoryId);
+         return $count =  $category->getProductCollection()->addAttributeToSelect('*')->getSize();
+    }
+
+    /**
      * Get current store root category id
      *
      * @return int|mixed
@@ -124,11 +136,11 @@ class Categorylist extends \Magento\Framework\View\Element\Template {
                 {
                     if($currentCategoryId==$childCategory->getId()) {
                         $html .= '<li class="level' . $level . ' current-category">';
-                        $html .= '<a href="' . $this->getCategoryUrl($childCategory) . '" title="' . $childCategory->getName() . '">' . $childCategory->getName() . '</a>';
+                        $html .= '<a href="' . $this->getCategoryUrl($childCategory) . '" title="' . $childCategory->getName() . '">' . $childCategory->getName() . '('.$this->getProductCollectionCount($category->getId()).')</a>';
                     }
                     else{
                     $html .= '<li class="level' . $level . '">';
-                    $html .= '<a href="' . $this->getCategoryUrl($childCategory) . '" title="' . $childCategory->getName() . '">' . $childCategory->getName() . '</a>';
+                    $html .= '<a href="' . $this->getCategoryUrl($childCategory) . '" title="' . $childCategory->getName() . '">' . $childCategory->getName() . '('.$this->getProductCollectionCount($category->getId()).')</a>';
                     }
                     if ($childCategory->hasChildren())
                     {
