@@ -37,22 +37,39 @@ if ($block->canShowBlock()) : ?>
             </div>
         </div>
         <div class="block-title filter-title" data-count="<?= /** @noEscape */ $filtered ?>">
-            <strong data-role="title"><?= /** @noEscape */ __('Filters') ?></strong>
+            <strong data-role="title">
+                <span class="filter-head">
+                    <?= /** @noEscape */ __('Filters') ?> 
+                </span>
+                <span class="header-counter"><span></span></span> 
+            </strong>
+            <?php if ($block->getLayer()->getState()->getFilters()) : ?>
+                    <span class="block-actions-filter-actions">
+                        <a href="<?= /** @noEscape */ $block->getClearUrl() ?>" class="action clear filter-clear">
+                            <span><?= /** @noEscape */ __('Clear All') ?></span>
+                        </a>
+                    </span>
+                <?php endif; ?>
         </div>
+        <div class="containrt-bg-layer"></div>
         <div class="block-content filter-content" data-mage-init='{"mpLayer": <?= /** @noEscape */ $block->escapeHtml($layerConfig) ?>}'>
-            <strong class="mob-heading" data-role="title"><?= /** @noEscape */ __('Filters') ?><span class="close-filter"></span></strong>
+            <strong class="mob-heading" data-role="title">
+                    <?= /** @noEscape */ __('Filters') ?>            
+                <?php if ($block->getLayer()->getState()->getFilters()) : ?>
+                    <span class="block-actions filter-actions">
+                        <a href="<?= /** @noEscape */ $block->getClearUrl() ?>" class="action clear filter-clear">
+                            <span><?= /** @noEscape */ __('Clear All') ?></span>
+                        </a>
+                    </span>
+                <?php endif; ?>
+                <span class="close-filter"></span>
+            </strong>
             <div class="filter-breadcrumbs">
                 <strong data-role="title"><?= /** @noEscape */ __('Categories') ?></strong>
                 <div class="content"></div>
             </div>
             <?= /** @noEscape */ $block->getChildHtml('state') ?>
-            <?php if ($block->getLayer()->getState()->getFilters()) : ?>
-                <div class="block-actions filter-actions">
-                    <a href="<?= /** @noEscape */ $block->getClearUrl() ?>" class="action clear filter-clear">
-                        <span><?= /** @noEscape */ __('Clear All') ?></span>
-                    </a>
-                </div>
-            <?php endif; ?>
+            <div class="cloned-category-filter-area"></div>
             <?php $wrapOptions = false; ?>
             <?php foreach ($filters as $key => $filter) : ?>
                 <?php if ($filter->getItemsCount()) : ?>
@@ -62,39 +79,46 @@ if ($block->canShowBlock()) : ?>
                             <?= /** @noEscape */ __('') ?>
                         </strong>
                         <div class="filter-options" id="narrow-by-list" data-role="content">
-                        <?php $wrapOptions = true;
-                    endif; ?>
-                    <div data-role="ln_collapsible" class="filter-options-item"
-                         attribute="<?= /** @noEscape */ $filter->getRequestVar() ?>">
-                        <div class="filter-options-title">
-                            <?= /** @noEscape */ __($filter->getName()) ?>
-                            <?php if ($filter->hasAttributeModel()
-                                && $filter->getAttributeModel()->getData('show_tooltip') === '1') : ?>
-                                <?php
-                                    $imageUrl = $helperImage->getTooltipThumbnail($filter);
-                                    $tooltipContent = $helperData->getTooltipContent($filter);
-                                ?>
-                                <span class="ln_tooltip"  data-toggle="tooltip" title="<?= $block->escapeHtml($tooltipContent) ?>">
-                                    <?php if ($imageUrl) : ?>
-                                    <image src="<?= $block->escapeUrl($imageUrl) ?>" width="22" height="22"
-                                           class="ln_tooltip_thumbnail"
-                                           alt="<?= $block->escapeHtml($tooltipContent) ?>">
+                            <?php $wrapOptions = true;
+                             endif; ?>
+                            <div data-role="ln_collapsible" class="filter-options-item"
+                                attribute="<?= /** @noEscape */ $filter->getRequestVar() ?>">
+                                <div class="filter-options-title">
+                                    <?= /** @noEscape */ __($filter->getName()) ?>
+                                    <?php if ($filter->hasAttributeModel()
+                                        && $filter->getAttributeModel()->getData('show_tooltip') === '1') : ?>
+                                        <?php
+                                            $imageUrl = $helperImage->getTooltipThumbnail($filter);
+                                            $tooltipContent = $helperData->getTooltipContent($filter);
+                                        ?>
+                                        <span class="ln_tooltip"  data-toggle="tooltip" title="<?= $block->escapeHtml($tooltipContent) ?>">
+                                            <?php if ($imageUrl) : ?>
+                                            <image src="<?= $block->escapeUrl($imageUrl) ?>" width="22" height="22"
+                                                class="ln_tooltip_thumbnail"
+                                                alt="<?= $block->escapeHtml($tooltipContent) ?>">
+                                            <?php endif; ?>
+                                        </span>
                                     <?php endif; ?>
-                                </span>
-                            <?php endif; ?>
-                        </div>
-                        <div class="filter-options-content">
-                            <?php if ($filter instanceof \Mageplaza\LayeredNavigation\Model\Layer\Filter\Category && $filter->isRenderCategoryTree()) : ?>
-                                <?= /** @noEscape */ $block->getChildBlock('mplayer-renderer')->setFilter($filter)->render($filter) ?>
-                            <?php else : ?>
-                                <?= /** @noEscape */ $block->getChildBlock('renderer')->setFilter($filter)->render($filter) ?>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                <?php endif; ?>
-            <?php endforeach; ?>
-            <?php if ($wrapOptions) : ?>
+                                </div>
+
+                                <div class="filter-options-content">
+                                    <?php if ($filter instanceof \Mageplaza\LayeredNavigation\Model\Layer\Filter\Category && $filter->isRenderCategoryTree()) : ?>
+                                        <?= /** @noEscape */ $block->getChildBlock('mplayer-renderer')->setFilter($filter)->render($filter) ?>
+                                    <?php else : ?>
+                                        <?= /** @noEscape */ $block->getChildBlock('renderer')->setFilter($filter)->render($filter) ?>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                    <?php if ($wrapOptions) : ?>
                 </div>
+             
+                <div class="aply-filter">
+                    Apply <span class="counter-filter"></span> 
+                </div>
+
+
             <?php else : ?>
                 <script type="text/javascript">
                     require([
@@ -138,6 +162,11 @@ require(['jquery'], function($) {
                 }
             });
         };  
+
+
+
+
+
     });
 });
 </script>
