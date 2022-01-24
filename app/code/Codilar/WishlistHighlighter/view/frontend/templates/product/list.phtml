@@ -148,7 +148,7 @@ $viewModel = $block->getData("pricecustomview_model");
                                             $position,
                                             'product-item-info_' . $_product->getId() . ' div.actions-primary'
                                         ) : '' ?>
-                                    <div data-role="add-to-links" class="actions-secondary">
+                                    <div data-role="add-to-links" class="actions-secondary actions-secondary-related-block">
                                         <?php if ($addToBlock = $block->getChildBlock('addto')): ?>
                                             <?= $addToBlock->setProduct($_product)->getChildHtml() ?>
                                         <?php endif; ?>
