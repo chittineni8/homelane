@@ -1769,6 +1769,12 @@ h2.account-heading {
     span{
         position: static !important;
     }
+    .wishlist{
+        display: initial;
+    }
+    .wishlisted{
+        display: none;
+    }
 }
 ol.product-items li.wishlist-active .actions-secondary .action.towishlist::before {
     content: "\e600";
@@ -1864,6 +1870,19 @@ body.user-resetpassword-index {
         padding: 0 13px;
         border-radius: 4px;
         position: relative;
+        @media (min-width:769px){
+            &::after {
+                content: "\e607";
+                font-family: 'icons-blank-theme';
+                font-size: 34px;
+                position: absolute;
+                line-height: 26px;
+                right: 5px;
+                top: 1px;
+                color: #e71c24;
+                pointer-events: none;
+            }
+        }
         label.sorter-label {
             font-size: 13px;
             &:after {
@@ -4785,13 +4804,13 @@ rs-module-wrap {
                 width: 15px;
                 height: 15px;
                 background: #3777B6;
-                top: 9px;
+                top: 7px;
                 color: #fff;
                 font-size: 12px;
                 text-align: center;
                 border-radius: 50%;
                 padding: 0px;
-                left: 74px;
+                left: 78px;
                 display: none;
                 line-height: 13px;
                 &.header-counter-show{
@@ -4808,6 +4827,7 @@ rs-module-wrap {
                 color: #CC3A31;
                 display: inline-block;
                 float: right;
+                padding-top: 2px;
                     a{
                         color: #CC3A31;
                         text-decoration: none;
@@ -5535,6 +5555,12 @@ ol.product-items li.wishlist-active{
             &::before{
                 background: url(../images/filled-heart.png) no-repeat;
             }
+            .wishlist{
+                display: none;
+            }
+            .wishlisted{
+                display: initial;
+            }
         }
     }
 }
@@ -5543,6 +5569,9 @@ ol.product-items li.wishlist-active{
         float: left;
         height: 10px;
         width: 100%;
+    }
+    .page-products .grid.products-grid + .toolbar-products{
+        height: 50px;
     }
     .product.media {
         .fotorama__dot{
