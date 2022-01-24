@@ -55,7 +55,7 @@
     </div>
 </div>
 <script>
-    require(['jquery'], function ($) {
+    require(['jquery','jquery/ui'], function ($) {
         $(document).ready(function() {
             $( ".product.data").find('.data').each(function() {
                 var heightContainer = $(this).find('.description-content').height();                
@@ -68,9 +68,17 @@
                 $(this).parent('.content-prof-description').find('.description-content').toggleClass("show-more-height");
             });
 
-            setTimeout(function(){
-                $('#tab-label-Warranty').click();
-            }, 5000);
+            $(window).load(function(){
+                console.log("readyyy");
+                $(".fotorama__stage").height($(".fotorama__img").height());
+                $(".fotorama__shadows--bottom").height($(".fotorama__img").height());
+                $( window ).resize(function() {
+                    console.log("resize");
+                $(".fotorama__stage").height($(".fotorama__img").height());
+                $(".fotorama__shadows--bottom").height($(".fotorama__img").height());
+                });
+            })
+
 
         });
     });
