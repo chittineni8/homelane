@@ -11,5 +11,10 @@
         <referenceBlock name="customer.wishlist.item.cart" remove="true" />
         <referenceBlock name="customer.wishlist.item.comment" remove="true" />
         <referenceBlock name="customer.wishlist.buttons" remove="true" />
+        <referenceBlock name="customer.wishlist.items">
+                <arguments>
+                    <argument name="wishlistpriceVieModel" xsi:type="object">Codilar\CategoryFilter\ViewModel\Category</argument>
+                </arguments>
+        </referenceBlock>
     </body>
 </page>

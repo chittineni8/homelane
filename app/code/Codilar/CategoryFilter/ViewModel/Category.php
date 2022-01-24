@@ -8,10 +8,13 @@ use \Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Widget\Block\BlockInterface;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
+use Magento\Catalog\Model\ProductFactory;
+
+
 Class Category implements ArgumentInterface
 {
     protected $url;
-   
+
     /**
      * @var \Magento\Catalog\Model\CategoryFactory
      */
@@ -27,6 +30,8 @@ Class Category implements ArgumentInterface
      */
     protected $_storeManager;
 
+    protected $productFactory;
+
     /**
      * @param Template\Context                                        $context
      * @param \Magento\Catalog\Model\CategoryFactory                  $_categoryFactory
@@ -34,17 +39,22 @@ Class Category implements ArgumentInterface
      * @param \Magento\Store\Model\StoreManagerInterface;             $_storeManager
      * @param array                                                   $data
      */
-    
+
 
 
     public function __construct(
+                 ProductFactory $productFactory,
                  \Magento\Framework\UrlInterface $url,
                  \Magento\Store\Model\StoreManagerInterface $storeManager,
                  \Magento\Catalog\Model\CategoryRepository $categoryRepository
                 // \Magento\Catalog\Model\CategoryFactory $categoryFactory,
                 // \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory $collecionFactory
+
+
             )
             {
+
+                $this->productFactory            = $productFactory;
                 $this->url                       = $url;
                 $this->_storeManager             = $storeManager;
                 $this->categoryRepository        = $categoryRepository;
@@ -55,7 +65,7 @@ Class Category implements ArgumentInterface
      public function getCategoryUrl($categoryId)
      {
         if(empty($categoryId)){
-              
+
             $categoryId = 8;
         }
         $category = $this->categoryRepository->get($categoryId, $this->_storeManager->getStore()->getId());
@@ -63,4 +73,19 @@ Class Category implements ArgumentInterface
         return $category->getUrl();
 
       }
-}      
+    public function getDiscountPercents($id){
+        $product = $this->productFactory->create();
+        $productPrice = $product->load($id)->getPrice();
+        $productFinalPrice = $product->load($id)->getFinalPrice();
+
+        if($productFinalPrice < $productPrice):
+            $_Percent = 100 - round(($productFinalPrice / $productPrice)*100);
+            return $_Percent . '%';
+
+        else:
+            return null;
+        endif;
+
+
+    }
+}
