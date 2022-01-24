@@ -12,7 +12,6 @@ use Magento\Framework\App\ActionInterface;
 ?>
 
 <?php
-$viewModel = $block->getData("relatedproductviewmodel");
 switch ($type = $block->getType()) {
 
     case 'related-rule':
@@ -224,10 +223,8 @@ $_item = null;
                                             <?= $block->escapeHtml($_item->getName()) ?></a>
                                     </strong>
 
-                                    <?= /* @noEscape */ $block->getProductPrice($_item);
-                                    $discount_price =  $viewModel->getRelatedProductDiscountPercents($_item->getId());
-                                       if (!is_null($discount_price)) {?>
-                                           <?php echo $discount_price; }?>
+                                    <?= /* @noEscape */ $block->getProductPrice($_item) ?>
+
                                     <?php if ($templateType):?>
                                         <?= $block->getReviewsSummaryHtml($_item, $templateType) ?>
                                     <?php endif; ?>

@@ -63,13 +63,7 @@ if ($exist = ($productCollection && $productCollection->getSize())) {
             <?= /* @noEscape */ '<!-- ' . $image . '-->' ?>
             <div class="products-<?= /* @noEscape */ $mode ?> <?= /* @noEscape */ $mode ?>">
                 <ol class="product-items <?= /* @noEscape */ $type ?>">
-                    <?php foreach ($items as $_item):
-                        $discount_percent =  $catviewModel->getDiscountPercents($_item->getId());
-                       if (!is_null($discount_percent)) {?>
-                        <li> <?php
-                            echo $discount_percent;
-                            ?> </li>
-                    <?php } ?>?>
+                    <?php foreach ($items as $_item) :?>
                     <li class="product-item" id="newproduct-id-<?php echo $_item->getId(); ?>">
                         <div class="product-item-info">
                             <a href="<?= $block->escapeUrl($block->getProductUrl($_item)) ?>"
