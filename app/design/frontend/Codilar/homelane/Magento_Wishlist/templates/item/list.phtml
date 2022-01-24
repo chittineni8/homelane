@@ -8,35 +8,20 @@
 /** @var \Magento\Wishlist\Block\Customer\Wishlist\Items $block */
 $columns = $block->getColumns();
 ?>
-<?php
 
-$viewModel = $block->getData('wishlistpriceVieModel');
-?>
 <div class="products-grid wishlist">
-
     <?php if (count($block->getItems())) : ?>
-        <ol class="product-items">
-            <?php foreach ($block->getItems() as $item) :
-                $productId = $item->getData("product_id");
-                ?>
-                <li data-row="product-item" class="product-item" id="item_<?= $block->escapeHtmlAttr($item->getId());
-
-               ?>">
-            <?php
-            $discountPercents = $viewModel->getDiscountPercents($productId);
-            if (!is_null($discountPercents));{ ?>
-              <?php echo $discountPercents  ?>
-                <?php }?>
-                    <div class="product-item-info" data-container="product-grid">
-                        <?php foreach ($columns as $column) : ?>
-                            <?= $column->setItem($item)->toHtml();?>
-                        <?php endforeach; ?>
-                    </div>
-                </li>
-            <?php
-
-                endforeach; ?>
-        </ol>
+    <ol class="product-items">
+        <?php foreach ($block->getItems() as $item) : ?>
+            <li data-row="product-item" class="product-item" id="item_<?= $block->escapeHtmlAttr($item->getId()) ?>">
+                <div class="product-item-info" data-container="product-grid">
+                    <?php foreach ($columns as $column) : ?>
+                        <?= $column->setItem($item)->toHtml();?>
+                    <?php endforeach; ?>
+                </div>
+            </li>
+        <?php endforeach; ?>
+    </ol>
     <?php else : ?>
         <div class="message info empty">
             <span><?= $block->escapeHtml(__('There are no wishlisted items')) ?></span>
