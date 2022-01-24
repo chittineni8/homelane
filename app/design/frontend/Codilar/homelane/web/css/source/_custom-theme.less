@@ -5148,6 +5148,25 @@ rs-module-wrap {
 .catalog-product-view {
     div.breadcrumbs ul.items{
         padding-bottom: 0;
+        @media (max-width: 767px){
+            display: flex;
+            li.item{
+                display: flex;
+            }
+            .category + .product{
+                strong{
+                    display: block;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    word-wrap: break-word;
+                    overflow: hidden;
+                    max-width: 80%;
+                } 
+            }   
+        }
+        @media (min-width:769px){
+            padding-left: 28px;
+        }
     }
     @media (min-width:769px){
         .column.main .block.related{
