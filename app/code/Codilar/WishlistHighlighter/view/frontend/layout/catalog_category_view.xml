@@ -5,9 +5,6 @@
         <action method="setTemplate">
             <argument name="template" xsi:type="string">Codilar_WishlistHighlighter::product/list.phtml</argument>
         </action>
-        <arguments>
-            <argument name="pricecustomview_model" xsi:type="object">Codilar\CategoryFilter\ViewModel\Category</argument>
-        </arguments>
     </referenceBlock>
 </body>
 </page>
