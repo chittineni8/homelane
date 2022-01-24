@@ -196,19 +196,29 @@ define([
             });
             if($('.block-content.filter-content .filter-current').length <= 0) {
                     $('.block.filter .filter-title').removeClass("active");
+                    $('.block.filter').removeClass("active-slide");
+                    $('body').removeClass("filter-active");
                 } else {
                     $('.block.filter .filter-title').addClass("active");
+                    $('.block.filter').addClass("active-slide");
+                    $('body').addClass("filter-active");
                 }
-
-                $("#layered-filter-block").on("click","span.close-filter", function(){
+                if($('.block-content.filter-content .filter-current').length >= 1){
+                    $('.aply-filter .counter-filter, #layered-filter-block .block-title strong .header-counter span').append($('.block-content.filter-content .filter-current ol.items li').length);
+                    $('.aply-filter .counter-filter').addClass('count-filter');
+                    $('.block.filter .filter-title .header-counter').addClass('header-counter-show');
+                }    
+                $("#layered-filter-block").on("click","span.close-filter, .aply-filter", function(){
                     $('div#layered-filter-block').removeClass("active");
                     $('.block.filter .filter-title > strong').attr("aria-expanded","false");
                     $('.block.filter .filter-title > strong').attr("aria-selected","false");
                     $('body').removeClass("filter-active");
+                    $('.block.filter').removeClass("active-slide");
                 });
-                var breadcrumbsclone = $('.breadcrumbs').clone();
-                $('.filter-breadcrumbs .content').html(breadcrumbsclone);
-
+      
+                var breadcrumbsclone = $('.category-filter-area').clone(true);
+                $('.cloned-category-filter-area').append(breadcrumbsclone);
+              
 
             var swatchElements = this.element.find('.swatch-attribute');
             swatchElements.each(function (index) {
