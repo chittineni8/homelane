@@ -2,7 +2,6 @@
 //  Common
 //  _____________________________________________
 
-& when (@media-common = true) {
 
 body#html-body {
     font-family: 'Lato', sans-serif;
@@ -1125,6 +1124,7 @@ form.query-form.validate-form .control.input-has-value::after {
     top: 14px;
 }
 .page-bottom {
+    width: 100% !important;
     overflow: hidden;
 }
 .query-form-success.modal-popup,  .query-form-error.modal-popup {
@@ -3359,9 +3359,6 @@ table.table.table-bordered {
 }*/
 
 @media only screen and (max-width: 1366px) {
-    .page-bottom {
-        width: 100% !important;
-    }
     form.query-form fieldset:before, form.query-form fieldset:after {
         background-size: 100%;
         width: 501px;
@@ -4256,9 +4253,6 @@ rs-module-wrap {
                 display: none;
             }
         }
-    }
-    .page-bottom {
-        margin-top: 80px;
     }
     form.query-form {
         width: 100%;
@@ -5700,5 +5694,4 @@ ol.product-items li.wishlist-active{
             }
         }
     }
-}
 }
