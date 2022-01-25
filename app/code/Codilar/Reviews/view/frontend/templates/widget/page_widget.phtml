@@ -1,322 +1,306 @@
-  <div class="hp-customer-review-outer">
+<div class="hp-customer-review-outer container">
   <h2>Customer Reviews</h2>
-  <?php if ($block->getData('customer1') && $block->getData('wodescription')): ?>
+
   <ul>
-  <li class="home-page-customer-review-content">
-    <div class="left-sec">
-      <div class="cimage">
-        <img src="<?php echo $block->getMediaUrl() . $csimage=$block->getData('woc_image'); ?>"/>
-      </div>
-      <div class="title">
-          <span class="widget-title-val"><?php echo $block->getData('customer1'); ?></span>
-      </div>
-        <?php
-        if ($block->getData('woplace')):
-        ?>
-              <div class="place attribute">
+    <!--                                1nd slide                           -->
+    <?php if ($block->getData('customer1') && $block->getData('wodescription')): ?>
+      <li class="home-page-customer-review-content odd">
+        <div class="left-sec">
+          <div class="description">
+            <span class="widget-desc-val"><?php echo $block->getData('wodescription'); ?></span>
+          </div>
+          <div class="c-section">
+            <div class="cimage">
+              <img src="<?php echo $block->getMediaUrl() . $csimage=$block->getData('woc_image'); ?>"/>
+            </div>
+            <div class="c-info">
+              <div class="title">
+                  <span class="widget-title-val"><?php echo $block->getData('customer1'); ?></span>
+              </div>
+              <?php
+              if ($block->getData('woplace')):
+              ?>
+                <div class="place attribute">
                   <span><?php echo $block->getData('woplace'); ?></span>
-              </div>
-              <div class="delimiter">|</div>
-        <?php
-        endif;
-        if ($block->getData('wotext1')):
-        ?>
-              <div class="txt1 attribute">
+                </div>
+                <div class="delimiter">|</div>
+              <?php
+              endif;
+              if ($block->getData('wotext1')):
+              ?>
+                <div class="txt1 attribute">
                   <span class="widget-title-val"><?php echo $block->getData('wotext1'); ?></span>
-              </div>
-        <?php
-        endif;
-        if ($block->getData('wotext2')):
-        ?>
-              <div class="delimiter">|</div>
-              <div class="txt2 attribute">
+                </div>
+              <?php
+              endif;
+              if ($block->getData('wotext2')):
+              ?>
+                <div class="delimiter">|</div>
+                <div class="txt2 attribute">
                   <span><?php echo $block->getData('wotext2'); ?></span>
+                </div>
+              <?php endif; ?>
+            </div>
+          </div>
+        </div>
+        <div class="right-sec">
+          <div class="image yt-popup"
+            <?php if(!empty($block->getData('video1'))) {?>data-ytsrc="<?= $block->getData('video1') ?>"<?php } ?>>
+              <img src="<?php echo $block->getMediaUrl() . $block->getData('wop_image'); ?>"/>
+              <?php if(!empty($block->getData('video1'))) { ?>
+                <span class="play-button"></span>
+              <?php } ?>
+          </div>
+        </div>
+      </li>
+    <?php endif; ?>
+
+    <!--                                2nd slide                           -->
+    <?php if ($block->getData('customer2') && $block->getData('wtdescription')): ?>
+      <li class="home-page-customer-review-content">
+        <div class="left-sec">
+          <div class="description">
+            <span ><?php echo $block->getData('wtdescription'); ?></span>
+          </div>
+          <div class="c-section">
+            <div class="cimage">
+              <img src="<?php echo $block->getMediaUrl() . $csimage=$block->getData('wtc_image'); ?>" />
+            </div>
+            <div class="c-info">
+              <div class="title">
+                  <span><?php echo $block->getData('customer2'); ?></span>
               </div>
-        <?php
-        endif;
-        ?>
-      <div class="description">
-          <span class="widget-desc-val"><?php echo $block->getData('wodescription'); ?></span>
-      </div>
-    </div>
-      <div class="right-sec">
-      <div class="image">
-          <img src="<?php echo $block->getMediaUrl() . $block->getData('wop_image'); ?>"/>
-      </div>
-      <?php if(!empty($block->getData('video1'))) { ?>
-        <span class="play-button" id="play-button"></span>
-      <?php } ?>
-      <div id="modal-video">
-      <div class="video-link">
-        <iframe class="close-iframe" src="<?php echo $block->getData('video1').'?enablejsapi=1'; ?>" width="100%" height="500" frameborder="0" allowfullscreen="allowfullscreen">
-        </iframe>
-      </div>
-    </div>
-    </div>
-  </li>
-  <?php endif; ?>
-<!--                                2nd slide                           -->
-  <?php if ($block->getData('customer2') && $block->getData('wtdescription')): ?>
-  <li class="home-page-customer-review-content">
-    <div class="left-sec">
-      <div class="cimage">
-        <img src="<?php echo $block->getMediaUrl() . $csimage=$block->getData('wtc_image'); ?>" />
-      </div>
-      <div class="title">
-          <span><?php echo $block->getData('customer2'); ?></span>
-      </div>
-        <?php
-        if ($block->getData('wtplace')):
-        ?>
-              <div class="place attribute">
+              <?php
+              if ($block->getData('wtplace')):
+              ?>
+                <div class="place attribute">
                   <span><?php echo $block->getData('wtplace'); ?></span>
-              </div>
-              <div class="delimiter">|</div>
-        <?php
-        endif;
-        if ($block->getData('wttext1')):
-        ?>
-              <div class="txt1 attribute">
+                </div>
+                <div class="delimiter">|</div>
+              <?php
+              endif;
+              if ($block->getData('wttext1')):
+              ?>
+                <div class="txt1 attribute">
                   <span ><?php echo $block->getData('wttext1'); ?></span>
-              </div>
-        <?php
-        endif;
-        if ($block->getData('wttext2')):
-        ?>
-              <div class="delimiter">|</div>
-              <div class="txt2 attribute">
+                </div>
+              <?php
+              endif;
+              if ($block->getData('wttext2')):
+              ?>
+                <div class="delimiter">|</div>
+                <div class="txt2 attribute">
                   <span><?php echo $block->getData('wttext2'); ?></span>
-              </div>
-        <?php
-        endif;
-        ?>
-      <div class="description">
-          <span ><?php echo $block->getData('wtdescription'); ?></span>
-      </div>
-    </div>
-    <div class="right-sec">
-      <div class="image">
-         <img src="<?php echo $block->getMediaUrl() . $block->getData('wtp_image'); ?>" />
-      </div>
-      <span class="play-button" id="play-button1"></span>
-      <div id="modal-video1">
-      <div class="video-link">
-        <iframe class="close-iframe" src="<?php echo $block->getData('video2').'?enablejsapi=1'; ?>" width="100%" height="500" frameborder="0" allowfullscreen="allowfullscreen">
-        </iframe>
-      </div>
-      </div>
-    </div>
-  </li>
-  <?php endif; ?>
-      <!--                                3rd slide                           -->
+                </div>
+              <?php endif; ?>
+            </div>
+          </div>
+        </div>
+        <div class="right-sec">
+          <div class="image yt-popup"
+            <?php if(!empty($block->getData('video2'))) {?>data-ytsrc="<?= $block->getData('video2') ?>"<?php } ?>>
+            <img src="<?php echo $block->getMediaUrl() . $block->getData('wtp_image'); ?>" />
+            <?php if(!empty($block->getData('video2'))) { ?>
+              <span class="play-button"></span>
+            <?php } ?>
+          </div>
+        </div>
+      </li>
+    <?php endif; ?>
 
-  <?php if ($block->getData('customer3') && $block->getData('wthdescription')): ?>
-  <li class="home-page-customer-review-content">
-    <div class="left-sec">
-      <div class="cimage">
-          <img src="<?php echo $block->getMediaUrl() . $csimage=$block->getData('wthc_image'); ?>"/>
-      </div>
-      <div class="title">
-          <span><?php echo $block->getData('customer3'); ?></span>
-      </div>
-        <?php
-        if ($block->getData('wthplace')):
-        ?>
-              <div class="place attribute">
+    <!--                                3rd slide                           -->
+    <?php if ($block->getData('customer3') && $block->getData('wthdescription')): ?>
+      <li class="home-page-customer-review-content odd">
+        <div class="left-sec">
+          <div class="description">
+            <span><?php echo $block->getData('wthdescription'); ?></span>
+          </div>
+          <div class="c-section">
+            <div class="cimage">
+              <img src="<?php echo $block->getMediaUrl() . $csimage=$block->getData('wthc_image'); ?>"/>
+            </div>
+            <div class="c-info">
+              <div class="title">
+                <span><?php echo $block->getData('customer3'); ?></span>
+              </div>
+              <?php
+              if ($block->getData('wthplace')):
+              ?>
+                <div class="place attribute">
                   <span><?php echo $block->getData('wthplace'); ?></span>
-              </div>
-              <div class="delimiter">|</div>
-        <?php
-        endif;
-        if ($block->getData('wthtext1')):
-        ?>
-              <div class="txt1 attribute">
+                </div>
+                <div class="delimiter">|</div>
+              <?php
+              endif;
+              if ($block->getData('wthtext1')):
+              ?>
+                <div class="txt1 attribute">
                   <span ><?php echo $block->getData('wthtext1'); ?></span>
-              </div>
-        <?php
-        endif;
-        if ($block->getData('wthtext2')):
-        ?>
-              <div class="delimiter">|</div>
-              <div class="txt2 attribute">
+                </div>
+              <?php
+              endif;
+              if ($block->getData('wthtext2')):
+              ?>
+                <div class="delimiter">|</div>
+                <div class="txt2 attribute">
                   <span><?php echo $block->getData('wthtext2'); ?></span>
-              </div>
-        <?php
-        endif;
-        ?>
-      <div class="description">
-          <span><?php echo $block->getData('wthdescription'); ?></span>
-      </div>
-    </div>
-    <div class="right-sec">
-      <div class="image">
-        <img src="<?php echo $block->getMediaUrl() . $block->getData('wthp_image'); ?>" />
-      </div>
-      <span class="play-button" id="play-button2"></span>
-      <div id="modal-video2">
-      <div class="video-link">
-        <iframe class="close-iframe" src="<?php echo $block->getData('video3').'?enablejsapi=1'; ?>" width="100%" height="500" frameborder="0" allowfullscreen="allowfullscreen">
-        </iframe>
-      </div>
-      </div>
-    </div>
-  </li>
-  <?php endif; ?>
-  <!--                                4th slide                           -->
-  <?php if ($block->getData('customer4') && $block->getData('wfodescription')): ?>
-  <li class="home-page-customer-review-content">
-    <div class="left-sec">
-      <div class="cimage">
-          <img src="<?php echo $block->getMediaUrl() . $csimage=$block->getData('wfoc_image'); ?>"/>
-      </div>
-      <div class="title">
-          <span><?php echo $block->getData('customer4'); ?></span>
-      </div>
-        <?php
-        if ($block->getData('wfoplace')):
-        ?>
-              <div class="place attribute">
-                  <span><?php echo $block->getData('wfoplace'); ?></span>
-              </div>
-              <div class="delimiter">|</div>
-        <?php
-        endif;
-        if ($block->getData('wfotext1')):
-        ?>
-              <div class="txt1 attribute">
-                  <span ><?php echo $block->getData('wfotext1'); ?></span>
-              </div>
-        <?php
-        endif;
-        if ($block->getData('wfotext2')):
-        ?>
-              <div class="delimiter">|</div>
-              <div class="txt2 attribute">
-                  <span><?php echo $block->getData('wfotext2'); ?></span>
-              </div>
-        <?php
-        endif;
-        ?>
-      <div class="description">
-          <span ><?php echo $block->getData('wfodescription'); ?></span>
-      </div>
-    </div>
-    <div class="right-sec">
-      <div class="image">
-        <img src="<?php echo $block->getMediaUrl() . $block->getData('wfop_image'); ?>" />
-      </div>
-      <span class="play-button" id="play-button3"></span>
-      <div id="modal-video3">
-      <div class="video-link">
-        <iframe class="close-iframe" src="<?php echo $block->getData('video4').'?enablejsapi=1'; ?>" width="100%" height="500" frameborder="0" allowfullscreen="allowfullscreen">
-        </iframe>
-      </div>
-    </div>
-    </div>
-  </li>
-  <?php endif; ?>
+                </div>
+              <?php endif; ?>
+            </div>
+          </div>
+        </div>
+        <div class="right-sec">
+          <div class="image yt-popup"
+            <?php if(!empty($block->getData('video3'))) {?>data-ytsrc="<?= $block->getData('video3') ?>"<?php } ?>>
+              <img src="<?php echo $block->getMediaUrl() . $block->getData('wthp_image'); ?>"/>
+              <?php if(!empty($block->getData('video3'))) { ?>
+                <span class="play-button"></span>
+              <?php } ?>
+          </div>
+        </div>
+      </li>
+    <?php endif; ?>
 
-  <!--                               5th Slide                     -->
-  <?php if ($block->getData('customer5') && $block->getData('wfvdescription')): ?>
-  <li class="home-page-customer-review-content">
-    <div class="left-sec">
-      <div class="cimage">
-          <img src="<?php echo $block->getMediaUrl() . $csimage=$block->getData('wfvc_image'); ?>"/>
-      </div>
-      <div class="title">
-          <span><?php echo $block->getData('customer5'); ?></span>
-      </div>
-        <?php
-        if ($block->getData('wfvplace')):
-        ?>
-              <div class="place attribute">
+    <!--                                4th slide                           -->
+    <?php if ($block->getData('customer4') && $block->getData('wfodescription')): ?>
+      <li class="home-page-customer-review-content">
+        <div class="left-sec">
+          <div class="description">
+            <span><?php echo $block->getData('wfodescription'); ?></span>
+          </div>
+          <div class="c-section">
+            <div class="cimage">
+              <img src="<?php echo $block->getMediaUrl() . $csimage=$block->getData('wfoc_image'); ?>"/>
+            </div>
+            <div class="c-info">
+              <div class="title">
+                <span><?php echo $block->getData('customer4'); ?></span>
+              </div>
+              <?php
+              if ($block->getData('wfoplace')):
+              ?>
+                <div class="place attribute">
+                  <span><?php echo $block->getData('wfoplace'); ?></span>
+                </div>
+                <div class="delimiter">|</div>
+              <?php
+              endif;
+              if ($block->getData('wfotext1')):
+              ?>
+                <div class="txt1 attribute">
+                  <span ><?php echo $block->getData('wfotext1'); ?></span>
+                </div>
+              <?php
+              endif;
+              if ($block->getData('wfotext2')):
+              ?>
+                <div class="delimiter">|</div>
+                <div class="txt2 attribute">
+                  <span><?php echo $block->getData('wfotext2'); ?></span>
+                </div>
+            <?php endif;?>
+          </div>
+        </div>
+        <div class="right-sec">
+          <div class="image yt-popup"
+            <?php if(!empty($block->getData('video4'))) {?>data-ytsrc="<?= $block->getData('video4') ?>"<?php } ?>>
+              <img src="<?php echo $block->getMediaUrl() . $block->getData('wfop_image'); ?>"/>
+              <?php if(!empty($block->getData('video4'))) { ?>
+                <span class="play-button"></span>
+              <?php } ?>
+          </div>
+        </div>
+      </li>
+    <?php endif; ?>
+
+    <!--                               5th Slide                     -->
+    <?php if ($block->getData('customer5') && $block->getData('wfvdescription')): ?>
+      <li class="home-page-customer-review-content odd">
+        <div class="left-sec">
+          <div class="description">
+            <span ><?php echo $block->getData('wfvdescription'); ?></span>
+          </div>
+          <div class="c-section">
+            <div class="cimage">
+              <img src="<?php echo $block->getMediaUrl() . $csimage=$block->getData('wfvc_image'); ?>"/>
+            </div>
+            <div class="c-info">
+              <div class="title">
+                <span><?php echo $block->getData('customer5'); ?></span>
+              </div>
+              <?php
+              if ($block->getData('wfvplace')):
+              ?>
+                <div class="place attribute">
                   <span><?php echo $block->getData('wfvplace'); ?></span>
-              </div>
-              <div class="delimiter">|</div>
-        <?php
-        endif;
-        if ($block->getData('wfvtext1')):
-        ?>
-              <div class="txt1 attribute">
+                </div>
+                <div class="delimiter">|</div>
+              <?php
+              endif;
+              if ($block->getData('wfvtext1')):
+              ?>
+                <div class="txt1 attribute">
                   <span ><?php echo $block->getData('wfvtext1'); ?></span>
-              </div>
-        <?php
-        endif;
-        if ($block->getData('wfvtext2')):
-        ?>
-              <div class="delimiter">|</div>
-              <div class="txt2 attribute">
+                </div>
+              <?php
+              endif;
+              if ($block->getData('wfvtext2')):
+              ?>
+                <div class="delimiter">|</div>
+                <div class="txt2 attribute">
                   <span><?php echo $block->getData('wfvtext2'); ?></span>
-              </div>
-        <?php
-        endif;
-        ?>
-      <div class="description">
-          <span ><?php echo $block->getData('wfvdescription'); ?></span>
-      </div>
+                </div>
+              <?php endif; ?>
+            </div>
+          </div>
+        </div>
+        <div class="right-sec">
+          <div class="image yt-popup"
+            <?php if(!empty($block->getData('video5'))) {?>data-ytsrc="<?= $block->getData('video5') ?>"<?php } ?>>
+              <img src="<?php echo $block->getMediaUrl() . $block->getData('wfvp_image'); ?>"/>
+              <?php if(!empty($block->getData('video5'))) { ?>
+                <span class="play-button"></span>
+              <?php } ?>
+          </div>
+        </div>
+      </li>
+    <?php endif; ?>
+  </ul>
+  <!-- Iframe Pop UP -->
+  <div id="yt-video" style="display: none;">
+    <div class="video-link">
+      <!-- Iframe goes here -->
     </div>
-    <div class="right-sec">
-      <div class="image">
-        <img src="<?php echo $block->getMediaUrl() . $block->getData('wfvp_image'); ?>" />
-      </div>
-      <span class="play-button" id="play-button4"></span>
-      <div id="modal-video4">
-      <div class="video-link">
-        <iframe class="close-iframe" src="<?php echo $block->getData('video5').'?enablejsapi=1'; ?>" width="100%" height="500" frameborder="0" allowfullscreen="allowfullscreen">
-        </iframe>
-      </div>
-    </div>
-    </div>
-  </li>
-</ul>
-  <?php endif; ?>
+  </div>
 </div>
 <script type="text/javascript">
     require([
         "jquery",
         "Magento_Ui/js/modal/modal"
     ],function($, modal) {
-        var options = {
-            type: 'popup',
-            modalClass: 'video-popup',
-            responsive: true,
-            buttons: [],
-            innerScroll: true,
-            closed: function () {
-                $(".close-iframe").each(function (x,el){
-                  el.contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
-                });
-            }
-        };
-        if ($("#modal-video").length != 0) {
-          var popup = modal(options, $('#modal-video'));
-          $("#play-button").click(function() {
-              $('#modal-video').modal('openModal');
-          });
-        }
-        if ($("#modal-video1").length != 0) {
-        var popup = modal(options, $('#modal-video1'));
-        $("#play-button1").click(function() {
-            $('#modal-video1').modal('openModal');
-        });
-        }
-        if ($("#modal-video2").length != 0) {
-        var popup = modal(options, $('#modal-video2'));
-        $("#play-button2").click(function() {
-            $('#modal-video2').modal('openModal');
-        });
-        }
-        if ($("#modal-video3").length != 0) {
-        var popup = modal(options, $('#modal-video3'));
-        $("#play-button3").click(function() {
-            $('#modal-video3').modal('openModal');
-        });
-        }
-        if ($("#modal-video4").length != 0) {
-        var popup = modal(options, $('#modal-video4'));
-        $("#play-button4").click(function() {
-            $('#modal-video4').modal('openModal');
-        });
+        var ytModel = $('#yt-video'),
+        options = {
+          type: 'popup',
+          modalClass: 'video-popup',
+          responsive: true,
+          buttons: [],
+          innerScroll: true,
+          closed: function () {
+              $(".close-iframe").each(function (x,el){
+                el.contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+              });
+          }
+        },
+        ytTemplate = '<iframe class="close-iframe" src="LINK?enablejsapi=1" width="100%" height="450px" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"/>';
+        var popup = modal(options, ytModel);
+        if ($(".yt-popup").length != 0) {
+          $(document).on("click", ".yt-popup", function () {
+            let ytLink = $(this).data('ytsrc');
+            ytIframe = ytTemplate.replace('LINK', ytLink);
+            ytModel.find('.video-link').empty();
+            ytModel.html(ytIframe);
+            ytModel.modal('openModal');
+          })
         }
     });
 </script>
