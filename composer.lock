@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7cea76d0fe4aedaf49f9e89cb18a9f34",
+    "content-hash": "34c69ef23287bba28c9710508992bd94",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -800,12 +800,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "77ad0c1637ae6ea059f1f8e9fbdac6469242a16d"
+                "reference": "42aedccb861d01fc0554782348cc08f8ebf22332"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/77ad0c1637ae6ea059f1f8e9fbdac6469242a16d",
-                "reference": "77ad0c1637ae6ea059f1f8e9fbdac6469242a16d",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/42aedccb861d01fc0554782348cc08f8ebf22332",
+                "reference": "42aedccb861d01fc0554782348cc08f8ebf22332",
                 "shasum": ""
             },
             "require": {
@@ -19374,12 +19374,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "05241f28dfcba2b51b11e2d750e296316ebbe518"
+                "reference": "e888d94d749b3e550dba691b9793fc6512b9f209"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/05241f28dfcba2b51b11e2d750e296316ebbe518",
-                "reference": "05241f28dfcba2b51b11e2d750e296316ebbe518",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/e888d94d749b3e550dba691b9793fc6512b9f209",
+                "reference": "e888d94d749b3e550dba691b9793fc6512b9f209",
                 "shasum": ""
             },
             "require": {
@@ -19642,12 +19642,12 @@
             "version": "4.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Behat/Gherkin.git",
+                "url": "https://github.com/2tvenom/CBOREncode.git",
                 "reference": "b7bdd8671a2be5513e578ff0ca019869393a9cee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/b7bdd8671a2be5513e578ff0ca019869393a9cee",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/b7bdd8671a2be5513e578ff0ca019869393a9cee",
                 "reference": "b7bdd8671a2be5513e578ff0ca019869393a9cee",
                 "shasum": ""
             },
@@ -19826,12 +19826,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "6483453812d1eab6f256b75af9f9895e38f9e79b"
+                "reference": "a6156aef942a4e4de0add34a73d066a9458cefc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/6483453812d1eab6f256b75af9f9895e38f9e79b",
-                "reference": "6483453812d1eab6f256b75af9f9895e38f9e79b",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/a6156aef942a4e4de0add34a73d066a9458cefc6",
+                "reference": "a6156aef942a4e4de0add34a73d066a9458cefc6",
                 "shasum": ""
             },
             "require": {
@@ -21645,12 +21645,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "42aedccb861d01fc0554782348cc08f8ebf22332"
+                "reference": "4d2ce1c8f0bbf6169e54634d6dda70d8e338471f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/42aedccb861d01fc0554782348cc08f8ebf22332",
-                "reference": "42aedccb861d01fc0554782348cc08f8ebf22332",
+                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/4d2ce1c8f0bbf6169e54634d6dda70d8e338471f",
+                "reference": "4d2ce1c8f0bbf6169e54634d6dda70d8e338471f",
                 "shasum": ""
             },
             "require": {
@@ -25464,12 +25464,12 @@
             "version": "1.5.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/allure-framework/allure-codeception.git",
                 "reference": "a6156aef942a4e4de0add34a73d066a9458cefc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/a6156aef942a4e4de0add34a73d066a9458cefc6",
+                "url": "https://api.github.com/repos/allure-framework/allure-codeception/zipball/a6156aef942a4e4de0add34a73d066a9458cefc6",
                 "reference": "a6156aef942a4e4de0add34a73d066a9458cefc6",
                 "shasum": ""
             },
@@ -25686,12 +25686,12 @@
             "version": "4.1.22",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/Codeception/Codeception.git",
                 "reference": "9777ec3690ceedc4bce2ed13af7af4ca4ee3088f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/9777ec3690ceedc4bce2ed13af7af4ca4ee3088f",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/9777ec3690ceedc4bce2ed13af7af4ca4ee3088f",
                 "reference": "9777ec3690ceedc4bce2ed13af7af4ca4ee3088f",
                 "shasum": ""
             },
@@ -25777,12 +25777,12 @@
             "version": "1.13.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/Codeception/lib-asserts.git",
                 "reference": "184231d5eab66bc69afd6b9429344d80c67a33b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/184231d5eab66bc69afd6b9429344d80c67a33b6",
+                "url": "https://api.github.com/repos/Codeception/lib-asserts/zipball/184231d5eab66bc69afd6b9429344d80c67a33b6",
                 "reference": "184231d5eab66bc69afd6b9429344d80c67a33b6",
                 "shasum": ""
             },
@@ -25827,12 +25827,12 @@
             "version": "1.3.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/Codeception/module-asserts.git",
                 "reference": "59374f2fef0cabb9e8ddb53277e85cdca74328de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/59374f2fef0cabb9e8ddb53277e85cdca74328de",
+                "url": "https://api.github.com/repos/Codeception/module-asserts/zipball/59374f2fef0cabb9e8ddb53277e85cdca74328de",
                 "reference": "59374f2fef0cabb9e8ddb53277e85cdca74328de",
                 "shasum": ""
             },
@@ -25880,12 +25880,12 @@
             "version": "1.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/Codeception/module-sequence.git",
                 "reference": "b75be26681ae90824cde8f8df785981f293667e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/b75be26681ae90824cde8f8df785981f293667e1",
+                "url": "https://api.github.com/repos/Codeception/module-sequence/zipball/b75be26681ae90824cde8f8df785981f293667e1",
                 "reference": "b75be26681ae90824cde8f8df785981f293667e1",
                 "shasum": ""
             },
@@ -25972,12 +25972,12 @@
             "version": "9.0.6",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/Codeception/phpunit-wrapper.git",
                 "reference": "b0c06abb3181eedca690170f7ed0fd26a70bfacc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/b0c06abb3181eedca690170f7ed0fd26a70bfacc",
+                "url": "https://api.github.com/repos/Codeception/phpunit-wrapper/zipball/b0c06abb3181eedca690170f7ed0fd26a70bfacc",
                 "reference": "b0c06abb3181eedca690170f7ed0fd26a70bfacc",
                 "shasum": ""
             },
@@ -26017,12 +26017,12 @@
             "version": "3.7.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/Codeception/Stub.git",
                 "reference": "468dd5fe659f131fc997f5196aad87512f9b1304"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/468dd5fe659f131fc997f5196aad87512f9b1304",
+                "url": "https://api.github.com/repos/Codeception/Stub/zipball/468dd5fe659f131fc997f5196aad87512f9b1304",
                 "reference": "468dd5fe659f131fc997f5196aad87512f9b1304",
                 "shasum": ""
             },
@@ -26047,12 +26047,12 @@
             "version": "4.2.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/CSharpRU/vault-php.git",
                 "reference": "89b393ecf65f61a44d3a1872547f65085982b481"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/89b393ecf65f61a44d3a1872547f65085982b481",
+                "url": "https://api.github.com/repos/CSharpRU/vault-php/zipball/89b393ecf65f61a44d3a1872547f65085982b481",
                 "reference": "89b393ecf65f61a44d3a1872547f65085982b481",
                 "shasum": ""
             },
@@ -26106,12 +26106,12 @@
             "version": "2.0.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/CSharpRU/vault-php-guzzle6-transport.git",
                 "reference": "33c392120ac9f253b62b034e0e8ffbbdb3513bd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/33c392120ac9f253b62b034e0e8ffbbdb3513bd8",
+                "url": "https://api.github.com/repos/CSharpRU/vault-php-guzzle6-transport/zipball/33c392120ac9f253b62b034e0e8ffbbdb3513bd8",
                 "reference": "33c392120ac9f253b62b034e0e8ffbbdb3513bd8",
                 "shasum": ""
             },
@@ -26137,6 +26137,7 @@
                 }
             ],
             "description": "Guzzle6 transport for Vault PHP client",
+            "abandoned": true,
             "time": "2019-03-10T06:17:37+00:00"
         },
         {
@@ -26144,12 +26145,12 @@
             "version": "v0.7.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/Dealerdirect/phpcodesniffer-composer-installer.git",
                 "reference": "fe390591e0241955f22eb9ba327d137e501c771c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/fe390591e0241955f22eb9ba327d137e501c771c",
+                "url": "https://api.github.com/repos/Dealerdirect/phpcodesniffer-composer-installer/zipball/fe390591e0241955f22eb9ba327d137e501c771c",
                 "reference": "fe390591e0241955f22eb9ba327d137e501c771c",
                 "shasum": ""
             },
@@ -26210,12 +26211,12 @@
             "version": "1.13.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/doctrine/annotations.git",
                 "reference": "5b668aef16090008790395c02c893b1ba13f7e08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/5b668aef16090008790395c02c893b1ba13f7e08",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/5b668aef16090008790395c02c893b1ba13f7e08",
                 "reference": "5b668aef16090008790395c02c893b1ba13f7e08",
                 "shasum": ""
             },
@@ -26278,12 +26279,12 @@
             "version": "1.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/doctrine/instantiator.git",
                 "reference": "d56bf6102915de5702778fe20f2de3b2fe570b5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/d56bf6102915de5702778fe20f2de3b2fe570b5b",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/d56bf6102915de5702778fe20f2de3b2fe570b5b",
                 "reference": "d56bf6102915de5702778fe20f2de3b2fe570b5b",
                 "shasum": ""
             },
@@ -26343,12 +26344,12 @@
             "version": "1.2.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/doctrine/lexer.git",
                 "reference": "e864bbf5904cb8f5bb334f99209b48018522f042"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/e864bbf5904cb8f5bb334f99209b48018522f042",
+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/e864bbf5904cb8f5bb334f99209b48018522f042",
                 "reference": "e864bbf5904cb8f5bb334f99209b48018522f042",
                 "shasum": ""
             },
@@ -26419,12 +26420,12 @@
             "version": "v2.18.7",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
                 "reference": "b3281bbe07e8d45759e9e3e8032b4c5fa3463b21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/b3281bbe07e8d45759e9e3e8032b4c5fa3463b21",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/b3281bbe07e8d45759e9e3e8032b4c5fa3463b21",
                 "reference": "b3281bbe07e8d45759e9e3e8032b4c5fa3463b21",
                 "shasum": ""
             },
@@ -26519,12 +26520,12 @@
             "version": "1.17.05.02",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/hoaproject/Consistency.git",
                 "reference": "fd7d0adc82410507f332516faf655b6ed22e4c2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/fd7d0adc82410507f332516faf655b6ed22e4c2f",
+                "url": "https://api.github.com/repos/hoaproject/Consistency/zipball/fd7d0adc82410507f332516faf655b6ed22e4c2f",
                 "reference": "fd7d0adc82410507f332516faf655b6ed22e4c2f",
                 "shasum": ""
             },
@@ -26575,6 +26576,7 @@
                 "keyword",
                 "library"
             ],
+            "abandoned": true,
             "time": "2017-05-02T12:18:12+00:00"
         },
         {
@@ -26582,12 +26584,12 @@
             "version": "3.17.05.02",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/hoaproject/Console.git",
                 "reference": "e231fd3ea70e6d773576ae78de0bdc1daf331a66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/e231fd3ea70e6d773576ae78de0bdc1daf331a66",
+                "url": "https://api.github.com/repos/hoaproject/Console/zipball/e231fd3ea70e6d773576ae78de0bdc1daf331a66",
                 "reference": "e231fd3ea70e6d773576ae78de0bdc1daf331a66",
                 "shasum": ""
             },
@@ -26651,6 +26653,7 @@
                 "tput",
                 "window"
             ],
+            "abandoned": true,
             "time": "2017-05-02T12:26:19+00:00"
         },
         {
@@ -26658,12 +26661,12 @@
             "version": "1.17.01.13",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/hoaproject/Event.git",
                 "reference": "6c0060dced212ffa3af0e34bb46624f990b29c54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/6c0060dced212ffa3af0e34bb46624f990b29c54",
+                "url": "https://api.github.com/repos/hoaproject/Event/zipball/6c0060dced212ffa3af0e34bb46624f990b29c54",
                 "reference": "6c0060dced212ffa3af0e34bb46624f990b29c54",
                 "shasum": ""
             },
@@ -26707,6 +26710,7 @@
                 "listener",
                 "observer"
             ],
+            "abandoned": true,
             "time": "2017-01-13T15:30:50+00:00"
         },
         {
@@ -26714,12 +26718,12 @@
             "version": "1.17.01.16",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/hoaproject/Exception.git",
                 "reference": "091727d46420a3d7468ef0595651488bfc3a458f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/091727d46420a3d7468ef0595651488bfc3a458f",
+                "url": "https://api.github.com/repos/hoaproject/Exception/zipball/091727d46420a3d7468ef0595651488bfc3a458f",
                 "reference": "091727d46420a3d7468ef0595651488bfc3a458f",
                 "shasum": ""
             },
@@ -26761,6 +26765,7 @@
                 "exception",
                 "library"
             ],
+            "abandoned": true,
             "time": "2017-01-16T07:53:27+00:00"
         },
         {
@@ -26768,12 +26773,12 @@
             "version": "1.17.07.11",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/hoaproject/File.git",
                 "reference": "35cb979b779bc54918d2f9a4e02ed6c7a1fa67ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/35cb979b779bc54918d2f9a4e02ed6c7a1fa67ca",
+                "url": "https://api.github.com/repos/hoaproject/File/zipball/35cb979b779bc54918d2f9a4e02ed6c7a1fa67ca",
                 "reference": "35cb979b779bc54918d2f9a4e02ed6c7a1fa67ca",
                 "shasum": ""
             },
@@ -26823,6 +26828,7 @@
                 "link",
                 "temporary"
             ],
+            "abandoned": true,
             "time": "2017-07-11T07:42:15+00:00"
         },
         {
@@ -26830,12 +26836,12 @@
             "version": "2.17.01.10",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/hoaproject/Iterator.git",
                 "reference": "d1120ba09cb4ccd049c86d10058ab94af245f0cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/d1120ba09cb4ccd049c86d10058ab94af245f0cc",
+                "url": "https://api.github.com/repos/hoaproject/Iterator/zipball/d1120ba09cb4ccd049c86d10058ab94af245f0cc",
                 "reference": "d1120ba09cb4ccd049c86d10058ab94af245f0cc",
                 "shasum": ""
             },
@@ -26877,6 +26883,7 @@
                 "iterator",
                 "library"
             ],
+            "abandoned": true,
             "time": "2017-01-10T10:34:47+00:00"
         },
         {
@@ -26884,12 +26891,12 @@
             "version": "1.17.01.14",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/hoaproject/Protocol.git",
                 "reference": "5c2cf972151c45f373230da170ea015deecf19e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/5c2cf972151c45f373230da170ea015deecf19e2",
+                "url": "https://api.github.com/repos/hoaproject/Protocol/zipball/5c2cf972151c45f373230da170ea015deecf19e2",
                 "reference": "5c2cf972151c45f373230da170ea015deecf19e2",
                 "shasum": ""
             },
@@ -26937,6 +26944,7 @@
                 "stream",
                 "wrapper"
             ],
+            "abandoned": true,
             "time": "2017-01-14T12:26:10+00:00"
         },
         {
@@ -26944,12 +26952,12 @@
             "version": "1.17.02.21",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/hoaproject/Stream.git",
                 "reference": "3293cfffca2de10525df51436adf88a559151d82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/3293cfffca2de10525df51436adf88a559151d82",
+                "url": "https://api.github.com/repos/hoaproject/Stream/zipball/3293cfffca2de10525df51436adf88a559151d82",
                 "reference": "3293cfffca2de10525df51436adf88a559151d82",
                 "shasum": ""
             },
@@ -27001,6 +27009,7 @@
                 "stream",
                 "wrapper"
             ],
+            "abandoned": true,
             "time": "2017-02-21T16:01:06+00:00"
         },
         {
@@ -27008,12 +27017,12 @@
             "version": "4.17.01.16",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/hoaproject/Ustring.git",
                 "reference": "e6326e2739178799b1fe3fdd92029f9517fa17a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/e6326e2739178799b1fe3fdd92029f9517fa17a0",
+                "url": "https://api.github.com/repos/hoaproject/Ustring/zipball/e6326e2739178799b1fe3fdd92029f9517fa17a0",
                 "reference": "e6326e2739178799b1fe3fdd92029f9517fa17a0",
                 "shasum": ""
             },
@@ -27061,6 +27070,7 @@
                 "string",
                 "unicode"
             ],
+            "abandoned": true,
             "time": "2017-01-16T07:08:25+00:00"
         },
         {
@@ -27217,12 +27227,12 @@
             "version": "v0.8.11",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/Lusitanian/PHPoAuthLib.git",
                 "reference": "fc11a53db4b66da555a6a11fce294f574a8374f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/fc11a53db4b66da555a6a11fce294f574a8374f9",
+                "url": "https://api.github.com/repos/Lusitanian/PHPoAuthLib/zipball/fc11a53db4b66da555a6a11fce294f574a8374f9",
                 "reference": "fc11a53db4b66da555a6a11fce294f574a8374f9",
                 "shasum": ""
             },
@@ -27284,12 +27294,12 @@
             "version": "6",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/magento/magento-coding-standard.git",
                 "reference": "efc9084db3d1bd145b92d6b8a2e9cb0faec54fa7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/efc9084db3d1bd145b92d6b8a2e9cb0faec54fa7",
+                "url": "https://api.github.com/repos/magento/magento-coding-standard/zipball/efc9084db3d1bd145b92d6b8a2e9cb0faec54fa7",
                 "reference": "efc9084db3d1bd145b92d6b8a2e9cb0faec54fa7",
                 "shasum": ""
             },
@@ -27323,12 +27333,12 @@
             "version": "3.5.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/magento/magento2-functional-testing-framework.git",
                 "reference": "5a6bdf511182151a6c357b788eb0c3f2fd89954a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/5a6bdf511182151a6c357b788eb0c3f2fd89954a",
+                "url": "https://api.github.com/repos/magento/magento2-functional-testing-framework/zipball/5a6bdf511182151a6c357b788eb0c3f2fd89954a",
                 "reference": "5a6bdf511182151a6c357b788eb0c3f2fd89954a",
                 "shasum": ""
             },
@@ -27415,12 +27425,12 @@
             "version": "v2.13.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/bobthecow/mustache.php.git",
                 "reference": "e95c5a008c23d3151d59ea72484d4f72049ab7f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/e95c5a008c23d3151d59ea72484d4f72049ab7f4",
+                "url": "https://api.github.com/repos/bobthecow/mustache.php/zipball/e95c5a008c23d3151d59ea72484d4f72049ab7f4",
                 "reference": "e95c5a008c23d3151d59ea72484d4f72049ab7f4",
                 "shasum": ""
             },
@@ -27461,12 +27471,12 @@
             "version": "1.10.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/myclabs/DeepCopy.git",
                 "reference": "776f831124e9c62e1a2c601ecc52e776d8bb7220"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/776f831124e9c62e1a2c601ecc52e776d8bb7220",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/776f831124e9c62e1a2c601ecc52e776d8bb7220",
                 "reference": "776f831124e9c62e1a2c601ecc52e776d8bb7220",
                 "shasum": ""
             },
@@ -27515,12 +27525,12 @@
             "version": "2.7.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/pdepend/pdepend.git",
                 "reference": "daba1cf0a6edaf172fa02a17807ae29f4c1c7471"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/daba1cf0a6edaf172fa02a17807ae29f4c1c7471",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/daba1cf0a6edaf172fa02a17807ae29f4c1c7471",
                 "reference": "daba1cf0a6edaf172fa02a17807ae29f4c1c7471",
                 "shasum": ""
             },
@@ -27562,12 +27572,12 @@
             "version": "1.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/phar-io/manifest.git",
                 "reference": "7761fcacf03b4d4f16e7ccb606d4879ca431fcf4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/7761fcacf03b4d4f16e7ccb606d4879ca431fcf4",
+                "url": "https://api.github.com/repos/phar-io/manifest/zipball/7761fcacf03b4d4f16e7ccb606d4879ca431fcf4",
                 "reference": "7761fcacf03b4d4f16e7ccb606d4879ca431fcf4",
                 "shasum": ""
             },
@@ -27617,12 +27627,12 @@
             "version": "2.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/phar-io/version.git",
                 "reference": "45a2ec53a73c70ce41d55cedef9063630abaf1b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/45a2ec53a73c70ce41d55cedef9063630abaf1b6",
+                "url": "https://api.github.com/repos/phar-io/version/zipball/45a2ec53a73c70ce41d55cedef9063630abaf1b6",
                 "reference": "45a2ec53a73c70ce41d55cedef9063630abaf1b6",
                 "shasum": ""
             },
@@ -27664,12 +27674,12 @@
             "version": "v1.3.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/PHP-CS-Fixer/diff.git",
                 "reference": "dbd31aeb251639ac0b9e7e29405c1441907f5759"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/dbd31aeb251639ac0b9e7e29405c1441907f5759",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/diff/zipball/dbd31aeb251639ac0b9e7e29405c1441907f5759",
                 "reference": "dbd31aeb251639ac0b9e7e29405c1441907f5759",
                 "shasum": ""
             },
@@ -27715,12 +27725,12 @@
             "version": "1.8.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/php-webdriver/php-webdriver.git",
                 "reference": "3308a70be084d6d7fd1ee5787b4c2e6eb4b70aab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/3308a70be084d6d7fd1ee5787b4c2e6eb4b70aab",
+                "url": "https://api.github.com/repos/php-webdriver/php-webdriver/zipball/3308a70be084d6d7fd1ee5787b4c2e6eb4b70aab",
                 "reference": "3308a70be084d6d7fd1ee5787b4c2e6eb4b70aab",
                 "shasum": ""
             },
@@ -27780,12 +27790,12 @@
             "version": "9.3.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/PHPCompatibility/PHPCompatibility.git",
                 "reference": "9fb324479acf6f39452e0655d2429cc0d3914243"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/9fb324479acf6f39452e0655d2429cc0d3914243",
+                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibility/zipball/9fb324479acf6f39452e0655d2429cc0d3914243",
                 "reference": "9fb324479acf6f39452e0655d2429cc0d3914243",
                 "shasum": ""
             },
@@ -27838,12 +27848,12 @@
             "version": "2.2.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/phpDocumentor/ReflectionCommon.git",
                 "reference": "1d01c49d4ed62f25aa84a747ad35d5a16924662b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/1d01c49d4ed62f25aa84a747ad35d5a16924662b",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/1d01c49d4ed62f25aa84a747ad35d5a16924662b",
                 "reference": "1d01c49d4ed62f25aa84a747ad35d5a16924662b",
                 "shasum": ""
             },
@@ -27984,12 +27994,12 @@
             "version": "2.9.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/phpmd/phpmd.git",
                 "reference": "ce10831d4ddc2686c1348a98069771dd314534a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/ce10831d4ddc2686c1348a98069771dd314534a8",
+                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/ce10831d4ddc2686c1348a98069771dd314534a8",
                 "reference": "ce10831d4ddc2686c1348a98069771dd314534a8",
                 "shasum": ""
             },
@@ -28230,12 +28240,12 @@
             "version": "8.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
                 "reference": "ca6647ffddd2add025ab3f21644a441d7c146cdc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/ca6647ffddd2add025ab3f21644a441d7c146cdc",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/ca6647ffddd2add025ab3f21644a441d7c146cdc",
                 "reference": "ca6647ffddd2add025ab3f21644a441d7c146cdc",
                 "shasum": ""
             },
@@ -28300,12 +28310,12 @@
             "version": "3.0.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
                 "reference": "aa4be8575f26070b100fccb67faabb28f21f66f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/aa4be8575f26070b100fccb67faabb28f21f66f8",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/aa4be8575f26070b100fccb67faabb28f21f66f8",
                 "reference": "aa4be8575f26070b100fccb67faabb28f21f66f8",
                 "shasum": ""
             },
@@ -28356,12 +28366,12 @@
             "version": "3.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/sebastianbergmann/php-invoker.git",
                 "reference": "5a10147d0aaf65b58940a0b72f71c9ac0423cc67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/5a10147d0aaf65b58940a0b72f71c9ac0423cc67",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-invoker/zipball/5a10147d0aaf65b58940a0b72f71c9ac0423cc67",
                 "reference": "5a10147d0aaf65b58940a0b72f71c9ac0423cc67",
                 "shasum": ""
             },
@@ -28415,12 +28425,12 @@
             "version": "2.0.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/sebastianbergmann/php-text-template.git",
                 "reference": "5da5f67fc95621df9ff4c4e5a84d6a8a2acf7c28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/5da5f67fc95621df9ff4c4e5a84d6a8a2acf7c28",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-text-template/zipball/5da5f67fc95621df9ff4c4e5a84d6a8a2acf7c28",
                 "reference": "5da5f67fc95621df9ff4c4e5a84d6a8a2acf7c28",
                 "shasum": ""
             },
@@ -28470,12 +28480,12 @@
             "version": "5.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/sebastianbergmann/php-timer.git",
                 "reference": "5a63ce20ed1b5bf577850e2c4e87f4aa902afbd2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/5a63ce20ed1b5bf577850e2c4e87f4aa902afbd2",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/5a63ce20ed1b5bf577850e2c4e87f4aa902afbd2",
                 "reference": "5a63ce20ed1b5bf577850e2c4e87f4aa902afbd2",
                 "shasum": ""
             },
@@ -28525,12 +28535,12 @@
             "version": "4.0.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/sebastianbergmann/php-token-stream.git",
                 "reference": "a853a0e183b9db7eed023d7933a858fa1c8d25a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/a853a0e183b9db7eed023d7933a858fa1c8d25a3",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/a853a0e183b9db7eed023d7933a858fa1c8d25a3",
                 "reference": "a853a0e183b9db7eed023d7933a858fa1c8d25a3",
                 "shasum": ""
             },
@@ -28573,6 +28583,7 @@
                     "type": "github"
                 }
             ],
+            "abandoned": true,
             "time": "2020-08-04T08:28:15+00:00"
         },
         {
@@ -28580,12 +28591,12 @@
             "version": "9.2.6",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/sebastianbergmann/phpunit.git",
                 "reference": "1c6a9e4312e209e659f1fce3ce88dd197c2448f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/1c6a9e4312e209e659f1fce3ce88dd197c2448f6",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1c6a9e4312e209e659f1fce3ce88dd197c2448f6",
                 "reference": "1c6a9e4312e209e659f1fce3ce88dd197c2448f6",
                 "shasum": ""
             },
@@ -28678,13 +28689,13 @@
             "version": "1.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
-                "reference": "42aedccb861d01fc0554782348cc08f8ebf22332"
+                "url": "https://github.com/php-fig/cache.git",
+                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/42aedccb861d01fc0554782348cc08f8ebf22332",
-                "reference": "42aedccb861d01fc0554782348cc08f8ebf22332",
+                "url": "https://api.github.com/repos/php-fig/cache/zipball/d11b50ad223250cf17b86e38383413f5a6764bf8",
+                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8",
                 "shasum": ""
             },
             "require": {
@@ -28724,12 +28735,12 @@
             "version": "1.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/sebastianbergmann/cli-parser.git",
                 "reference": "442e7c7e687e42adc03470c7b668bc4b2402c0b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/442e7c7e687e42adc03470c7b668bc4b2402c0b2",
+                "url": "https://api.github.com/repos/sebastianbergmann/cli-parser/zipball/442e7c7e687e42adc03470c7b668bc4b2402c0b2",
                 "reference": "442e7c7e687e42adc03470c7b668bc4b2402c0b2",
                 "shasum": ""
             },
@@ -28776,12 +28787,12 @@
             "version": "1.0.8",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/sebastianbergmann/code-unit.git",
                 "reference": "1fc9f64c0927627ef78ba436c9b17d967e68e120"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/1fc9f64c0927627ef78ba436c9b17d967e68e120",
+                "url": "https://api.github.com/repos/sebastianbergmann/code-unit/zipball/1fc9f64c0927627ef78ba436c9b17d967e68e120",
                 "reference": "1fc9f64c0927627ef78ba436c9b17d967e68e120",
                 "shasum": ""
             },
@@ -28828,12 +28839,12 @@
             "version": "2.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/sebastianbergmann/code-unit-reverse-lookup.git",
                 "reference": "ac91f01ccec49fb77bdc6fd1e548bc70f7faa3e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/ac91f01ccec49fb77bdc6fd1e548bc70f7faa3e5",
+                "url": "https://api.github.com/repos/sebastianbergmann/code-unit-reverse-lookup/zipball/ac91f01ccec49fb77bdc6fd1e548bc70f7faa3e5",
                 "reference": "ac91f01ccec49fb77bdc6fd1e548bc70f7faa3e5",
                 "shasum": ""
             },
@@ -28879,12 +28890,12 @@
             "version": "4.0.6",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/sebastianbergmann/comparator.git",
                 "reference": "55f4261989e546dc112258c7a75935a81a7ce382"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/55f4261989e546dc112258c7a75935a81a7ce382",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/55f4261989e546dc112258c7a75935a81a7ce382",
                 "reference": "55f4261989e546dc112258c7a75935a81a7ce382",
                 "shasum": ""
             },
@@ -28949,12 +28960,12 @@
             "version": "4.0.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/sebastianbergmann/diff.git",
                 "reference": "3461e3fccc7cfdfc2720be910d3bd73c69be590d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/3461e3fccc7cfdfc2720be910d3bd73c69be590d",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/3461e3fccc7cfdfc2720be910d3bd73c69be590d",
                 "reference": "3461e3fccc7cfdfc2720be910d3bd73c69be590d",
                 "shasum": ""
             },
@@ -29011,12 +29022,12 @@
             "version": "5.1.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/sebastianbergmann/environment.git",
                 "reference": "388b6ced16caa751030f6a69e588299fa09200ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/388b6ced16caa751030f6a69e588299fa09200ac",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/388b6ced16caa751030f6a69e588299fa09200ac",
                 "reference": "388b6ced16caa751030f6a69e588299fa09200ac",
                 "shasum": ""
             },
@@ -29143,12 +29154,12 @@
             "version": "4.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/sebastianbergmann/global-state.git",
                 "reference": "bdb1e7c79e592b8c82cb1699be3c8743119b8a72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/bdb1e7c79e592b8c82cb1699be3c8743119b8a72",
+                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/bdb1e7c79e592b8c82cb1699be3c8743119b8a72",
                 "reference": "bdb1e7c79e592b8c82cb1699be3c8743119b8a72",
                 "shasum": ""
             },
@@ -29197,12 +29208,12 @@
             "version": "4.0.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/sebastianbergmann/object-enumerator.git",
                 "reference": "5c9eeac41b290a3712d88851518825ad78f45c71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/5c9eeac41b290a3712d88851518825ad78f45c71",
+                "url": "https://api.github.com/repos/sebastianbergmann/object-enumerator/zipball/5c9eeac41b290a3712d88851518825ad78f45c71",
                 "reference": "5c9eeac41b290a3712d88851518825ad78f45c71",
                 "shasum": ""
             },
@@ -29250,12 +29261,12 @@
             "version": "2.0.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/sebastianbergmann/object-reflector.git",
                 "reference": "b4f479ebdbf63ac605d183ece17d8d7fe49c15c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/b4f479ebdbf63ac605d183ece17d8d7fe49c15c7",
+                "url": "https://api.github.com/repos/sebastianbergmann/object-reflector/zipball/b4f479ebdbf63ac605d183ece17d8d7fe49c15c7",
                 "reference": "b4f479ebdbf63ac605d183ece17d8d7fe49c15c7",
                 "shasum": ""
             },
@@ -29301,12 +29312,12 @@
             "version": "6.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/sebastianbergmann/phpcpd.git",
                 "reference": "f3683aa0db2e8e09287c2bb33a595b2873ea9176"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/f3683aa0db2e8e09287c2bb33a595b2873ea9176",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpcpd/zipball/f3683aa0db2e8e09287c2bb33a595b2873ea9176",
                 "reference": "f3683aa0db2e8e09287c2bb33a595b2873ea9176",
                 "shasum": ""
             },
@@ -29358,12 +29369,12 @@
             "version": "4.0.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/sebastianbergmann/recursion-context.git",
                 "reference": "cd9d8cf3c5804de4341c283ed787f099f5506172"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/cd9d8cf3c5804de4341c283ed787f099f5506172",
+                "url": "https://api.github.com/repos/sebastianbergmann/recursion-context/zipball/cd9d8cf3c5804de4341c283ed787f099f5506172",
                 "reference": "cd9d8cf3c5804de4341c283ed787f099f5506172",
                 "shasum": ""
             },
@@ -29417,12 +29428,12 @@
             "version": "3.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/sebastianbergmann/resource-operations.git",
                 "reference": "0f4443cb3a1d92ce809899753bc0d5d5a8dd19a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/0f4443cb3a1d92ce809899753bc0d5d5a8dd19a8",
+                "url": "https://api.github.com/repos/sebastianbergmann/resource-operations/zipball/0f4443cb3a1d92ce809899753bc0d5d5a8dd19a8",
                 "reference": "0f4443cb3a1d92ce809899753bc0d5d5a8dd19a8",
                 "shasum": ""
             },
@@ -29468,12 +29479,12 @@
             "version": "2.3.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/sebastianbergmann/type.git",
                 "reference": "b8cd8a1c753c90bc1a0f5372170e3e489136f914"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/b8cd8a1c753c90bc1a0f5372170e3e489136f914",
+                "url": "https://api.github.com/repos/sebastianbergmann/type/zipball/b8cd8a1c753c90bc1a0f5372170e3e489136f914",
                 "reference": "b8cd8a1c753c90bc1a0f5372170e3e489136f914",
                 "shasum": ""
             },
@@ -29520,12 +29531,12 @@
             "version": "3.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/sebastianbergmann/version.git",
                 "reference": "c6c1022351a901512170118436c764e473f6de8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/c6c1022351a901512170118436c764e473f6de8c",
+                "url": "https://api.github.com/repos/sebastianbergmann/version/zipball/c6c1022351a901512170118436c764e473f6de8c",
                 "reference": "c6c1022351a901512170118436c764e473f6de8c",
                 "shasum": ""
             },
@@ -29569,12 +29580,12 @@
             "version": "3.5.8",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
                 "reference": "9d583721a7157ee997f235f327de038e7ea6dac4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/9d583721a7157ee997f235f327de038e7ea6dac4",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/9d583721a7157ee997f235f327de038e7ea6dac4",
                 "reference": "9d583721a7157ee997f235f327de038e7ea6dac4",
                 "shasum": ""
             },
@@ -29700,12 +29711,12 @@
             "version": "v1.20.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/symfony/polyfill-php70.git",
                 "reference": "5f03a781d984aae42cebd18e7912fa80f02ee644"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/5f03a781d984aae42cebd18e7912fa80f02ee644",
+                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/5f03a781d984aae42cebd18e7912fa80f02ee644",
                 "reference": "5f03a781d984aae42cebd18e7912fa80f02ee644",
                 "shasum": ""
             },
@@ -29765,12 +29776,12 @@
             "version": "v5.3.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/symfony/stopwatch.git",
                 "reference": "b24c6a92c6db316fee69e38c80591e080e41536c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/b24c6a92c6db316fee69e38c80591e080e41536c",
+                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/b24c6a92c6db316fee69e38c80591e080e41536c",
                 "reference": "b24c6a92c6db316fee69e38c80591e080e41536c",
                 "shasum": ""
             },
@@ -29896,12 +29907,12 @@
             "version": "1.2.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/theseer/tokenizer.git",
                 "reference": "34a41e998c2183e22995f158c581e7b5e755ab9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/34a41e998c2183e22995f158c581e7b5e755ab9e",
+                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/34a41e998c2183e22995f158c581e7b5e755ab9e",
                 "reference": "34a41e998c2183e22995f158c581e7b5e755ab9e",
                 "shasum": ""
             },
@@ -30014,12 +30025,12 @@
             "version": "v1.3.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/2tvenom/CBOREncode.git",
+                "url": "https://github.com/weew/helpers-array.git",
                 "reference": "9bff63111f9765b4277750db8d276d92b3e16ed0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2tvenom/CBOREncode/zipball/9bff63111f9765b4277750db8d276d92b3e16ed0",
+                "url": "https://api.github.com/repos/weew/helpers-array/zipball/9bff63111f9765b4277750db8d276d92b3e16ed0",
                 "reference": "9bff63111f9765b4277750db8d276d92b3e16ed0",
                 "shasum": ""
             },
