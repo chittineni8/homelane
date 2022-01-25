@@ -2928,8 +2928,9 @@ form#review-form {
         }
     }  
 }
-.catalog-product-view .block.related {
-    border-bottom: 1px solid #eae7e7;
+.catalog-product-view .page-bottom {
+    border-top: 1px solid #eae7e7;
+    padding-top: 30px;
 }
 .fotorama__stage {
     margin-bottom: 6px;
@@ -4877,6 +4878,7 @@ rs-module-wrap {
         font-size: 16px;
         line-height: 19px;
         color: #342F2F;
+        content: attr(data-th);
     }
     .columns .product.info.detailed .product.data.items > .item.content#Warranty th.col.label {
         display: inline-block;
@@ -5042,6 +5044,7 @@ rs-module-wrap {
         padding-bottom: 0;
         @media (max-width: 767px){
             display: flex;
+            overflow: hidden;
             li.item{
                 display: flex;
             }
@@ -5693,5 +5696,14 @@ ol.product-items li.wishlist-active{
                 }
             }
         }
+    }
+}
+.price-box{
+    .all-taxes{
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 14px;
+        color: #999999;
+        margin-top: 10px;
     }
 }
