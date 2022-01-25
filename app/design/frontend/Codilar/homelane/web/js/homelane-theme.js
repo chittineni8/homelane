@@ -136,8 +136,14 @@ require(['jquery','slickslider'], function($) {
             ]
 	    });
 		$(".hp-customer-review-outer ul").not(".slick-initialized").slick({
-		    dots: true,arrows: true,infinite: true,slidesToShow: 1,slidesToScroll: 1,
-		    autoplay: true,initialSlide: 1,speed: 2500,cssEase: 'linear',
+		    dots: true,arrows: false,infinite: true,slidesToShow: 1,slidesToScroll: 1,
+		    autoplay: true,initialSlide: 1, speed: 300,cssEase: 'linear',
+			responsive: [
+                {
+                	breakpoint: 768,
+                    settings: {arrows: true}
+                }
+            ]
 		});
 		
 		$('#layer-product-list').find('.pages a').click(function(){
