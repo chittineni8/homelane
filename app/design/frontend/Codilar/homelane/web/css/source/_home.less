@@ -3,6 +3,29 @@
 //  _____________________________________________
 
 & when (@media-common = true) {
+
+    // home main slider
+    .hero-banner-slider {
+        #html-body  & .pagebuilder-slide-wrapper {
+        background-size: 100% 100%;
+        }
+        .slick-dots {
+            bottom: 8px;
+            li {
+                margin: 0;
+                button {
+                    width: 9px;
+                    height: 9px;
+                    padding: 0;
+                    border: 1px solid #9b9b9b;
+                }
+                &.slick-active button {
+                    background: #9b9b9b;
+                }
+            }
+        }
+    }
+
     // reviews slider
     .hp-customer-review-outer {
         padding: 0 15px;
@@ -227,6 +250,17 @@
 //  _____________________________________________
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+    // home main slider
+    #html-body {
+        .hero-banner-slider {
+            .pagebuilder-overlay,
+            .pagebuilder-slide-wrapper {
+                min-height: ~'calc(100vw * 0.3072)';
+            }
+        }
+    }
+
     // category view homepage
     .hp-category {
         &-conatiner {
@@ -322,6 +356,26 @@
         }
         .delimiter {
             display: none;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+
+    // home main slider
+    #html-body {
+        .hero-banner-slider {
+            .pagebuilder {
+                &-slide-wrapper {
+                    min-height: ~'calc(100vw * 0.875)';
+                }
+                &-overlay {
+                    min-height: unset;
+                }
+            }
+            .slick-dots {
+                display: none !important;
+            }
         }
     }
 }
