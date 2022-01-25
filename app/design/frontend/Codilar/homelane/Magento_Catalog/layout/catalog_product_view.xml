@@ -23,9 +23,12 @@
                 </arguments>
             </block>
         </referenceContainer>
-         <referenceBlock name="page.main.title">
+        <referenceBlock name="page.main.title">
             <block class="Magento\Framework\View\Element\Template" name="social_share_icons"  template="Magento_Catalog::socialshare.phtml" />
          </referenceBlock>
+         <referenceContainer name="product.info.price">
+            <block class="Magento\Framework\View\Element\Template" name="all_taxes"  template="Magento_Catalog::alltexes.phtml"/>
+         </referenceContainer>
          <referenceContainer name="product.info.social.second" remove="true" />
     </body>
 </page>
