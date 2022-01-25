@@ -136,11 +136,11 @@ class Categorylist extends \Magento\Framework\View\Element\Template {
                 {
                     if($currentCategoryId==$childCategory->getId()) {
                         $html .= '<li class="level' . $level . ' current-category">';
-                        $html .= '<a href="' . $this->getCategoryUrl($childCategory) . '" title="' . $childCategory->getName() . '">' . $childCategory->getName() . '('.$this->getProductCollectionCount($category->getId()).')</a>';
+                        $html .= '<a href="' . $this->getCategoryUrl($childCategory) . '" title="' . $childCategory->getName() . '">' . $childCategory->getName() . '('.$this->getProductCollectionCount($childCategory->getId()).')</a>';
                     }
                     else{
                     $html .= '<li class="level' . $level . '">';
-                    $html .= '<a href="' . $this->getCategoryUrl($childCategory) . '" title="' . $childCategory->getName() . '">' . $childCategory->getName() . '('.$this->getProductCollectionCount($category->getId()).')</a>';
+                    $html .= '<a href="' . $this->getCategoryUrl($childCategory) . '" title="' . $childCategory->getName() . '">' . $childCategory->getName() . '('.$this->getProductCollectionCount($childCategory->getId()).')</a>';
                     }
                     if ($childCategory->hasChildren())
                     {

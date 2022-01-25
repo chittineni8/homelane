@@ -14,7 +14,6 @@ $categories = $block->getCategories();
                 <li class="level0">
                     <a href="<?php echo $block->getCategoryUrl($category); ?>" title="<?php echo $category->getName(); ?>">
                         <?php echo $category->getName(); ?>
-                        (<?php echo $block->getProductCollectionCount($category->getId()); ?>)
                     </a>
                     <?php if ( $category->hasChildren() ) { ?>
                         <span class="expand"></span>
