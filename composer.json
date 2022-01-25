@@ -18,7 +18,7 @@
         "magento/product-community-edition": "2.4.3",
         "mageplaza/layered-navigation-m2": "4.1.1",
         "mageplaza/magento-2-social-login": "^4.1",
-        "mageplaza/module-better-wishlist": "^4.0",
+        "mageplaza/module-better-wishlist": "^4.0.2",
         "mageplaza/module-search": "^4.0",
         "mageplaza/module-smtp": "^4.5",
         "magepow/lazyload": "^1.0",
