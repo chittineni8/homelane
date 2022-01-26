@@ -16,7 +16,7 @@ if ($block->getCustomerIsLoggedIn()) :
 
     ?>
     <li class="login link wishlists" data-bind="scope: 'wishlist'">
-        <a href="<?= $this->getUrl('wishlist/') ?>"></a>
+        <a href="<?= $this->getUrl('wishlist/') ?>">Wishlist</a>
     </li>
     <li class="customer-welcome">
 
@@ -31,7 +31,7 @@ if ($block->getCustomerIsLoggedIn()) :
                     class="action switch"
                     tabindex="-1"
                     data-action="customer-menu-toggle">
-                <span><?= $block->escapeHtml(__('Change')) ?></span>
+                <span><?= $block->escapeHtml(__('Profile')) ?></span>
             </button>
         </span>
         <script type="text/x-magento-init">
@@ -65,7 +65,6 @@ if ($block->getCustomerIsLoggedIn()) :
             </ul>
             <ul class="header links">
                 <li class="login-profile"><a href="<?= $this->getUrl('customer/account') ?>"><?php echo __('My Profile'); ?></a></li>
-                <li class="login-wishlist"><a href="<?= $this->getUrl('wishlist') ?>"><?php echo __('My Wishlist'); ?></a></li>
                 <?php $isSeller = $helper->isSeller();
                 if (!empty($isSeller) && $isSeller === '1') : ?>
                 <li class="Vendor-Dashboard"><a href="<?= $this->getUrl('marketplace\account\dashboard') ?>"><?php echo __('Vendor Dashboard'); ?></a></li>
