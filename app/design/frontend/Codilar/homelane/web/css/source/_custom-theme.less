@@ -3086,10 +3086,13 @@ form#product-sendtofriend-form {
         margin-top: 10px;
     }
     .columns {
-        border-top: 1px solid #eae7e7;
+        @media (min-width: 767px){
+            border-top: 1px solid #eae7e7;
+            border-left: 1px solid #eae7e7;
+        }
         .sidebar.sidebar-main {
             padding-top: 25px;
-            padding-right: 20px;
+            padding-right: 0;
             width: 28%;
         }
         .column.main {
@@ -3121,9 +3124,17 @@ form#product-sendtofriend-form {
 }
 .account.wishlist-index-index {
     h1.page-title {
+        margin-bottom: 30px;
+        @media (max-width:767px){
+            margin-bottom: 18px;
+        }
         &:before {
-            content: "My Wishlist";
+            content: "Store Wishlist";
             display: block;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 24px;
+            color: #000000;
         }
         span {
             display: none;
@@ -3143,6 +3154,8 @@ form#product-sendtofriend-form {
 }
 .block.block-collapsible-nav {
     margin-top: 10px;
+    padding-left: 12px;
+    padding-right: 12px;
     .content {
         background: #fff;
         padding: 0;
@@ -3235,10 +3248,10 @@ form#product-sendtofriend-form {
 }
 .myprofile-customtab {
     .user-profile {
-        background: #F7F7F7;
-        padding: 15px 0 15px 20px;
+        padding: 15px 0 20px 20px;
         border-radius: 8px;
-        margin-bottom: 15px;
+        margin-bottom: 0;
+        border-bottom: 1px solid #eae7e7;
         a {
             display: block;
             color: #4a4a4a;
@@ -3268,8 +3281,9 @@ form#product-sendtofriend-form {
     .products-grid {
         .product-items {
             .product-item {
-                width: 31.3%;
-                margin: 0 3% 0 0;
+                width: 29.3%;
+                margin: 0 5% 0 0;
+                margin-bottom: 5%;
                 &:nth-child(3n+3) {
                     margin-right: 0;
                 }
@@ -3284,17 +3298,39 @@ form#product-sendtofriend-form {
                     display: none;
                 }
                 .product-item-actions {
-                    margin: 10px 0 15px;
+                    margin: 16px 0 0px;
                     a.action {
-                        font-family: 'Lato';
-                        background: #E71C24;
-                        color: #fff;
-                        border: 1px solid #E71C24;
-                        border-radius: 4px;
-                        font-weight: 500;
-                        padding: 8px 10px;
                         text-decoration: none;
                         display: inline-block;
+                        font-family: Lato;
+                        font-style: normal;
+                        font-weight: bold;
+                        font-size: 16px;
+                        line-height: 19px;
+                        color: #D53631;
+                        &.mp-wishlist-delete{
+                            &::before{
+                                -webkit-font-smoothing: antialiased;
+                                -moz-osx-font-smoothing: grayscale;
+                                font-size: 16px;
+                                line-height: 16px;
+                                color: #D53631;
+                                content: '\e616';
+                                font-family: 'icons-blank-theme';
+                                margin: 0;
+                                vertical-align: top;
+                                display: inline-block;
+                                overflow: hidden;
+                                speak: none;
+                                text-align: center;
+                                font-weight: 600;
+                                border: 2px solid #D53631;
+                                border-radius: 7px;
+                                margin-right: 5px;
+                                width: 16px;
+                                padding: 0px;
+                            }
+                        }
                     }
                 }
                 a.action.edit {
@@ -5058,7 +5094,7 @@ rs-module-wrap {
                             margin-right: 0;
                         }
                         .product-item-actions {
-                            margin: 10px 0 0;
+                            margin: 0 0 0;
                         }
                     }
                     strong.product-item-name,.price-box {
@@ -5898,4 +5934,28 @@ ol.product-items li.wishlist-active{
     line-height: 22px;
     letter-spacing: 0.01em;
     color: #000000;
+}
+.products-grid.wishlist .product-item{ 
+    padding-top: 50px;
+    &:first-child{
+        padding-top: 0;
+    }
+    .price-box{
+        .price-as-configured{
+            .old-price{
+                .price{
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 17px;
+                    color: #545665;
+                }
+            }
+            .price{
+                font-weight: bold;
+                font-size: 18px;
+                line-height: 22px;
+                color: #000000;
+            }
+        }
+    }
 }
