@@ -5935,10 +5935,12 @@ ol.product-items li.wishlist-active{
     letter-spacing: 0.01em;
     color: #000000;
 }
-.products-grid.wishlist .product-item{ 
-    padding-top: 50px;
-    &:first-child{
-        padding-top: 0;
+.products-grid.wishlist .product-item{
+    @media (max-width:767px){ 
+        padding-top: 50px;
+        &:first-child{
+            padding-top: 0;
+        }
     }
     .price-box{
         .price-as-configured{
