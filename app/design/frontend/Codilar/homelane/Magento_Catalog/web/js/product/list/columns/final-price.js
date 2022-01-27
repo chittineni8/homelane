@@ -38,7 +38,7 @@ define([
                 var regular_price = parseInt(regular_price, 10);
                 var special_price = parseInt(special_price, 10);
                 var discount = 100 - Math.round((special_price/regular_price)*100);
-                var discount = discount+'%';
+                var discount = '('+discount+'% OFF)';
                 return(discount);
             }
         },

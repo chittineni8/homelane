@@ -125,14 +125,15 @@ if ($exist = ($productCollection && $productCollection->getSize())) {
                                             </div>
                                         <?php endif; ?>
                                         <?php if ($showWishlist || $showCompare) :?>
-                                            <div class="actions-secondary" data-role="add-to-links">
+                                            <div class="actions-secondary actions-secondary-related-block" data-role="add-to-links">
                                                 <?php if ($this->helper(Magento\Wishlist\Helper\Data::class)->isAllow() && $showWishlist) :?>
                                                     <a href="#"
                                                        data-post='<?= /* @noEscape */ $block->getAddToWishlistParams($_item) ?>'
                                                        class="action towishlist"
                                                        data-action="add-to-wishlist"
-                                                       title="<?= $block->escapeHtmlAttr(__('Add to Wish List')) ?>">
-                                                        <span><?= $block->escapeHtml(__('Add to Wish List')) ?></span>
+                                                       title="<?= $block->escapeHtmlAttr(__('Wishlist')) ?>">
+                                                        <span class="wishlist"><?= $block->escapeHtml(__('Wishlist')) ?></span>
+                                                        <span class="wishlisted"><?= $block->escapeHtml(__('Wishlisted')) ?></span>
                                                     </a>
                                                 <?php endif; ?>
                                                 <?php if ($block->getAddToCompareUrl() && $showCompare) :?>
