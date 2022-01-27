@@ -7,12 +7,14 @@
 <?php
 /** @var \Magento\Wishlist\Block\Customer\Wishlist\Items $block */
 $columns = $block->getColumns();
+$viewModel = $block->getData('wishlistpriceVieModel');
 ?>
 
 <div class="products-grid wishlist">
     <?php if (count($block->getItems())) : ?>
     <ol class="product-items">
-        <?php foreach ($block->getItems() as $item) : ?>
+        <?php foreach ($block->getItems() as $item) :
+            $productId = $item->getData("product_id");?>
             <li data-row="product-item" class="product-item" id="item_<?= $block->escapeHtmlAttr($item->getId()) ?>">
                 <div class="product-item-info" data-container="product-grid">
                     <?php foreach ($columns as $column) : ?>
@@ -20,6 +22,11 @@ $columns = $block->getColumns();
                     <?php endforeach; ?>
                 </div>
             </li>
+            <?php
+            $discountPercents = $viewModel->getDiscountPercents($productId);
+            if (!is_null($discountPercents));{ ?>
+            <?php echo $discountPercents  ?>
+        <?php }?>
         <?php endforeach; ?>
     </ol>
     <?php else : ?>
