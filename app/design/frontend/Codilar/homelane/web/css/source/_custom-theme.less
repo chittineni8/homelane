@@ -470,7 +470,7 @@ ul.header.links {
         font-size: 0;
         text-decoration: none;
         &:before {
-            content: "Login/Register";
+            content: "Login";
             font-size: 12px;
             margin-left: -5px;
             line-height: 11px;
@@ -822,6 +822,9 @@ aside.modal-popup.city-popup {
     }
     .box-store-content {
         padding-top: 60px;
+        @media (max-width:767px){
+            padding-top: 5px;
+        }
         .store-name {
             color: #4A4A4A;
             font-size: 13px;
@@ -1719,17 +1722,11 @@ h2.account-heading {
 .page-wrapper .block.widget .block-title {
     margin: 15px 0 20px;
 }
-.block.widget .products-grid .product-item .price-box .price {
-    font-size: 1.2rem;
-    font-weight: 500;
-    white-space: nowrap;
-    color: #9B9B9B;
-}
+
 .block.widget .product-reviews-summary {
     display: none;
 }
 .block.widget .products-grid .product-item .product-item-name > a {
-    color: #4a4a4a;
     font-weight: 700;
     text-transform: capitalize;
 
@@ -1744,6 +1741,14 @@ h2.account-heading {
     color: #000000;
     &:before {
         font-size: 38px;
+        content: "" !important;
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        background-size: contain;
+        background-position: center center;
+        background: url(../images/related-wishlist.png) no-repeat;
+        padding-right: 8px;
     }
     span{
         position: static !important;
@@ -2019,28 +2024,31 @@ body.user-resetpassword-index {
         max-width: 100%;
     }
 } 
-.columns {
-    .product-items {
-        .product-item {
-            .special-price {
-                display: inline-block;
-                padding-right: 8px;
-                .price-wrapper {
-                    .price {
-                        font-weight: bold;
-                        font-size: 18px;
-                        line-height: 22px;
-                        letter-spacing: 0.01em;
-                        color: #000000;
-                    }
+
+.product-items {
+    .product-item {
+        .special-price {
+            display: inline-block;
+            padding-right: 8px;
+            @media (max-width:767px){
+                padding-right: 1px;
+            }
+            .price-wrapper {
+                .price {
+                    font-weight: bold;
+                    font-size: 18px;
+                    line-height: 22px;
+                    letter-spacing: 0.01em;
+                    color: #000000;
                 }
             }
-            span.price-label {
-                display: none;
-            }
+        }
+        span.price-label {
+            display: none;
         }
     }
 }
+
 div#layered-filter-block-container {
     border-top: 1px solid #E9E9ED;
     border-left: 1px solid #E9E9ED;
@@ -3481,8 +3489,13 @@ table.table.table-bordered {
 @media only screen and (min-width: 768px) {
     .page-wrapper .block.widget .products-grid .product-item {
         width: auto;
-        flex: 0 0 25%;
+        flex: 0 0 22%;
         margin: 0 !important;
+        margin-left: 4% !important;
+        padding: 0 0;
+        &:first-child{
+            margin-left: 0 !important;
+        }
     }
     .header .block.block-search {
         padding-left: 0 !important;
@@ -5433,10 +5446,12 @@ rs-module-wrap {
         @media (max-width:767px) {
             padding: 0 0;
         }
-        a.action.towishlist{
+        .action.towishlist{
             width: 100%;
             display: block;
             text-align: center;
+            line-height: 35px;
+            height: 35px;;
             span{
                 position: static !important;       
             }
@@ -5852,4 +5867,35 @@ ol.product-items li.wishlist-active{
         bottom: 15%;
         text-align: center;
     }
+}
+.offer-percentage{
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.01em;
+    color: #4AA387;
+    padding-left: 10px;
+    @media (max-width:767px){
+        font-size: 11px;
+        padding-left: 2px;
+    }
+}
+.block-viewed-products-grid{
+    li.product-item.wishlist-active{
+        .wishlisted-added{
+            font-size: 0;
+            &::before{
+                content: 'wishlisted';
+                color: #D53631;
+                font-size: 16px;    
+            }
+        }
+    }
+}
+.product-items .product-item .price-box .minimal-price-link .price{
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.01em;
+    color: #000000;
 }
