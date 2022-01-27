@@ -23,23 +23,6 @@ if (isset($gets['query'])) {
 }
 ?>
 <div class="call-popup" data-mage-init='{"callPopup":{}}'>
-    <div class="call-popup-top">
-        <div class="call-popup-img">
-            <img src='<?php echo $this->getViewFileUrl('images/city-popup-image.png'); ?>' alt="city popup image">
-        </div>
-        <div class="search-section">
-            <h2><?php echo __('Hi there! Looking for new interiors?') ?></h2>
-            <div class="control">
-                <input id="city-search"
-                       type="text"
-                       name=""
-                       value=""
-                       placeholder="<?php echo __('Type city name to search') ?>"
-                       class="input-text"
-                       maxlength="" onkeyup="citySearchFunction()" />
-            </div>
-        </div>
-    </div>
     <div class="block-title">
         <h3 class="title">
             <span><?php echo __('Please select your city') ?></span>
