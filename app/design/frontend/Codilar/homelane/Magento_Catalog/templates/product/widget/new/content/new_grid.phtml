@@ -52,7 +52,11 @@ if ($exist = ($productCollection && $productCollection->getSize())) {
 <?php if ($exist) :?>
     <div class="block max-container widget block-new-products <?= /* @noEscape */ $mode ?>">
         <div class="block-title">
-            <strong role="heading" aria-level="2"><?= $block->escapeHtml(__('New Arrivals')) ?></strong>
+            <?php if($this->getData('custom_new_title')){?>
+            <strong role="heading" aria-level="2"><?= $this->getData('custom_new_title'); ?></strong>
+            <?php } else {?>
+           <strong role="heading" aria-level="2"><?= $block->escapeHtml(__('New Arrivals')) ?></strong>
+           <?php }?>
         </div>
         <?php if (empty($seeallcatId)) { ?>
         <div class="see-all-link unassigned"> <a> See all</a></div>
