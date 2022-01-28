@@ -1,0 +1,381 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    // home main slider
+    .hero-banner-slider {
+        #html-body  & .pagebuilder-slide-wrapper {
+        background-size: 100% 100%;
+        }
+        .slick-dots {
+            bottom: 8px;
+            li {
+                margin: 0;
+                button {
+                    width: 9px;
+                    height: 9px;
+                    padding: 0;
+                    border: 1px solid #9b9b9b;
+                }
+                &.slick-active button {
+                    background: #9b9b9b;
+                }
+            }
+        }
+    }
+
+    // reviews slider
+    .hp-customer-review-outer {
+        padding: 0 15px;
+        margin-bottom: 50px;
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #000000;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .home-page-customer-review-content {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            padding: 0;
+            margin-bottom: 20px;
+            .left-sec {
+                display: flex;
+                flex: 1 0 50%;
+                padding: 5px 20px 20px;
+                flex-direction: column;
+                border-top-left-radius: 8px;
+                border-bottom-left-radius: 8px;
+                .title {
+                    font-weight: 700;
+                    color: #222222;
+                    font-size: 18px;
+                    padding-top: 5px;
+                }
+                .attribute {
+                    background: #3777B61A;
+                    display: inline-block;
+                    margin: 8px 5px 0 0;
+                    padding: 2px 8px;
+                    border-radius: 12px;
+                    font-size: 12px;
+                    font-weight: 500;
+                    line-height: normal;
+                }
+                .description {
+                    position: relative;
+                    display: flex;
+                    flex: 1 0 auto;
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: #222222;
+                    align-items: center;
+                    padding-bottom: 10px;
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        width: 42px;
+                        height: 42px;
+                        background: url('@{baseDir}images/quotes.svg');
+                        background-size: 42px auto;
+                        background-repeat: no-repeat;
+                    }
+                }
+                .c-section {
+                    display: flex;
+                    padding-top: 15px;
+                    margin-top: 15px;
+                    border-top: 1px solid #D8D8D8;
+                }
+                
+                .cimage {
+                    flex: 0 0 60px;
+                    margin-left: 10px;
+                    margin-right: 20px;
+                }            
+            }
+            .right-sec {
+                flex: 1 0 50%;
+                position: relative;            
+                .video-link {
+                    display: none;
+                }
+                .play-button {
+                    background: url('@{baseDir}images/play_video.png') no-repeat -21px -22px;
+                    content: "";
+                    position: absolute;
+                    width: 65px;
+                    height: 65px;
+                    margin: 0 auto;
+                    left: 0;
+                    right: 0;
+                    top: 50%;
+                    cursor: pointer;
+                    transform: translate(0, -50%);
+                }
+                .image {
+                    position: relative;
+                    height: 0;
+                    padding-bottom: 62.5%; // image ratio 547 x 342
+                    img {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }    
+            }
+        }
+    
+        > ul {
+            padding: 0;
+            &:not(.slick-slider) {
+                .home-page-customer-review-content:not(:first-child) {
+                    display: none;
+                }
+            }
+            &.slick-slider {
+                .home-page-customer-review-content {
+                    display: flex !important;
+                }
+            }
+        }
+    
+        .slick-prev, .slick-next {
+            height: 55px;
+            width: 55px;
+            z-index: 11;
+        }
+        .slick-prev:before, .slick-next:before, .slick-prev:after, .slick-next:after {
+            color: #fff;
+            font-size: 22px;
+        }
+        .slick-dots {
+            li {
+                margin: 0 1px;
+                &.slick-active {
+                    button {
+                        background: #E71C24;
+                    }
+                }
+                button {
+                    width: 10px;
+                    height: 10px;
+                    background: #DFDFDF;
+                }
+            }
+        }
+    }
+
+    // how it works section
+    .hp-work-steps {
+        padding: 25px 25px 40px;
+        h3 {
+            color: #000000;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        p {
+            color: #666666;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 19px;
+        }
+        img.loaded:not([alt='arrow']) {
+            width: auto;
+            max-height: 146px;
+        }
+        .step-container {
+            position: relative;
+            &:not(:last-child) {
+                margin-bottom: 30px;
+                padding-bottom: 40px;
+            }
+            img[alt='arrow'] {
+                position: absolute;
+                left: ~'calc(50% - 26px)';
+                bottom: -26px;
+                transform: rotate(90deg);            
+            }
+        }
+    }
+
+    // category view homepage
+    .hp-category {
+        &-conatiner {
+            padding: 20px;
+        }
+
+        &-block {
+            position: relative;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            padding-bottom: 115.83%;
+            margin: 12.5px 7.5px;
+    
+            img {
+                width: 100%;
+            }
+            .category-title {
+                position: absolute;
+                display: inline-flex;
+                align-items: end;
+                top: 60%;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                font-weight: 600;
+                font-size: 24px;
+                line-height: 29px;
+                color: #FFFFFF;
+                padding: 0 25px 20px;
+                background: linear-gradient(178.94deg, rgba(0, 0, 0, 0) 0.91%, #000000 109.16%);
+            }
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+    // home main slider
+    #html-body {
+        .hero-banner-slider {
+            .pagebuilder-overlay,
+            .pagebuilder-slide-wrapper {
+                min-height: ~'calc(100vw * 0.3072)';
+            }
+        }
+    }
+
+    // category view homepage
+    .hp-category {
+        &-conatiner {
+            padding: 40px 0 20px;
+        }
+        &-block {
+            margin: 20px 0;
+        }
+    }
+    
+    // reviews slider
+    .hp-customer-review-outer {
+        .home-page-customer-review-content {
+          .right-sec {
+            background: linear-gradient(to bottom, transparent 5%, rgb(250, 250, 250) 5% 95%, transparent 95%);
+            .image {
+              &.yt-popup {
+                width: ~'calc(100% - 25px)';
+              }
+            }
+            .play-button {
+              background: url('@{baseDir}images/Play.png') no-repeat;
+              width: 78px;
+              height: 78px;
+              background-position: center;
+            }
+          }
+          .left-sec {
+             order: 1;
+            .description {
+              padding: 42px 10px 0;
+              font-size: 20px;
+              line-height: 24px;
+            }
+          }
+        }
+    }
+
+    // how it works section
+    .hp-work-steps {
+        padding: 60px 0;
+        .block-title {
+            margin-bottom: 30px;
+        }
+        .step-container {
+            position: relative;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            img[alt='arrow'] {
+                top: ~'calc(50% - 52px)';
+                left: unset;
+                right: -26px;
+                bottom: unset;
+                transform: none;
+            }
+        }
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    // reviews slider
+    .hp-customer-review-outer.container {
+        padding: 0;
+        .home-page-customer-review-content {
+            padding: 0;
+            flex-flow: wrap-reverse;
+            .left-sec {
+                flex: 1 0 100%;
+                padding: 10px 0 0;
+                background: transparent;
+                .description {
+                    line-height: 20px;
+                    padding-top: 20px;
+                    &:before {
+                        width: 17px;
+                        height: 17px;
+                        background-size: cover;
+                    }
+                }
+                .cimage {
+                    flex: 0 0 44px;
+                }
+                .title {
+                    padding: 0;
+                    font-size: 16px;
+                    line-height: 1;
+                }
+            }
+        }
+        .delimiter {
+            display: none;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+
+    // home main slider
+    #html-body {
+        .hero-banner-slider {
+            .pagebuilder {
+                &-slide-wrapper {
+                    min-height: ~'calc(100vw * 0.875)';
+                }
+                &-overlay {
+                    min-height: unset;
+                }
+            }
+            .slick-dots {
+                display: none !important;
+            }
+        }
+    }
+}

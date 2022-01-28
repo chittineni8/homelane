@@ -37,6 +37,61 @@ $currentUrl = $block->escapeUrl($this->getUrl('*/*/*', ['_current' => true, '_us
 
 <div class="mobile-share">
     <div class="media-content-share">
-            <a class="share" href="#"></a>
+            <a class="share share-btn" href="javascript:void(0)"></a>
     </div>
 </div>
+<div class="noti-link-div">
+    <span id="link-copied"></span>
+</div>
+
+<script type="text/javascript">
+    require(["jquery"],function($){
+        $(document).ready(function(){
+            let pageUrl = document.location.href;
+            let base_url = window.location.origin;
+            $('.share-btn').click(function () {
+                if (navigator.share) {
+                    navigator.share({
+                        title: base_url,
+                        url: pageUrl
+                    }).then(() => {
+                        console.log('Thanks for sharing!');
+                    })
+                        .catch(console.error);
+                } else {
+                    // shareDialog.classList.add('is-open');
+                    copyToClipboardMsg(pageUrl, 'link-copied');
+                }
+            });
+        });
+        function copyToClipboardMsg(elem, msgElem) {
+            var succeed = copyToClipboard(elem);
+            var msg;
+            if (!succeed) {
+                msg = "Copy not supported or blocked."
+            } else {
+                msg = "link copied to the clipboard."
+            }
+            if (typeof msgElem === "string") {
+                msgElem = document.getElementById(msgElem);
+            }
+            msgElem.innerHTML = msg;
+
+            $(msgElem).fadeIn( 300 ).delay( 2000 ).fadeOut( 400 );
+        }
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val(element).select();
+            document.execCommand("copy");
+            var succeed;
+            try {
+                succeed = document.execCommand("copy");
+            } catch(e) {
+                succeed = false;
+            }
+            $temp.remove();
+            return succeed;
+        }
+    });
+</script>

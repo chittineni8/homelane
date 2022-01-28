@@ -21,5 +21,12 @@ var config = {
         'homelanetheme': ['jquery'],
         'slickslider': ['jquery'],
         'intlTelInput': ['jquery']
+    },
+    config: {        
+        mixins: {
+        'mage/collapsible': {
+            'js/mage/collapsible-mixin': true
+            }
+        }
     }
 };

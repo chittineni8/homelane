@@ -70,6 +70,9 @@
                     <br/>Widget will not show products that begin to match the specified conditions until cache is refreshed.]]>
                 </description>
             </parameter>
+            <parameter name="custom_new_title" xsi:type="text" visible="true">
+                <label translate="true">Custom Title</label>
+            </parameter>
             <parameter name="category" xsi:type="block" visible="true"  sort_order="10">
  <label translate="true">Category</label>
  <block class="Magento\Catalog\Block\Adminhtml\Category\Widget\Chooser">
