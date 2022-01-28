@@ -22,14 +22,14 @@ use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\Framework\App\Action\Context;
 use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface;
-use Zend_Log;
-use Zend_Log_Writer_Stream;
+
 
 class ConfigSkuUpdate
 {
     protected $productRepository;
     protected $logger;
     protected $product;
+
     /**
      * @param Context $context
      * @param StoreManagerInterface $storeManager
@@ -68,10 +68,6 @@ class ConfigSkuUpdate
      */
     public function execute()
     {
-        $writer = new Zend_Log_Writer_Stream(BP . '/var/log/cronn.log');
-        $logger = new Zend_Log();
-        $logger->addWriter($writer);
-        $logger->info('eee');
         try {
             $collection = $this->_productCollectionFactory->create()
                 ->addAttributeToSelect('*')
