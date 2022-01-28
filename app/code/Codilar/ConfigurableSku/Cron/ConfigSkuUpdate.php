@@ -95,7 +95,6 @@ class ConfigSkuUpdate
                     }
                 }
             }
-            return $items;
         } catch (Exception $e) {
             $this->loggerResponse->critical($e->getMessage());
         }//end try
