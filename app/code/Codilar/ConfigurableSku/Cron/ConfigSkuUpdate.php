@@ -22,6 +22,8 @@ use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\Framework\App\Action\Context;
 use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface;
+use Zend_Log;
+use Zend_Log_Writer_Stream;
 
 class ConfigSkuUpdate
 {
@@ -56,7 +58,6 @@ class ConfigSkuUpdate
         $this->action = $action;
         $this->logger = $logger;
         $this->configurableProductType = $configurableProductType;
-        $this->csv = $csv;
         $this->productRepository = $productRepository;
         $this->product = $product;
 
@@ -67,6 +68,10 @@ class ConfigSkuUpdate
      */
     public function execute()
     {
+        $writer = new Zend_Log_Writer_Stream(BP . '/var/log/cronn.log');
+        $logger = new Zend_Log();
+        $logger->addWriter($writer);
+        $logger->info('eee');
         try {
             $collection = $this->_productCollectionFactory->create()
                 ->addAttributeToSelect('*')
@@ -76,6 +81,7 @@ class ConfigSkuUpdate
 
                 $simpleId = $items->getId();
                 $simpleConfigSku = $items->getConfigSku();
+
                 $product = $this->configurableProductType->getParentIdsByChild($simpleId);
                 if ($product) {
                     $parentId = $this->getParentProductId($simpleId);
@@ -89,6 +95,7 @@ class ConfigSkuUpdate
                     }
                 }
             }
+            return $items;
         } catch (Exception $e) {
             $this->loggerResponse->critical($e->getMessage());
         }//end try

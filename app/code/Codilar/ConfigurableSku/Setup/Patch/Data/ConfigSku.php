@@ -53,7 +53,7 @@ class ConfigSku implements DataPatchInterface
             'label' => 'Config SKU',
             'input' => 'text',
             'source' => '',
-            'default' => 0,
+            'default' => '',
             'global' => ScopedAttributeInterface::SCOPE_GLOBAL,
             'visible' => true,
             'used_in_product_listing' => true,
