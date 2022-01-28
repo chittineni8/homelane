@@ -6,7 +6,7 @@ use Magento\Framework\View\Element\Template;
 use Magento\Catalog\Model\ProductFactory;
 use Magento\Framework\Registry;
 use Codilar\Catalog\Registry\CurrentProduct;
-use Magento\Framework\View\Element\Template\Context;
+
 
 
 class  WishlistPrice extends Template
@@ -21,19 +21,15 @@ class  WishlistPrice extends Template
 
 
     public function __construct(
-        Context                     $context,
         CurrentProduct              $currentProduct,
         \Magento\Framework\Registry $registry,
-        ProductFactory              $productFactory,
-        array                       $data = []
-
+        ProductFactory              $productFactory
     )
     {
 
         $this->currentProduct   = $currentProduct;
         $this->registry         = $registry;
         $this->productFactory   = $productFactory;
-        parent::__construct($context, $data);
     }
 
 /**
