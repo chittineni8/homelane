@@ -21,12 +21,13 @@ $viewModel = $block->getData('wishlistpriceVieModel');
                         <?= $column->setItem($item)->toHtml();?>
                     <?php endforeach; ?>
                 </div>
+                <?php
+                $discountPercents = $viewModel->getDiscountPercents($productId);
+                if ($discountPercents) { ?>
+                    <div  class="percentage"> <?php echo $discountPercents.'%'  ?> </div>
+                <?php }?>
             </li>
-            <?php
-            $discountPercents = $viewModel->getDiscountPercents($productId);
-            if (!is_null($discountPercents));{ ?>
-            <?php echo $discountPercents  ?>
-        <?php }?>
+
         <?php endforeach; ?>
     </ol>
     <?php else : ?>
