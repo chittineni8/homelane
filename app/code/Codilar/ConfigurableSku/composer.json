@@ -1,0 +1,22 @@
+{
+    "name": "codilar/module-configurablesku",
+    "description": "ConfigSku Product Attribute value ",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "abhinav vinayak",
+            "email": "abhinav.v@codilar.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Codilar\\ConfigurableSku\\": ""
+        }
+    }
+}
