@@ -32,7 +32,7 @@ define([
             return row['price_info']['formatted_prices']['final_price'];
         },
         getPercentDiscount: function(row){
-            if( row['type'] === "simple" && row['price_info']['regular_price'] > row['price_info']['final_price']){
+            if(row['price_info']['regular_price'] > row['price_info']['final_price']){
                 var regular_price  = row['price_info']['regular_price'];
                 var special_price  = row['price_info']['final_price'];
                 var regular_price = parseInt(regular_price, 10);

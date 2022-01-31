@@ -1,0 +1,7 @@
+<?php
+$block = $block->getLayout()->createBlock('Codilar\NewWidget\Block\Product\Widget\WishlistPrice');
+$productId = $block->getCurrentProductId();
+$discountPercents = $block->getDiscountPercents($productId);
+if ($discountPercents) { ?>
+    <div class="percentage"> <?php echo $discountPercents . '%' ?> </div>
+<?php } ?>
