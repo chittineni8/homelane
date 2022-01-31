@@ -1,0 +1,22 @@
+{
+    "name": "codilar/module-wastage",
+    "description": "Custom Product Attribute for Serving Area and Wastage %",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Abhinav Vinayak",
+            "email": "abhinav.v@codilar.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Codilar\\Wastage\\": ""
+        }
+    }
+}
