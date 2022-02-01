@@ -6040,3 +6040,29 @@ ol.product-items li.wishlist-active{
         border-bottom: 2px solid transparent;
     }
 }
+.block-viewed-products-grid{
+    .product-items .product-item .price-box{
+        display: flex;
+        .special-price{
+            order: 1;
+        }
+        .offer-percentage{
+            order: 3;
+            line-height: 22px;
+        }
+        .old-price{
+            order: 2;
+            @media (max-width:767px){
+                padding-left: 4px;
+                padding-right: 4px;
+            }
+            span.price{
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 17px;
+                letter-spacing: 0.01em;
+                color: #545665;
+            }
+        }
+    }
+}
