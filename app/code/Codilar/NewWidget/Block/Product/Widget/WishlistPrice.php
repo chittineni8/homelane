@@ -24,7 +24,6 @@ class  WishlistPrice extends Template
     )
     {
 
-        $this->currentProduct = $currentProduct;
         $this->registry = $registry;
         $this->productFactory = $productFactory;
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="codilar_roomtype_roomtype" resource="default" engine="innodb" comment="codilar_roomtype_roomtype Table">
+		<column xsi:type="int" name="roomtype_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="roomtype_id"/>
+		</constraint>
+		<column name="roomtype_label" nullable="true" xsi:type="text" comment="roomtype_label"/>
+		<column name="roomtype_value" nullable="true" xsi:type="text" comment="roomtype_value"/>
+	</table>
+</schema>
