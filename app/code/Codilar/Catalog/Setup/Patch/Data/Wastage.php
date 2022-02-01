@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Codilar\Wastage\Setup\Patch\Data;
+namespace Codilar\Catalog\Setup\Patch\Data;
 
 use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 use Magento\Eav\Setup\EavSetup;
@@ -48,9 +48,9 @@ class Wastage implements DataPatchInterface
         /** @var EavSetup $eavSetup */
         $eavSetup = $this->eavSetupFactory->create(['setup' => $this->moduleDataSetup]);
 
-        $eavSetup->addAttribute('catalog_product', 'serving_wastage_percentage', [
+        $eavSetup->addAttribute('catalog_product', 'serving_area', [
             'type' => 'text',
-            'label' => 'Serving Area and Wastage Percentage',
+            'label' => 'Serving Area',
             'input' => 'text',
             'source' => '',
             'default' => '',
@@ -61,6 +61,48 @@ class Wastage implements DataPatchInterface
             'required' => false,
             'group' => 'General',
             'sort_order' => 100,
+        ]);
+        $eavSetup->addAttribute('catalog_product', 'wastage_percentage', [
+            'type' => 'text',
+            'label' => 'Wastage Percentage',
+            'input' => 'text',
+            'source' => '',
+            'default' => '',
+            'global' => ScopedAttributeInterface::SCOPE_STORE,
+            'visible' => true,
+            'used_in_product_listing' => true,
+            'user_defined' => true,
+            'required' => false,
+            'group' => 'General',
+            'sort_order' => 100,
+        ]);
+        $eavSetup->addAttribute('catalog_product', 'automat_sku', [
+            'type' => 'text',
+            'label' => 'Automat SKU',
+            'input' => 'text',
+            'source' => '',
+            'default' => '',
+            'global' => ScopedAttributeInterface::SCOPE_GLOBAL,
+            'visible' => true,
+            'used_in_product_listing' => true,
+            'user_defined' => true,
+            'required' => false,
+            'group' => 'General',
+            'sort_order' => 80,
+        ]);
+        $eavSetup->addAttribute('catalog_product', 'sap_sku', [
+            'type' => 'text',
+            'label' => 'SAP SKU',
+            'input' => 'text',
+            'source' => '',
+            'default' => '',
+            'global' => ScopedAttributeInterface::SCOPE_GLOBAL,
+            'visible' => true,
+            'used_in_product_listing' => true,
+            'user_defined' => true,
+            'required' => false,
+            'group' => 'General',
+            'sort_order' => 80,
         ]);
     }
 
