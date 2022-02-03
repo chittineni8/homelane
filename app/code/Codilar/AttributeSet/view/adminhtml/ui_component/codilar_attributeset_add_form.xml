@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                codilar_attributeset_add_form.codilar_attributeset_add_form_data_source
+            </item>
+        </item>
+        <item name="ajaxSave" xsi:type="boolean">false</item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="Codilar\AttributeSet\Block\Attributeset\BackButton"/>
+            <button name="save" class="Codilar\AttributeSet\Block\Attributeset\SaveButton"/>
+        </buttons>
+        <namespace>codilar_attributeset_add_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>codilar_attributeset_add_form.codilar_attributeset_add_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="codilar_attributeset_add_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="codilar_attributeset/attributeset/save"/>
+        </settings>
+        <aclResource>Codilar_PushNotification::pushnotify_order_template</aclResource>
+
+        <dataProvider class="Codilar\AttributeSet\Model\DataProvider\Attributeset\InfoProvider"
+                      name="codilar_attributeset_add_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label/>
+        </settings>
+        <field name="attribute_set_name" sortOrder="10">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Codilar\AttributeSet\Model\AttributeSetOption\Attribute</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">AttributeSet Name</item>
+                    <item name="component" xsi:type="string">Codilar_AttributeSet/js/form/element/attribute-select
+                    </item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="mapper" xsi:type="object">Codilar\AttributeSet\Model\AttributeSetOption\Mapper</item>
+                </item>
+            </argument>
+        </field>
+        <field name="attribute_set_id" sortOrder="20">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">AttributeSet ID</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                </item>
+            </argument>
+        </field>
+        <field name="sap_hierarchy" sortOrder="30" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">sap_hierarchy</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <label translate="true">Sap Hierarchy</label>
+                <dataType>text</dataType>
+                <visible>true</visible>
+                <dataScope>sap_hierarchy</dataScope>
+            </settings>
+        </field>
+        <field name="automat_cat_id" sortOrder="40" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Automat Cat Id</label>
+                <visible>true</visible>
+                <dataScope>automat_cat_id</dataScope>
+            </settings>
+        </field>
+        <field name="automat_subcat_id" sortOrder="50" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Automat Subcat Id</label>
+                <visible>true</visible>
+                <dataScope>automat_subcat_id</dataScope>
+            </settings>
+        </field>
+    </fieldset>
+</form>

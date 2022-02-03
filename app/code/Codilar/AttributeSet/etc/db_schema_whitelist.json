@@ -1,0 +1,15 @@
+{
+    "codilar_erp_attributeset": {
+        "column": {
+            "id": true,
+            "attribute_set_name": true,
+            "attribute_set_id": true,
+            "sap_hierarchy": true,
+            "automat_cat_id": true,
+            "automat_subcat_id": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

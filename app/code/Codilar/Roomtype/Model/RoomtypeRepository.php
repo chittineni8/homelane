@@ -13,7 +13,10 @@ use Codilar\Roomtype\Api\Data\RoomtypeSearchResultsInterfaceFactory;
 use Codilar\Roomtype\Api\RoomtypeRepositoryInterface;
 use Codilar\Roomtype\Model\ResourceModel\Roomtype as ResourceRoomtype;
 use Codilar\Roomtype\Model\ResourceModel\Roomtype\CollectionFactory as RoomtypeCollectionFactory;
+use Exception;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
+use Magento\Framework\Api\SearchCriteriaInterface;
+use Magento\Framework\App\Request\Http;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -55,13 +58,18 @@ class RoomtypeRepository implements RoomtypeRepositoryInterface
      * @param CollectionProcessorInterface $collectionProcessor
      */
     public function __construct(
-        ResourceRoomtype $resource,
-        RoomtypeInterfaceFactory $roomtypeFactory,
-        RoomtypeCollectionFactory $roomtypeCollectionFactory,
-        RoomtypeSearchResultsInterfaceFactory $searchResultsFactory,
-        CollectionProcessorInterface $collectionProcessor
-    ) {
+        ResourceRoomtype                             $resource,
+        RoomtypeInterfaceFactory                     $roomtypeFactory,
+        RoomtypeCollectionFactory                    $roomtypeCollectionFactory,
+        RoomtypeSearchResultsInterfaceFactory        $searchResultsFactory,
+        CollectionProcessorInterface                 $collectionProcessor,
+        \Magento\Framework\Serialize\Serializer\Json $jsonSerializer,
+        Http                                         $http
+    )
+    {
         $this->resource = $resource;
+        $this->http = $http;
+        $this->_jsonSerializer = $jsonSerializer;
         $this->roomtypeFactory = $roomtypeFactory;
         $this->roomtypeCollectionFactory = $roomtypeCollectionFactory;
         $this->searchResultsFactory = $searchResultsFactory;
@@ -75,7 +83,7 @@ class RoomtypeRepository implements RoomtypeRepositoryInterface
     {
         try {
             $this->resource->save($roomtype);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             throw new CouldNotSaveException(__(
                 'Could not save the roomtype: %1',
                 $exception->getMessage()
@@ -87,34 +95,61 @@ class RoomtypeRepository implements RoomtypeRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function get($roomtypeId)
+    public function get()
     {
-        $roomtype = $this->roomtypeFactory->create();
-        $this->resource->load($roomtype, $roomtypeId);
-        if (!$roomtype->getId()) {
-            throw new NoSuchEntityException(__('Roomtype with id "%1" does not exist.', $roomtypeId));
+        try {
+            if (!$this->http->getHeader('Authorization')):
+                $response =  ['status' => 401, 'message' => 'Token not passed'];
+               return print_r(json_encode($response),false);
+            endif;
+
+            $roomtype = $this->roomtypeCollectionFactory->create();
+            if (!empty($roomtype)):
+                $roomTypeData = [];
+                foreach ($roomtype as $data) {
+                    $values = [
+                        'code' => $data->getRoomtypeValue(),
+                        'label' => $data->getRoomtypeLabel()
+
+                    ];
+                    $roomTypeData[] = $values;
+
+                }
+                $roomTypeApiResponse = ['result' => ['code' => 'room_type', 'values' => $roomTypeData]];
+
+                header("Content-Type: application/json; charset=utf-8");
+                $this->response = json_encode($roomTypeApiResponse);
+                print_r($this->response, false);
+            endif;
+        } catch (Exception $exception) {
+            throw new NoSuchEntityException(__(
+                'Roomtype API Error',
+                $exception->getMessage()
+            ));
         }
-        return $roomtype;
+
+
     }
 
     /**
      * @inheritDoc
      */
     public function getList(
-        \Magento\Framework\Api\SearchCriteriaInterface $criteria
-    ) {
+        SearchCriteriaInterface $criteria
+    )
+    {
         $collection = $this->roomtypeCollectionFactory->create();
-        
+
         $this->collectionProcessor->process($criteria, $collection);
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
-        
+
         $items = [];
         foreach ($collection as $model) {
             $items[] = $model;
         }
-        
+
         $searchResults->setItems($items);
         $searchResults->setTotalCount($collection->getSize());
         return $searchResults;
@@ -129,7 +164,7 @@ class RoomtypeRepository implements RoomtypeRepositoryInterface
             $roomtypeModel = $this->roomtypeFactory->create();
             $this->resource->load($roomtypeModel, $roomtype->getRoomtypeId());
             $this->resource->delete($roomtypeModel);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             throw new CouldNotDeleteException(__(
                 'Could not delete the Roomtype: %1',
                 $exception->getMessage()

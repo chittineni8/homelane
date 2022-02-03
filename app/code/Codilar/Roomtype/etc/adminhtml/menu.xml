@@ -1,7 +1,6 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
 	<menu>
-		<add id="Codilar::top_level" title="Codilar" module="Codilar_Roomtype" sortOrder="9999" resource="Magento_Backend::content"/>
 		<add id="Codilar_Roomtype::codilar_roomtype_roomtype" title="Roomtype" module="Codilar_Roomtype" sortOrder="9999" resource="Magento_Backend::content" parent="Codilar::top_level" action="codilar_roomtype/roomtype/index"/>
 	</menu>
 </config>
