@@ -22,13 +22,11 @@ interface RoomtypeRepositoryInterface
         \Codilar\Roomtype\Api\Data\RoomtypeInterface $roomtype
     );
 
+
     /**
-     * Retrieve Roomtype
-     * @param string $roomtypeId
-     * @return \Codilar\Roomtype\Api\Data\RoomtypeInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @return mixed
      */
-    public function get($roomtypeId);
+    public function get();
 
     /**
      * Retrieve Roomtype matching the specified criteria.

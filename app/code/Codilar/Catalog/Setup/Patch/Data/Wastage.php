@@ -104,6 +104,26 @@ class Wastage implements DataPatchInterface
             'group' => 'General',
             'sort_order' => 80,
         ]);
+        $eavSetup->addAttribute('catalog_product', 'sync_erp', [
+            'type' => 'int',
+            'backend' => '',
+            'frontend' => '',
+            'label' => 'Sync to ERP',
+            'input' => 'boolean',
+            'class' => '',
+            'source' => \Magento\Eav\Model\Entity\Attribute\Source\Boolean::class,
+            'global' => ScopedAttributeInterface::SCOPE_GLOBAL,
+            'visible' => true,
+            'required' => false,
+            'user_defined' => false,
+            'default' => '0',
+            'searchable' => false,
+            'filterable' => false,
+            'comparable' => false,
+            'visible_on_front' => false,
+            'group' => 'General',
+            'used_in_product_listing' => false,
+        ]);
     }
 
     /**
