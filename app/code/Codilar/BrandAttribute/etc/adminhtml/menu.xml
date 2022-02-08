@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Codilar_BrandAttribute::brandattribute" title="Atrribute Mapping" translate="title" module="Codilar_BrandAttribute" sortOrder="75" parent="Codilar::top_level" resource="Codilar_BrandAttribute::brandattribute"/>
+        <add id="Codilar_BrandAttribute::brandattribute_listing" title="Brand Attribute Mapping" translate="title" module="Codilar_BrandAttribute" sortOrder="10" parent="Codilar_BrandAttribute::brandattribute" action="brandattribute/attribute/index" resource="Codilar_BrandAttribute::brandattribute"/>
+    </menu>
+</config>
