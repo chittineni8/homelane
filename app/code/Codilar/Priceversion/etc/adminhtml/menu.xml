@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Codilar_Priceversion::codilar_priceversion_priceversion" title="Priceversion" module="Codilar_Priceversion" sortOrder="9999" resource="Magento_Backend::content" parent="Codilar::top_level" action="codilar_priceversion/priceversion/index"/>
+		<add id="Codilar_Priceversion::codilar_priceversion_priceversiondetails" title="Priceversiondetails" module="Codilar_Priceversion" sortOrder="9999" resource="Magento_Backend::content" parent="Codilar::top_level" action="codilar_priceversion/priceversiondetails/index"/>
+	</menu>
+</config>
