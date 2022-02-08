@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="codilar_erp_attributeset" translate="label" type="text" sortOrder="400" showInDefault="1"
+                 showInWebsite="1" showInStore="1">
+            <label>ERP Attribute Set</label>
+            <tab>codilar</tab>
+            <resource>Codilar_AttributeSet::attributeset_tokens</resource>
+            <group id="sap_erp_oauth" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1">
+                <label>SAP oAuth Details</label>
+                <field id="sap_hierarchy_request_url" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Request URI</label>
+                    <comment>SAP ERP get product hierarchy Base URI</comment>
+                </field>
+                <field id="sap_hierarchy_endpoint" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>API Endpoint</label>
+                    <comment>SAP ERP get product hierarchy Endpoint</comment>
+                </field>
+                <field id="sap_hierarchy_token" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>SAP Bearer Token</label>
+                    <comment>SAP Hierarchy Bearer Token</comment>
+                </field>
+            </group>
+            <group id="automat_cat_erp_oauth" translate="label" type="text" sortOrder="6" showInDefault="1"
+                   showInWebsite="1">
+                <label>Automat Category oAuth Details</label>
+                <field id="automat_cat_request_url" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Request URI</label>
+                    <comment>Automat ERP Get list of categories Base URI</comment>
+                </field>
+                <field id="automat_cat_endpoint" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>API Endpoint</label>
+                    <comment>Automat ERP Get list of categories Endpoint</comment>
+                </field>
+                <field id="automat_cat_token" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Bearer Token</label>
+                    <comment>Automat Category Bearer Token</comment>
+                </field>
+            </group>
+            <group id="automat_subcat_erp_oauth" translate="label" type="text" sortOrder="6" showInDefault="1"
+                   showInWebsite="1">
+                <label>Automat Sub Category oAuth Details</label>
+                <field id="automat_subcat_request_url" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Request URI</label>
+                    <comment>Automat ERP Get list of subcategories Base URI</comment>
+                </field>
+                <field id="automat_subcat_endpoint" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>API Endpoint</label>
+                    <comment>Automat ERP Get list of subcategories Endpoint</comment>
+                </field>
+                <field id="automat_subcat_token" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Bearer Token</label>
+                    <comment>Automat Sub Category Bearer Token</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -124,6 +124,20 @@ class Wastage implements DataPatchInterface
             'group' => 'General',
             'used_in_product_listing' => false,
         ]);
+        $eavSetup->addAttribute('catalog_product', 'bom_type', [
+            'type' => 'text',
+            'label' => 'BOM Type',
+            'input' => 'text',
+            'source' => '',
+            'default' => '',
+            'global' => ScopedAttributeInterface::SCOPE_GLOBAL,
+            'visible' => true,
+            'used_in_product_listing' => true,
+            'user_defined' => true,
+            'required' => false,
+            'group' => 'General',
+            'sort_order' => 60,
+        ]);
     }
 
     /**

@@ -1,0 +1,17 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="codilar_attributeset_attributeset_listing_data_source" xsi:type="string">Codilar\AttributeSet\Model\ResourceModel\Attributeset\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Codilar\AttributeSet\Api\AttributesetRepositoryInterface" type="Codilar\AttributeSet\Model\Api\AttributesetRepository" />
+
+    <virtualType name="Codilar\AttributeSet\Model\ResourceModel\Attributeset\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">codilar_erp_attributeset</argument>
+            <argument name="resourceModel" xsi:type="string">Codilar\AttributeSet\Model\ResourceModel\Attributeset</argument>
+        </arguments>
+    </virtualType>
+</config>
