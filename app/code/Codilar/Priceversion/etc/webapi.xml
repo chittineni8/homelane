@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+	<route url="/V1/codilar-priceversion/priceversion" method="POST">
+		<service class="Codilar\Priceversion\Api\PriceversionRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Codilar_Priceversion::Priceversion_save"/>
+		</resources>
+	</route>
+	<route url="/V1/codilar-priceversion/priceversion/search" method="GET">
+		<service class="Codilar\Priceversion\Api\PriceversionRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="Codilar_Priceversion::Priceversion_view"/>
+		</resources>
+	</route>
+	<route url="/V1/codilar-priceversion/priceversion/:priceversionId" method="GET">
+		<service class="Codilar\Priceversion\Api\PriceversionRepositoryInterface" method="get"/>
+		<resources>
+			<resource ref="Codilar_Priceversion::Priceversion_view"/>
+		</resources>
+	</route>
+	<route url="/V1/codilar-priceversion/priceversion/:priceversionId" method="PUT">
+		<service class="Codilar\Priceversion\Api\PriceversionRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Codilar_Priceversion::Priceversion_update"/>
+		</resources>
+	</route>
+	<route url="/V1/codilar-priceversion/priceversion/:priceversionId" method="DELETE">
+		<service class="Codilar\Priceversion\Api\PriceversionRepositoryInterface" method="deleteById"/>
+		<resources>
+			<resource ref="Codilar_Priceversion::Priceversion_delete"/>
+		</resources>
+	</route>
+	<route url="/V1/codilar-priceversion/priceversiondetails" method="POST">
+		<service class="Codilar\Priceversion\Api\PriceversiondetailsRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Codilar_Priceversion::Priceversiondetails_save"/>
+		</resources>
+	</route>
+	<route url="/V1/codilar-priceversion/priceversiondetails/search" method="GET">
+		<service class="Codilar\Priceversion\Api\PriceversiondetailsRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="Codilar_Priceversion::Priceversiondetails_view"/>
+		</resources>
+	</route>
+	<route url="/V1/codilar-priceversion/priceversiondetails/:priceversiondetailsId" method="GET">
+		<service class="Codilar\Priceversion\Api\PriceversiondetailsRepositoryInterface" method="get"/>
+		<resources>
+			<resource ref="Codilar_Priceversion::Priceversiondetails_view"/>
+		</resources>
+	</route>
+	<route url="/V1/codilar-priceversion/priceversiondetails/:priceversiondetailsId" method="PUT">
+		<service class="Codilar\Priceversion\Api\PriceversiondetailsRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Codilar_Priceversion::Priceversiondetails_update"/>
+		</resources>
+	</route>
+	<route url="/V1/codilar-priceversion/priceversiondetails/:priceversiondetailsId" method="DELETE">
+		<service class="Codilar\Priceversion\Api\PriceversiondetailsRepositoryInterface" method="deleteById"/>
+		<resources>
+			<resource ref="Codilar_Priceversion::Priceversiondetails_delete"/>
+		</resources>
+	</route>
+</routes>

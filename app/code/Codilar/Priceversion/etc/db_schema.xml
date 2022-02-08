@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="codilar_priceversion_priceversion" resource="default" engine="innodb" comment="codilar_priceversion_priceversion Table">
+		<column xsi:type="int" name="priceversion_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="priceversion_id"/>
+		</constraint>
+		<column name="version_code" nullable="true" xsi:type="varchar" comment="version_code" length="255"/>
+		<column name="version_label" nullable="true" xsi:type="varchar" comment="version_label" length="255"/>
+		<column name="status" nullable="true" xsi:type="boolean" comment="status"/>
+		<column name="launch_date" nullable="true" xsi:type="text" comment="launch_date"/>
+		<column name="created_at" nullable="true" xsi:type="datetime" comment="created_at" default="CURRENT_TIMESTAMP"/>
+		<column name="updated_at" nullable="true" xsi:type="datetime" comment="updated_at" default="CURRENT_TIMESTAMP" on_update="true"/>
+		<column name="website" nullable="true" xsi:type="varchar" comment="website" length="255"/>
+		<column name="sub_cat" nullable="true" xsi:type="varchar" comment="sub_cat" length="255"/>
+		<column name="copy_from_version_id" nullable="true" xsi:type="text" comment="copy_from_version_id"/>
+	</table>
+	<table name="codilar_priceversion_priceversiondetails" resource="default" engine="innodb" comment="codilar_priceversion_priceversiondetails Table">
+		<column xsi:type="int" name="priceversiondetails_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="priceversiondetails_id"/>
+		</constraint>
+		<column name="price_version_id" nullable="true" xsi:type="text" comment="price_version_id"/>
+		<column name="sku" nullable="true" xsi:type="text" comment="sku"/>
+		<column name="price" nullable="true" xsi:type="text" comment="price"/>
+		<column name="add_price" nullable="true" xsi:type="text" comment="add_price"/>
+		<column name="multi" nullable="true" xsi:type="text" comment="multi"/>
+		<column name="min_order_qty" nullable="true" xsi:type="text" comment="min_order_qty"/>
+		<column name="min_order_value" nullable="true" xsi:type="text" comment="min_order_value"/>
+		<column name="status" nullable="true" xsi:type="text" comment="status"/>
+		<column name="created_at" nullable="true" xsi:type="datetime" comment="created_at" default="CURRENT_TIMESTAMP"/>
+		<column name="updated_at" nullable="true" xsi:type="datetime" comment="updated_at" default="CURRENT_TIMESTAMP" on_update="true"/>
+	</table>
+</schema>

@@ -1,0 +1,165 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">codilar_priceversion_priceversion_listing.codilar_priceversion_priceversion_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>codilar_priceversion_priceversion_columns</spinner>
+		<deps>
+			<dep>codilar_priceversion_priceversion_listing.codilar_priceversion_priceversion_listing_data_source</dep>
+		</deps>
+		<buttons>
+			<button name="add">
+				<url path="*/*/new"/>
+				<class>primary</class>
+				<label translate="true">Add new Priceversion</label>
+			</button>
+		</buttons>
+	</settings>
+	<dataSource name="codilar_priceversion_priceversion_listing_data_source" component="Magento_Ui/js/grid/provider">
+		<settings>
+			<storageConfig>
+				<param name="indexField" xsi:type="string">priceversion_id</param>
+			</storageConfig>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>Codilar_Priceversion::Priceversion</aclResource>
+		<dataProvider name="codilar_priceversion_priceversion_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+			<settings>
+				<requestFieldName>id</requestFieldName>
+				<primaryFieldName>priceversion_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>true</sticky>
+		</settings>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters"/>
+		<paging name="listing_paging"/>
+		<exportButton class="Magento\Ui\Component\ExportButton">
+					 <argument name="data" xsi:type="array">
+							 <item name="config" xsi:type="array">
+									 <item name="options" xsi:type="array">
+											 <item name="csv" xsi:type="array">
+													 <item name="value" xsi:type="string">csv</item>
+													 <item name="label" xsi:type="string" translate="true">CSV</item>
+													 <item name="url" xsi:type="string">mui/export/gridToCsv</item>
+											 </item>
+											 <item name="xml" xsi:type="array">
+													 <item name="value" xsi:type="string">xml</item>
+													 <item name="label" xsi:type="string" translate="true">Excel XML</item>
+													 <item name="url" xsi:type="string">mui/export/gridToXml</item>
+											 </item>
+									 </item>
+							 </item>
+					 </argument>
+			 </exportButton>
+	</listingToolbar>
+	<columns name="codilar_priceversion_priceversion_columns">
+
+		<selectionsColumn name="ids">
+			<settings>
+				<indexField>priceversion_id</indexField>
+			</settings>
+		</selectionsColumn>
+		<column name="priceversion_id">
+			<settings>
+				<filter>text</filter>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+			</settings>
+		</column>
+		<column name="version_code">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Version Code</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+
+		<column name="version_label">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Version Label</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="status" component="Magento_Ui/js/grid/columns/select" >
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Status</label>
+				<options class="Codilar\Priceversion\Model\Priceversiondetails\Options"/>
+        <filter>select</filter>
+        <dataType>select</dataType>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="launch_date">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Launch Date</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="created_at">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Created at</label>
+			</settings>
+		</column>
+		<column name="updated_at">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Updated at</label>
+			</settings>
+		</column>
+		<column name="website"  component="Magento_Ui/js/grid/columns/select">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Website</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+				<options class="Codilar\Priceversion\Model\Priceversion\Website"/>
+        <filter>select</filter>
+        <dataType>select</dataType>
+			</settings>
+		</column>
+		<actionsColumn name="actions" class="Codilar\Priceversion\Ui\Component\Listing\Column\PriceversionActions">
+			<argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="indexField" xsi:type="string">priceversion_id</item>
+                <item name="sortOrder" xsi:type="number">500</item>
+            </item>
+        </argument>
+		</actionsColumn>
+	</columns>
+</listing>
