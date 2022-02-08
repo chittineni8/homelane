@@ -60,7 +60,7 @@ class AddSkuTypeProductAttribute implements DataPatchInterface, PatchRevertableI
                 'required' => false,
                 'backend' => '',
                 'sort_order' => '30',
-                'global' => ScopedAttributeInterface::SCOPE_STORE,
+                'global' => ScopedAttributeInterface::SCOPE_GLOBAL,
                 'default' => null,
                 'visible' => true,
                 'user_defined' => true,
@@ -106,8 +106,7 @@ class AddSkuTypeProductAttribute implements DataPatchInterface, PatchRevertableI
     public static function getDependencies()
     {
         return [
-        
+
         ];
     }
 }
-
