@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="brandattribute" resource="default" engine="innodb"
+           comment="table to store brand attribute value information">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true" comment="attributes ID"/>
+        <column xsi:type="varchar" name="attribute_id" nullable="false" length="20"
+                comment="value Name"/>
+        <column xsi:type="varchar" name="automat_value" nullable="false" length="50"
+                comment="automat value"/>
+        <column xsi:type="varchar" name="automat_id" nullable="false" length="15" comment="automat_id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+
+    </table>
+</schema>
