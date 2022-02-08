@@ -4,7 +4,7 @@
     <update handle="styles"/>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="codilar_attributeset_add_form"/>
+            <uiComponent name="brandattribute_form_ui"/>
         </referenceContainer>
     </body>
 </page>
