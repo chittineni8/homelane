@@ -1,0 +1,22 @@
+{
+    "name": "codilar/module-categoryinfoapi",
+    "description": "REST API for Category Custom Info ",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "abhinav vinayak",
+            "email": "abhinav.v@codilar.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Codilar\\CategoryInfoAPI\\": ""
+        }
+    }
+}

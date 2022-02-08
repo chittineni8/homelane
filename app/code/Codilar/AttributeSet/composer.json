@@ -1,0 +1,22 @@
+{
+    "name": "codilar/module-attributeset",
+    "description": "Mapping of Attribute Set Id with Homelane ERP",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Abhinav Vinayak",
+            "email": "abhinav.v@codilar.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Codilar\\AttributeSet\\": ""
+        }
+    }
+}
