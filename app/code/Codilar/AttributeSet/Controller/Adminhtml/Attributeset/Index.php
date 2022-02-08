@@ -35,7 +35,7 @@ class Index extends \Magento\Backend\App\Action
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->getConfig()->getTitle()->prepend(__("Attribute Set Grid"));
+        $resultPage->getConfig()->getTitle()->prepend(__("Attribute Set Mapping"));
         return $resultPage;
     }
 }
