@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Codilar_UomAttribute::uomattribute_listing" title="Uom Attribute Mapping" translate="title"
+             module="Codilar_UomAttribute" sortOrder="10" parent="Codilar_BrandAttribute::brandattribute"
+             action="uomattribute/attribute/index" resource="Codilar_UomAttribute::uomattribute"/>
+    </menu>
+</config>
