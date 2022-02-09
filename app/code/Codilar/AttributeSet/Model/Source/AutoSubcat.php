@@ -117,32 +117,6 @@ class AutoSubcat implements OptionSourceInterface
         }//end try
     }
 
-//    /**
-//     * Retrieve option array
-//     *
-//     * @return string[]
-//     */
-//    public static function getOptionArray()
-//    {
-//        return [1 => __('science')];
-//    }
-
-//    /**
-//     * Retrieve option array with empty value
-//     *
-//     * @return string[]
-//     */
-//    public function getAllOptions()
-//    {
-//        $result = [];
-//
-//        foreach (self::getOptionArray() as $index => $value) {
-//            $result[] = ['value' => $index, 'label' => $value];
-//        }
-//
-//        return $result;
-//    }
-
     private function prepareParams($finalBrandData): array
     {
         $apiRequestEndpoint = $this->getAutoSubcatEndpoint();

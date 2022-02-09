@@ -71,7 +71,7 @@
         </field>
         <field name="sap_hierarchy" sortOrder="30" formElement="input">
             <argument name="data" xsi:type="array">
-                <!--                <item name="options" xsi:type="object">Codilar\AttributeSet\Model\Source\SapHierarchy</item>-->
+                                <item name="options" xsi:type="object">Codilar\AttributeSet\Model\Source\SapHierarchy</item>
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">SAP Hierarchy</item>
