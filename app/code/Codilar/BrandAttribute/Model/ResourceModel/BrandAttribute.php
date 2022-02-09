@@ -7,7 +7,7 @@ use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 class BrandAttribute extends AbstractDb
 {
-    const MAIN_TABLE = 'brandattribute';
+    const MAIN_TABLE = 'brand_attribute';
     const ID_FIELD_NAME = 'id';
 
     protected function _construct()

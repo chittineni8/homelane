@@ -140,7 +140,7 @@
             </settings>
         </column>
 
-        <column name="attribute_id">
+        <column name="brand_mapping_id">
             <settings>
                 <filter>text</filter>
                 <editor>
