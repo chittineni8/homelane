@@ -49,10 +49,13 @@ class Attribute implements \Magento\Framework\Option\ArrayInterface
      */
     public function getAttributes()
     {
-        $code = 'uom';
+        $attributescode = $this->scopeConfig->getValue(
+            'attribute_section/uomattribute/uomattributevalue',
+            ScopeInterface::SCOPE_STORE
+        );
         $collection = $this->collectionFactory->create();
-        if (!empty($code)) {
-            $collection->addFieldToFilter('attribute_code', $code);
+        if (!empty($attributescode)) {
+            $collection->addFieldToFilter('attribute_code', $attributescode);
         }
 
         return $collection->getItems();
@@ -72,25 +75,4 @@ class Attribute implements \Magento\Framework\Option\ArrayInterface
         return $items;
 
     }
-
-    public function getAttributeValue()
-    {
-        $options = [];
-        foreach ($this->getAttributes() as $attribute) {
-
-            foreach ($attribute->getOption() as $value) {
-                if (empty($value->getValue())) {
-                    continue;
-                }
-                $options[] = [
-                    'label' => $value->getLabel(), 'value' => $value->getValue()
-                ];
-            }
-
-        }
-
-        return $options;
-
-    }
-
 }
