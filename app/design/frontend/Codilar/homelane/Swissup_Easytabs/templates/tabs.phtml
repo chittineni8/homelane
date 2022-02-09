@@ -67,19 +67,6 @@
             $(".show-more").click(function () {
                 $(this).parent('.content-prof-description').find('.description-content').toggleClass("show-more-height");
             });
-
-            $(window).load(function(){
-                console.log("readyyy");
-                $(".fotorama__stage").height($(".fotorama__img").height());
-                $(".fotorama__shadows--bottom").height($(".fotorama__img").height());
-                $( window ).resize(function() {
-                    console.log("resize");
-                $(".fotorama__stage").height($(".fotorama__img").height());
-                $(".fotorama__shadows--bottom").height($(".fotorama__img").height());
-                });
-            })
-
-
         });
     });
 </script>

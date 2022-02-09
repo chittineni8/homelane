@@ -459,6 +459,56 @@ location /visakhapatnam/ {
     include        fastcgi_params;
 }
 
+location /bhubaneswar/ {
+    try_files /bhubaneswar/index.php /index.php $uri =404;
+    fastcgi_pass   fastcgi_backend;
+    fastcgi_buffers 16 16k;
+    fastcgi_buffer_size 32k;
+
+    fastcgi_param  MAGE_RUN_TYPE "website";
+    fastcgi_param  MAGE_RUN_CODE "bhubaneswar";
+
+    fastcgi_read_timeout 600s;
+    fastcgi_connect_timeout 600s;
+
+    fastcgi_index  index.php;
+    fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+    include        fastcgi_params;
+}
+
+location /kochi/ {
+    try_files /kochi/index.php /index.php $uri =404;
+    fastcgi_pass   fastcgi_backend;
+    fastcgi_buffers 16 16k;
+    fastcgi_buffer_size 32k;
+
+    fastcgi_param  MAGE_RUN_TYPE "website";
+    fastcgi_param  MAGE_RUN_CODE "kochi";
+
+    fastcgi_read_timeout 600s;
+    fastcgi_connect_timeout 600s;
+
+    fastcgi_index  index.php;
+    fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+    include        fastcgi_params;
+}
+
+location /madurai/ {
+    try_files /madurai/index.php /index.php $uri =404;
+    fastcgi_pass   fastcgi_backend;
+    fastcgi_buffers 16 16k;
+    fastcgi_buffer_size 32k;
+
+    fastcgi_param  MAGE_RUN_TYPE "website";
+    fastcgi_param  MAGE_RUN_CODE "madurai";
+
+    fastcgi_read_timeout 600s;
+    fastcgi_connect_timeout 600s;
+
+    fastcgi_index  index.php;
+    fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+    include        fastcgi_params;
+}
 
 
 # PHP entry point for main application
