@@ -15,13 +15,17 @@ class AttributeValue implements \Magento\Framework\Option\ArrayInterface
     /** @var array */
     protected $items;
 
+    protected $collectionFactory;
+
     /**
      * @param ScopeConfigInterface $scopeConfig
      */
     public function __construct(
+        CollectionFactory    $collectionFactory,
         ScopeConfigInterface $scopeConfig
     )
     {
+        $this->collectionFactory = $collectionFactory;
         $this->scopeConfig = $scopeConfig;
     }
 
@@ -32,15 +36,27 @@ class AttributeValue implements \Magento\Framework\Option\ArrayInterface
             'attribute_section/uomattribute/brandattributevalue',
             ScopeInterface::SCOPE_STORE
         );
-        $options[] = ['label' => $attributescode,
-            'value' => $attributescode];
-        return $options;
+        $collection = $this->collectionFactory->create();
+        if (!empty($attributescode)) {
+            $collection->addFieldToFilter('attribute_code', $attributescode);
+        }
+        return $collection->getItems();
     }
 
+    public function getOptions()
+    {
+        $items = [];
+        foreach ($this->getBrandAttributeValue() as $attribute) {
+            $items[] = [
+                'label' => $attribute->getStoreLabel(), 'value' => $attribute->getName(),
+            ];
+        }
+        return $items;
+    }
     public function toOptionArray(): array
     {
         if (is_null($this->items)) {
-            $this->items = $this->getBrandAttributeValue();
+            $this->items = $this->getOptions();
         }
         return $this->items;
     }

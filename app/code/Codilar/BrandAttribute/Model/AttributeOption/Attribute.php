@@ -49,12 +49,10 @@ class Attribute implements \Magento\Framework\Option\ArrayInterface
      */
     public function getAttributes()
     {
-        $code = 'brand';
         $collection = $this->collectionFactory->create();
         if (!empty($code)) {
             $collection->addFieldToFilter('attribute_code', $code);
         }
-
         return $collection->getItems();
     }
 
