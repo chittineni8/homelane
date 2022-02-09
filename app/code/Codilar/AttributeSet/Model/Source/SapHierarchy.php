@@ -144,6 +144,10 @@ class SapHierarchy implements OptionSourceInterface
         return $result;
     }
 
+    /**
+     * @param $finalBrandData
+     * @return array
+     */
     private function prepareParams($finalBrandData): array
     {
         $apiRequestEndpoint = $this->getSapEndpoint();
@@ -167,6 +171,12 @@ class SapHierarchy implements OptionSourceInterface
 
     }//end prepareParams()
 
+    /**
+     * @param $apiRequestEndpoint
+     * @param $requestMethod
+     * @param array $params
+     * @return Response
+     */
     public function doRequest(
         $apiRequestEndpoint,
         $requestMethod,
@@ -207,6 +217,9 @@ class SapHierarchy implements OptionSourceInterface
 
     }//end doRequest()
 
+    /**
+     * @return array
+     */
     public function generateMiddleWare()
     {
         $stack = $this->stack->create();

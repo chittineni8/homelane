@@ -58,6 +58,7 @@ class GetSkuBySearchManagement implements GetSkuBySearchManagementInterface
                 $id = $params['catId'];
                 $text = $params['search'];
                 $collection = $this->getCategory($id)->getProductCollection()->addAttributeToSelect('*');
+                $details = [];
                 foreach ($collection as $items) {
                     $name = $items->getName();
                     $sku = $items->getSku();
@@ -66,15 +67,21 @@ class GetSkuBySearchManagement implements GetSkuBySearchManagementInterface
                             'final_price' => $items->getFinalPrice(), 'price' => $items->getPrice(),
                             'bom_type' => $items->getBomType(), 'type' => $items->getTypeId(),
                             'category' => $this->getCategoryByProductId($items->getId())
-                        ];
 
+
+                        ];
                     }
                 }
+                if (!empty($details)):
+                    $Response = ['status' => 200, 'message' => 'Success', 'results' => $details];
+                    $serializeData = $this->serializer->serialize($Response);
+                    print_r($serializeData);
+                else:
+                    $Response = ['status' => 400, 'message' => 'No Items Found'];
+                    $serializeData = $this->serializer->serialize($Response);
+                    print_r($serializeData);
 
-                $Response = ['status' => 200, 'message' => 'Success', 'results' => $details];
-                $serializeData = $this->serializer->serialize($Response);
-                print_r($serializeData);
-
+                endif;
             endif;
         } catch (Exception $e) {
             $this->logger->critical($e->getMessage() . ' ' . ' ERP SEARCH API EXCEPTION');
