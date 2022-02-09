@@ -251,8 +251,7 @@ class WishlistManagement implements WishlistManagementInterface
                 $this->loggerResponse->addInfo('Id required');
                 $this->loggerResponse->addInfo("===================================================================");
             } else {
-                $collection = $this->_wishlistCollectionFactory->create()->addCustomerIdFilter($customerId)
-                                    ->setOrder('added_at', 'DESC');
+                $collection = $this->_wishlistCollectionFactory->create()->addCustomerIdFilter($customerId)->setOrder('added_at', 'DESC');
                 $baseurl = $this->storemanagerinterface->getStore()->getBaseUrl();
                 if (!empty($collection->getData())):
                     $wishlistData = [];
