@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Codilar\MiscAPI\Model;
 
 use Codilar\MiscAPI\Api\GetErpSkuManagementInterface;
+use Codilar\MiscAPI\Logger\Logger;
 use Magento\Catalog\Model\ProductFactory;
 use Magento\Catalog\Model\ProductRepository;
 use Magento\Framework\App\RequestInterface;
@@ -17,6 +18,7 @@ class GetErpSkuManagement implements GetErpSkuManagementInterface
     protected $productRepository;
     protected $request;
     private $serializer;
+    protected $logger;
 
     /**
      * @param ProductRepository $productRepository
@@ -26,11 +28,13 @@ class GetErpSkuManagement implements GetErpSkuManagementInterface
     public function __construct(
         ProductRepository   $productRepository,
         RequestInterface    $request,
+        Logger              $logger,
         ProductFactory      $factory,
         SerializerInterface $serializer)
     {
         $this->productRepository = $productRepository;
         $this->_productFactory = $factory;
+        $this->logger = $logger;
         $this->request = $request;
         $this->serializer = $serializer;
 
@@ -44,25 +48,30 @@ class GetErpSkuManagement implements GetErpSkuManagementInterface
      */
     public function getErpSku()
     {
+        try {
+            $params = json_decode(file_get_contents("php://input"), true);
 
-        $params = json_decode(file_get_contents("php://input"), true);
+            foreach ($params as $value) {
 
-        foreach ($params as $value) {
+                foreach ($value as $item) {
+                    $productCollection = $this->_productFactory->create()->getCollection()->addAttributeToSelect('*')
+                        ->addFieldToFilter('sku', array('eq' => $item));
 
-            foreach ($value as $item) {
-                $productCollection = $this->_productFactory->create()->getCollection()->addAttributeToSelect('*')
-                    ->addFieldToFilter('sku', array('eq' => $item));
+                    foreach ($productCollection as $erp) {
+                        $result[$item] = $erp->getData('erp_sku_id');
 
-                foreach ($productCollection as $erp) {
-                    $result[$item] = $erp->getData('erp_sku_id');
+                    }
 
                 }
-
             }
-        }
-        $serializeData = $this->serializer->serialize($result);
-
-        print_r($serializeData, false);
+            if (!empty($result)):
+                $serializeData = $this->serializer->serialize($result);
+                print_r($serializeData, false);
+            endif;
+        } catch (Exception $e) {
+            $this->logger->critical($e->getMessage() . ' ' . ' ERP SKU API EXCEPTION');
+            return ($e->getMessage());
+        }//end try
     }
 }
 

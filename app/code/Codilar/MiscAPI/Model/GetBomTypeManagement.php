@@ -10,11 +10,13 @@ use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Tests\NamingConvention\true\mixed;
 use Magento\Framework\Serialize\SerializerInterface;
+use Codilar\MiscAPI\Logger\Logger;
 
 class GetBomTypeManagement implements \Codilar\MiscAPI\Api\GetBomTypeManagementInterface
 {
     protected $productRepository;
     protected $request;
+    protected $logger;
     private $serializer;
 
     /**
@@ -25,12 +27,14 @@ class GetBomTypeManagement implements \Codilar\MiscAPI\Api\GetBomTypeManagementI
     public function __construct(
         ProductRepository   $productRepository,
         RequestInterface    $request,
+        Logger              $logger,
         ProductFactory      $factory,
         SerializerInterface $serializer)
     {
         $this->productRepository = $productRepository;
         $this->_productFactory = $factory;
         $this->request = $request;
+        $this->logger = $logger;
         $this->serializer = $serializer;
 
     }
@@ -40,24 +44,29 @@ class GetBomTypeManagement implements \Codilar\MiscAPI\Api\GetBomTypeManagementI
      */
     public function getBomType()
     {
-        $params = json_decode(file_get_contents("php://input"), true);
+        try {
+            $params = json_decode(file_get_contents("php://input"), true);
 
-        foreach ($params as $value) {
+            foreach ($params as $value) {
 
-            foreach ($value as $item) {
-                $productCollection = $this->_productFactory->create()->getCollection()->addAttributeToSelect('*')
-                    ->addFieldToFilter('sku', array('eq' => $item));
+                foreach ($value as $item) {
+                    $productCollection = $this->_productFactory->create()->getCollection()->addAttributeToSelect('*')
+                        ->addFieldToFilter('sku', array('eq' => $item));
 
-                foreach ($productCollection as $erp) {
-                    $result[$item] = $erp->getData('bom_type');
+                    foreach ($productCollection as $erp) {
+                        $result[$item] = $erp->getData('bom_type');
+                    }
+
                 }
-
             }
-        }
-
-        $serializeData = $this->serializer->serialize($result);
-
-        print_r($serializeData, false);
+            if (!empty($result)):
+                $serializeData = $this->serializer->serialize($result);
+                print_r($serializeData, false);
+            endif;
+        } catch (Exception $e) {
+            $this->logger->critical($e->getMessage() . ' ' . ' BOM TYPE API EXCEPTION');
+            return ($e->getMessage());
+        }//end try
     }
 }
 

@@ -7,6 +7,8 @@
                 type="Codilar\MiscAPI\Model\GetBomTypeManagement"/>
     <preference for="Codilar\MiscAPI\Api\GetSkuBySearchManagementInterface"
                 type="Codilar\MiscAPI\Model\GetSkuBySearchManagement"/>
+    <preference for="Codilar\MiscAPI\Api\GetPriceBySkuManagementInterface"
+                type="Codilar\MiscAPI\Model\GetPriceBySkuManagement"/>
     <type name="Codilar\MiscAPI\Logger\Handler">
         <arguments>
             <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>

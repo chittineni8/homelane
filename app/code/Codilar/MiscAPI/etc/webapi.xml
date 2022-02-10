@@ -18,4 +18,10 @@
 			<resource ref="anonymous"/>
 		</resources>
 	</route>
+	<route url="/V1/product-city-price/:sku" method="GET">
+		<service class="Codilar\MiscAPI\Api\GetPriceBySkuManagementInterface" method="getPriceBySku"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
 </routes>
