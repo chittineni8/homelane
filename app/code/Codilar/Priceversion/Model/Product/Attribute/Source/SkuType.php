@@ -18,10 +18,9 @@ class SkuType extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource
     public function getAllOptions()
     {
         $this->_options = [
-        ['value' => 'traded goods', 'label' => __('Traded Goods')],
-        ['value' => 'services', 'label' => __('Services')]
+        ['value' => 1, 'label' => __('Traded Goods')],
+        ['value' => 2, 'label' => __('Services')]
         ];
         return $this->_options;
     }
 }
-

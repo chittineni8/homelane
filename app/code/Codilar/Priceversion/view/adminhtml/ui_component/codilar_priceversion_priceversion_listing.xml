@@ -141,7 +141,7 @@
 		<column name="website"  component="Magento_Ui/js/grid/columns/select">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">Website</label>
+				<label translate="true">City</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
