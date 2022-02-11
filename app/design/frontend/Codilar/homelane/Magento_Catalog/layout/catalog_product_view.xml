@@ -11,6 +11,7 @@
     	<move element="page.main.title" destination="product.info.main" before="-"  />
     	<move element="product.info.price" destination="product.info.main" after="product.info"  />
         <move element="catalog.product.related" destination="content" after="-"/>
+        <move element="catalog.product.related" destination="page.bottom" before="-"/>
 		<referenceBlock name="product.info.addtocart" remove="true"/>
     	<referenceBlock name="product.info.options.wrapper.bottom" remove="true" />
     	<referenceBlock name="product.info.stock.sku" remove="true" />
