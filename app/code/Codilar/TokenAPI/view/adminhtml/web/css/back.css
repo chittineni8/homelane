@@ -13,3 +13,7 @@
 .config-nav .codilar-tabs .admin__page-nav-title strong {
     margin-left: 40px;
 }
+
+.admin__scope-old .data-table tbody td .input-text{
+    min-width: 100px !important;
+}
