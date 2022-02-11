@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Codilar\WareHouseMapping\Model\ResourceModel\WareHouseMapping\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">warehouse_mapping</argument>
+            <argument name="resourceModel" xsi:type="string">Codilar\WareHouseMapping\Model\ResourceModel\WareHouseMapping
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="warehousemapping_listing_ui_data_source" xsi:type="string">
+                    Codilar\WareHouseMapping\Model\ResourceModel\WareHouseMapping\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Codilar\WareHouseMapping\Api\WareHouseMappingRepositoryInterface"
+                type="Codilar\WareHouseMapping\Model\Api\WareHouseMappingRepository"/>
+
+</config>
+
+

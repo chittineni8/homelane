@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Codilar_WareHouseMapping::warehousemapping_listing" title="Ware House Mapping" translate="title"
+             module="Codilar_WareHouseMapping" sortOrder="10" parent="Codilar_BrandAttribute::brandattribute"
+             action="warehousemapping/warehousemapping/index" resource="Codilar_WareHouseMapping::WareHouseMapping"/>
+    </menu>
+</config>
