@@ -60,16 +60,48 @@ class Save extends \Magento\Backend\App\Action
                 $model->save();
                 $versions = $this->_priceverisondetailsFactory->create()->getCollection()->getData();
                 $details = array();
+                $skus = array();
                 if(isset($data['copy_from_version_id']) && $data['copy_from_version_id'] !='') {
+                  foreach ($versions as $value) {
+                      if($id == $value['price_version_id']){
+                        $skus[] =  $value['sku'];
+                      }
+                  }
                   foreach($versions as $version) {
                     if($version['price_version_id'] == $data['copy_from_version_id']) {
-                        $version['price_version_id'] = $model->getId();
-                        unset($version['priceversiondetails_id']);
-                        $details[] = $version;
+                        if(!in_array($version['sku'], $skus)){
+                          $version['price_version_id'] = $model->getId();
+                          unset($version['priceversiondetails_id']);
+                          $details[] = $version;
+                        }
+
                     }
                   }
                 }
+
+
                 //echo "<pre>";print_r($details);die;
+                if(!empty($details)){
+                  $myModel = $this->_priceverisondetailsFactory->create();
+
+                  // Inserting data using for loop
+                  foreach ($details as $detail) {
+                    $myModel->addData($detail);
+                    $myModel->save();
+                    $myModel->unsetData(); // this line is necessary to save multiple records
+                  }
+                }
+                if(isset($data['status'])){
+                  $versions = $this->_priceverisondetailsFactory->create()->getCollection()->getData();
+                  $details = array();
+                    foreach($versions as $version) {
+                          $version['status'] = $data['status'];
+                          //unset($version['priceversiondetails_id']);
+                          $details[] = $version;
+
+                    }
+
+                }
                 if(!empty($details)){
                   $myModel = $this->_priceverisondetailsFactory->create();
 

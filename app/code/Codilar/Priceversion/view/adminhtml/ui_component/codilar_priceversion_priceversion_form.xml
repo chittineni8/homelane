@@ -112,7 +112,7 @@
 				<item name="options" xsi:type="object">Codilar\Priceversion\Model\Priceversion\Website</item>
 				<item name="config" xsi:type="array">
 						<item name="dataType" xsi:type="string">text</item>
-						<item name="label" xsi:type="string" translate="true">Website</item>
+						<item name="label" xsi:type="string" translate="true">City</item>
 						<item name="formElement" xsi:type="string">select</item>
 						<item name="source" xsi:type="string">Priceversion</item>
 						<item name="dataScope" xsi:type="string">website</item>
