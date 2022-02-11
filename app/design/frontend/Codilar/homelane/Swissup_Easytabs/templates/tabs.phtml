@@ -81,7 +81,7 @@ require(['jquery'], function($) {
                 if (!!$('.product.media').length) { // make sure "#sticky" element exists
                     var el = $('.product.media');
                     var stickyTop = $('.product.media').offset().top - 55; // returns number
-                    var footerTop = $('.block.related').offset().top; // returns number
+                    var footerTop = $('.page-bottom').offset().top; // returns number
                     var stickyHeight = $('.product.media').height();
                     $(window).scroll(function(){ // scroll event
                         var windowTop = $(window).scrollTop(); // returns number
