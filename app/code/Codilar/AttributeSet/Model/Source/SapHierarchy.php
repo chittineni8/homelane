@@ -18,7 +18,7 @@ use Magento\Framework\Webapi\Rest\Request;
 use Codilar\MiscAPI\Logger\Logger;
 use Magento\Store\Model\ScopeInterface;
 
-class SapHierarchy@@ implements OptionSourceInterface
+class SapHierarchy implements OptionSourceInterface
 {
     /**
      * @var ScopeConfigInterface
@@ -110,45 +110,20 @@ class SapHierarchy@@ implements OptionSourceInterface
             $responseContent = $responseBody->getContents();
             $responseDecodee = json_decode($responseContent, true);
 
-
-            unset($responseDecodee['count']);
-            echo "<pre>";
-            print_r($responseDecodee);
-            die('ff');
             $result = [];
 
             if (is_array($responseDecodee) || is_object($responseDecodee)) {
-                foreach ($responseDecodee as $options) {
+                $items = $responseDecodee['ZapiGetProductHierarchyResponse'][0]['EtProducthierarchycodelist'][0]['item'];
+                foreach ($items as $item) {
+                    $result[] = ['value' => $item['Producthierarchy'][0], 'label' => $item['Description'][0]];
 
-
-                    foreach ($options as $option) {
-                        foreach ($option as $opt) {
-
-                            foreach ($opt as $items) {
-
-                                foreach ($items as $item) {
-
-                                    foreach ($items as $level) {
-
-                                        foreach($level as $leveltwo){
-                                        echo $leveltwo['Description'][0];
-//                                        print_r($leveltwo);
-                                            //die('ddd');
-
-//                                    $result[] = ['value' => $leveltwo['Producthierarchy'][0], 'label' => $item['Description'][0]];
-
-                                    }}
-                                }
-                            }
-                        }
-                    }
                 }
             }
 
 
             return $result;
         } catch (\Exception $e) {
-            $this->loggerResponse->critical($e->getMessage() . ' ' . 'AUTO CATEGORY ID API EXCEPTION');
+            $this->loggerResponse->critical($e->getMessage() . ' ' . 'SAP HIERARCHY API EXCEPTION');
         }//end try
     }
 
@@ -169,6 +144,10 @@ class SapHierarchy@@ implements OptionSourceInterface
         return $result;
     }
 
+    /**
+     * @param $finalBrandData
+     * @return array
+     */
     private function prepareParams($finalBrandData): array
     {
         $apiRequestEndpoint = $this->getSapEndpoint();
@@ -192,6 +171,12 @@ class SapHierarchy@@ implements OptionSourceInterface
 
     }//end prepareParams()
 
+    /**
+     * @param $apiRequestEndpoint
+     * @param $requestMethod
+     * @param array $params
+     * @return Response
+     */
     public function doRequest(
         $apiRequestEndpoint,
         $requestMethod,
@@ -232,6 +217,9 @@ class SapHierarchy@@ implements OptionSourceInterface
 
     }//end doRequest()
 
+    /**
+     * @return array
+     */
     public function generateMiddleWare()
     {
         $stack = $this->stack->create();

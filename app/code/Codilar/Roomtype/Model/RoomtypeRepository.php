@@ -98,11 +98,6 @@ class RoomtypeRepository implements RoomtypeRepositoryInterface
     public function get()
     {
         try {
-            if (!$this->http->getHeader('Authorization')):
-                $response =  ['status' => 401, 'message' => 'Token not passed'];
-               return print_r(json_encode($response),false);
-            endif;
-
             $roomtype = $this->roomtypeCollectionFactory->create();
             if (!empty($roomtype)):
                 $roomTypeData = [];

@@ -25,13 +25,13 @@ class RoomType extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource
        {
          if(!$this->_options) {
            $sellerModel = $this->_roomCollectionFactory->create()->getCollection()
-                                              ->addFieldToSelect( array('roomtype_id','roomtype_label','roomtype_label') );
+                                              ->addFieldToSelect( array('roomtype_id','roomtype_label','roomtype_value') );
            $options = array();
            if( $sellerModel->getSize() ){
                foreach ( $sellerModel  as $seller) {
                    $options[] = array(
                    'label' => ucfirst( $seller->getData('roomtype_label') ) ,
-                   'value' => $seller->getData('roomtype_label')
+                   'value' => $seller->getData('roomtype_value')
                    );
                }
            }
