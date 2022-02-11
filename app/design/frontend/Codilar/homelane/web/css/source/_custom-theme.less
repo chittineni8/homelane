@@ -5209,19 +5209,6 @@ rs-module-wrap {
     }
     .block.related{
         position: relative;
-        &::before{
-            border-top: 1px solid #eee;
-            height: 10px;
-            content: '';
-            position: absolute;
-            width: 100vw;
-            left: 49.5%;
-            margin-left: -50vw;
-            top: -40px;
-            @media (max-width:769px){
-                top: -25px;
-            }
-        }
     }
 }
 .product.media .top_left{
@@ -5770,6 +5757,15 @@ ol.product-items li.wishlist-active{
             display: none;
         }
     }
+    .header.content .navigation .level0 > ul.submenu{
+        padding-top: 5px;
+        padding-bottom: 5px;
+        a{
+            padding: 8px 12px;
+        }
+    }
+}
+@media only screen and (min-width: 767px){
     .submenu li.level1{
         .image-container-block{
             display: block;
@@ -5781,7 +5777,7 @@ ol.product-items li.wishlist-active{
                 font-size: 20px;
                 line-height: 24px;
                 color: #FFFFFF;
-                background: #0003;
+                background: linear-gradient(178.94deg, rgba(0, 0, 0, 0) 0.91%, #000000 109.16%);
                 top: 0;
                 bottom: 0;
                 left: 0;
@@ -5817,15 +5813,7 @@ ol.product-items li.wishlist-active{
             }
         }
     }
-    .header.content .navigation .level0 > ul.submenu{
-        padding-top: 5px;
-        padding-bottom: 5px;
-        a{
-            padding: 8px 12px;
-        }
-    }
 }
-
 .page-layout-2columns-left.catalog-category-view{ 
     .columns{
         border-bottom: none;
@@ -6057,6 +6045,18 @@ ol.product-items li.wishlist-active{
         padding: 0 0;
         border-bottom: 2px solid transparent;
     }
+    .catalog-product-view{
+        .product.media.sticky{
+            scrollbar-width: none;
+            position: sticky;
+            position: -webkit-sticky;
+            top: 80px;
+            z-index: 1;
+        }
+        &.page-layout-1column .column.main{
+            float: left;
+        }
+    }
 }
 .block-viewed-products-grid{
     .product-items .product-item .price-box{
@@ -6082,5 +6082,19 @@ ol.product-items li.wishlist-active{
                 color: #545665;
             }
         }
+    }
+}
+@media only screen and (min-width: 767px) and (max-width: 1025px){
+    ul.header.links li.link.wishlist a:after{
+        content: '';
+    }
+}
+.page-bottom{
+    .block .title strong{
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 29px;
+        color: #000000;
     }
 }
