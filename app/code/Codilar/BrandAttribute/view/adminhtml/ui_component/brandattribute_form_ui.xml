@@ -56,7 +56,7 @@
             </item>
         </argument>
     </field>
-        <field name="attribute_id" sortOrder="20">
+        <field name="brand_mapping_id" sortOrder="20">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="label" xsi:type="string">Attribute Value</item>

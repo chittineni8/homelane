@@ -4,7 +4,7 @@
     <virtualType name="Codilar\BrandAttribute\Model\ResourceModel\BrandAttribute\Grid\Collection"
                  type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
-            <argument name="mainTable" xsi:type="string">brandattribute</argument>
+            <argument name="mainTable" xsi:type="string">brand_attribute</argument>
             <argument name="resourceModel" xsi:type="string">Codilar\BrandAttribute\Model\ResourceModel\BrandAttribute
             </argument>
         </arguments>

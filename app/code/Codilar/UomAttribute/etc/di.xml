@@ -4,7 +4,7 @@
     <virtualType name="Codilar\UomAttribute\Model\ResourceModel\UomAttribute\Grid\Collection"
                  type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
-            <argument name="mainTable" xsi:type="string">uomattribute</argument>
+            <argument name="mainTable" xsi:type="string">uom_attribute</argument>
             <argument name="resourceModel" xsi:type="string">Codilar\UomAttribute\Model\ResourceModel\UomAttribute
             </argument>
         </arguments>

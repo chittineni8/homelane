@@ -35,7 +35,7 @@ define([
          */
         setDependentOptions: function (value) {
             var options = this.mapper['map'][value];
-            var field = uiRegistry.get('index =attribute_id');
+            var field = uiRegistry.get('index =brand_mapping_id');
             field.setOptions(options);
             return this;
         }
