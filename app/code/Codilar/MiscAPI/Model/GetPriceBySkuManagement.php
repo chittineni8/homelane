@@ -23,6 +23,7 @@ class GetPriceBySkuManagement implements GetPriceBySkuManagementInterface
     protected $factory;
     protected $request;
     protected $_storeManager;
+    protected $stockRegistry;
 
 
     /**
@@ -38,6 +39,7 @@ class GetPriceBySkuManagement implements GetPriceBySkuManagementInterface
         RequestInterface    $request,
         ProductFactory      $factory,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
+        \Magento\CatalogInventory\Api\StockRegistryInterface $stockRegistry,
         Logger              $logger,
         SerializerInterface $serializer
     )
@@ -49,6 +51,7 @@ class GetPriceBySkuManagement implements GetPriceBySkuManagementInterface
         $this->_storeManager = $storeManager;
         $this->logger = $logger;
         $this->serializer = $serializer;
+        $this->stockRegistry = $stockRegistry;
 
     }
 
@@ -69,13 +72,17 @@ class GetPriceBySkuManagement implements GetPriceBySkuManagementInterface
            $price = array();
            foreach ($storeManagerDataList as $key => $value) {
                 $item = $this->productRepository->get($sku, false, $key);
+                $stockItem = $this->stockRegistry->getStockItem($item->getId());
+
                 $price[] = array(
                                     'store'=>$value['code'],
                                     'price'=>$item->getPrice(),
                                     'final_price'=>$item->getFinalPrice(),
                                     'minimal_price' => $item->getMinimalPrice(),
                                     'min_price' => $item->getMinPrice(),
-                                    'max_price' => $item->getMaxPrice()
+                                    'max_price' => $item->getMaxPrice(),
+                                    'status' => $item->getStatus(),
+                                    'stock_status' => $stockItem->getIsInStock()
                                   );
            }
            $data = [

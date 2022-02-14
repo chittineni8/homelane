@@ -45,13 +45,15 @@ class PriceDetails extends \Magento\ImportExport\Model\Import\Entity\AbstractEnt
      * Permanent entity columns.
      */
     protected $_permanentAttributes = [
-        'priceversiondetails_id',
+        'price_version_id',
+        'sku',
     ];
 
     /**
      * Valid column names
      */
     protected $validColumnNames = [
+        'priceversiondetails_id',
         'price_version_id',
         'sku',
         'price',
@@ -71,6 +73,10 @@ class PriceDetails extends \Magento\ImportExport\Model\Import\Entity\AbstractEnt
      * @var ResourceConnection
      */
     private $resource;
+    /**
+    *@var ProductRepository
+    */
+    private $productRepository;
 
     /**
      * Courses constructor.
@@ -88,6 +94,7 @@ class PriceDetails extends \Magento\ImportExport\Model\Import\Entity\AbstractEnt
         Data $importData,
         ResourceConnection $resource,
         Helper $resourceHelper,
+        \Magento\Catalog\Api\ProductRepositoryInterface $productRepository,
         ProcessingErrorAggregatorInterface $errorAggregator
     ) {
         $this->jsonHelper = $jsonHelper;
@@ -95,6 +102,7 @@ class PriceDetails extends \Magento\ImportExport\Model\Import\Entity\AbstractEnt
         $this->_resourceHelper = $resourceHelper;
         $this->_dataSourceModel = $importData;
         $this->resource = $resource;
+        $this->productRepository = $productRepository;
         $this->connection = $resource->getConnection(ResourceConnection::DEFAULT_CONNECTION);
         $this->errorAggregator = $errorAggregator;
         $this->initMessageTemplates();
@@ -117,7 +125,7 @@ class PriceDetails extends \Magento\ImportExport\Model\Import\Entity\AbstractEnt
      */
     public function getValidColumnNames(): array
     {
-        return $this->validColumnNames;
+          return $this->validColumnNames;
     }
 
     /**
@@ -132,10 +140,16 @@ class PriceDetails extends \Magento\ImportExport\Model\Import\Entity\AbstractEnt
     {
         $name = $rowData['sku'] ?? '';
         $duration = $rowData['price_version_id'] ?? '';
-
+        //echo $name;die;
         if (!$name) {
             $this->addRowError('SKU Is Required', $rowNum);
         }
+
+        $product = $this->productRepository->get($name);
+
+          if($product->getSkuTypes() !=2){
+            $this->addRowError('SKU Is Not Servicable', $rowNum);
+          }
 
         if (!$duration) {
             $this->addRowError('Price Version Is Required', $rowNum);

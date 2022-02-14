@@ -1,0 +1,3 @@
+priceversiondetails_id,price_version_id,sku,price,add_price,multi,min_order_qty,min_order_value,status
+39,4,testproduct,1000,12000,PxRxN,4,2200,1
+40,5,test2-pro,1500,1800,PxRxN,2,2000,1
