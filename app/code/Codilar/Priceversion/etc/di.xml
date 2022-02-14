@@ -26,4 +26,5 @@
 			<argument name="resourceModel" xsi:type="string">Codilar\Priceversion\Model\ResourceModel\Priceversiondetails\Collection</argument>
 		</arguments>
 	</virtualType>
+	<preference for="Magento\ImportExport\Controller\Adminhtml\Import\Download" type="Codilar\Priceversion\Controller\Adminhtml\Import\Download"/>
 </config>
