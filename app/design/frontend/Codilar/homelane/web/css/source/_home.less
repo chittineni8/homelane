@@ -28,14 +28,17 @@
 
     // reviews slider
     .hp-customer-review-outer {
-        padding: 0 15px;
-        margin-bottom: 50px;
+        padding: 0 30px;
+        margin-bottom: 70px;
         h2 {
             font-size: 24px;
             font-weight: 700;
             color: #000000;
             text-align: center;
             margin-bottom: 40px;
+            @media (max-width:767px){
+                margin-top: 0;
+            }
         }
         .home-page-customer-review-content {
             display: flex;
@@ -179,9 +182,12 @@
 
     // how it works section
     .hp-work-steps {
-        padding: 25px 25px 40px;
+        padding: 25px 25px 60px;
+        .between-xs{
+            margin: 0 0;
+        }
         h3 {
-            color: #000000;
+            color: #222222;
             font-size: 20px;
             font-weight: 700;
         }
@@ -198,8 +204,12 @@
         .step-container {
             position: relative;
             &:not(:last-child) {
-                margin-bottom: 30px;
-                padding-bottom: 40px;
+                margin-bottom: 0px;
+                padding-bottom: 20px;
+                @media (max-width:767px){
+                    margin-bottom: 50px;
+                    padding-bottom: 50px;
+                }
             }
             img[alt='arrow'] {
                 position: absolute;
@@ -223,7 +233,9 @@
             border-radius: 10px;
             padding-bottom: 115.83%;
             margin: 12.5px 7.5px;
-    
+            @media (max-width:767px){
+                padding-bottom: 106%;
+            }
             img {
                 width: 100%;
             }
@@ -237,10 +249,10 @@
                 right: 0;
                 bottom: 0;
                 font-weight: 600;
-                font-size: 24px;
-                line-height: 29px;
+                font-size: 20px;
+                line-height: 24px;
                 color: #FFFFFF;
-                padding: 0 25px 20px;
+                padding: 0 16px 20px;
                 background: linear-gradient(178.94deg, rgba(0, 0, 0, 0) 0.91%, #000000 109.16%);
             }
         }
@@ -266,10 +278,18 @@
     // category view homepage
     .hp-category {
         &-conatiner {
-            padding: 40px 0 20px;
+            padding: 40px 0 0;
+            .start-xs{
+                margin-right: -15px;
+                margin-left: -15px;
+                .col-md{
+                    padding-left: 15px;
+                    padding-right: 15px;
+                }
+            }
         }
         &-block {
-            margin: 20px 0;
+            margin: 24px 0 20px;
         }
     }
     
@@ -277,7 +297,6 @@
     .hp-customer-review-outer {
         .home-page-customer-review-content {
           .right-sec {
-            background: linear-gradient(to bottom, transparent 5%, rgb(250, 250, 250) 5% 95%, transparent 95%);
             .image {
               &.yt-popup {
                 width: ~'calc(100% - 25px)';
