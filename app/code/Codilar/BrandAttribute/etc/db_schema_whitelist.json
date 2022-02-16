@@ -1,0 +1,13 @@
+{
+    "brand_attribute": {
+        "column": {
+            "id": true,
+            "brand_mapping_id": true,
+            "automat_value": true,
+            "sap_brand_id": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

@@ -1,6 +1,6 @@
 <?php
 
-namespace Codilar\AttributeSet\Model\Source;
+namespace Codilar\BrandAttribute\Model\Source;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Data\OptionSourceInterface;
@@ -18,7 +18,7 @@ use Magento\Framework\Webapi\Rest\Request;
 use Codilar\MiscAPI\Logger\Logger;
 use Magento\Store\Model\ScopeInterface;
 
-class AutoSubcat implements OptionSourceInterface
+class AutomatBrands implements OptionSourceInterface
 {
     /**
      * @var ScopeConfigInterface
@@ -26,12 +26,19 @@ class AutoSubcat implements OptionSourceInterface
     protected $scopeConfig;
 
 
-    const AUTO_SUBCAT_URI = 'codilar_erp_apis/automat_erp_oauth/automat_apis_request_url';
-    const AUTO_SUBCAT_ENDPOINT = 'codilar_erp_apis/automat_erp_oauth/automat_subcat_endpoint';
-    const AUTO_SUBCAT_TOKEN = 'codilar_erp_apis/automat_erp_oauth/automat_access_token';
+    const AUTO_BRANDS_URI = 'codilar_erp_apis/automat_erp_oauth/automat_apis_request_url';
+    const AUTO_BRANDS_ENDPOINT = 'codilar_erp_apis/automat_erp_oauth/automat_brands_endpoint';
+    const AUTO_BRANDS_TOKEN = 'codilar_erp_apis/automat_erp_oauth/automat_access_token';
 
     /**
      * @param ScopeConfigInterface $scopeConfig
+     * @param Http $request
+     * @param EncryptorInterface $encryptor
+     * @param ClientFactory $clientFactory
+     * @param ResponseFactory $responseFactory
+     * @param HandlerStack $stack
+     * @param Json $json
+     * @param Logger $loggerResponse
      */
     public function __construct
     (
@@ -58,29 +65,29 @@ class AutoSubcat implements OptionSourceInterface
     /**
      * @return mixed
      */
-    public function getAutoSubcatUri()
+    public function getAutoBrandsUri()
     {
         $storeScope = ScopeInterface::SCOPE_STORE;
 
-        return $this->scopeConfig->getValue(self::AUTO_SUBCAT_URI, ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->getValue(self::AUTO_BRANDS_URI, ScopeInterface::SCOPE_STORE);
 
 
     }
 
-    public function getAutoSubcatEndpoint()
+    public function getAutoBrandsEndpoint()
     {
         $storeScope = ScopeInterface::SCOPE_STORE;
 
-        return $this->scopeConfig->getValue(self::AUTO_SUBCAT_ENDPOINT, ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->getValue(self::AUTO_BRANDS_ENDPOINT, ScopeInterface::SCOPE_STORE);
 
 
     }
 
-    public function getAutoSubcatToken()
+    public function getAutoBrandsToken()
     {
         $storeScope = ScopeInterface::SCOPE_STORE;
 
-        return $this->scopeConfig->getValue(self::AUTO_SUBCAT_TOKEN, ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->getValue(self::AUTO_BRANDS_TOKEN, ScopeInterface::SCOPE_STORE);
 
 
     }
@@ -113,13 +120,17 @@ class AutoSubcat implements OptionSourceInterface
 
             return $result;
         } catch (\Exception $e) {
-            $this->loggerResponse->critical($e->getMessage() . ' ' . 'AUTO SUBCATEGORY ID API EXCEPTION');
+            $this->loggerResponse->critical($e->getMessage() . ' ' . 'AUTOMAT BRANDS ID API EXCEPTION');
         }//end try
     }
 
+    /**
+     * @param $finalBrandData
+     * @return array
+     */
     private function prepareParams($finalBrandData): array
     {
-        $apiRequestEndpoint = $this->getAutoSubcatEndpoint();
+        $apiRequestEndpoint = $this->getAutoBrandsEndpoint();
         $requestMethod = Request::METHOD_GET;
         $params = $finalBrandData;
 
@@ -130,7 +141,7 @@ class AutoSubcat implements OptionSourceInterface
         $params['form_params'] = json_decode($bodyJson, true);
         $params['headers'] = [
 //            'Content-Type' => 'application/x-www-form-urlencoded',
-            'Authorization' => $this->getAutoSubcatToken()
+            'Authorization' => $this->getAutoBrandsToken()
         ];
         return [
             $apiRequestEndpoint,
@@ -140,6 +151,12 @@ class AutoSubcat implements OptionSourceInterface
 
     }//end prepareParams()
 
+    /**
+     * @param $apiRequestEndpoint
+     * @param $requestMethod
+     * @param array $params
+     * @return Response
+     */
     public function doRequest(
         $apiRequestEndpoint,
         $requestMethod,
@@ -155,7 +172,7 @@ class AutoSubcat implements OptionSourceInterface
         $client = $this->clientFactory->create(
             [
                 'config' => [
-                    'base_uri' => $this->getAutoSubcatUri(),
+                    'base_uri' => $this->getAutoBrandsUri(),
                     'handler' => $tapMiddleware($stack),
                 ],
             ]

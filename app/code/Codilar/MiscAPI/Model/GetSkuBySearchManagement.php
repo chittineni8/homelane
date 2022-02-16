@@ -63,7 +63,7 @@ class GetSkuBySearchManagement implements GetSkuBySearchManagementInterface
                     $name = $items->getName();
                     $sku = $items->getSku();
                     if (str_contains($sku, $text) || str_contains($name, $text)) {
-                        $details[] = ['name' => $name, 'sku' => $sku, 'brand' => $items->getManufacturer(),
+                        $details[] = ['name' => $name, 'sku' => $sku, 'brand' => $items->getBrand(),
                             'final_price' => $items->getFinalPrice(), 'price' => $items->getPrice(),
                             'bom_type' => $items->getBomType(), 'type' => $items->getTypeId(),
                             'category' => $this->getCategoryByProductId($items->getId())

@@ -8,7 +8,7 @@
                 comment="value Name"/>
         <column xsi:type="varchar" name="automat_value" nullable="false" length="50"
                 comment="automat value"/>
-        <column xsi:type="varchar" name="automat_id" nullable="false" length="15" comment="automat_id"/>
+        <column xsi:type="varchar" name="sap_brand_id" nullable="false" length="15" comment="sap_brand_id"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="id"/>
         </constraint>

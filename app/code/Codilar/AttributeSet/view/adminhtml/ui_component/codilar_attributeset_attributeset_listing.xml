@@ -50,7 +50,7 @@
         <exportButton name="export_button"/>
     </listingToolbar>
     <columns name="spinner_columns">
-        <selectionsColumn name="id">
+        <selectionsColumn name="ids">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="resizeEnabled" xsi:type="boolean">false</item>
@@ -90,14 +90,14 @@
                 </item>
             </argument>
         </column>
-<!--        <column name="attribute_set_id">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">textRange</item>
-                    <item name="label" xsi:type="string" translate="true">Attribute Set ID</item>
-                </item>
-            </argument>
-        </column>-->
+        <!--        <column name="attribute_set_id">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="filter" xsi:type="string">textRange</item>
+                            <item name="label" xsi:type="string" translate="true">Attribute Set ID</item>
+                        </item>
+                    </argument>
+                </column>-->
         <column name="sap_hierarchy">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
