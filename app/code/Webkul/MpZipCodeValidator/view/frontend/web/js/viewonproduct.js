@@ -75,7 +75,7 @@ define([
                         
                         zipcode = $('.wk-zcv-zipform'+sellerId).val();
                         var reqFromAp = 0;
-                       
+                        
                         if (zipcode != prevzip || prevseller != sellerId) {
                             $('.wk-zcv-zipcookie'+sellerId).hide();
                             if (zipcode != '') {
@@ -89,6 +89,7 @@ define([
                                 prevseller = sellerId;
                             }
                         }
+
                     });
                     $(document).on('click', '[id^=wk-ap-check]', function (event) {
                         count++;
@@ -155,6 +156,9 @@ define([
                                             $('.wk-zcv-ziperror'+sellerId).css('display','block');
                                             $('.wk-zcv-ziperror'+sellerId).html($t("Product is not available at ")+zipcode);
                                         }
+                                    }
+                                    if(zipcode.length < 6){
+                                        $('.wk-zcv-ziperror'+sellerId).html($t("zip code must have 6 digits"));
                                     }
                                 }
                             }
