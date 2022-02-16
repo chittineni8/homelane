@@ -1929,7 +1929,7 @@ body.user-resetpassword-index {
         padding-bottom: 40px;
         position: sticky;
         position: -webkit-sticky;
-        top: 80px;
+        top: 65px;
         z-index: 1;
         &::-webkit-scrollbar {
             display: none;
@@ -2101,7 +2101,7 @@ div#layered-filter-block-container {
         }
         .filter-options{
             .filter-options-item{
-                padding: 22px 30px;
+                padding: 20px 30px;
                 border-bottom: 1px solid #E9E9ED;
                 &:last-child{
                     border-bottom: none;
@@ -3678,6 +3678,7 @@ table.table.table-bordered {
             border-left: 1px solid #eae7e7;
             padding-top: 20px;
             width: 76%;
+            padding-left: 3%;
         }
         .sidebar-main {
             width: 24%;
@@ -4808,9 +4809,8 @@ rs-module-wrap {
     
     }
     .block.filter {
-        margin: 10px 0 0;
+        margin: 0 0 0;
         overflow: hidden;
-        border-top: 1px solid #eae7e7;
         border-bottom: 1px solid #eae7e7;
         position: relative;
         &.active-slide{
@@ -5497,7 +5497,7 @@ rs-module-wrap {
                 @media (max-width:767px){
                     font-size: 14px;
                     line-height: 17px;
-                    height: 35px;
+                    height: 34px;
                 }
             }
         }
@@ -5809,6 +5809,12 @@ ol.product-items li.wishlist-active{
         float: right;
         display: inline-block;
     }
+    .pages .item{
+        margin: 0 20px 0 0;
+        &:last-child{
+            margin: 0 0 0 0;
+        }
+    }
 }
 @media only screen and (min-width: 767px){
     .aply-filter{
@@ -5896,6 +5902,7 @@ ol.product-items li.wishlist-active{
             border-bottom: 1px solid #eae7e7;
         }
     }
+
 }
 
 .catalog-category-view{
@@ -5915,6 +5922,14 @@ ol.product-items li.wishlist-active{
                 }
             }   
         } 
+    }
+    @media (min-width:768px){
+        div.breadcrumbs{
+            border-bottom: 1px solid #eae7e7;
+         ul.items{
+                border-bottom: none;
+            }
+        }
     }
 }
     .filter-options{
