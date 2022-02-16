@@ -26,9 +26,9 @@ class SapHierarchy implements OptionSourceInterface
     protected $scopeConfig;
 
 
-    const SAP_URI = 'codilar_erp_attributeset/sap_erp_oauth/sap_hierarchy_request_url';
-    const SAP_ENDPOINT = 'codilar_erp_attributeset/sap_erp_oauth/sap_hierarchy_endpoint';
-    const SAP_TOKEN = 'codilar_erp_attributeset/sap_erp_oauth/sap_hierarchy_token';
+    const SAP_URI = 'codilar_erp_apis/sap_erp_oauth/sap_apis_request_url';
+    const SAP_ENDPOINT = 'codilar_erp_apis/sap_erp_oauth/sap_hierarchy_endpoint';
+    const SAP_TOKEN = 'codilar_erp_apis/sap_erp_oauth/sap_access_token';
 
     /**
      * @param ScopeConfigInterface $scopeConfig

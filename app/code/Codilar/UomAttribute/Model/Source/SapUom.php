@@ -1,6 +1,6 @@
 <?php
 
-namespace Codilar\AttributeSet\Model\Source;
+namespace Codilar\UomAttribute\Model\Source;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Data\OptionSourceInterface;
@@ -18,7 +18,7 @@ use Magento\Framework\Webapi\Rest\Request;
 use Codilar\MiscAPI\Logger\Logger;
 use Magento\Store\Model\ScopeInterface;
 
-class AutoSubcat implements OptionSourceInterface
+class SapUom implements OptionSourceInterface
 {
     /**
      * @var ScopeConfigInterface
@@ -26,9 +26,9 @@ class AutoSubcat implements OptionSourceInterface
     protected $scopeConfig;
 
 
-    const AUTO_SUBCAT_URI = 'codilar_erp_apis/automat_erp_oauth/automat_apis_request_url';
-    const AUTO_SUBCAT_ENDPOINT = 'codilar_erp_apis/automat_erp_oauth/automat_subcat_endpoint';
-    const AUTO_SUBCAT_TOKEN = 'codilar_erp_apis/automat_erp_oauth/automat_access_token';
+    const SAP_UOM_URI = 'codilar_erp_apis/sap_erp_oauth/sap_apis_request_url';
+    const SAP_UOM_ENDPOINT = 'codilar_erp_apis/sap_erp_oauth/sap_uom_endpoint';
+    const SAP_UOM_TOKEN = 'codilar_erp_apis/sap_erp_oauth/sap_access_token';
 
     /**
      * @param ScopeConfigInterface $scopeConfig
@@ -58,38 +58,42 @@ class AutoSubcat implements OptionSourceInterface
     /**
      * @return mixed
      */
-    public function getAutoSubcatUri()
+    public function getSapUomUri()
     {
         $storeScope = ScopeInterface::SCOPE_STORE;
 
-        return $this->scopeConfig->getValue(self::AUTO_SUBCAT_URI, ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->getValue(self::SAP_UOM_URI, ScopeInterface::SCOPE_STORE);
 
 
     }
 
-    public function getAutoSubcatEndpoint()
+    public function getSapUomEndpoint()
     {
         $storeScope = ScopeInterface::SCOPE_STORE;
 
-        return $this->scopeConfig->getValue(self::AUTO_SUBCAT_ENDPOINT, ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->getValue(self::SAP_UOM_ENDPOINT, ScopeInterface::SCOPE_STORE);
 
 
     }
 
-    public function getAutoSubcatToken()
+    public function getSapUomToken()
     {
         $storeScope = ScopeInterface::SCOPE_STORE;
 
-        return $this->scopeConfig->getValue(self::AUTO_SUBCAT_TOKEN, ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->getValue(self::SAP_UOM_TOKEN, ScopeInterface::SCOPE_STORE);
 
 
     }
 
 
+    /**
+     * @return array|void
+     */
     public function toOptionArray()
     {
         try {
             $finalData = [];
+
             list($apiRequestEndpoint, $requestMethod, $params) = $this->prepareParams($finalData);
 
             $response = $this->doRequest($apiRequestEndpoint, $requestMethod, $params);
@@ -98,28 +102,45 @@ class AutoSubcat implements OptionSourceInterface
             $responseBody = $response->getBody();
             $responseContent = $responseBody->getContents();
             $responseDecodee = json_decode($responseContent, true);
-            unset($responseDecodee['count']);
-
             $result = [];
 
             if (is_array($responseDecodee) || is_object($responseDecodee)) {
-                foreach ($responseDecodee as $options) {
-                    foreach ($options as $option) {
-                        $result[] = ['value' => $option['id'], 'label' => $option['name']];
-                    }
+                $items = $responseDecodee['ZapiGetUomListResponse'][0]['EtUnitofmeasurelist'][0]['item'];
+
+
+                foreach ($items as $item) {
+                    $result[] = ['value' => $item['Unitofmeasurement'][0], 'label' => $item['Unitofmeasurementtext'][0]];
 
                 }
             }
 
+
             return $result;
         } catch (\Exception $e) {
-            $this->loggerResponse->critical($e->getMessage() . ' ' . 'AUTO SUBCATEGORY ID API EXCEPTION');
+            $this->loggerResponse->critical($e->getMessage() . ' ' . 'SAP UOM API EXCEPTION');
         }//end try
+    }
+
+
+    /**
+     * Retrieve option array with empty value
+     *
+     * @return string[]
+     */
+    public function getAllOptions()
+    {
+        $result = [];
+
+        foreach (self::toOptionArray as $index => $value) {
+            $result[] = ['value' => $index, 'label' => $value];
+        }
+
+        return $result;
     }
 
     private function prepareParams($finalBrandData): array
     {
-        $apiRequestEndpoint = $this->getAutoSubcatEndpoint();
+        $apiRequestEndpoint = $this->getSapUomEndpoint();
         $requestMethod = Request::METHOD_GET;
         $params = $finalBrandData;
 
@@ -130,7 +151,7 @@ class AutoSubcat implements OptionSourceInterface
         $params['form_params'] = json_decode($bodyJson, true);
         $params['headers'] = [
 //            'Content-Type' => 'application/x-www-form-urlencoded',
-            'Authorization' => $this->getAutoSubcatToken()
+            'Authorization' => $this->getSapUomToken()
         ];
         return [
             $apiRequestEndpoint,
@@ -155,7 +176,7 @@ class AutoSubcat implements OptionSourceInterface
         $client = $this->clientFactory->create(
             [
                 'config' => [
-                    'base_uri' => $this->getAutoSubcatUri(),
+                    'base_uri' => $this->getSapUomUri(),
                     'handler' => $tapMiddleware($stack),
                 ],
             ]

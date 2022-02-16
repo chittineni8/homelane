@@ -26,9 +26,9 @@ class AutoCat implements OptionSourceInterface
     protected $scopeConfig;
 
 
-    const AUTO_CAT_URI = 'codilar_erp_attributeset/automat_cat_erp_oauth/automat_cat_request_url';
-    const AUTO_CAT_ENDPOINT = 'codilar_erp_attributeset/automat_cat_erp_oauth/automat_cat_endpoint';
-    const AUTO_CAT_TOKEN = 'codilar_erp_attributeset/automat_cat_erp_oauth/automat_cat_token';
+    const AUTO_CAT_URI = 'codilar_erp_apis/automat_erp_oauth/automat_apis_request_url';
+    const AUTO_CAT_ENDPOINT = 'codilar_erp_apis/automat_erp_oauth/automat_cat_endpoint';
+    const AUTO_CAT_TOKEN = 'codilar_erp_apis/automat_erp_oauth/automat_access_token';
 
     /**
      * @param ScopeConfigInterface $scopeConfig

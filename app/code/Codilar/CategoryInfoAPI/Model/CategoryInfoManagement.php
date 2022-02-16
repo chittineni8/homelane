@@ -82,11 +82,11 @@ class CategoryInfoManagement implements CategoryInfoManagementInterface
 //        $filterArray['store_id'] = $this->_storeManagerInterface->getStore()->getId();
             $filterArray['cat_custom_attribute'] = array();
             $filterArray['room_type'] = array();
-            if($categoryData->getData('cat_custom_attribute') !=null){
-                $filterArray['cat_custom_attribute'] = explode(",",$categoryData->getData('cat_custom_attribute'));
+            if ($categoryData->getData('cat_custom_attribute') != null) {
+                $filterArray['cat_custom_attribute'] = explode(",", $categoryData->getData('cat_custom_attribute'));
             }
-            if($categoryData->getData('room_type') != null){
-                $filterArray['room_type'] = explode(",",$categoryData->getData('room_type'));
+            if ($categoryData->getData('room_type') != null) {
+                $filterArray['room_type'] = explode(",", $categoryData->getData('room_type'));
             }
 
 
@@ -95,7 +95,7 @@ class CategoryInfoManagement implements CategoryInfoManagementInterface
             $filterList = $this->_filterList->create(['filterableAttributes' => $filterableAttributesList]);
             $filters = $filterList->getFilters($layer);
             $i = 0;
-            $data =array();
+            $data = array();
             foreach ($filters as $filter) {
                 // Don't show options with no items
                 if (!$filter->getItemsCount()) {
@@ -103,7 +103,6 @@ class CategoryInfoManagement implements CategoryInfoManagementInterface
                 }
 
                 $filters = (string)$filter->getName();
-                $filteraa = "Visual-swatch";
 
                 $items = $filter->getItems();
                 $filterValues = array();
@@ -116,16 +115,17 @@ class CategoryInfoManagement implements CategoryInfoManagementInterface
 
                     $j++;
                 }
-              //  print_r($filter->getAttributeModel()->getData());
-                $data[] = array('id'=>$filter->getAttributeModel()->getAttributeId(),'code'=>$filter->getAttributeModel()->getAttributeCode(),'label'=>$filter->getName(),'type'=>$filter->getAttributeModel()->getFrontendInput(),'values'=>$filterValues);
+                //  print_r($filter->getAttributeModel()->getData());
+                $data[] = array('id' => $filter->getAttributeModel()->getAttributeId(), 'code' => $filter->getAttributeModel()->getAttributeCode(),
+                    'label' => $filter->getName(), 'type' => $filter->getAttributeModel()->getFrontendInput(), 'values' => $filterValues);
 
                 if (!empty($filterValues) && count($filterValues) > 1) {
-                  //  $filterArray['filters'][$filters][$filteraa] = $filterValues;
+                    //  $filterArray['filters'][$filters][$filteraa] = $filterValues;
                 }
                 $i++;
 
             }
-              $filterArray['filters'] = $data;
+            $filterArray['filters'] = $data;
             if (!isset($filterArray["filters"])) {
                 $filterArray['filters'] = "No filters to show.";
             }
