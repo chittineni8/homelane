@@ -135,6 +135,31 @@ require(['jquery','slickslider'], function($) {
                 }
             ]
 	    });
+
+		if ($(window).width() > 768){
+			var itemFLength = $('.hp-category-conatiner #furniture').find('.col-md').length;
+			if(itemFLength > 5){
+				$("#furniture").not(".slick-initialized").slick({
+					dots: false,arrows: true,infinite: true,slidesToShow: 5,slidesToScroll: 1,
+					centerMode: false,centerPadding: '80px',autoplay: true,initialSlide: 1,speed: 1000,cssEase: 'linear',
+				});
+			}
+			var itemALength = $('.hp-category-conatiner #appliances').find('.col-md').length;
+			if(itemALength > 5){
+				$("#appliances").not(".slick-initialized").slick({
+					dots: false,arrows: true,infinite: true,slidesToShow: 5,slidesToScroll: 1,
+					centerMode: false,centerPadding: '80px',autoplay: true,initialSlide: 1,speed: 1000,cssEase: 'linear',
+				});
+			}
+			var itemDLength = $('.hp-category-conatiner #decor').find('.col-md').length;
+			if(itemDLength > 5){
+				console.log('itemDLength', itemDLength);
+				$("#decor").not(".slick-initialized").slick({
+					dots: false,arrows: true,infinite: true,slidesToShow: 5,slidesToScroll: 1,
+					centerMode: false,centerPadding: '80px',autoplay: true,initialSlide: 1,speed: 1000,cssEase: 'linear',
+				});
+			}
+		}
 		$(".hp-customer-review-outer ul").not(".slick-initialized").slick({
 		    dots: true,arrows: false,infinite: true,slidesToShow: 1,slidesToScroll: 1,
 		    autoplay: true,initialSlide: 1, speed: 300,cssEase: 'linear',
