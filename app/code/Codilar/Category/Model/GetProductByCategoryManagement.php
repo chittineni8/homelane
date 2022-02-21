@@ -57,12 +57,21 @@ class GetProductByCategoryManagement implements GetProductByCategoryManagementIn
     {
       //echo "Test";die;
         try {
-          $category = $this->categoryFactory->create()->load($id)->getProductCollection()->addAttributeToSelect('*');
-          $data = [];
-          $productPositions  = $this->categoryFactory->create()->load($id)->getProductsPosition();
-          //print_r($productPositions);die;
-            foreach ($category as $product) {
-              $data[] = array(
+
+
+                $collection = $this->_productCollectionFactory->create();
+                $collection->addAttributeToSelect('*');
+                $collection->addCategoriesFilter(['eq' => $id]);
+                //print_r($collection->getData());
+                //die;
+
+                $category = $this->categoryFactory->create()->load($id)->getProductCollection()->addAttributeToSelect('*');
+
+                $data = [];
+                $productPositions  = $this->categoryFactory->create()->load($id)->getProductsPosition();
+                //print_r($productPositions);die;
+                foreach ($collection as $product) {
+                $data[] = array(
                                   'sku'=>$product->getSku(),
                                   'position'=> isset($productPositions[$product->getId()])?$productPositions[$product->getId()]:0,
                                   'category_id'=>$id,
@@ -72,6 +81,8 @@ class GetProductByCategoryManagement implements GetProductByCategoryManagementIn
         } catch (Exception $e) {
             $this->logger->critical($e->getMessage() . ' ' . ' Categories Product API EXCEPTION');
             return ($e->getMessage());
+        }  } catch(\Exception $e) {
+          
         }//end try
     }
 
