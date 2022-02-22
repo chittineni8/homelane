@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+	<route url="/V1/codilar-vendor/vendor" method="POST">
+		<service class="Codilar\Vendor\Api\VendorRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Codilar_Vendor::Vendor_save"/>
+		</resources>
+	</route>
+	<route url="/V1/codilar-vendor/vendor/search" method="GET">
+		<service class="Codilar\Vendor\Api\VendorRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="Codilar_Vendor::Vendor_view"/>
+		</resources>
+	</route>
+	<route url="/V1/codilar-vendor/vendor/:vendorId" method="GET">
+		<service class="Codilar\Vendor\Api\VendorRepositoryInterface" method="get"/>
+		<resources>
+			<resource ref="Codilar_Vendor::Vendor_view"/>
+		</resources>
+	</route>
+	<route url="/V1/codilar-vendor/vendor/:vendorId" method="PUT">
+		<service class="Codilar\Vendor\Api\VendorRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Codilar_Vendor::Vendor_update"/>
+		</resources>
+	</route>
+	<route url="/V1/codilar-vendor/vendor/:vendorId" method="DELETE">
+		<service class="Codilar\Vendor\Api\VendorRepositoryInterface" method="deleteById"/>
+		<resources>
+			<resource ref="Codilar_Vendor::Vendor_delete"/>
+		</resources>
+	</route>
+</routes>
