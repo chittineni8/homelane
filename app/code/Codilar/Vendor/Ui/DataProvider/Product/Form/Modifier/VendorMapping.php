@@ -49,7 +49,7 @@ class VendorMapping extends AbstractModifier
 	 protected $scopeName;
 	 protected $_automat;
 	 protected $_sap;
-
+	 protected $website;
 
 
 	 /**
@@ -61,6 +61,7 @@ class VendorMapping extends AbstractModifier
 			 ArrayManager $arrayManager,
 			 \Codilar\Vendor\Model\Source\AutomatUom $automat,
 			 \Codilar\Vendor\Model\Source\SapUom $sap,
+			 \Codilar\Priceversion\Model\Priceversion\Website $_website,
 			 $scopeName = ''
 	 ) {
 			 $this->locator = $locator;
@@ -68,6 +69,7 @@ class VendorMapping extends AbstractModifier
 			 $this->scopeName = $scopeName;
 			 $this->_automat = $automat;
 			 $this->_sap = $sap;
+			 $this->website = $_website;
 	 }
 
 	 /**
@@ -249,7 +251,7 @@ class VendorMapping extends AbstractModifier
 																			 'dataType' => Text::NAME,
 																			 'label' => __('City'),
 																			 'dataScope' => 'city',
-																			 'options' => \Codilar\Priceversion\Model\Priceversion\Website::toOptionArray(),
+																			 'options' => $this->website->toOptionArray(),
 																	 ],
 															 ],
 													 ],
@@ -332,7 +334,7 @@ class VendorMapping extends AbstractModifier
 		 //print_r($this->_automat->toOptionArray());die;
 		 $data = $this->_automat->toOptionArray();
 		 $options = array();
-		 foreach($data as $option){
+		 foreach($data['data'] as $option){
 			 $options[] = ['label'=>$option['id'],'value'=>$option['id']];
 		 }
 		  return $options;
@@ -341,7 +343,7 @@ class VendorMapping extends AbstractModifier
 		//print_r($this->_automat->toOptionArray());die;
 		$data = $this->_automat->toOptionArray();
 		$options = array();
-		foreach($data as $option){
+		foreach($data['data'] as $option){
 			$options[] = ['label'=>$option['name'],'value'=>$option['name']];
 		}
 		 return $options;
