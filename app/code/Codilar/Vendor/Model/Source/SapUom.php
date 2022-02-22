@@ -67,11 +67,17 @@ class SapUom implements OptionSourceInterface
 
     }
 
+    /**
+     * @return string
+     */
     public function getSapUomEndpoint()
     {
-        return 'GetVendorLists';
+        return 'GetVendorList';
     }
 
+    /**
+     * @return mixed
+     */
     public function getSapUomToken()
     {
         $storeScope = ScopeInterface::SCOPE_STORE;
