@@ -7,7 +7,7 @@ use Codilar\CategoryInfoAPI\Api\CategoryInfoManagementInterface;
 use Codilar\MiscAPI\Logger\Logger;
 use Magento\Catalog\Model\CategoryFactory;
 use Magento\Catalog\Model\Layer\FilterListFactory;
-use Magento\Catalog\Model\Layer\Resolver;
+use Magento\Catalog\Model\Layer\ResolverFactory;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory;
 use Magento\CatalogGraphQl\Model\Resolver\Layer\FilterableAttributesListFactory;
 use Magento\Framework\Webapi\Rest\Request;
@@ -41,7 +41,7 @@ class CategoryInfoManagement implements CategoryInfoManagementInterface
         FilterableAttributesListFactory $filterableAttributeList,
         FilterListFactory               $filterList,
         StoreManagerInterface           $storeManagerInterface,
-        Resolver                        $layerResolver,
+        ResolverFactory                        $layerResolver,
         Request                         $request,
         Logger                          $logger
 
@@ -70,7 +70,7 @@ class CategoryInfoManagement implements CategoryInfoManagementInterface
         try {
             $categoryData = $this->_categoryFactory->create()->load($id);
             $categoryId = $id;
-            $layer = $this->_layerResolver->get();
+            $layer = $this->_layerResolver->create()->get();
 
 
             $layerType = "search";
