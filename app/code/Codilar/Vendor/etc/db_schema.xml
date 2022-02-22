@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="codilar_vendor_vendor" resource="default" engine="innodb" comment="codilar_vendor_vendor Table">
+		<column xsi:type="int" name="vendor_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="vendor_id"/>
+		</constraint>
+		<column name="automat_vendor_id" nullable="true" xsi:type="text" comment="automat_vendor_id"/>
+		<column name="automat_vendor_name" nullable="true" xsi:type="text" comment="automat_vendor_name"/>
+		<column name="sap_vendor_id" nullable="true" xsi:type="text" comment="sap_vendor_id"/>
+		<column name="sap_vendor_name" nullable="true" xsi:type="text" comment="sap_vendor_name"/>
+		<column name="city" nullable="true" xsi:type="text" comment="city"/>
+		<column name="lead_time" nullable="true" xsi:type="text" comment="lead_time"/>
+		<column name="buying_price" nullable="true" xsi:type="text" comment="buying_price"/>
+		<column name="sku" nullable="true" xsi:type="text" comment="sku"/>
+		<column name="vendor_sku" nullable="true" xsi:type="text" comment="vendor_sku"/>
+		<column name="vendor_sku_status" nullable="true" xsi:type="text" comment="vendor_sku_status"/>
+		<column name="created_at" nullable="true" xsi:type="datetime" comment="created_at" default="CURRENT_TIMESTAMP"/>
+		<column name="updated_at" nullable="true" xsi:type="datetime" comment="updated_at" default="CURRENT_TIMESTAMP" on_update="true"/>
+	</table>
+</schema>

@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Codilar\Vendor\Api\VendorRepositoryInterface" type="Codilar\Vendor\Model\VendorRepository"/>
+	<preference for="Codilar\Vendor\Api\Data\VendorInterface" type="Codilar\Vendor\Model\Vendor"/>
+	<preference for="Codilar\Vendor\Api\Data\VendorSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Codilar\Vendor\Model\ResourceModel\Vendor\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">codilar_vendor_vendor</argument>
+			<argument name="resourceModel" xsi:type="string">Codilar\Vendor\Model\ResourceModel\Vendor\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="codilar_vendor_vendor_listing_data_source" xsi:type="string">Codilar\Vendor\Model\ResourceModel\Vendor\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+</config>
