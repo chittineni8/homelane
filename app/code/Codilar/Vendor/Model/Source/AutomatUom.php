@@ -95,11 +95,22 @@ class AutomatUom implements OptionSourceInterface
             list($apiRequestEndpoint, $requestMethod, $params) = $this->prepareParams($finalData);
 
             $response = $this->doRequest($apiRequestEndpoint, $requestMethod, $params);
+
+            $status = $response->getStatusCode();
             $responseBody = $response->getBody();
             $responseContent = $responseBody->getContents();
             $responseDecodee = json_decode($responseContent, true);
-
-            return $responseDecodee;
+            unset($responseDecodee['count']);
+            $result = [];
+            if (is_array($responseDecodee) || is_object($responseDecodee)) {
+                foreach ($responseDecodee as $options) {
+                    foreach ($options as $option)
+                    {
+                        $result[] = $option;
+                    }
+                }
+            }
+            return $result;
         } catch (\Exception $e) {
             $this->loggerResponse->critical($e->getMessage() . ' ' . 'AUTOMAT UOM ID API EXCEPTION');
         }//end try

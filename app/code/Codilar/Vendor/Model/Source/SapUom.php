@@ -99,12 +99,9 @@ class SapUom implements OptionSourceInterface
             $responseContent = $responseBody->getContents();
             $responseDecodee = json_decode($responseContent, true);
             $result = [];
-
+            $items = [];
             if (is_array($responseDecodee) || is_object($responseDecodee)) {
                 $items = $responseDecodee['ZapiGetVendorListResponse'][0]['EtVendorList'][0]['item'];
-
-
-
             }
 
 

@@ -332,7 +332,7 @@ class VendorMapping extends AbstractModifier
 		 //print_r($this->_automat->toOptionArray());die;
 		 $data = $this->_automat->toOptionArray();
 		 $options = array();
-		 foreach($data['data'] as $option){
+		 foreach($data as $option){
 			 $options[] = ['label'=>$option['id'],'value'=>$option['id']];
 		 }
 		  return $options;
@@ -341,7 +341,7 @@ class VendorMapping extends AbstractModifier
 		//print_r($this->_automat->toOptionArray());die;
 		$data = $this->_automat->toOptionArray();
 		$options = array();
-		foreach($data['data'] as $option){
+		foreach($data as $option){
 			$options[] = ['label'=>$option['name'],'value'=>$option['name']];
 		}
 		 return $options;
