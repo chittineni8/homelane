@@ -20,12 +20,14 @@ use Magento\Framework\Webapi\Rest\Request;
 use Codilar\TokenAPI\Model\Common\Callapi;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\View\Result\PageFactory;
-
-// use Magento\Framework\HTTP\Client\Curl;
+use Mageplaza\SocialLogin\Model\Providers\Oauth\OAuth2Client;
+use Magento\Framework\HTTP\Client\Curl;
 use Magento\Framework\Serialize\Serializer\Json;
 use Codilar\TokenAPI\Logger\Logger;
 use Mageplaza\SocialLogin\Model\Social;
+use Mageplaza\SocialLogin\Helper\Social as Helper;
 use Magento\Framework\Controller\Result\JsonFactory;
+use Codilar\TokenAPI\Model\Social as Socialhelper;
 
 /**
  * Class Login
@@ -45,6 +47,15 @@ class Login
      * API base request Endpoint
      */
     const USEREXISTS_REQUEST_ENDPOINT = 'codilar_customer_api/user_exists_oauth/userexist_endpoint';
+    /**
+     * API base request URI
+     */
+    const LOGIN_REQUEST_URI = 'codilar_customer_api/login_oauth/login_request_url';
+
+    /**
+     * API base request Endpoint
+     */
+    const LOGIN_REQUEST_ENDPOINT = 'codilar_customer_api/login_oauth/login_endpoint';
 
     /**
      * @type Social
@@ -114,6 +125,17 @@ class Login
 
 
     /**
+     * @var JsonFactory
+     */
+    protected $accessToken;
+
+
+    protected $helper;
+
+    protected $socialhelper;
+
+
+    /**
      * @param \Mageplaza\SocialLogin\Helper\Social $apiHelper
      * @param Http $request
      * @param Social $apiObject
@@ -133,8 +155,12 @@ class Login
         Social                               $apiObject,
         ResponseFactory                      $responseFactory,
         HandlerStack                         $stack,
+        OAuth2Client                         $accessToken,
         Callapi                              $callapi,
         StoreManagerInterface                $storeManager,
+        Helper                               $helper,
+        Socialhelper                         $socialhelper,
+        Curl                                 $curl,
         ClientFactory                        $clientFactory,
         Json                                 $json,
         ScopeConfigInterface                 $scopeConfig,
@@ -145,9 +171,13 @@ class Login
     )
     {
         $this->apiHelper = $apiHelper;
+        $this->accessToken = $accessToken;
         $this->responseFactory = $responseFactory;
+        $this->helper = $helper;
         $this->resultPageFactory = $resultPageFactory;
         $this->stack = $stack;
+        $this->curl = $curl;
+        $this->socialhelper = $socialhelper;
         $this->scopeConfig = $scopeConfig;
         $this->resultJsonFactory = $resultJsonFactory;
         $this->json = $json;
@@ -173,10 +203,13 @@ class Login
 
         $type = $this->apiHelper->setType($subject->getRequest()->getParam('type'));
         $userProfile = $this->apiObject->getUserProfile($type);
+//$this->helper->getAppSecret();
+//$this->helper->getAppId();
 
         $email = $userProfile->email ?: $userProfile->identifier . '@' . strtolower($type) . '.com';
         $firstname = $userProfile->firstName ?: (array_shift($name) ?: $userProfile->identifier);
         $lastname = $userProfile->lastName ?: (array_shift($name) ?: $userProfile->identifier);
+        $password = isset($userProfile->password) ? $userProfile->password : null;
 
         if ($email) :
             $emailbody = ['email' => $email];
@@ -198,9 +231,9 @@ class Login
                 $resultJson = $this->resultJsonFactory->create();
 
                 $resultJson->setData('User not registered with homelane.com. Please use a different email');
-                 // $resultPage = $this->resultPageFactory->create();
- //  $resultPage->getLayout()->getBlock('customer-popup-register')->setSocialData($email);
- // return $resultPage;
+
+
+                $this->socialhelper->logout($type);
 
                 return $resultJson;
 
@@ -248,6 +281,28 @@ class Login
 
     }//end getUserexistApiEndpoint()
 
+    /**
+     * Get request url
+     *
+     * @return string
+     */
+    public function getLoginRequestUri()
+    {
+        return $this->scopeConfig->getValue(self::LOGIN_REQUEST_URI, ScopeInterface::SCOPE_STORE);
+
+    }//end getLoginRequestUri()
+
+
+    /**
+     * Get API Endpoint
+     *
+     * @return string
+     */
+    public function getLoginApiEndpoint()
+    {
+        return $this->scopeConfig->getValue(self::LOGIN_REQUEST_ENDPOINT, ScopeInterface::SCOPE_STORE);
+
+    }//end getLoginApiEndpoint()
 
     /**
      * @param  $finalBrandData
@@ -322,6 +377,67 @@ class Login
         return $response;
 
     }//end doRequest()
+
+    private function prepareLoginParams($finalBrandData): array
+    {
+        $apiRequestEndpoint = $this->getLoginApiEndpoint();
+        $requestMethod = Request::METHOD_POST;
+        $params = $finalBrandData;
+
+        // collect param data
+        $bodyJson = $this->json->serialize($finalBrandData);
+        $params['form_params'] = json_decode($bodyJson, true);
+
+        $params['debug'] = false;
+        $params['headers'] = [
+            'Content-Type' => 'application/x-www-form-urlencoded',
+            'Authorization' => 'Bearer' . ' ' . $this->callapi->getToken(),
+        ];
+        return [
+            $apiRequestEndpoint,
+            $requestMethod,
+            $params,
+        ];
+
+    }//end prepareParams()
+
+    /**
+     * Do API request with provided params
+     *
+     * @param $apiRequestEndpoint
+     * @param string $requestMethod
+     * @param array $params
+     * @return Response
+     */
+    public function doLoginRequest(
+        $apiRequestEndpoint,
+        $requestMethod,
+        array $params = []
+    ): Response
+    {
+        // create middleware to add it in the request
+        list($stack, $tapMiddleware) = $this->generateMiddleWare();
+
+        /** @var Client $client */
+        $client = $this->clientFactory->create(['config' => [
+            'base_uri' => $this->getLoginRequestUri(),
+            'handler' => $tapMiddleware($stack),
+            'Authorization' => "Bearer" . $this->callapi->getToken()
+        ]]);
+
+        try {
+            $response = $client->request($requestMethod, $apiRequestEndpoint, $params);
+        } catch (GuzzleException $exception) {
+            /** @var Response $response */
+            $response = $this->responseFactory->create([
+                'status' => $exception->getCode(),
+                'body' => $exception->getResponse()->getBody(),
+                'reason' => $exception->getMessage()
+            ]);
+        }
+
+        return $response;
+    }
 
 
     /**
