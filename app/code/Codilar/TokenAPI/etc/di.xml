@@ -14,4 +14,6 @@
             </argument>
         </arguments>
     </type>
+    <preference for="Mageplaza\SocialLogin\Model\Social"
+                type="Codilar\TokenAPI\Model\Social" />
 </config>

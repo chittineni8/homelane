@@ -64,5 +64,5 @@ $regularPrice = $priceModel->getValue();
 $finalPrice = $finalPriceModel->getValue();
 if ($finalPrice < $regularPrice) :
     $_Percent = (100 - round(($finalPrice / $regularPrice)*100));
-    echo '<span class="offer-percentage"> (' .$_Percent."% OFF)</span>"?>
+    echo '<span class="offer-percentage">'.$_Percent."% OFF</span>"?>
 <?php endif;?>
