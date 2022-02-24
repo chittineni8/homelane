@@ -16,4 +16,5 @@
 			</argument>
 		</arguments>
 	</type>
+	<preference for="Magento\ImportExport\Controller\Adminhtml\Import\Download" type="Codilar\Vendor\Controller\Adminhtml\Import\Download"/>
 </config>

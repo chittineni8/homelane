@@ -24,7 +24,7 @@ class Custom extends AbstractModifier
                         'data' => [
                             'config' => [
                                 'additionalClasses' => 'admin__fieldset-product-custom',
-                                'label' => __('Vendor Mapping'),
+                                'label' => __(''),
                                 'collapsible' => true,
                                 'componentType' => Form\Fieldset::NAME,
                                 'dataScope' => self::DATA_SCOPE_PRODUCT,
