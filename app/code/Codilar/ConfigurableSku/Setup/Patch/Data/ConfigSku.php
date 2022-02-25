@@ -50,7 +50,7 @@ class ConfigSku implements DataPatchInterface
 
         $eavSetup->addAttribute('catalog_product', 'config_sku', [
             'type' => 'text',
-            'label' => 'Config SKU',
+            'label' => 'Configurable ID',
             'input' => 'text',
             'source' => '',
             'default' => '',

@@ -3,7 +3,8 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
     <table name="warehouse_mapping" resource="default" engine="innodb"
            comment="table to store warehouse mapping value information">
-        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true" comment="warehouse mapping website ID"/>
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true"
+                comment="warehouse mapping website ID"/>
         <column xsi:type="varchar" name="website" nullable="false" length="20"
                 comment="website value"/>
         <column xsi:type="varchar" name="sap_plant_id" nullable="false" length="50"
@@ -11,7 +12,9 @@
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="id"/>
         </constraint>
-
+        <constraint xsi:type="unique" referenceId="WEBSITE_NAME">
+            <column name="website"/>
+        </constraint>
     </table>
 </schema>
 

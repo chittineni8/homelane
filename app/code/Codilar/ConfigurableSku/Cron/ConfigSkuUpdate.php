@@ -77,16 +77,18 @@ class ConfigSkuUpdate
 
                 $simpleId = $items->getId();
                 $simpleConfigSku = $items->getConfigSku();
-
                 $product = $this->configurableProductType->getParentIdsByChild($simpleId);
                 if ($product) {
                     $parentId = $this->getParentProductId($simpleId);
                     $parentSku = $this->product->load($parentId)->getSku();
-                    if ($simpleConfigSku && $simpleConfigSku != $parentSku) {
-                        $items->setCustomAttribute('config_sku', $parentSku);
+                    if ($simpleConfigSku && $simpleConfigSku == $parentSku) {
+                        $items->setCustomAttribute('config_sku', $parentId);
+                        $items->save();
+                    } elseif ($simpleConfigSku && $simpleConfigSku != $parentId) {
+                        $items->setCustomAttribute('config_sku', $parentId);
                         $items->save();
                     } elseif (empty($simpleConfigSku)) {
-                        $items->setCustomAttribute('config_sku', $parentSku);
+                        $items->setCustomAttribute('config_sku', $parentId);
                         $items->save();
                     }
                 }
