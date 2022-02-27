@@ -4953,7 +4953,7 @@ rs-module-wrap {
                     display: none;
                 }
             }
-            &.active {
+            &.active-align {
                 color: #E71C24;
                 position: relative;
                 strong .filter-head{
@@ -6147,10 +6147,6 @@ ol.product-items li.wishlist-active{
     width: 68px;
     text-align: center;
     height: 32px;
-    @media (max-width:767px){
-        font-size: 11px;
-        padding-left: 2px;
-    }
 }
 .block-viewed-products-grid{
     li.product-item.wishlist-active{
@@ -6326,4 +6322,19 @@ ol.product-items li.wishlist-active{
             margin: 24px 0 6px;
         }
     }
+}
+
+.autocomplete-suggestions::after {
+    content: 'See all results';
+    display: block;
+    width: 100%;
+    position: relative;
+    height: 38px;
+    clear: both;
+    cursor: pointer;
+    text-align: left;
+    color: #e72224;
+    font-size: 22px;
+    font-weight: 600;
+    text-indent: 7px;
 }
