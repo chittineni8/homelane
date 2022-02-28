@@ -1,5 +1,9 @@
 require(['jquery','slickslider'], function($) {
 	$(document).ready( function() {
+		$(document).on("click",".autocomplete-suggestions",function(){
+			$('.actions .action.search').click();
+		});
+
 		$(window).scroll(function () {
             if ($(this).scrollTop() > 0) {
                 $('body').addClass('stickyy');
