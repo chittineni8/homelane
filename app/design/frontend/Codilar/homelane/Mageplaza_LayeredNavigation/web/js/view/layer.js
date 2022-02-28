@@ -27,7 +27,7 @@ define([
     'productListToolbarForm'
 ], function ($, submitFilterAction, ultil) {
     "use strict";
-
+    var isFilterApplied = false;
     $.widget('mageplaza.layer', $.mage.accordion, {
         options: {
             openedState: 'active',
@@ -44,7 +44,7 @@ define([
             active: [],
             checkboxEl: 'input[type=checkbox], input[type=radio]',
             sliderElementPrefix: '#ln_slider_',
-            sliderTextElementPrefix: '#ln_slider_text_'
+            sliderTextElementPrefix: '#ln_slider_text_',
         },
 
         _create: function () {
@@ -192,23 +192,33 @@ define([
                 checkbox.bind('click', function (e) {
                     e.stopPropagation();
                     self.ajaxSubmit(link);
+                    console.log('2', checkbox);
                 });
             });
-            if($('.block-content.filter-content .filter-current').length <= 0) {
-                    $('.block.filter .filter-title').removeClass("active");
-                    $('.block.filter').removeClass("active-slide");
-                    $('body').removeClass("filter-active");
-                } else {
-                    $('.block.filter .filter-title').addClass("active");
+
+            
+                $(document).on("click","#layered-filter-block .block-title strong",function() {
+                    isFilterApplied = true;
+                });
+
+                if(isFilterApplied == true){
+                    console.log('error', Boolean(isFilterApplied));
                     $('.block.filter').addClass("active-slide");
                     $('body').addClass("filter-active");
+                }else{
+                    $('.block.filter').removeClass("active-slide");
+                    $('body').removeClass("filter-active");
                 }
+
                 if($('.block-content.filter-content .filter-current').length >= 1){
                     $('.aply-filter .counter-filter, #layered-filter-block .block-title strong .header-counter span').append($('.block-content.filter-content .filter-current ol.items li').length);
                     $('.aply-filter .counter-filter').addClass('count-filter');
                     $('.block.filter .filter-title .header-counter').addClass('header-counter-show');
+                    $('.block.filter .filter-title').addClass("active-align");
+
                 }    
                 $("#layered-filter-block").on("click","span.close-filter, .aply-filter", function(){
+                    isFilterApplied = false;
                     $('div#layered-filter-block').removeClass("active");
                     $('.block.filter .filter-title > strong').attr("aria-expanded","false");
                     $('.block.filter .filter-title > strong').attr("aria-selected","false");
@@ -300,7 +310,6 @@ define([
         ajaxSubmit: function (submitUrl) {
             var isAjax = this.options.isAjax;
             this.element.find(this.options.mobileShopbyElement).trigger('click');
-
             if (isAjax) {
                 return submitFilterAction(submitUrl);
             }
