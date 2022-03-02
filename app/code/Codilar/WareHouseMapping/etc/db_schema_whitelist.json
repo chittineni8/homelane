@@ -1,0 +1,13 @@
+{
+    "warehouse_mapping": {
+        "column": {
+            "id": true,
+            "website": true,
+            "sap_plant_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "WAREHOUSE_MAPPING_WEBSITE": true
+        }
+    }
+}

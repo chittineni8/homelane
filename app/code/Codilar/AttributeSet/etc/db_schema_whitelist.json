@@ -9,7 +9,8 @@
             "automat_subcat_id": true
         },
         "constraint": {
-            "PRIMARY": true
+            "PRIMARY": true,
+            "CODILAR_ERP_ATTRIBUTESET_ATTRIBUTE_SET_ID": true
         }
     }
 }

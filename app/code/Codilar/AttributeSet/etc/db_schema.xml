@@ -11,5 +11,8 @@
        <constraint xsi:type="primary" referenceId="PRIMARY">
          <column name="id" />
       </constraint>
+       <constraint xsi:type="unique" referenceId="ATTRIBUTE_SET_NAME_ID">
+           <column name="attribute_set_id"/>
+       </constraint>
    </table>
 </schema>
