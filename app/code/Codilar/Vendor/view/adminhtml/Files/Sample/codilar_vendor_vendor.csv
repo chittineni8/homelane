@@ -1,0 +1,2 @@
+vendor_id,automat_vendor_id,automat_vendor_name,sap_vendor_id,sap_vendor_name,city,lead_time,buying_price,sku,vendor_sku,vendor_sku_status
+1,1,test,2,test,bangalore_store_view,2,1200,test,test,1
