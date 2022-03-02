@@ -74,9 +74,9 @@ class Topmenu extends \Magento\Theme\Block\Html\Topmenu
             }
 
             $html .= '<li ' . $this->_getRenderedMenuItemAttributes($child) . '>';
-            $html .= '<a href="' . $child->getUrl() . '" ' . $outermostClassCode . '><span class="image-container-block"> <span class="child-element">' . $this->escapeHtml(
+            $html .= '<a href="' . $child->getUrl() . '" ' . $outermostClassCode . '><span class="image-container-block"> ' . $this->escapeHtml(
                     $child->getName()
-                ) . '</span>' . $this->getCustomImage($child) . '</span></a>' . $this->_addSubMenu(
+                ). $this->getCustomImage($child) . '</span></a>' . $this->_addSubMenu(
                     $child,
                     $childLevel,
                     $childrenWrapClass,
