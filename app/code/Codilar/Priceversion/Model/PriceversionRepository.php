@@ -104,17 +104,18 @@ class PriceversionRepository implements PriceversionRepositoryInterface
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
     ) {
         $collection = $this->priceversionCollectionFactory->create();
-        
+
         $this->collectionProcessor->process($criteria, $collection);
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
-        
+
         $items = [];
         foreach ($collection as $model) {
+            $model['sub_cat'] = explode(',', $model['sub_cat']);
             $items[] = $model;
         }
-        
+
         $searchResults->setItems($items);
         $searchResults->setTotalCount($collection->getSize());
         return $searchResults;
@@ -146,4 +147,3 @@ class PriceversionRepository implements PriceversionRepositoryInterface
         return $this->delete($this->get($priceversionId));
     }
 }
-
