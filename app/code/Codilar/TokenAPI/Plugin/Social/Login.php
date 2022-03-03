@@ -3,10 +3,12 @@
 namespace Codilar\TokenAPI\Plugin\Social;
 
 use Exception;
+use Magento\Customer\Model\ResourceModel\CustomerFactory;
 use Magento\Framework\App\Request\Http;
-
+use Hybrid_Provider_Model_OAuth2;
 use Magento\Framework\Exception\LocalizedException;
-
+use Magento\Customer\Api\CustomerRepositoryInterface;
+use Magento\Framework\Exception\NoSuchEntityException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientFactory;
 use GuzzleHttp\Exception\GuzzleException;
@@ -28,6 +30,9 @@ use Mageplaza\SocialLogin\Model\Social;
 use Mageplaza\SocialLogin\Helper\Social as Helper;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Codilar\TokenAPI\Model\Social as Socialhelper;
+use Magento\Customer\Model\Customer;
+use Magento\Framework\App\ObjectManager;
+
 
 /**
  * Class Login
@@ -134,6 +139,7 @@ class Login
 
     protected $socialhelper;
 
+    protected $customerRepository;
 
     /**
      * @param \Mageplaza\SocialLogin\Helper\Social $apiHelper
@@ -157,6 +163,7 @@ class Login
         HandlerStack                         $stack,
         OAuth2Client                         $accessToken,
         Callapi                              $callapi,
+        Customer                             $customer,
         StoreManagerInterface                $storeManager,
         Helper                               $helper,
         Socialhelper                         $socialhelper,
@@ -166,7 +173,9 @@ class Login
         ScopeConfigInterface                 $scopeConfig,
         Logger                               $loggerResponse,
         JsonFactory                          $resultJsonFactory,
-        PageFactory                          $resultPageFactory
+        PageFactory                          $resultPageFactory,
+        CustomerRepositoryInterface          $customerRepository,
+        CustomerFactory                      $customerFactory
 
     )
     {
@@ -177,6 +186,7 @@ class Login
         $this->resultPageFactory = $resultPageFactory;
         $this->stack = $stack;
         $this->curl = $curl;
+        $this->customer = $customer;
         $this->socialhelper = $socialhelper;
         $this->scopeConfig = $scopeConfig;
         $this->resultJsonFactory = $resultJsonFactory;
@@ -187,6 +197,8 @@ class Login
         $this->loggerResponse = $loggerResponse;
         $this->request = $request;
         $this->apiObject = $apiObject;
+        $this->customerFactory = $customerFactory;
+        $this->customerRepository = $customerRepository;
 
     }
 
@@ -200,11 +212,14 @@ class Login
     public function aroundExecute(\Mageplaza\SocialLogin\Controller\Social\Login $subject, callable $proceed)
     {
 
+        if (array_key_exists('id_token', $_SESSION)):
+            $idToken = $_SESSION['id_token'];
+        else:
+            $idToken = null;
+        endif;
 
         $type = $this->apiHelper->setType($subject->getRequest()->getParam('type'));
         $userProfile = $this->apiObject->getUserProfile($type);
-//$this->helper->getAppSecret();
-//$this->helper->getAppId();
 
         $email = $userProfile->email ?: $userProfile->identifier . '@' . strtolower($type) . '.com';
         $firstname = $userProfile->firstName ?: (array_shift($name) ?: $userProfile->identifier);
@@ -220,21 +235,62 @@ class Login
             $responseBody = $emailData->getBody();
             $responseContent = $responseBody->getContents();
             $responseEmail = json_decode($responseContent, true);
-
-
             if ($status == 200 && $responseEmail['user_exists'] == 1):
 
-                return $proceed();
+                if ($type == 'Facebook'):
+
+                    $loginParams = [
+                        'email' => $email,
+                        'user_name' => 'undefined',
+                        'fbAccessToken' => $idToken,
+                        'facebook_user' => 'Yes',
+                        'ajax_mode' => 1,
+                        'hlstore_flag' => 'true'
+                    ];
+                else:
+                    $loginParams = [
+                        'email' => $email,
+                        'user_name' => 'undefined',
+                        'googleAccessToken' => $idToken,
+                        'google_user' => 'Yes',
+                        'ajax_mode' => 1,
+                        'hlstore_flag' => 'true'
+                    ];
+                endif;
+
+                list($apiRequestEndpoint, $requestMethod, $params) = $this->prepareLoginParams($loginParams);
+                $slresponse = $this->doLoginRequest($apiRequestEndpoint, $requestMethod, $params);
+                $slstatus = $slresponse->getStatusCode();
+                $slresponseBody = $slresponse->getBody();
+                $slresponseContent = $slresponseBody->getContents();
+                $slresponseDecodee = json_decode($slresponseContent, true);
+
+                if (array_key_exists('error', $slresponseDecodee)):
+                    $resultJson = $this->resultJsonFactory->create();
+                    $resultJson->setData($slresponseDecodee['msg']);
+                    $this->socialhelper->logout($type);
+                    return $resultJson;
+                endif;
+
+                if (array_key_exists("user_id", $slresponseDecodee)):
+                    $homelaneUserId = $slresponseDecodee['user_id'];
+                else:
+                    $homelaneUserId = null;
+                endif;
+                $rest = $proceed();
+                $eid = $this->getCustomerIdByEmail($email);
+                $customerNew = $this->customer->load($eid);
+                $customerData = $customerNew->getDataModel();
+                $customerData->setCustomAttribute('homelane_user_id', $homelaneUserId);
+                $customerNew->updateData($customerData);
+                $customerResource = $this->customerFactory->create();
+                $customerResource->saveAttribute($customerNew, 'homelane_user_id');
+                return $rest;
 
             elseif ($status == 200 && $responseEmail['user_exists'] != 1):
-
                 $resultJson = $this->resultJsonFactory->create();
-
                 $resultJson->setData('User not registered with homelane.com. Please use a different email');
-
-
                 $this->socialhelper->logout($type);
-
                 return $resultJson;
 
             elseif ($status == 401):
@@ -242,7 +298,6 @@ class Login
                 $this->loggerResponse->addInfo("========================SOCIAL LOGIN  API ERROR========================");
                 $this->loggerResponse->addInfo("STATUS" . ' ' . $status . ' ' . "NO AUTHORIZATION HEADER PRESENT for email:" . $email);
                 $this->loggerResponse->addInfo("===================================================================");
-
 
             else:
 
@@ -460,6 +515,17 @@ class Login
         ];
 
     }//end generateMiddleWare()
+
+    public function getCustomerIdByEmail(string $email)
+    {
+        $customerId = null;
+        try {
+            $customerData = $this->customerRepository->get($email);
+            $customerId = (int)$customerData->getId();
+        } catch (NoSuchEntityException $noSuchEntityException) {
+        }
+        return $customerId;
+    }
 
 
 }
